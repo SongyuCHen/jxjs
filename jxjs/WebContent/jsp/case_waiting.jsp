@@ -11,6 +11,24 @@
 </head>
 <body>
 <jsp:include page="header.jsp" />
+<div class="content-wrapper">
+	<div class="content-left">
+		<ul>
+			<li class="main-cat">案件处理</li>
+			<li class="sub-cat">待审批列表</li>
+			<li class="sub-cat">已审批列表</li>
+			<li class="sub-cat">已立案列表</li>
+			
+		</ul>
+	</div>
+	<div class="content-right">
+		<div class="searching">
+		</div>
+		<div class="table-main">
+		</div>
+	</div>
+</div>
+
 <jsp:include page="footer.jsp" />
 </body>
 </html>
