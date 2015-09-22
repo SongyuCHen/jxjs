@@ -1,0 +1,75 @@
+#header{
+	width:100%;
+	height:148px;
+}
+
+#header .banner{
+	padding-top:5px;
+	background-color:#0d5fa3;
+	height:120px;
+}
+
+#header .welcome-bar{
+	height:28px;
+	background-image: url(../images/welcome-bar-bg.jpg);
+	background-repeat:repeat-x;
+}
+
+#header .welcome-words{
+	color:white;
+	padding-top:3px;
+	padding-left:30px;
+}
+
+#header .logo{
+	float:left;
+	margin-left:20px;
+}
+
+#header .title{
+	margin-top:10px;
+	float:left;
+}
+
+#header .menu-right{
+	float:right;
+}
+#header .menu-right ul{
+	
+}
+#header .menu-right ul li{
+	display: inline;
+}
+#header .menu-right img{
+	width:60px;
+	height:60px;
+}
+
+
+#header .menu-main{
+	position:relative;
+	top:4px;
+	left:500px;
+	clear:both;
+	height:30px;
+}
+
+#header .menu-main ul{
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	width:650px;
+	height:30px;
+}
+
+#header .menu-main ul li{
+	float: left;
+	width: 120px;
+	height: 30px;
+	margin-left:1px;
+	background-color: #F9F9F9;
+	border-radius: 3px;
+	text-align:center;
+	font-size:20px;
+}
+
