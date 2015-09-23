@@ -1,6 +1,6 @@
 .content-wrapper{
 	min-height:600px;
-	background-color:#c9d7ee;
+	background-image:linear-gradient(to bottom, #8dafd2,#d9e2f6);
 	padding:5px;
 }
 
@@ -13,20 +13,22 @@
 	width:24%;
 	height:100%;
 	background-color:white;
+	padding:2px;
 }
 
 .content-wrapper .content-right{
 	float:right;
 	width:75%;
-	height:100%;
 	background-color:white;
+	padding:2px;
+	font-size:14px;
 }
 
 
 .content-left ul{
 	list-style:none;
-	padding:2px;
 	margin:0;
+	padding:0;
 }
 
 .content-left ul li.main-cat{
@@ -46,4 +48,52 @@
 .content-right .searching{
 	height:60px;
 	background-image:linear-gradient(to bottom, #eaf1f8, #FFFFFF, #eaf1f8);
+	padding-top:10px;
+	padding-left:10px;
+}
+
+.content-left ul li.bgblue{
+	background-color:#0d5fa3;
+	color:white;
+}
+
+
+.content-right .searching img{
+	float:left;
+}
+.content-right .searching input{
+	float:left;
+	margin-left:50px;
+	width:300px;
+}
+.content-right .searching button{
+	float:left;
+	margin-left:80px;
+}
+
+
+
+.content-right .table-wrapper{
+	
+}
+
+.content-right .table-wrapper .table-main{
+	
+}
+
+
+#table-main-thead-tr{
+	background-color:#0d5fa3;
+	color:white;
+}
+
+.table-wrapper .table-main .operating{
+	height:10px;
+}
+
+.table-wrapper .table-main .operating button{
+	float:left;
+	margin-left:1px;
+	position:relative;
+	top:-30px;
 }
