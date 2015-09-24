@@ -1,0 +1,38 @@
+<html xmlns:jsp="http://java.sun.com/JSP/Page"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:tiles="http://tiles.apache.org/tags-tiles"
+      xmlns:spring="http://www.springframework.org/tags">
+
+<jsp:output doctype-root-element="HTML" doctype-system="about:legacy-compat" />
+
+<jsp:directive.page contentType="text/html;charset=UTF-8" />
+<jsp:directive.page pageEncoding="UTF-8" />
+<head>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/footer.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery.dataTables.min.css"/>
+
+<title>案件处理-待审批列表</title>
+</head>
+<body>
+<div class="page">
+<tiles:insertAttribute name="header" />
+<div class="content-wrapper">
+	<tiles:insertAttribute name="content-left" />
+	<div class="content-right">
+		<tiles:insertAttribute name="content-right" />
+	</div>
+</div>
+<tiles:insertAttribute name="footer" />
+</div>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"><jsp:text/></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"><jsp:text/></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.dataTables.min.js"><jsp:text/></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jxjs_common.js" charset="gbk"><jsp:text/></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/uiadjuster.js"><jsp:text/></script>
+</body>
+</html>

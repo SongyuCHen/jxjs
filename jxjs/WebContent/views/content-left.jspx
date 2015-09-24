@@ -1,0 +1,19 @@
+<div class="content-left">
+		<div class="content-left-upper">
+			<ul>
+				<li class="main-cat"><img src="${pageContext.request.contextPath}/images/ajcl.png"/>案件处理</li>
+				<li class="sub-cat bgblue">待审批列表</li>
+				<li class="sub-cat">已审批列表</li>
+				<li class="sub-cat">已立案列表</li>			
+			</ul>
+		</div>
+		<div class="content-left-below">
+			<p>其余三个选项的图标:</p>
+			<ul>
+				<li><img src="${pageContext.request.contextPath}/images/tjfx.png"/>统计分析</li>
+				<li><img src="${pageContext.request.contextPath}/images/xtdj.png"/>系统对接</li>
+				<li><img src="${pageContext.request.contextPath}/images/xtgl.png"/>系统管理</li>
+			</ul>
+		</div>
+		
+</div>

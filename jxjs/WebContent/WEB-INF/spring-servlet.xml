@@ -18,6 +18,18 @@
     
     
 	<!--配置视图解析器,Controller回传ModelAndView，DispatcherServlet将其交给ViewResolver解析。 -->
+	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+		<property name="order" value="1"/>
+	</bean>  
+      
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">  
+        <property name="definitions">  
+            <list>  
+                <value>/layout/mainLayout.xml</value>
+                <value>/views/*/views.xml</value>   
+            </list>  
+        </property>  
+    </bean>  
 	<bean id="viewResolver2"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="order" value="2"/>

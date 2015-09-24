@@ -8,14 +8,14 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginController {
 	@RequestMapping(value = "/login")
 	public String login() {
-		return "main";
+		return "ajcl_dsplb";
 	}
 	
 	
 	@RequestMapping(value = "/login2")
 	public ModelAndView login2(){
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("case_waiting");
+		mv.setViewName("ajcl_dsplb");
 		mv.addObject("name", "saber");
 		return mv;
 	}
