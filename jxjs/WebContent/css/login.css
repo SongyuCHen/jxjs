@@ -1,0 +1,55 @@
+body{
+	margin:0;
+	padding:0;
+	background-color:#1f358b;
+}
+
+.page{
+	background-image: url(../images/login-bg.png);
+	background-size:cover;
+	margin: 0 auto;
+	height:634px;
+	padding-top:60px;
+}
+
+
+.login-title{
+	background-image: url(../images/login-title.png);
+	background-repeat:no-repeat;
+	background-size:100%;
+	width:560px;
+	height:68px;
+	margin:auto;
+	position:relative;
+	left:-100px;
+}
+
+.login-panel{
+	background-image: url(../images/login-pannel.png);
+	width:551px;
+	height:323px;
+	margin:auto;
+	margin-top:60px;
+}
+
+.form-wrapper{
+	position:relative;
+	left:250px;
+	top:75px;
+	width:250px;
+	height:200px;
+}
+
+.form-group{
+	margin-top:0px;
+	margin-bottom:5px;
+}
+
+.control-label{
+	color:white;
+	padding-right:0px;
+}
+
+.checkbox{
+	color:white;
+}

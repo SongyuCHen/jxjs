@@ -1,6 +1,15 @@
+body{
+	background-image:linear-gradient(to bottom, #8dafd2,#d9e2f6);
+}
+
+.page {
+	margin: 0 auto;
+	
+}
+
+
 .content-wrapper{
 	min-height:600px;
-	background-image:linear-gradient(to bottom, #8dafd2,#d9e2f6);
 	padding:5px;
 }
 
@@ -10,7 +19,7 @@
 
 .content-wrapper .content-left{
 	float:left;
-	width:24%;
+	width:19.5%;
 	height:100%;
 	background-color:white;
 	padding:2px;
@@ -18,7 +27,7 @@
 
 .content-wrapper .content-right{
 	float:right;
-	width:75%;
+	width:80%;
 	background-color:white;
 	padding:2px;
 	font-size:14px;

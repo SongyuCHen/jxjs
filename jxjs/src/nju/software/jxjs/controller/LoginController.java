@@ -19,4 +19,9 @@ public class LoginController {
 		mv.addObject("name", "saber");
 		return mv;
 	}
+	
+	@RequestMapping(value = "/shiro/test")
+	public String testShiro(){
+		return "shirotest";
+	}
 }

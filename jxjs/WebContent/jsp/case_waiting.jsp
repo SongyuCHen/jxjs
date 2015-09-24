@@ -14,6 +14,7 @@
 <title>案件处理-待审批列表</title>
 </head>
 <body>
+<div class="page">
 <jsp:include page="header.jsp" />
 <div class="content-wrapper">
 	<div class="content-left">
@@ -199,5 +200,7 @@
 </div>
 
 <jsp:include page="footer.jsp" />
+</div>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/uiadjuster.js"><jsp:text/></script>
 </body>
 </html>

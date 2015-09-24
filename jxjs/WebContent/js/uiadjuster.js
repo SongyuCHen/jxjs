@@ -1,0 +1,1 @@
+$(".page").css("width",(screen.width-20)+"px");
