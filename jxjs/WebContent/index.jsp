@@ -21,7 +21,7 @@
 
 		<div class="login-panel">
 			<div class="form-wrapper">
-				<form class="form-horizontal" action="login2" method="post">
+				<form class="form-horizontal" action="login" method="post">
 					<div class="form-group">
 						<label for="inputDW" class="col-sm-4 control-label">单位：</label>
 						<div class="col-sm-8">
