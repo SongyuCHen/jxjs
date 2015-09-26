@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="JUDGE" match-schema="dbo" match-name="DSR_GR"/>
+  <table-filter match-catalog="JUDGE" match-schema="dbo" match-name="DSR_JB"/>
+  <table-filter match-catalog="JUDGE" match-schema="dbo" match-name="PUB_AJ_JB"/>
+  <table-filter match-catalog="JUDGE" match-schema="dbo" match-name="PUB_DMB"/>
+  <table-filter match-catalog="JUDGE" match-schema="dbo" match-name="PUB_LA_AY"/>
+  <table-filter match-catalog="JUDGE" match-schema="dbo" match-name="PUB_XTGL_YHB"/>
+  <table-filter match-catalog="JUDGE" match-schema="dbo" match-name="T_DSR"/>
+  <table-filter match-catalog="JUDGE" match-schema="dbo" match-name="T_DW"/>
+  <table-filter match-catalog="JUDGE" match-schema="dbo" match-name="T_JXJS"/>
+  <table-filter match-catalog="JUDGE" match-schema="dbo" match-name="T_OPERATION"/>
+  <table-filter match-catalog="JUDGE" match-schema="dbo" match-name="T_RESOURCE"/>
+  <table-filter match-catalog="JUDGE" match-schema="dbo" match-name="T_SPXX"/>
+  <table-filter match-catalog="JUDGE" match-schema="dbo" match-name="T_USER"/>
+</hibernate-reverse-engineering>
