@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 27, 2015 2:10:42 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="nju.software.jxjs.model.TResource" table="T_RESOURCE" schema="dbo" catalog="JUDGE">
+        <cache usage="read-write" />
+        <id name="resbh" type="int">
+            <column name="RESBH" />
+            <generator class="assigned" />
+        </id>
+        <property name="resname" type="string">
+            <column name="RESNAME" not-null="true" />
+        </property>
+        <property name="resurl" type="string">
+            <column name="RESURL" not-null="true" />
+        </property>
+        <property name="restype" type="string">
+            <column name="RESTYPE"  />
+        </property>
+    </class>
+</hibernate-mapping>

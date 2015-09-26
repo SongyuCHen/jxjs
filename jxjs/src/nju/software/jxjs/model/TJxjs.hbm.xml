@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="nju.software.jxjs.model.TJxjs" table="T_JXJS" schema="dbo" catalog="JUDGE">
+        <cache usage="read-write" />
+        <id name="jxjsbh" type="int">
+            <column name="JXJSBH" />
+            <generator class="assigned" />
+        </id>
+        <property name="sqsj" type="java.util.Date">
+            <column name="SQSJ" not-null="true" />
+        </property>
+        <property name="sqcs" type="int">
+            <column name="SQCS" not-null="true" />
+        </property>
+        
+        <many-to-one name="aj" 
+                     column="AJBH"
+                     class="nju.software.jxjs.model.PubAjJb"
+                     cascade="none"
+                     lazy="false"
+                     fetch="join"/>
+                     
+        <many-to-one name="dsr" 
+                     column="DSRBH"
+                     class="nju.software.jxjs.model.TDsr"
+                     cascade="none"
+                     lazy="false"
+                     fetch="join"/>
+                     
+        <many-to-one name="sxfy" 
+                     column="SXFYBH"
+                     class="nju.software.jxjs.model.TFy"
+                     cascade="none"
+                     lazy="false"
+                     fetch="join"/> 
+                     
+        <many-to-one name="sqlx" 
+                     column="SQLXBH"
+                     class="nju.software.jxjs.model.TGypz"
+                     cascade="none"
+                     lazy="false"
+                     fetch="join"/>  
+                     
+        <many-to-one name="ajzt" 
+                     column="AJZTBH"
+                     class="nju.software.jxjs.model.TGypz"
+                     cascade="none"
+                     lazy="false"
+                     fetch="join"/>                                                   
+    </class>
+</hibernate-mapping>

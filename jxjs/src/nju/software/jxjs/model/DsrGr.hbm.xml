@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="nju.software.jxjs.model.DsrGr" table="DSR_GR" schema="dbo" catalog="JUDGE">
+        <composite-id>
+            <key-property name="ajxh" type="int">
+                <column name="AJXH" />
+            </key-property>
+            <key-property name="dsrbh" type="int">
+                <column name="DSRBH" />
+            </key-property>
+        </composite-id>
+        <property name="xm" type="string">
+            <column name="XM" length="50" />
+        </property>
+        <property name="xb" type="string">
+            <column name="XB" length="10" />
+        </property>
+        <property name="csnyr" type="timestamp">
+            <column name="CSNYR" length="19" />
+        </property>
+        <property name="mz" type="string">
+            <column name="MZ" length="10" />
+        </property>
+        <property name="jg" type="string">
+            <column name="JG" length="50" />
+        </property>
+        <property name="zy" type="string">
+            <column name="ZY" length="10" />
+        </property>
+        <property name="zw" type="string">
+            <column name="ZW" length="10" />
+        </property>
+        <property name="whcd" type="string">
+            <column name="WHCD" length="10" />
+        </property>
+        <property name="gzdw" type="string">
+            <column name="GZDW" length="50" />
+        </property>
+        <property name="zzmm" type="string">
+            <column name="ZZMM" length="10" />
+        </property>
+        <property name="jb" type="string">
+            <column name="JB" length="10" />
+        </property>
+        <property name="sf" type="string">
+            <column name="SF" length="10" />
+        </property>
+        <property name="hyqk" type="string">
+            <column name="HYQK" length="10" />
+        </property>
+        <property name="jtqk" type="string">
+            <column name="JTQK" length="250" />
+        </property>
+        <property name="jkqk" type="string">
+            <column name="JKQK" length="50" />
+        </property>
+        <property name="ssgj" type="string">
+            <column name="SSGJ" length="10" />
+        </property>
+        <property name="sfzhm" type="string">
+            <column name="SFZHM" length="50" />
+        </property>
+        <property name="yb" type="string">
+            <column name="YB" length="10" />
+        </property>
+        <property name="dh" type="string">
+            <column name="DH" length="40" />
+        </property>
+        <property name="dz" type="string">
+            <column name="DZ" length="100" />
+        </property>
+        <property name="qrjg" type="string">
+            <column name="QRJG" length="50" />
+        </property>
+        <property name="qrgc" type="string">
+            <column name="QRGC" length="250" />
+        </property>
+        <property name="zzd" type="string">
+            <column name="ZZD" length="100" />
+        </property>
+        <property name="zwzy" type="string">
+            <column name="ZWZY" length="40" />
+        </property>
+        <property name="zjlbF" type="string">
+            <column name="ZJLB_F" length="10" />
+        </property>
+        <property name="zjlb" type="string">
+            <column name="ZJLB" length="2" />
+        </property>
+        <property name="zjlbB" type="string">
+            <column name="ZJLB_B" length="2" />
+        </property>
+        <property name="zjlbC" type="string">
+            <column name="ZJLB_C" length="2" />
+        </property>
+        <property name="zjlbE" type="string">
+            <column name="ZJLB_E" length="2" />
+        </property>
+        
+    </class>
+</hibernate-mapping>

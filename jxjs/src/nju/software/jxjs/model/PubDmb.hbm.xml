@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+    
+<hibernate-mapping>
+
+	<class 
+	    name="nju.software.jxjs.model.PubDmb" 
+	    table="PUB_DMB"  schema="dbo"
+	    catalog="JUDGE"
+	>
+
+    <composite-id>
+        <key-property 
+            name="lbbh"
+            type="java.lang.String"
+            column="LBBH" 
+        />
+        <key-property 
+            name="dmbh"
+            type="java.lang.String"
+            column="DMBH"
+        />
+    </composite-id>
+
+    <property
+        name="dmms"
+        type="java.lang.String"
+        column="DMMS"
+    />
+    <property
+        name="xgdm"
+        type="java.lang.String"
+        column="XGDM"
+    />
+    <property
+        name="bz"
+        type="java.lang.String"
+        column="BZ"
+    />
+    <property
+        name="modflag"
+        type="java.lang.String"
+        column="MODFLAG"
+    />
+    <property
+        name="transflag"
+        type="java.lang.String"
+        column="TRANSFLAG"
+    />
+	
+	<property
+        name="xgsj"
+        type="java.util.Date"
+        column="XGSJ"
+    />
+    
+	<property
+        name="xssx"
+        type="java.lang.Float"
+        column="XSSX"
+    />
+    
+    <property
+        name="dqbs"
+        type="java.lang.String"
+        column="DQBS"
+    />
+    
+    <property
+        name="fybh"
+        type="java.lang.Integer"
+        column="FYBH"
+    />
+    
+    <property
+        name="fysx"
+        type="java.lang.String"
+        column="FYSX"
+    />
+    
+    <property
+        name="fylbdm"
+        type="java.lang.String"
+        column="FYLBDM"
+    />
+    
+    <property
+        name="xzqdmbh"
+        type="java.lang.Integer"
+        column="XZQDMBH"
+    />
+    
+    <property
+        name="dmbbh"
+        type="java.lang.Integer"
+        column="DMBBH"
+    />
+    
+    <property
+        name="spbm"
+        type="java.lang.String"
+        column="SPBM"
+    />
+    
+    <property
+        name="bmzt"
+        type="java.lang.String"
+        column="BMZT"
+    />
+    
+    <property
+        name="xgdm2"
+        type="java.lang.String"
+        column="XGDM2"
+    />
+	
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-7-21 0:36:58 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="nju.software.jxjs.model.DsrJb" table="DSR_JB" schema="dbo" catalog="JUDGE">
+        <composite-id>
+            <key-property name="ajxh" type="int">
+                <column name="AJXH" />
+            </key-property>
+            <key-property name="dsrbh" type="int">
+                <column name="DSRBH" />
+            </key-property>
+        </composite-id>
+        <property name="dsrssdw" type="string">
+            <column name="DSRSSDW" length="10" />
+        </property>
+        <property name="dsrlb" type="string">
+            <column name="DSRLB" length="10" />
+        </property>
+        <property name="dsrjc" type="string">
+            <column name="DSRJC" length="200" />
+        </property>
+        <property name="sfssdbr" type="string">
+            <column name="SFSSDBR" length="1" />
+        </property>
+        <property name="dsrbgfs" type="string">
+            <column name="DSRBGFS" length="10" />
+        </property>
+        <property name="dsrbgyy" type="string">
+            <column name="DSRBGYY" length="10" />
+        </property>
+        <property name="dsrbgsj" type="timestamp">
+            <column name="DSRBGSJ" length="19" />
+        </property>
+        <property name="sfsa" type="string">
+            <column name="SFSA" length="1" />
+        </property>
+        <property name="sfsg" type="string">
+            <column name="SFSG" length="1" />
+        </property>
+        <property name="sfsq" type="string">
+            <column name="SFSQ" length="1" />
+        </property>
+        <property name="sfst" type="string">
+            <column name="SFST" length="1" />
+        </property>
+        <property name="sfsw" type="string">
+            <column name="SFSW" length="1" />
+        </property>
+        <property name="qqpcje" type="string">
+            <column name="QQPCJE" />
+        </property>
+        <property name="scbc" type="string">
+            <column name="SCBC" length="65535" />
+        </property>
+        <property name="hpje" type="string">
+            <column name="HPJE" />
+        </property>
+    </class>
+</hibernate-mapping>
