@@ -1,0 +1,258 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="nju.software.jxjs.model.PubAjJb" table="PUB_AJ_JB" schema="dbo" catalog="JUDGE">
+    	<cache usage="read-write" />
+        <id name="ajxh" type="int">
+            <column name="AJXH" />
+            <generator class="assigned" />
+        </id>
+        <property name="ah" type="string">
+        	<column name="AH" />
+        </property>
+        <property name="ajmc" type="string">
+            <column name="AJMC" />
+        </property>
+        <property name="ajxz" type="string">
+        	<column name="AJXZ" />
+        </property>
+        <property name="ajly" type="string">
+            <column name="AJLY" />
+        </property>
+        <property name="spcx" type="string">
+        	<column name="SPCX" />
+        </property>
+        <property name="spcxdz" type="string">
+        	<column name="SPCXDZ" />
+        </property>
+        <property name="sycx" type="string">
+            <column name="SYCX" />
+        </property>
+        <property name="sfys" type="string">
+            <column name="SFYS" />
+        </property>
+        <property name="sfzdaj" type="string">
+        	<column name="SFZDAJ" />
+        </property>
+        <property name="sfjbaj" type="string">
+            <column name="SFJBAJ" />
+        </property>
+        <property name="sffhcs" type="string">
+        	<column name="SFFHCS" />
+        </property>
+        <property name="sfwdyj" type="string">
+            <column name="SFWDYJ" />
+        </property>
+        <property name="sx" type="int">
+        	<column name="SX" />
+        </property>
+        <property name="fjsx" type="int">
+            <column name="FJSX" />
+        </property>
+        <property name="lydq" type="string">
+        	<column name="LYDQ" />
+        </property>
+        <property name="baspt" type="string">
+            <column name="BASPT" />
+        </property>
+        <property name="jyaq" type="string">
+        	<column name="JYAQ" />
+        </property>
+        <property name="larq" type="java.util.Date">
+            <column name="LARQ" />
+        </property>
+        <property name="lar" type="string">
+        	<column name="LAR" />
+        </property>
+        <property name="bafy" type="string">
+            <column name="BAFY" />
+        </property>
+        <property name="gksjg" type="string">
+        	<column name="GKSJG" />
+        </property>
+        <property name="cbryj" type="string">
+            <column name="CBRYJ" />
+        </property>
+        <property name="hytyj" type="string">
+        	<column name="HYTYJ" />
+        </property>
+        <property name="tzhyj" type="string">
+            <column name="TZHYJ" />
+        </property>
+        <property name="yzhyj" type="string">
+        	<column name="YZHYJ" />
+        </property>
+        <property name="swhyj" type="string">
+            <column name="SWHYJ" />
+        </property>
+        <property name="jarq" type="java.util.Date">
+        	<column name="JARQ" />
+        </property>
+        <property name="jafs" type="string">
+            <column name="JAFS" />
+        </property>
+        <property name="jayy" type="string">
+        	<column name="JAYY" />
+        </property>
+        <property name="jayydm" type="string">
+            <column name="JAYYDM" />
+        </property>
+        <property name="bz" type="string">
+        	<column name="BZ" />
+        </property>
+        <property name="sxrq" type="java.util.Date">
+            <column name="SXRQ" />
+        </property>
+        <property name="gdbz" type="string">
+        	<column name="GDBZ" />
+        </property>
+        <property name="ajzt" type="string">
+            <column name="AJZT" />
+        </property>
+        <property name="bycxdz" type="string">
+        	<column name="BYCXDZ" />
+        </property>
+        <property name="ajwsqk" type="string">
+            <column name="AJWSQK" />
+        </property>
+        <property name="gdrq" type="java.util.Date">
+        	<column name="GDRQ" />
+        </property>
+        <property name="gdxlh" type="int">
+            <column name="GDXLH" />
+        </property>
+        <property name="cbrbprq" type="java.util.Date">
+        	<column name="CBRBPRQ" />
+        </property>
+        <property name="cjar" type="string">
+            <column name="CJAR" />
+        </property>
+        <property name="spzsqrq" type="java.util.Date">
+        	<column name="SPZSQRQ" />
+        </property>
+        <property name="hythyrq" type="java.util.Date">
+            <column name="HYTHYRQ" />
+        </property>
+        <property name="tzsqrq" type="java.util.Date">
+        	<column name="TZSQRQ" />
+        </property>
+        <property name="yzsqrq" type="java.util.Date">
+            <column name="YZSQRQ" />
+        </property>
+        <property name="swhjdrq" type="java.util.Date">
+        	<column name="SWHJDRQ" />
+        </property>
+        <property name="yzqfrq" type="java.util.Date">
+            <column name="YZQFRQ" />
+        </property>
+        <property name="slqk" type="string">
+        	<column name="SLQK" />
+        </property>
+        <property name="sslx" type="string">
+            <column name="SSLX" />
+        </property>
+        <property name="sfgs" type="string">
+        	<column name="SFGS" />
+        </property>
+        <property name="fhcsyy" type="string">
+            <column name="FHCSYY" />
+        </property>
+        <property name="gpyy" type="string">
+        	<column name="GPYY" />
+        </property>
+        <property name="sfzscq" type="string">
+            <column name="SFZSCQ" />
+        </property>
+        <property name="swlx" type="string">
+        	<column name="SWLX" />
+        </property>
+        <property name="cgksh" type="string">
+            <column name="CGKSH" />
+        </property>
+        <property name="modflag" type="string">
+        	<column name="MODFLAG" />
+        </property>
+        <property name="transflag" type="string">
+            <column name="TRANSFLAG" />
+        </property>
+        <property name="psycy" type="string">
+        	<column name="PSYCY" />
+        </property>
+        <property name="msajtjs" type="string">
+            <column name="MSAJTJS" />
+        </property>
+        <property name="msajtjsss" type="string">
+        	<column name="MSAJTJSSS" />
+        </property>
+        <property name="shwdfxpg" type="string">
+            <column name="SHWDFXPG" />
+        </property>
+        <property name="ysfysffczs" type="string">
+        	<column name="YSFYSFFCZS" />
+        </property>
+        <property name="yffa" type="string">
+            <column name="YFFA" />
+        </property>
+        <property name="sfyyffa" type="string">
+        	<column name="SFYYFFA" />
+        </property>
+        <property name="sfxess" type="string">
+            <column name="SFXESS" />
+        </property>
+        <property name="sftz" type="string">
+        	<column name="SFTZ" />
+        </property>
+        <property name="sfsqsfqr" type="string">
+            <column name="SFSQSFQR" />
+        </property>
+        <property name="sfktsl" type="string">
+        	<column name="SFKTSL" />
+        </property>
+        <property name="sfjgyla" type="string">
+            <column name="SFJGYLA" />
+        </property>
+        <property name="sfhj" type="string">
+        	<column name="SFHJ" />
+        </property>
+        <property name="sfdtpj" type="string">
+            <column name="SFDTPJ" />
+        </property>
+        <property name="pjsffdjfnr" type="string">
+        	<column name="PJSFFDJFNR" />
+        </property>
+        <property name="fxhjcs" type="string">
+            <column name="FXHJCS" />
+        </property>
+        <property name="zytj" type="string">
+        	<column name="ZYTJ" />
+        </property>
+        <property name="ajsfys" type="string">
+            <column name="AJSFYS" />
+        </property>
+        <property name="sfbxf" type="int">
+        	<column name="SFBXF" />
+        </property>
+        <property name="sfcqyscs" type="string">
+            <column name="SFCQYSCS" />
+        </property>
+        <property name="sffcxx" type="string">
+        	<column name="SFFCXX" />
+        </property>
+        <property name="jjar" type="string">
+            <column name="JJAR" />
+        </property>
+        <property name="sptg" type="string">
+        	<column name="SPTG" />
+        </property>
+        <property name="rmpsyid" type="string">
+            <column name="RMPSYID" />
+        </property>
+        <property name="rmpsyxm" type="string">
+        	<column name="RMPSYXM" />
+        </property>
+        <property name="sfladj" type="string">
+            <column name="SFLADJ" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -25,6 +25,8 @@ public class PubAjJb implements Serializable
 	
 	private String sfys;
 	
+	private String sfzdaj;
+	
 	private String sfjbaj;
 	
 	private String sffhcs;
@@ -79,7 +81,7 @@ public class PubAjJb implements Serializable
 	
 	private String ajwsqk;
 	
-	private Date dgrq;
+	private Date gdrq;
 	
 	private int gdxlh;
 	
@@ -95,7 +97,7 @@ public class PubAjJb implements Serializable
 	
 	private Date yzsqrq;
 	
-	private Date sqhjdrq;
+	private Date swhjdrq;
 	
 	private Date yzqfrq;
 	
@@ -154,6 +156,22 @@ public class PubAjJb implements Serializable
 	private String zytj;
 	
 	private String ajsfys;
+	
+	private int sfbxf;
+	
+	private String sfcqyscs;
+	
+	private String sffcxx;
+	
+	private String jjar;
+	
+	private String sptg;
+	
+	private String rmpsyid;
+	
+	private String rmpsyxm;
+	
+	private String sfladj;
 	
 	public PubAjJb()
 	{
@@ -519,14 +537,14 @@ public class PubAjJb implements Serializable
 		this.ajwsqk = ajwsqk;
 	}
 
-	public Date getDgrq()
+	public Date getGdrq()
 	{
-		return dgrq;
+		return gdrq;
 	}
 
-	public void setDgrq(Date dgrq)
+	public void setGdrq(Date gdrq)
 	{
-		this.dgrq = dgrq;
+		this.gdrq = gdrq;
 	}
 
 	public int getGdxlh()
@@ -599,14 +617,14 @@ public class PubAjJb implements Serializable
 		this.yzsqrq = yzsqrq;
 	}
 
-	public Date getSqhjdrq()
+	public Date getSwhjdrq()
 	{
-		return sqhjdrq;
+		return swhjdrq;
 	}
 
-	public void setSqhjdrq(Date sqhjdrq)
+	public void setSwhjdrq(Date swhjdrq)
 	{
-		this.sqhjdrq = sqhjdrq;
+		this.swhjdrq = swhjdrq;
 	}
 
 	public Date getYzqfrq()
@@ -897,6 +915,96 @@ public class PubAjJb implements Serializable
 	public void setAjsfys(String ajsfys)
 	{
 		this.ajsfys = ajsfys;
+	}
+
+	public String getSfzdaj()
+	{
+		return sfzdaj;
+	}
+
+	public void setSfzdaj(String sfzdaj)
+	{
+		this.sfzdaj = sfzdaj;
+	}
+
+	public int getSfbxf()
+	{
+		return sfbxf;
+	}
+
+	public void setSfbxf(int sfbxf)
+	{
+		this.sfbxf = sfbxf;
+	}
+
+	public String getSfcqyscs()
+	{
+		return sfcqyscs;
+	}
+
+	public void setSfcqyscs(String sfcqyscs)
+	{
+		this.sfcqyscs = sfcqyscs;
+	}
+
+	public String getSffcxx()
+	{
+		return sffcxx;
+	}
+
+	public void setSffcxx(String sffcxx)
+	{
+		this.sffcxx = sffcxx;
+	}
+
+	public String getJjar()
+	{
+		return jjar;
+	}
+
+	public void setJjar(String jjar)
+	{
+		this.jjar = jjar;
+	}
+
+	public String getSptg()
+	{
+		return sptg;
+	}
+
+	public void setSptg(String sptg)
+	{
+		this.sptg = sptg;
+	}
+
+	public String getRmpsyid()
+	{
+		return rmpsyid;
+	}
+
+	public void setRmpsyid(String rmpsyid)
+	{
+		this.rmpsyid = rmpsyid;
+	}
+
+	public String getRmpsyxm()
+	{
+		return rmpsyxm;
+	}
+
+	public void setRmpsyxm(String rmpsyxm)
+	{
+		this.rmpsyxm = rmpsyxm;
+	}
+
+	public String getSfladj()
+	{
+		return sfladj;
+	}
+
+	public void setSfladj(String sfladj)
+	{
+		this.sfladj = sfladj;
 	}
 	
 	

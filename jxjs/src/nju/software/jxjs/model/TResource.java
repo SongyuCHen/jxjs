@@ -63,7 +63,7 @@ public class TResource implements java.io.Serializable
 		this.resurl = resurl;
 	}
 
-	public String getResType()
+	public String getRestype()
 	{
 		return this.restype;
 	}
