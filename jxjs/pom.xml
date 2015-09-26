@@ -133,12 +133,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.sybase</groupId>
-			<artifactId>sybase-driver</artifactId>
-			<version>12</version>
-		</dependency>
-		
-		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
