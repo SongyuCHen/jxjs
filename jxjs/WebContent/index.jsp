@@ -16,8 +16,9 @@
 </head>
 <body>
 	<div class="page">
-
-		<div class="login-title"></div>
+		<div class="login-wrapper">
+		<div class="login-title">
+		</div>
 
 		<div class="login-panel">
 			<div class="form-wrapper">
@@ -59,6 +60,7 @@
 				</form>
 				</div>
 			</div>
+		</div>
 		</div>
 	</div>
 	<script type="text/javascript"

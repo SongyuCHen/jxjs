@@ -10,9 +10,12 @@ body{
 	background-size:cover;
 	margin: 0 auto;
 	height:634px;
-	padding-top:60px;
+	padding-top:80px;
 }
 
+
+.login-wrapper{
+}
 
 .login-title{
 	background-image: url(../images/login-title.png);
