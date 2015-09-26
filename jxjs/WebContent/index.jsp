@@ -61,7 +61,6 @@
 				</div>
 			</div>
 		</div>
-		</div>
 	</div>
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/js/uiadjuster.js">
