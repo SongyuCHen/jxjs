@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="nju.software.jxjs.model.TUser" table="T_USER" schema="dbo" catalog="JUDGE">
+        <cache usage="read-write" />
+        <id name="userbh" type="int">
+            <column name="USERBH" />
+            <generator class="assigned" />
+        </id>
+        <property name="username" type="string">
+            <column name="USERNAME" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="PASSWORD" not-null="true" />
+        </property>
+        
+        <many-to-one name="dw" 
+                     column="DWBH"
+                     class="nju.software.jxjs.model.TDw"
+                     cascade="none"
+                     lazy="false"
+                     fetch="join"/>
+                                    
+    </class>
+</hibernate-mapping>

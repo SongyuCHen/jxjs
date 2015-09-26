@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="nju.software.jxjs.model.TDw" table="T_DW" schema="dbo" catalog="JUDGE">
+    	<cache usage="read-write" />
+        <id name="dwbh" type="int">
+            <column name="DWBH" />
+            <generator class="assigned" />
+        </id>
+        <property name="dwmc" type="string">
+        	<column name="DWMC" not-null="true" />
+        </property>
+        <property name="dwbm" type="string">
+            <column name="DWBM" />
+        </property>
+        
+        
+    </class>
+</hibernate-mapping>
