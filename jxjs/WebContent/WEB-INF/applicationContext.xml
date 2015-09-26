@@ -42,7 +42,7 @@
 		<property name="dataSource" ref="DataSource"/>
 		<property name="mappingLocations">   
     		<value>classpath:nju/software/jxjs/model/*.hbm.xml </value>   
-		</property>
+		</property>	
 		<!--  <property name="hibernate.hbm2ddl.auto" value="update" />-->
 		<property name="hibernateProperties">
 			<props>
@@ -50,7 +50,17 @@
 					org.hibernate.dialect.SybaseASE15Dialect
 				</prop>
 				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
 			</props>
+		</property>
+		
+	</bean>
+	
+	
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="cacheQueries">
+			<value>true</value>
 		</property>
 	</bean>
 
@@ -64,14 +74,17 @@
 
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
-			<!-- 所有以get开头的方法时read-only的 -->
-			<tx:method name="get*" read-only="true" propagation="REQUIRED" />
-			<!-- 其它事务使用默认的事务设置 -->
-			<tx:method name="add*" propagation="REQUIRED" />
-			<tx:method name="edit*" propagation="REQUIRED" />
-			<tx:method name="update*" propagation="REQUIRED" />
-			<tx:method name="remove*" propagation="REQUIRED" />
-			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="get*" propagation="REQUIRED" read-only="true"/>
+			<tx:method name="query*" propagation="REQUIRED" read-only="true"/>
+			<tx:method name="find*" propagation="REQUIRED" read-only="true"/>
+			<tx:method name="tr_*" propagation="REQUIRED" read-only="true"/>
+			<tx:method name="tw_*" propagation="REQUIRED"/>
+			<tx:method name="save*" propagation="REQUIRED"/>
+			<tx:method name="delete*" propagation="REQUIRED"/>
+			<tx:method name="add*" propagation="REQUIRED"/>
+			<tx:method name="modify*" propagation="REQUIRED"/>
+			<tx:method name="edit*" propagation="REQUIRED"/>
+			<tx:method name="update*" propagation="REQUIRED"/>
 		</tx:attributes>
 	</tx:advice>
 	<aop:config>
