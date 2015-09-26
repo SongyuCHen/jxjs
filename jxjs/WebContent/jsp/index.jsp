@@ -32,13 +32,13 @@
 					<div class="form-group">
 						<label for="inputID" class="col-sm-4 control-label">用户名：</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="inputID"/>
+							<input type="text" class="form-control" id="inputID" name="username"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputPassword" class="col-sm-4 control-label">密码：</label>
 						<div class="col-sm-8">
-							<input type="password" class="form-control" id="inputPassword"/>
+							<input type="password" class="form-control"  name="password" id="inputPassword"/>
 						</div>
 					</div>
 					<div class="form-group">

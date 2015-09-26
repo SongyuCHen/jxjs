@@ -5,7 +5,7 @@
 	id="WebApp_ID" version="2.5">
 	<display-name>jxjs</display-name>
 	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>jsp/index.jsp</welcome-file>
 	</welcome-file-list>
 
 	<!--定义前端控制器DispatcherServlet -->
