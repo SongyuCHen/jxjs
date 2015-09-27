@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping("/ajcl")
 public class AjclController extends BaseController
 {
 	/**
@@ -25,7 +26,7 @@ public class AjclController extends BaseController
 	@RequestMapping(value = "/exportExcel", method = RequestMethod.GET)
     public ModelAndView exportExcel(HttpServletRequest request, HttpServletResponse response) 
 	{
-		
+		logger.info("export excel for ajcl");
 		
 		List<TJxjs> ajclList = null;
 		

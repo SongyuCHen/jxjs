@@ -30,13 +30,13 @@ public class AjclExcelView extends AbstractExcelView
 			HSSFWorkbook workbook, HttpServletRequest request, HttpServletResponse response)
 			throws Exception
 	{
-		// ´´½¨Sheet
-        HSSFSheet sheet = workbook.createSheet("¼Ó·ÖÇéĞÎ");
+		// create sheet
+        HSSFSheet sheet = workbook.createSheet("ï¿½Ó·ï¿½ï¿½ï¿½ï¿½ï¿½");
         sheet.setDefaultColumnWidth(20);
         
-        // ´´½¨ÑùÊ½
+        // create style
         CellStyle style = workbook.createCellStyle();
-        style.setVerticalAlignment(CellStyle.VERTICAL_CENTER);// ´¹Ö±  
+        style.setVerticalAlignment(CellStyle.VERTICAL_CENTER);// ï¿½ï¿½Ö±  
         style.setAlignment(CellStyle.ALIGN_CENTER);// Ë®Æ½  
         Font font = workbook.createFont();
         font.setFontName("Arial");
@@ -46,28 +46,28 @@ public class AjclExcelView extends AbstractExcelView
         font.setColor(HSSFColor.WHITE.index);
         style.setFont(font);
         
-        // ´´½¨±íÍ·
+        // create header
         HSSFRow header = sheet.createRow(0);
          
-        header.createCell(0).setCellValue("Ô­Éó°¸ºÅ");
+        header.createCell(0).setCellValue("åŸå®¡æ¡ˆå·");
         header.getCell(0).setCellStyle(style);
          
-        header.createCell(1).setCellValue("µ±ÊÂÈË");
+        header.createCell(1).setCellValue("å½“äº‹äºº");
         header.getCell(1).setCellStyle(style);
          
-        header.createCell(2).setCellValue("ÉúĞ§·¨Ôº");
+        header.createCell(2).setCellValue("ç”Ÿæ•ˆæ³•é™¢");
         header.getCell(2).setCellStyle(style);
          
-        header.createCell(3).setCellValue("ÉêÇëÀàĞÍ");
+        header.createCell(3).setCellValue("ç”³è¯·ç±»å‹");
         header.getCell(3).setCellStyle(style);
-         
-        header.createCell(4).setCellValue("ÉêÇëÊ±¼ä");
+        
+        header.createCell(4).setCellValue("ç”³è¯·æ—¶é—´");
         header.getCell(4).setCellStyle(style);
         
-        header.createCell(5).setCellValue("ÉêÇë´ÎÊı");
+        header.createCell(5).setCellValue("ç”³è¯·æ¬¡æ•°");
         header.getCell(5).setCellStyle(style);
         
-        // ´´½¨Êı¾İÏî
+        // create data item
         int rowCount = 1;
         List<TJxjs> jxjsList = (List<TJxjs>)model.get("jxjsList");
         if(jxjsList != null)
@@ -85,9 +85,9 @@ public class AjclExcelView extends AbstractExcelView
         }
         
         response.setContentType("application/vnd.ms-excel");     
-        //ÉèÖÃexcelÎÄ¼şÃû
+        //set filename
         String curDateStr = DateUtil.getStandardFormat(new Date());
-        String filename = "¼õĞÌ¼ÙÊÍ-"+curDateStr+".xls";
+        String filename = "å‡åˆ‘å‡é‡Š-"+curDateStr+".xls";
 		response.setHeader("Content-Disposition", "attachment; filename=" 
 				+ EncodeUtil.encodeFilename(filename, request));
         OutputStream ouputStream = response.getOutputStream();     

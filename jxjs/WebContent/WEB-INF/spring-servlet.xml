@@ -15,6 +15,15 @@
         http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
         http://cxf.apache.org/transports/http/configuration
         http://cxf.apache.org/schemas/configuration/http-conf.xsd">
+        
+    <!-- excel view resolver -->
+    <bean id="excelviewResolver" class="org.springframework.web.servlet.view.XmlViewResolver">
+        <property name="order" value="0"/>
+        <property name="location" value="/WEB-INF/excelview.xml"/>
+    </bean>
+	
+	 <context:component-scan base-package="nju.software.jxjs"/>
+     <context:annotation-config/>
     
 	<!--配置视图解析器,Controller回传ModelAndView，DispatcherServlet将其交给ViewResolver解析。 -->
 	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
@@ -42,12 +51,5 @@
 		</property>
 	</bean>
 	
-	<!-- excel view resolver -->
-    <bean id="excelviewResolver" class="org.springframework.web.servlet.view.XmlViewResolver">
-        <property name="order" value="3"/>
-        <property name="location" value="/WEB-INF/excelview.xml"/>
-    </bean>
 	
-	 <context:component-scan base-package="nju.software.jxjs"/>
-     <context:annotation-config/>
 </beans>
