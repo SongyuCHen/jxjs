@@ -141,3 +141,9 @@ body{
 	top:-30px;
 	
 }
+
+
+/*modal x¸Ä³É°×É«*/
+.modal-header button.close{
+	color:white;
+}

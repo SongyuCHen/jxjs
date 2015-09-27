@@ -54,7 +54,7 @@
 							<button type="submit" class="btn btn-primary">登录</button>
 						</div>
 						<div class="col-sm-offset-2 col-sm-2">
-							<button class="btn btn-primary">重置</button>
+							<input type="button" class="btn btn-primary" value="重置"/>
 						</div>
 					</div>
 				</form>
