@@ -32,7 +32,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"><jsp:text/></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"><jsp:text/></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.dataTables.min.js"><jsp:text/></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jxjs_common.js" charset="gbk"><jsp:text/></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jxjs_common.js"><jsp:text/></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uiadjuster.js"><jsp:text/></script>
 </body>
 </html>
