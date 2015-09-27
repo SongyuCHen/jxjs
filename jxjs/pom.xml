@@ -173,9 +173,6 @@
 			<version>1.4.7</version>
 		</dependency>
 		
-		
-		
-		
 	</dependencies>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
