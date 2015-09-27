@@ -15,6 +15,9 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footer.css"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery.dataTables.min.css"/>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"><jsp:text/></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"><jsp:text/></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.dataTables.min.js"><jsp:text/></script>
 
 <title>案件处理-待审批列表</title>
 </head>
@@ -29,9 +32,6 @@
 </div>
 <tiles:insertAttribute name="footer" />
 </div>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"><jsp:text/></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"><jsp:text/></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.dataTables.min.js"><jsp:text/></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jxjs_common.js"><jsp:text/></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uiadjuster.js"><jsp:text/></script>
 </body>
