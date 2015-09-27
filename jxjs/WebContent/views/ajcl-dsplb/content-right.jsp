@@ -172,6 +172,9 @@
 			<div class="operating">
 				<button class="btn btn-primary">审批</button>
 				<button class="btn btn-primary">退回</button>
+				<button class="btn loc-right">打印</button>
+				<button class="btn loc-right">导出</button>
+				<div class="loc-right">列表：</div>			
 			</div>
 		</div>
 	</div>

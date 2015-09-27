@@ -133,3 +133,11 @@ body{
 	position:relative;
 	top:-30px;
 }
+
+.table-wrapper .table-main .operating .loc-right{
+	float:right;
+	margin-left:1px;
+	position:relative;
+	top:-30px;
+	
+}
