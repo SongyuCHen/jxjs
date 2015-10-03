@@ -30,7 +30,6 @@ public class AjclController extends BaseController
 		
 		List<TJxjs> ajclList = null;
 		
-		
         return new ModelAndView("ajclExcelView", "ajclList", ajclList);
     }
 }

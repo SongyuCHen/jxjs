@@ -6,11 +6,11 @@ import java.util.Date;
 public class DateUtil
 {
 	/**
-	 * 标准的"年-月-日"
+	 * default date format
 	 */
-	private static final String STANDARD_FORMAT = "yyyy-MM-dd";
+	public static final String STANDARD_FORMAT = "yyyy-MM-dd";
 	
-	private static SimpleDateFormat STANDARD_SDF = new SimpleDateFormat(STANDARD_FORMAT);
+	public static SimpleDateFormat STANDARD_SDF = new SimpleDateFormat(STANDARD_FORMAT);
 	
 	public static String getStandardFormat(Date date)
 	{

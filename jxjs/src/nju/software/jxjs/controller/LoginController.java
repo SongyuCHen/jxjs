@@ -16,7 +16,7 @@ public class LoginController extends BaseController{
 	
 	
 	/**
-	 * ÓÃ»§µÇÂ¼
+	 * login
 	 * @return
 	 */
 	@RequestMapping(value = "/login")

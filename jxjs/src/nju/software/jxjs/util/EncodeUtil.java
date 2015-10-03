@@ -10,7 +10,7 @@ import org.springframework.util.StringUtils;
 public class EncodeUtil
 {
 	/**
-	 * ÉèÖÃÏÂÔØÎÄ¼şÖĞÎÄ¼şµÄÃû³Æ
+	 * è®¾ç½®ä¸‹è½½æ–‡ä»¶ä¸­æ–‡ä»¶çš„åç§° 
 	 * 
 	 * @param filename
 	 * @param request
@@ -19,12 +19,11 @@ public class EncodeUtil
 	public static String encodeFilename(String filename,
 			HttpServletRequest request)
 	{
-		/**
-		 * »ñÈ¡¿Í»§¶Ëä¯ÀÀÆ÷ºÍ²Ù×÷ÏµÍ³ĞÅÏ¢ ÔÚIEä¯ÀÀÆ÷ÖĞµÃµ½µÄÊÇ£ºUser-Agent=Mozilla/4.0 (compatible; MSIE
-		 * 6.0; Windows NT 5.1; SV1; Maxthon; Alexa Toolbar)
-		 * ÔÚFirefoxÖĞµÃµ½µÄÊÇ£ºUser-Agent=Mozilla/5.0 (Windows; U; Windows NT 5.1;
-		 * zh-CN; rv:1.7.10) Gecko/20050717 Firefox/1.0.6
-		 */
+		/** 
+	     * è·å–å®¢æˆ·ç«¯æµè§ˆå™¨å’Œæ“ä½œç³»ç»Ÿä¿¡æ¯ 
+	     * åœ¨IEæµè§ˆå™¨ä¸­å¾—åˆ°çš„æ˜¯ï¼šUser-Agent=Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; Maxthon; Alexa Toolbar) 
+	     * åœ¨Firefoxä¸­å¾—åˆ°çš„æ˜¯ï¼šUser-Agent=Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN; rv:1.7.10) Gecko/20050717 Firefox/1.0.6 
+	     */ 
 		String agent = request.getHeader("USER-AGENT");
 		try
 		{
