@@ -1,12 +1,17 @@
 package nju.software.jxjs.controller;
 
+import java.util.List;
+
+import nju.software.jxjs.model.Menu;
 import nju.software.jxjs.model.TUser;
+import nju.software.jxjs.service.MenuService;
 import nju.software.jxjs.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class LoginController extends BaseController{
@@ -14,20 +19,28 @@ public class LoginController extends BaseController{
 	@Autowired
 	private UserService us;
 	
+	@Autowired
+	private MenuService ms;
 	
 	/**
 	 * login
 	 * @return
 	 */
 	@RequestMapping(value = "/login")
-	public String login(@ModelAttribute("user") TUser user) {
+	public ModelAndView login(@ModelAttribute("user") TUser user) {
 		logger.info("@@@@@@@@"+user.getUsername()+","+user.getPassword());
 		boolean success = us.tr_signIn(user);
+		String viewName = null;
 		if(success){
-			return "ajcl_dsplb";
+			viewName =  "ajcl-dsplb";
 		}else{
-			return "index";
+			viewName =  "index";
 		}
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName(viewName);
+		mv.addObject("menuWrapper", ms.makeMenu("jianyu", "ajcl", "dsplb"));
+		
+		return mv;
 	}
 	
 	

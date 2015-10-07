@@ -3,7 +3,7 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
 <tiles-definitions>
-    <definition extends="mainLayout" name="ajcl_dsplb">
+    <definition extends="mainLayout" name="ajcl-dsplb">
         <put-attribute name="content-right"
             value="/views/ajcl-dsplb/content-right.jsp" />
     </definition>                              

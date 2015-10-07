@@ -19,11 +19,16 @@
         
         <div class="menu-main">
         	<ul>
-        		<li>首页</li>
-        		<li class="bgblue">案件处理</li>
-        		<li>统计分析</li>
-        		<li>系统对接</li>
-        		<li>系统管理</li>
+        		<c:forEach items="${menuWrapper.headerMenus}" var="headerMenu">
+        			<c:choose>
+        				<c:when test="${headerMenu.uniqueName == menuWrapper.currentHeader.uniqueName}">
+        					<li class="bgblue"><a href="${pageContext.request.contextPath}${headerMenu.url}">${headerMenu.zh}</a></li>
+        				</c:when>
+        				<c:otherwise>
+        					<li><a href="${pageContext.request.contextPath}${headerMenu.url}">${headerMenu.zh}</a></li>
+        				</c:otherwise>
+        			</c:choose>					
+				</c:forEach>
         	</ul>
         </div>
 	</div>

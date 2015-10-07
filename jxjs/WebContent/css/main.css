@@ -84,11 +84,21 @@ body{
 	padding-top:10px;
 	padding-left:10px;
 }
-
+.content-left-upper ul li a{
+	color:#333333;
+}
 .content-left-upper ul li.bgblue{
 	background-color:#0d5fa3;
+	
+}
+
+.content-left-upper ul li.bgblue a{
 	color:white;
 }
+.content-left-upper ul li a:link{text-decoration:none;}
+.content-left-upper ul li a:visited{text-decoration:none;}
+.content-left-upper ul li a:hover{text-decoration:none;} 
+
 
 .content-left-upper .main-cat img{
 	position:relative;

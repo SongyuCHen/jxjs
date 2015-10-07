@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class UserService {
+public class UserService extends BaseService{
 	
 	@Autowired
 	private UserDao ud;
@@ -24,11 +24,11 @@ public class UserService {
 		try{
 			subject.login(token);
 		}catch(Exception e){
-			//ÑéÖ¤Ê§°Ü
+			//ï¿½ï¿½Ö¤Ê§ï¿½ï¿½
 			return false;
 		}
-		//ÑéÖ¤³É¹¦
-		//°Ñuser·Åµ½sessionÖÐ
+		//ï¿½ï¿½Ö¤ï¿½É¹ï¿½
+		//ï¿½ï¿½userï¿½Åµï¿½sessionï¿½ï¿½
 		SecurityUtils.getSubject().getSession().setAttribute("currentUser", ud.findUser(user.getUsername()));
 		return true;
 	}

@@ -1,18 +1,29 @@
-<div class="content-left">
+<div class="content-left" xmlns:c="http://java.sun.com/jsp/jstl/core">
 		<div class="content-left-upper">
 			<ul>
-				<li class="main-cat"><img src="${pageContext.request.contextPath}/images/ajcl.png"/>案件处理</li>
-				<li class="sub-cat bgblue">待审批列表</li>
-				<li class="sub-cat">已审批列表</li>
-				<li class="sub-cat">已立案列表</li>			
+				<li class="main-cat"><img src="${pageContext.request.contextPath}/images/${menuWrapper.currentHeader.uniqueName}.png"/>${menuWrapper.currentHeader.zh}</li>
+				<c:forEach items="${menuWrapper.subMenus}" var="subMenu">
+        			<c:choose>
+        				<c:when test="${subMenu.uniqueName == menuWrapper.currentSub.uniqueName}">
+        					<li class="sub-cat bgblue"><a href="${pageContext.request.contextPath}${subMenu.url}">${subMenu.zh}</a></li>
+        				</c:when>
+        				<c:otherwise>
+        					<li class="sub-cat"><a href="${pageContext.request.contextPath}${subMenu.url}">${subMenu.zh}</a></li>
+        				</c:otherwise>
+        			</c:choose>					
+				</c:forEach>			
 			</ul>
 		</div>
 		<div class="content-left-below">
 			<p>其余三个选项的图标:</p>
 			<ul>
-				<li><img src="${pageContext.request.contextPath}/images/tjfx.png"/>统计分析</li>
-				<li><img src="${pageContext.request.contextPath}/images/xtdj.png"/>系统对接</li>
-				<li><img src="${pageContext.request.contextPath}/images/xtgl.png"/>系统管理</li>
+				<c:forEach items="${menuWrapper.headerMenus}" var="headerMenu">
+					<c:choose>
+						<c:when test="${headerMenu.uniqueName != menuWrapper.currentHeader.uniqueName and headerMenu.uniqueName != 'sy'}">
+        					<li><img src="${pageContext.request.contextPath}/images/${headerMenu.uniqueName}.png"/>${headerMenu.zh}</li>
+        				</c:when>
+					</c:choose>
+				</c:forEach>
 			</ul>
 		</div>
 		

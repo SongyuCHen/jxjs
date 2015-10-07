@@ -20,7 +20,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.dataTables.min.js"><jsp:text/></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/api.js"><jsp:text/></script>
 
-<title>案件处理-待审批列表</title>
+<title>${menuWrapper.currentHeader.zh}-${menuWrapper.currentSub.zh}</title>
 </head>
 <body>
 <div class="page">
