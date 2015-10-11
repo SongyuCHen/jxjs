@@ -1,10 +1,10 @@
 package nju.software.jxjs.service;
 
 import nju.software.jxjs.dao.UserDao;
-import nju.software.jxjs.model.TUser;
+import nju.software.jxjs.shiro.token.JxjsToken;
+import nju.software.jxjs.view.User;
 
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,11 +16,12 @@ public class UserService extends BaseService{
 	@Autowired
 	private UserDao ud;
 	
-	public boolean tr_signIn(TUser user){
+	public boolean tr_signIn(User user){
 		
 		
 		Subject subject = SecurityUtils.getSubject();
-		UsernamePasswordToken token =  new UsernamePasswordToken(user.getUsername(),user.getPassword());
+		JxjsToken token =  new JxjsToken(user.getUsername(),user.getPassword());
+		token.setRole(user.getRole());
 		try{
 			subject.login(token);
 		}catch(Exception e){
@@ -29,7 +30,7 @@ public class UserService extends BaseService{
 		}
 		//��֤�ɹ�
 		//��user�ŵ�session��
-		SecurityUtils.getSubject().getSession().setAttribute("currentUser", ud.findUser(user.getUsername()));
+		SecurityUtils.getSubject().getSession().setAttribute("currentUser", user);
 		return true;
 	}
 

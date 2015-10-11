@@ -26,7 +26,10 @@
 					<div class="form-group">
 						<label for="inputDW" class="col-sm-4 control-label">单位：</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="inputDW"/>
+							<select id="inputDW" name="role" class="form-control">
+								<option value="fayuan">法院</option>
+								<option value="jianyu">监狱</option>
+							</select>
 						</div>
 					</div>
 					<div class="form-group">

@@ -3,9 +3,9 @@ package nju.software.jxjs.controller;
 import java.util.List;
 
 import nju.software.jxjs.model.Menu;
-import nju.software.jxjs.model.TUser;
 import nju.software.jxjs.service.MenuService;
 import nju.software.jxjs.service.UserService;
+import nju.software.jxjs.view.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +27,7 @@ public class LoginController extends BaseController{
 	 * @return
 	 */
 	@RequestMapping(value = "/login")
-	public ModelAndView login(@ModelAttribute("user") TUser user) {
+	public ModelAndView login(@ModelAttribute("user") User user) {
 		logger.info("@@@@@@@@"+user.getUsername()+","+user.getPassword());
 		boolean success = us.tr_signIn(user);
 		String viewName = null;
@@ -38,7 +38,7 @@ public class LoginController extends BaseController{
 		}
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName(viewName);
-		mv.addObject("menuWrapper", ms.makeMenu("jianyu", "ajcl", "dsplb"));
+		mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "dsplb"));
 		
 		return mv;
 	}

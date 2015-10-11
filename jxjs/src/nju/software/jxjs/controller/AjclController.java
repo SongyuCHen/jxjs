@@ -42,7 +42,7 @@ public class AjclController extends BaseController
 	public ModelAndView dsplb(){
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("ajcl-dsplb");
-		mv.addObject("menuWrapper", ms.makeMenu("jianyu", "ajcl", "dsplb"));
+		mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "dsplb"));
 		return mv;
 	}
 }

@@ -35,7 +35,7 @@ public class TjfxController extends BaseController
 		List<String> conditionList = Arrays.asList(conditionArr);
 		
 		mav.addObject("conditionList", conditionList);
-		mav.addObject("menuWrapper", ms.makeMenu("jianyu", "tjfx", "jccx"));
+		mav.addObject("menuWrapper", ms.makeMenu("fayuan", "tjfx", "jccx"));
 		return mav;
 	}
 	
@@ -49,7 +49,7 @@ public class TjfxController extends BaseController
 	{
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("tjfx-sjtj");
-		mav.addObject("menuWrapper", ms.makeMenu("jianyu", "tjfx", "sjtj"));
+		mav.addObject("menuWrapper", ms.makeMenu("fayuan", "tjfx", "sjtj"));
 		return mav;
 	}
 	
@@ -63,7 +63,7 @@ public class TjfxController extends BaseController
 	{
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("tjfx-ylalb");
-		mav.addObject("menuWrapper", ms.makeMenu("jianyu", "tjfx", "tjfx-ylalb"));
+		mav.addObject("menuWrapper", ms.makeMenu("fayuan", "tjfx", "tjfx-ylalb"));
 		return mav;
 	}
 	
@@ -74,7 +74,7 @@ public class TjfxController extends BaseController
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("tjfx-jccx");
-		mav.addObject("menuWrapper", ms.makeMenu("jianyu", "tjfx", "jccx"));
+		mav.addObject("menuWrapper", ms.makeMenu("fayuan", "tjfx", "jccx"));
 		String[] conditionArr = {"申请", "已审批", "已立案", "已结案"};
 		List<String> conditionList = Arrays.asList(conditionArr);
 		
