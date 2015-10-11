@@ -31,16 +31,15 @@ public class LoginController extends BaseController{
 		logger.info("@@@@@@@@"+user.getUsername()+","+user.getPassword());
 		boolean success = us.tr_signIn(user);
 		String viewName = null;
-		if(success){
-			viewName =  "ajcl-dsplb";
-		}else{
-			viewName =  "index";
-		}
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName(viewName);
-		mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "dsplb"));
-		
-		return mv;
+		if(success){
+			mv.setViewName("ajcl-dsplb");
+			mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "dsplb"));
+		}else{
+			mv.setViewName("index");
+			mv.addObject("errorMsg","单位/用户名/密码错误，请重新输入");
+		}
+			return mv;
 	}
 	
 	

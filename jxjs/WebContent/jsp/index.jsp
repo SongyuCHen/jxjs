@@ -64,6 +64,9 @@
 					</div>
 				</form>
 				</div>
+				<div class="errorMsg">
+					${errorMsg}
+				</div>
 			</div>
 		</div>
 	</div>
