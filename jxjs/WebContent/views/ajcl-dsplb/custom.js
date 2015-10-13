@@ -2,12 +2,12 @@ var baseUrl = getRootPath();
 
 $(document).ready(function(){
 	
-	print = function(){
+	var print = function(){
 		var cont = $("#dataTable").html();
 		printTable(cont);
 	};
 	
-	exports = function(){
+	var exports = function(){
 		var url = baseUrl + "/ajcl/exportExcel";
 		var data = "";
 		

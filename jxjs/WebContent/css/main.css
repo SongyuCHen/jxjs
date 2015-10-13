@@ -1,5 +1,6 @@
 body{
-	background-image:linear-gradient(to bottom, #8dafd2,#d9e2f6);
+	/*background-image:linear-gradient(to bottom, #8dafd2,#d9e2f6);*/
+	background-color:#8dafd2;
 	font-family: "Microsoft YaHei";
 }
 
@@ -11,7 +12,7 @@ body{
 
 .content-wrapper{
 	min-height:600px;
-	padding:5px;
+	padding:0;
 }
 
 
@@ -20,14 +21,14 @@ body{
 
 .content-wrapper .content-left{
 	float:left;
-	width:19.5%;
+	width:20%;
 	min-height:600px;
 	background-color:white;
 	padding:2px;
 }
 
 .content-wrapper .content-right{
-	float:right;
+	float:left;
 	width:80%;
 	background-color:white;
 	padding:2px;
@@ -80,7 +81,8 @@ body{
 
 .content-right .searching{
 	height:60px;
-	background-image:linear-gradient(to bottom, #eaf1f8, #FFFFFF, #eaf1f8);
+	/*background-image:linear-gradient(to bottom, #eaf1f8, #FFFFFF, #eaf1f8);*/
+	background-color:#eaf1f8;
 	padding-top:10px;
 	padding-left:10px;
 }
