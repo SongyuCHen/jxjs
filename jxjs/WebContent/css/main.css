@@ -25,6 +25,7 @@ body{
 	min-height:600px;
 	background-color:white;
 	padding:2px;
+	border-right:2px solid #8dafd2;
 }
 
 .content-wrapper .content-right{
