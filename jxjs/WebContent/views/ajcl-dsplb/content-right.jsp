@@ -9,7 +9,7 @@
 		<img
 			src="${pageContext.request.contextPath}/images/searching-logo.png" />
 		<input id="dataTable-search-input" type="text" class="form-control" />
-		<button class="btn btn-info" onclick="dataTable_search();">检索</button>
+		<!-- <button class="btn btn-info" onclick="dataTable_search();">检索</button> -->
 	</div>
 	<div class="table-wrapper">
 		<div class="table-main">

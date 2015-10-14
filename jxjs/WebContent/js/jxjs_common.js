@@ -58,11 +58,12 @@ $(function() {
 
 });
 
+/*
 function dataTable_search() {
 	var query = $("#dataTable-search-input").val();
 	query = query.trim();
 	g_dataTable.search(query).draw();
-}
+}*/
 
 function updateTime(){
 	var date = new Date();
