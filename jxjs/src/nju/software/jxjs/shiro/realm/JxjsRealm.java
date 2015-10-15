@@ -2,6 +2,7 @@ package nju.software.jxjs.shiro.realm;
 
 import nju.software.jxjs.dao.UserDao;
 import nju.software.jxjs.model.TUser;
+import nju.software.jxjs.shiro.token.JxjsToken;
 
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -26,19 +27,23 @@ public class JxjsRealm extends AuthorizingRealm{
 	}
 
 	
-	/*»ñÈ¡ÕËºÅÐÅÏ¢*/
+	/*ï¿½ï¿½È¡ï¿½Ëºï¿½ï¿½ï¿½Ï¢*/
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(
 			AuthenticationToken token) throws AuthenticationException {
 		// TODO Auto-generated method stub
 		String username = (String) token.getPrincipal();
-		TUser user = ud.findUser(username);
-		if (user == null) {
-			throw new UnknownAccountException();// Ã»ÕÒµ½ÕÊºÅ
+		String role = ((JxjsToken)token).getRole();
+		SimpleAuthenticationInfo authenticationInfo = null;
+		if("fayuan".equals(role)){
+			TUser user = ud.findUser(username);
+			if (user == null) {
+				throw new UnknownAccountException();// Ã»ï¿½Òµï¿½ï¿½Êºï¿½
+			}
+			authenticationInfo = new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), "fayuan");
+		}else if("jianyu".equals(role)){
+			//å¾…å®žçŽ°
 		}
-		SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-				user.getUsername(), user.getPassword(), getName());
-
 		return authenticationInfo;
 	}
 

@@ -19,7 +19,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"><jsp:text/></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.dataTables.min.js"><jsp:text/></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/api.js"><jsp:text/></script>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/respond.min.js"><jsp:text/></script>
 <title>${menuWrapper.currentHeader.zh}-${menuWrapper.currentSub.zh}</title>
 </head>
 <body>

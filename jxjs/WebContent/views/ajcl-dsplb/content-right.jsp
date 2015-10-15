@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/views/ajcl-dsplb/custom.css"/><jsp:text/>
 <script type="text/javascript" src="${pageContext.request.contextPath}/views/ajcl-dsplb/custom.js"><jsp:text/></script>
 </head>
 <body>
@@ -9,7 +10,7 @@
 		<img
 			src="${pageContext.request.contextPath}/images/searching-logo.png" />
 		<input id="dataTable-search-input" type="text" class="form-control" />
-		<button class="btn btn-info" onclick="dataTable_search();">检索</button>
+		<!-- <button class="btn btn-info" onclick="dataTable_search();">检索</button> -->
 	</div>
 	<div class="table-wrapper">
 		<div class="table-main">
@@ -171,7 +172,7 @@
 				</tbody>
 			</table>
 			<div class="operating">
-				<button class="btn btn-primary">审批</button>
+				<button class="btn btn-primary" onclick="shenpi()">审批</button>
 				<button class="btn btn-primary">退回</button>
 				<button class="btn loc-right" onclick="print()">打印</button>
 				<button class="btn loc-right" onclick="exports()">导出</button>
@@ -197,7 +198,44 @@
       		</div>
     		</div><!-- /.modal-content -->
   		</div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
+	</div><!-- /.modal -->
+	
+	<div class="modal fade" role="dialog" id="shenpiModal">
+  		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+      			<div class="modal-header">
+        			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        			<h4 class="modal-title" id="gridSystemModalLabel">审批</h4>
+      				</div>
+      		<div class="modal-body">
+        		<div class="container-fluid">
+        			<div class="row"></div>
+  					<div class="row">
+  						<div class="col-md-3 dlabel">
+  							审批时间:
+  						</div>
+  						<div class="col-md-3">
+  							2015-10-15
+  						</div>
+  						<div class="col-md-3 dlabel">审批人:</div>
+  						<div class="col-md-3">${currentUser.username}</div>
+					</div>
+					<div class="row">
+  						<div class="col-md-3 dlabel">审批意见:</div>
+  						<div class="col-md-9">
+  							<textarea rows="3" cols="50">符合立案条件</textarea>
+  						</div>
+					</div>
+					<div class="row"></div>
+				</div>
+      		</div>
+      		<div class="modal-footer">
+        		<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        		<button type="button" class="btn btn-primary">确定 </button>
+      		</div>
+    		</div><!-- /.modal-content -->
+  		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 </body>
 </html>
 

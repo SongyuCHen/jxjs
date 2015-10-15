@@ -34,7 +34,8 @@
 	</div>
 	<div class="welcome-bar">
 		<div class="welcome-words">
-			欢迎 【${currentUser.username}】 使用本系统，北京时间2015-09-22 星期二 20:15
+			欢迎 【${currentUser.username}】 使用本系统，北京时间
 		</div>
+		<div id="currentTime"></div>
 	</div>
 </div>

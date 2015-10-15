@@ -42,7 +42,21 @@ public class AjclController extends BaseController
 	public ModelAndView dsplb(){
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("ajcl-dsplb");
-		mv.addObject("menuWrapper", ms.makeMenu("jianyu", "ajcl", "dsplb"));
+		mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "dsplb"));
+		return mv;
+	}
+	@RequestMapping(value = "/ysplb", method = RequestMethod.GET)
+	public ModelAndView ysplb(){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("ajcl-ysplb");
+		mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "ysplb"));
+		return mv;
+	}
+	@RequestMapping(value = "/ylalb", method = RequestMethod.GET)
+	public ModelAndView ylalb(){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("ajcl-ylalb");
+		mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "ylalb"));
 		return mv;
 	}
 }

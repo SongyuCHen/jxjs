@@ -10,6 +10,8 @@
 	src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/respond.min.js"></script>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/login.css" />
 <title>登录</title>
@@ -26,7 +28,10 @@
 					<div class="form-group">
 						<label for="inputDW" class="col-sm-4 control-label">单位：</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="inputDW"/>
+							<select id="inputDW" name="role" class="form-control">
+								<option value="fayuan">法院</option>
+								<option value="jianyu">监狱</option>
+							</select>
 						</div>
 					</div>
 					<div class="form-group">
@@ -58,6 +63,9 @@
 						</div>
 					</div>
 				</form>
+				</div>
+				<div class="errorMsg">
+					${errorMsg}
 				</div>
 			</div>
 		</div>

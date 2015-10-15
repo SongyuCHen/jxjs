@@ -1,6 +1,10 @@
 /**
  * common api
  */
+var print;
+var exports;
+
+
 
 /**
  * get root path
