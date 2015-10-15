@@ -1,6 +1,8 @@
 package nju.software.jxjs.shiro.realm;
 
 import nju.software.jxjs.dao.UserDao;
+import nju.software.jxjs.dao.XtglYhbDao;
+import nju.software.jxjs.model.PubXtglYhb;
 import nju.software.jxjs.model.TUser;
 import nju.software.jxjs.shiro.token.JxjsToken;
 
@@ -19,6 +21,8 @@ public class JxjsRealm extends AuthorizingRealm{
 	@Autowired
 	private UserDao ud;
 
+	@Autowired
+	private XtglYhbDao yhbDao;
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(
 			PrincipalCollection principals) {
@@ -35,14 +39,19 @@ public class JxjsRealm extends AuthorizingRealm{
 		String username = (String) token.getPrincipal();
 		String role = ((JxjsToken)token).getRole();
 		SimpleAuthenticationInfo authenticationInfo = null;
-		if("fayuan".equals(role)){
+		if("jianyu".equals(role)){
 			TUser user = ud.findUser(username);
 			if (user == null) {
 				throw new UnknownAccountException();// û�ҵ��ʺ�
 			}
-			authenticationInfo = new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), "fayuan");
-		}else if("jianyu".equals(role)){
+			authenticationInfo = new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), "jianyu");
+		}else if("fayuan".equals(role)){
 			//待实现
+			PubXtglYhb yhb = yhbDao.getPubXtglYhbByYhdm(username);
+			if (yhb == null) {
+				throw new UnknownAccountException();// û�ҵ��ʺ�
+			}
+			authenticationInfo = new SimpleAuthenticationInfo(yhb.getYhdm(), yhb.getYhkl(), "fayuan");
 		}
 		return authenticationInfo;
 	}

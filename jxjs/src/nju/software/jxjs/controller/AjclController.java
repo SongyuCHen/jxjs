@@ -21,6 +21,8 @@ public class AjclController extends BaseController
 	
 	@Autowired
 	private MenuService ms;
+	
+	@Autowired
 	/**
 	 * export excel
 	 * 
