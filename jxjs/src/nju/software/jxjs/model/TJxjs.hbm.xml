@@ -8,46 +8,54 @@
             <column name="JXJSBH" />
             <generator class="assigned" />
         </id>
-        <property name="sqsj" type="java.util.Date">
-            <column name="SQSJ" not-null="true" />
+        
+        <property name="sxajxh" type="int">
+            <column name="SXAJBH" />
         </property>
-        <property name="sqcs" type="int">
-            <column name="SQCS" not-null="true" />
+        <property name="laajxh" type="int">
+            <column name="LAAJXH" />
         </property>
         
-        <many-to-one name="aj" 
-                     column="AJBH"
-                     class="nju.software.jxjs.model.PubAjJb"
-                     cascade="none"
-                     lazy="false"
-                     fetch="join"/>
-                     
-        <many-to-one name="dsr" 
-                     column="DSRBH"
-                     class="nju.software.jxjs.model.TDsr"
-                     cascade="none"
-                     lazy="false"
-                     fetch="join"/>
-                     
-        <many-to-one name="sxfy" 
-                     column="SXFYBH"
-                     class="nju.software.jxjs.model.TFy"
-                     cascade="none"
-                     lazy="false"
-                     fetch="join"/> 
-                     
-        <many-to-one name="sqlx" 
-                     column="SQLXBH"
-                     class="nju.software.jxjs.model.TGypz"
-                     cascade="none"
-                     lazy="false"
-                     fetch="join"/>  
-                     
-        <many-to-one name="ajzt" 
-                     column="AJZTBH"
-                     class="nju.software.jxjs.model.TGypz"
-                     cascade="none"
-                     lazy="false"
-                     fetch="join"/>                                                   
+        <property name="sxaj" type="string">
+            <column name="SXAJ" />
+        </property>
+        <property name="sxfybh" type="string">
+            <column name="SXFYBH" />
+        </property>
+        
+        <property name="sqsj" type="java.util.Date">
+            <column name="SQSJ" />
+        </property>
+        <property name="sqcs" type="int">
+            <column name="SQCS" />
+        </property>
+        
+        <property name="ajztbh" type="string">
+            <column name="AJZTBH" />
+        </property>
+        <property name="fxdd" type="string">
+            <column name="FXDD" />
+        </property>
+        
+        <property name="ypksrq" type="java.util.Date">
+            <column name="YPKSRQ" />
+        </property>
+        <property name="ypjsrq" type="java.util.Date">
+            <column name="YPJSRQ" />
+        </property> 
+        
+        <property name="sqksrq" type="java.util.Date">
+            <column name="SQKSRQ" />
+        </property>
+        <property name="sqjsrq" type="java.util.Date">
+            <column name="SQJSRQ" />
+        </property>             
+        
+        <property name="rjrq" type="java.util.Date">
+            <column name="RJRQ" />
+        </property>
+        <property name="sfjs" type="int">
+            <column name="SFJS" />
+        </property>                                   
     </class>
 </hibernate-mapping>

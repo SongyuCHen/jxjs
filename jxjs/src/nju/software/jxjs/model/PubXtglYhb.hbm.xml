@@ -20,7 +20,75 @@
         <property name="yhbm" type="string">
             <column name="YHBM" />
         </property>
+        <property name="klts" type="string">
+            <column name="KLTS" />
+        </property>
+        <property name="klda" type="string">
+        	<column name="KLDA" />
+        </property>
+        <property name="yhsf" type="string">
+            <column name="YHSF" />
+        </property>
+        <property name="klszsj" type="java.util.Date">
+            <column name="KLSZSJ" />
+        </property>
+        <property name="qjkssj" type="java.util.Date">
+        	<column name="QJKSSJ" />
+        </property>
+        <property name="qjjssj" type="java.util.Date">
+            <column name="QJJSSJ" />
+        </property>
         
+        <property name="qjyy" type="java.lang.String">
+        	<column name="QJYY" />
+        </property>
+        <property name="grnzb" type="java.lang.Integer">
+            <column name="GRNZB" />
+        </property>
+        <property name="qtnzb" type="java.lang.Integer">
+            <column name="QTNZB" />
+        </property>
         
+        <property name="grbajs" type="java.lang.Integer">
+            <column name="GRBAJS" />
+        </property>
+        <property name="fazt" type="java.lang.Integer">
+            <column name="FAZT" />
+        </property>
+        
+        <property name="fasl" type="java.lang.Integer">
+            <column name="FASL" />
+        </property>
+        <property name="dzqm_img" type="byte[]">
+            <column name="DZQM_IMG" />
+        </property>
+        
+        <property name="jbxxj_code" type="java.lang.String">
+            <column name="JBXXJ_CODE" />
+        </property>
+        <property name="dhhm" type="java.lang.Integer">
+            <column name="DHHM" />
+        </property>
+        
+        <property name="phonenum" type="java.lang.String">
+            <column name="PHONENUM" />
+        </property>
+        <property name="fybh" type="java.lang.Integer">
+            <column name="FYBH" />
+        </property>
+        
+        <property name="yhzt" type="java.lang.Integer">
+            <column name="YHZT" />
+        </property>
+        <property name="xfqx" type="java.lang.String">
+            <column name="XFQX" />
+        </property>
+        
+        <property name="ssfwzxqx" type="java.lang.String">
+            <column name="SSFWZXQX" />
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="PHONE" />
+        </property>
     </class>
 </hibernate-mapping>

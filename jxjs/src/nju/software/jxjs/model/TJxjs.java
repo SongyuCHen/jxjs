@@ -9,36 +9,38 @@ public class TJxjs implements Serializable
 	
 	private int jxjsbh;
 	
-	private PubAjJb aj;
+	private int sxajxh;
 	
-	private TDsr dsr;
+	private int laajxh;
 	
-	private TFy sxfy;
+	private String sxah;
 	
-	private TGypz sqlx;
+	private String sxfybh;
+	
+	private String sqlxbh;
 	
 	private Date sqsj;
 	
 	private int sqcs;
 	
-	private TGypz ajzt;
+	private String ajztbh;
+	
+	private String fxdd;
+	
+	private Date ypksrq;
+	
+	private Date ypjsrq;
+	
+	private Date sqksrq;
+	
+	private Date sqjsrq;
+	
+	private Date rjrq;
+	
+	private int sfjs;
 	
 	public TJxjs()
 	{
-	}
-
-	public TJxjs(int jxjsbh, PubAjJb aj, TDsr dsr, TFy sxfy, TGypz sqlx,
-			Date sqsj, int sqcs, TGypz ajzt)
-	{
-		super();
-		this.jxjsbh = jxjsbh;
-		this.aj = aj;
-		this.dsr = dsr;
-		this.sxfy = sxfy;
-		this.sqlx = sqlx;
-		this.sqsj = sqsj;
-		this.sqcs = sqcs;
-		this.ajzt = ajzt;
 	}
 
 	public int getJxjsbh()
@@ -51,44 +53,54 @@ public class TJxjs implements Serializable
 		this.jxjsbh = jxjsbh;
 	}
 
-	public PubAjJb getAj()
+	public int getSxajxh()
 	{
-		return aj;
+		return sxajxh;
 	}
 
-	public void setAj(PubAjJb aj)
+	public void setSxajxh(int sxajxh)
 	{
-		this.aj = aj;
+		this.sxajxh = sxajxh;
 	}
 
-	public TDsr getDsr()
+	public int getLaajxh()
 	{
-		return dsr;
+		return laajxh;
 	}
 
-	public void setDsr(TDsr dsr)
+	public void setLaajxh(int laajxh)
 	{
-		this.dsr = dsr;
+		this.laajxh = laajxh;
 	}
 
-	public TFy getSxfy()
+	public String getSxah()
 	{
-		return sxfy;
+		return sxah;
 	}
 
-	public void setSxfy(TFy sxfy)
+	public void setSxah(String sxah)
 	{
-		this.sxfy = sxfy;
+		this.sxah = sxah;
 	}
 
-	public TGypz getSqlx()
+	public String getSxfybh()
 	{
-		return sqlx;
+		return sxfybh;
 	}
 
-	public void setSqlx(TGypz sqlx)
+	public void setSxfybh(String sxfybh)
 	{
-		this.sqlx = sqlx;
+		this.sxfybh = sxfybh;
+	}
+
+	public String getSqlxbh()
+	{
+		return sqlxbh;
+	}
+
+	public void setSqlxbh(String sqlxbh)
+	{
+		this.sqlxbh = sqlxbh;
 	}
 
 	public Date getSqsj()
@@ -111,15 +123,84 @@ public class TJxjs implements Serializable
 		this.sqcs = sqcs;
 	}
 
-	public TGypz getAjzt()
+	public String getAjztbh()
 	{
-		return ajzt;
+		return ajztbh;
 	}
 
-	public void setAjzt(TGypz ajzt)
+	public void setAjztbh(String ajztbh)
 	{
-		this.ajzt = ajzt;
+		this.ajztbh = ajztbh;
 	}
-	
-	
+
+	public String getFxdd()
+	{
+		return fxdd;
+	}
+
+	public void setFxdd(String fxdd)
+	{
+		this.fxdd = fxdd;
+	}
+
+	public Date getYpksrq()
+	{
+		return ypksrq;
+	}
+
+	public void setYpksrq(Date ypksrq)
+	{
+		this.ypksrq = ypksrq;
+	}
+
+	public Date getYpjsrq()
+	{
+		return ypjsrq;
+	}
+
+	public void setYpjsrq(Date ypjsrq)
+	{
+		this.ypjsrq = ypjsrq;
+	}
+
+	public Date getSqksrq()
+	{
+		return sqksrq;
+	}
+
+	public void setSqksrq(Date sqksrq)
+	{
+		this.sqksrq = sqksrq;
+	}
+
+	public Date getSqjsrq()
+	{
+		return sqjsrq;
+	}
+
+	public void setSqjsrq(Date sqjsrq)
+	{
+		this.sqjsrq = sqjsrq;
+	}
+
+	public Date getRjrq()
+	{
+		return rjrq;
+	}
+
+	public void setRjrq(Date rjrq)
+	{
+		this.rjrq = rjrq;
+	}
+
+	public int getSfjs()
+	{
+		return sfjs;
+	}
+
+	public void setSfjs(int sfjs)
+	{
+		this.sfjs = sfjs;
+	}
+
 }

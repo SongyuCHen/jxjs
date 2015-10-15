@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="nju.software.jxjs.model.TLog" table="T_LOG" schema="dbo" catalog="JUDGE">
+        <cache usage="read-write" />
+        <id name="logid" type="int">
+            <column name="LOGID" />
+            <generator class="assigned" />
+        </id>
+        <property name="czid" type="int">
+            <column name="CZID" />
+        </property>
+        <property name="type" type="string">
+            <column name="TYPE" />
+        </property>
+        
+        <property name="rybh" type="int">
+            <column name="RYBH" />
+        </property>
+        <property name="czsj" type="java.util.Date">
+            <column name="CZIP" />
+        </property>
+        
+        <property name="czip" type="string">
+            <column name="CZIP" />
+        </property>
+        <property name="bz" type="string">
+            <column name="BZ" />
+        </property>
+                                    
+    </class>
+</hibernate-mapping>

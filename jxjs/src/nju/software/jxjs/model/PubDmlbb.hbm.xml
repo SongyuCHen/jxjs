@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+    
+<hibernate-mapping>
+
+	<class 
+	    name="nju.software.jxjs.model.PubDmb" 
+	    table="PUB_DMB"  schema="dbo"
+	    catalog="JUDGE"
+	>
+
+    <id name="lbbh" type="java.lang.String">
+        <column name="LBBH" />
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="lbdl"
+        type="java.lang.String"
+        column="LBDL"
+    />
+    <property
+        name="lbxl"
+        type="java.lang.String"
+        column="LBXL"
+    />
+    <property
+        name="lbms"
+        type="java.lang.String"
+        column="LBMS"
+    />
+    <property
+        name="dmcd"
+        type="java.lang.Integer"
+        column="DMCD"
+    />
+    <property
+        name="bz"
+        type="java.lang.String"
+        column="BZ"
+    />
+	
+	<property
+        name="xgsj"
+        type="java.util.Date"
+        column="XGSJ"
+    />
+    
+	<property
+        name="dqbs"
+        type="java.lang.String"
+        column="DQBS"
+    />
+    
+    <property
+        name="dqbs"
+        type="java.lang.String"
+        column="DQBS"
+    />
+    
+    <property
+        name="fybh"
+        type="java.lang.Integer"
+        column="FYBH"
+    />
+    
+    <property
+        name="dmlbbbh"
+        type="java.lang.Integer"
+        column="DMLBBBH"
+    />
+    
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

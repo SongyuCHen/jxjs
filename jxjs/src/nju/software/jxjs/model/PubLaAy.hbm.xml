@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="nju.software.jxjs.model.PubLaAy" table="PUB_LA_AY" schema="dbo" catalog="JUDGE">
+        <composite-id>
+            <key-property name="ajxh" type="int">
+                <column name="AJXH" />
+            </key-property>
+            <key-property name="laaybh" type="int">
+                <column name="LAAYBH" />
+            </key-property>
+        </composite-id>
+        <property name="ay" type="string">
+            <column name="AY" />
+        </property>
+        <property name="laay" type="string">
+            <column name="LAAY" />
+        </property>
+        
+    </class>
+</hibernate-mapping>
