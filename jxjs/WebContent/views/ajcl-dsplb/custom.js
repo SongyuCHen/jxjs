@@ -27,3 +27,10 @@ function viewCaseDetail(){
 		keyboard: true
 	});
 }
+
+//审批
+function shenpi(){
+	$("#shenpiModal").modal({
+		keyboard: true
+	});
+}
