@@ -8,8 +8,9 @@ public class PubXtglYhb implements Serializable
 	
 	private int yhbh;
 	
+	//用户代码
 	private String yhdm;
-	
+	//用户名
 	private String yhmc;
 	
 	private String yhkl;
