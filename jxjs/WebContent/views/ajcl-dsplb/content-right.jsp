@@ -211,29 +211,27 @@
         		<div class="container-fluid">
         			<div class="row"></div>
   					<div class="row">
-  						<div class="col-md-3">
-  							审批时间
+  						<div class="col-md-3 dlabel">
+  							审批时间:
   						</div>
   						<div class="col-md-3">
   							2015-10-15
   						</div>
-  						<div class="col-md-3">审批人</div>
+  						<div class="col-md-3 dlabel">审批人:</div>
   						<div class="col-md-3">${currentUser.username}</div>
 					</div>
 					<div class="row">
-  						<div class="col-md-3">审批意见</div>
+  						<div class="col-md-3 dlabel">审批意见:</div>
   						<div class="col-md-9">
-  							<textarea rows="3" cols="50">
-  								符合立案条件
-  							</textarea>
+  							<textarea rows="3" cols="50">符合立案条件</textarea>
   						</div>
 					</div>
 					<div class="row"></div>
 				</div>
       		</div>
       		<div class="modal-footer">
-        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        		<button type="button" class="btn btn-primary">Save changes</button>
+        		<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        		<button type="button" class="btn btn-primary">确定 </button>
       		</div>
     		</div><!-- /.modal-content -->
   		</div><!-- /.modal-dialog -->
