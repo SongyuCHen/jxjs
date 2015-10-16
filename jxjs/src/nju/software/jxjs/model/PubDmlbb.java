@@ -25,7 +25,7 @@ public class PubDmlbb implements Serializable
 	
 	private int fybh;
 	
-	private int bmlbbbh;
+	private int dmlbbbh;
 	
 	public PubDmlbb()
 	{
@@ -122,14 +122,12 @@ public class PubDmlbb implements Serializable
 		this.fybh = fybh;
 	}
 
-	public int getBmlbbbh()
-	{
-		return bmlbbbh;
+	public int getDmlbbbh() {
+		return dmlbbbh;
 	}
 
-	public void setBmlbbbh(int bmlbbbh)
-	{
-		this.bmlbbbh = bmlbbbh;
+	public void setDmlbbbh(int dmlbbbh) {
+		this.dmlbbbh = dmlbbbh;
 	}
 	
 }

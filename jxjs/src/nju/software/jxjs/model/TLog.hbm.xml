@@ -19,7 +19,7 @@
             <column name="RYBH" />
         </property>
         <property name="czsj" type="java.util.Date">
-            <column name="CZIP" />
+            <column name="CZSJ" />
         </property>
         
         <property name="czip" type="string">

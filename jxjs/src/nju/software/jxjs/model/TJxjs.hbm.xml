@@ -16,8 +16,8 @@
             <column name="LAAJXH" />
         </property>
         
-        <property name="sxaj" type="string">
-            <column name="SXAJ" />
+        <property name="sxah" type="string">
+            <column name="SXAH" />
         </property>
         <property name="sxfybh" type="string">
             <column name="SXFYBH" />

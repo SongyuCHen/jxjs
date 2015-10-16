@@ -48,12 +48,6 @@
         column="XGSJ"
     />
     
-	<property
-        name="dqbs"
-        type="java.lang.String"
-        column="DQBS"
-    />
-    
     <property
         name="dqbs"
         type="java.lang.String"
