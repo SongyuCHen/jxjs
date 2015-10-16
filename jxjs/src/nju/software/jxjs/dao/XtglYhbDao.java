@@ -5,15 +5,19 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import javax.annotation.Resource;
+
 import nju.software.jxjs.model.PubXtglYhb;
 
 import org.hibernate.LockMode;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.stereotype.Repository;
 
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -26,7 +30,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
  * @see software.tjspxt.data.dataobject.PubXtglYhb
  * @author MyEclipse Persistence Tools
  */
-
+@Repository
 public class XtglYhbDao extends HibernateDaoSupport {
 	private static final Logger log = LoggerFactory
 			.getLogger(XtglYhbDao.class);
@@ -55,6 +59,11 @@ public class XtglYhbDao extends HibernateDaoSupport {
 		// do nothing
 	}
 
+	@Resource  
+    public void setSessionFacotry(SessionFactory sessionFacotry) {  
+        super.setSessionFactory(sessionFacotry);  
+    } 
+	
 	public void save(PubXtglYhb transientInstance) {
 		log.debug("saving PubXtglYhb instance");
 		try {
