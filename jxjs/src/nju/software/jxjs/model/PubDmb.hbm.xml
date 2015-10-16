@@ -10,7 +10,7 @@
 	    table="PUB_DMB"  schema="dbo"
 	    catalog="JUDGE"
 	>
-
+	<cache usage="read-only" />
     <composite-id>
         <key-property 
             name="lbbh"

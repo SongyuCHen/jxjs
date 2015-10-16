@@ -6,11 +6,11 @@
 <hibernate-mapping>
 
 	<class 
-	    name="nju.software.jxjs.model.PubDmb" 
-	    table="PUB_DMB"  schema="dbo"
+	    name="nju.software.jxjs.model.PubDmlbb" 
+	    table="PUB_DMLBB"  schema="dbo"
 	    catalog="JUDGE"
 	>
-
+	<cache usage="read-only" />
     <id name="lbbh" type="java.lang.String">
         <column name="LBBH" />
         <generator class="assigned" />
