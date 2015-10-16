@@ -5,7 +5,9 @@ import java.util.List;
 
 import nju.software.jxjs.service.MenuService;
 import nju.software.jxjs.view.TjfxSearchModel;
+import nju.software.jxjs.view.User;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -35,7 +37,8 @@ public class TjfxController extends BaseController
 		List<String> conditionList = Arrays.asList(conditionArr);
 		
 		mav.addObject("conditionList", conditionList);
-		mav.addObject("menuWrapper", ms.makeMenu("fayuan", "tjfx", "jccx"));
+		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
+		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "tjfx", "jccx"));
 		return mav;
 	}
 	
@@ -49,7 +52,8 @@ public class TjfxController extends BaseController
 	{
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("tjfx-sjtj");
-		mav.addObject("menuWrapper", ms.makeMenu("fayuan", "tjfx", "sjtj"));
+		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
+		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "tjfx", "sjtj"));
 		return mav;
 	}
 	
@@ -63,7 +67,8 @@ public class TjfxController extends BaseController
 	{
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("tjfx-ylalb");
-		mav.addObject("menuWrapper", ms.makeMenu("fayuan", "tjfx", "tjfx-ylalb"));
+		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
+		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "tjfx", "tjfx-ylalb"));
 		return mav;
 	}
 	
@@ -74,7 +79,8 @@ public class TjfxController extends BaseController
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("tjfx-jccx");
-		mav.addObject("menuWrapper", ms.makeMenu("fayuan", "tjfx", "jccx"));
+		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
+		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "tjfx", "jccx"));
 		String[] conditionArr = {"申请", "已审批", "已立案", "已结案"};
 		List<String> conditionList = Arrays.asList(conditionArr);
 		

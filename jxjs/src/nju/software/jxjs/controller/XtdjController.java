@@ -1,7 +1,9 @@
 package nju.software.jxjs.controller;
 
 import nju.software.jxjs.service.MenuService;
+import nju.software.jxjs.view.User;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +22,24 @@ public class XtdjController extends BaseController
 	public ModelAndView xsajcs(){
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("xtdj-xsajcs");
-		mav.addObject("menuWrapper", ms.makeMenu("fayuan", "xtdj", "xsajcs"));
+		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
+		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "xtdj", "xsajcs"));
+		return mav;
+	}
+	@RequestMapping(value = "/jxjssq", method = RequestMethod.GET)
+	public ModelAndView jxjssq(){
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("xtdj-jxjssq");
+		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
+		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "xtdj", "jxjssq"));
+		return mav;
+	}
+	@RequestMapping(value = "/jajgfk", method = RequestMethod.GET)
+	public ModelAndView jajgfk(){
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("xtdj-jajgfk");
+		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
+		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "xtdj", "jajgfk"));
 		return mav;
 	}
 

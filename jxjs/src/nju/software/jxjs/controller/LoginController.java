@@ -7,6 +7,8 @@ import nju.software.jxjs.service.MenuService;
 import nju.software.jxjs.service.UserService;
 import nju.software.jxjs.view.User;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -30,11 +32,17 @@ public class LoginController extends BaseController{
 	public ModelAndView login(@ModelAttribute("user") User user) {
 		logger.info("@@@@@@@@"+user.getUsername()+","+user.getPassword());
 		boolean success = us.tr_signIn(user);
-		String viewName = null;
 		ModelAndView mv = new ModelAndView();
 		if(success){
-			mv.setViewName("ajcl-dsplb");
-			mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "dsplb"));
+			Subject subject = SecurityUtils.getSubject();
+			if(subject.hasRole("fayuan")){
+				mv.setViewName("ajcl-dsplb");
+				mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "dsplb"));
+			}else if(subject.hasRole("jianyu")){
+				mv.setViewName("xtdj-jxjssq");
+				mv.addObject("menuWrapper", ms.makeMenu("jianyu", "xtdj", "jxjssq"));
+			}
+			
 		}else{
 			mv.setViewName("index");
 			mv.addObject("errorMsg","单位/用户名/密码错误，请重新输入");

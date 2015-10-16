@@ -12,6 +12,7 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,13 @@ public class JxjsRealm extends AuthorizingRealm{
 	protected AuthorizationInfo doGetAuthorizationInfo(
 			PrincipalCollection principals) {
 		// TODO Auto-generated method stub
-		return null;
+		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+		if(principals.fromRealm("jianyu").iterator().hasNext()){
+			info.addRole("jianyu");
+		}else if(principals.fromRealm("fayuan").iterator().hasNext()){
+			info.addRole("fayuan");
+		}
+		return info;
 	}
 
 	
