@@ -31,7 +31,7 @@ import org.springframework.stereotype.Repository;
  * @author MyEclipse Persistence Tools
  */
 @Repository
-public class XtglYhbDao extends HibernateDaoSupport {
+public class XtglYhbDao extends BaseDao {
 	private static final Logger log = LoggerFactory
 			.getLogger(XtglYhbDao.class);
 	// property constants
@@ -59,11 +59,7 @@ public class XtglYhbDao extends HibernateDaoSupport {
 		// do nothing
 	}
 
-	@Resource  
-    public void setSessionFacotry(SessionFactory sessionFacotry) {  
-        super.setSessionFactory(sessionFacotry);  
-    } 
-	
+
 	public void save(PubXtglYhb transientInstance) {
 		log.debug("saving PubXtglYhb instance");
 		try {
@@ -277,30 +273,25 @@ public class XtglYhbDao extends HibernateDaoSupport {
 	public boolean getXtyhNumberbyBm(long yhbm){
 		String hql = "select count(*) from PubXtglYhb where yhbm = " + yhbm;
 		
-		Session s = this.getSession();
+		Session s = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
 		Query query = s.createQuery(hql);
 
 		long count = 0;
 		if (query.uniqueResult() != null)
 			count = (Long) query.uniqueResult();
 
-		//释放数据库连接！！！
-		this.releaseSession(s);	
 		return count > 0 ? true : false;	
 	}
 	
 	public long getMaxYhbh() {
 		String hql = "select max(yhbh) from PubXtglYhb";
 
-		Session s = this.getSession();
+		Session s = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
 		Query query = s.createQuery(hql);
 
 		long maxbh = 0;
 		if (query.uniqueResult() != null)
 			maxbh = (Long) query.uniqueResult();
-
-		//释放数据库连接！！！
-		this.releaseSession(s);
 
 		return maxbh;
 	}
