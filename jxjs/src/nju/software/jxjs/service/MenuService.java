@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.stereotype.Service;
 
+import com.google.common.collect.Sets;
+
 
 @Service
 public class MenuService extends BaseService{
@@ -24,7 +26,7 @@ public class MenuService extends BaseService{
 	public MenuWrapper makeMenu(String role, String currentHeader, String currentSub){
 		MenuWrapper mw = new MenuWrapper();
 		mw.setHeaderMenus(getHeaderMenus(role));
-		mw.setSubMenus(getSubMenus(currentHeader));
+		mw.setSubMenus(getSubMenus(role,currentHeader));
 		mw.setCurrentHeader(getMenu(currentHeader));
 		mw.setCurrentSub(getMenu(currentSub));	
 		return mw;
@@ -40,7 +42,7 @@ public class MenuService extends BaseService{
 		if(ps==null){
 			return menus;
 		}
-		String menusStr = ps.getProperty(role);
+		String menusStr = ps.getProperty(role+".head");
 		//logger.info("@@@@@@"+menuStr);
 		
 		List<String> menuStrList = Arrays.asList(menusStr.split(","));
@@ -51,7 +53,7 @@ public class MenuService extends BaseService{
 		return menus;
 	}
 	
-	private List<Menu> getSubMenus(String currentHeader){
+	private List<Menu> getSubMenus(String role,String currentHeader){
 		List<Menu> menus = new ArrayList<Menu>();
 		Properties ps = getProperties();
 		if(ps==null){
@@ -59,8 +61,13 @@ public class MenuService extends BaseService{
 		}
 		String menusStr = ps.getProperty(currentHeader+".sub");
 		List<String> menuStrList = Arrays.asList(menusStr.split(","));
+		
+		String allSubsStr = ps.getProperty(role+".sub");
+		List<String> allSubsSet = Arrays.asList(allSubsStr.split(","));
 		for(String menuStr : menuStrList){
-			menus.add(getMenu(menuStr));
+			if(allSubsSet.contains(menuStr)){
+				menus.add(getMenu(menuStr));
+			}
 		}
 		return menus;
 	}
