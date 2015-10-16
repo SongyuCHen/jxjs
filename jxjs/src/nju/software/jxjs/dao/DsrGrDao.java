@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import nju.software.jxjs.model.DsrGr;
+import nju.software.jxjs.model.DsrGrId;
 
 import org.hibernate.LockMode;
 import org.slf4j.Logger;
@@ -80,7 +81,7 @@ public class DsrGrDao extends HibernateDaoSupport {
 		}
 	}
 
-	public DsrGr findById(software.tjspxt.data.dataobject.DsrGrId id) {
+	public DsrGr findById(DsrGrId id) {
 		log.debug("getting DsrGr instance with id: " + id);
 		try {
 			DsrGr instance = (DsrGr) getHibernateTemplate().get(

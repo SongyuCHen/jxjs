@@ -19,11 +19,14 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.view.document.AbstractExcelView;
 
 public class AjclExcelView extends AbstractExcelView 
 {
 
+	
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void buildExcelDocument(Map<String, Object> model,
@@ -75,10 +78,12 @@ public class AjclExcelView extends AbstractExcelView
         	for(TJxjs jxjs : jxjsList)
         	{
         		HSSFRow aRow = sheet.createRow(rowCount++);
-                aRow.createCell(0).setCellValue(jxjs.getAj().getAh());
-                aRow.createCell(1).setCellValue(jxjs.getDsr().getDsrxm());
-                aRow.createCell(2).setCellValue(jxjs.getSxfy().getFymc());
-                aRow.createCell(3).setCellValue(jxjs.getSqlx().getMc());
+        		
+                aRow.createCell(0).setCellValue(jxjs.getSxah());
+                
+//                aRow.createCell(1).setCellValue(jxjs.getDsr().getDsrxm());
+//                aRow.createCell(2).setCellValue(jxjs.getSxfy().getFymc());
+//                aRow.createCell(3).setCellValue(jxjs.getSqlxbh());
                 aRow.createCell(4).setCellValue(jxjs.getSqsj());
                 aRow.createCell(5).setCellValue(jxjs.getSqcs());
         	}
