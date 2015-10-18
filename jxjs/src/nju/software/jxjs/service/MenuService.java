@@ -57,7 +57,15 @@ public class MenuService extends BaseService{
 		
 		List<String> menuStrList = Arrays.asList(menusStr.split(","));
 		for(String menuStr : menuStrList){
-			menus.add(getMenu(menuStr));
+			Menu hMenu = getMenu(menuStr);
+			List<Menu> subs = getSubMenus(role,hMenu.getUniqueName());
+			Menu firstSubMenu = null;
+			if(subs.size()>0){
+				firstSubMenu = subs.get(0);
+				hMenu.setUrl(firstSubMenu.getUrl());
+			}
+			
+			menus.add(hMenu);
 		}
 		
 		return menus;
@@ -70,6 +78,9 @@ public class MenuService extends BaseService{
 			return menus;
 		}
 		String menusStr = ps.getProperty(currentHeader+".sub");
+		if(menusStr==null||menusStr.length()==0){
+			return menus;
+		}
 		List<String> menuStrList = Arrays.asList(menusStr.split(","));
 		
 		String allSubsStr = ps.getProperty(role+".sub");
