@@ -16,8 +16,15 @@ $(document).ready(function(){
 });
 
 $(function(){
+	g_dataTable = $("#dataTable").DataTable({
+		 columnDefs:[{
+             orderable:false,//禁用排序
+             targets:[0]   //指定的列
+         }],
+         order : [[ 6, "desc" ]]
+	});
 	//点击列表，弹出详细信息
-	$("#dataTable").on("click","tr",viewCaseDetail);
+	$("#dataTable").on("click","tbody>tr",viewCaseDetail);
 });
 
 
