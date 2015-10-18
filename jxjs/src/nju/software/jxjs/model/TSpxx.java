@@ -2,16 +2,33 @@ package nju.software.jxjs.model;
 
 import java.io.Serializable;
 
+/**
+ * 审批信息
+ * @author Administrator
+ *
+ */
 public class TSpxx implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * 审批信息编号
+	 */
 	private int spxxbh;
 	
+	/**
+	 * 审批人
+	 */
 	private PubXtglYhb spr;
 	
+	/**
+	 * 审批意见
+	 */
 	private String spyj;
 	
+	/**
+	 * 案件编号
+	 */
 	private PubAjJb aj;
 	
 	public TSpxx()

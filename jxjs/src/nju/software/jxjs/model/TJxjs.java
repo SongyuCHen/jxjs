@@ -7,6 +7,7 @@ public class TJxjs implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	
+	//减刑假释编号
 	private int jxjsbh;
 	
 	private int sxajxh;

@@ -15,14 +15,24 @@ import org.springframework.stereotype.Service;
 
 import com.google.common.collect.Sets;
 
-
+/**
+ * 生成menu
+ * @author Administrator
+ *
+ */
 @Service
 public class MenuService extends BaseService{
 	
 	@Autowired
 	public PropertiesFactoryBean propertiesReader;
 	
-	
+	/**
+	 * 
+	 * @param role  角色名
+	 * @param currentHeader   当前主菜单
+	 * @param currentSub      当前子菜单
+	 * @return
+	 */
 	public MenuWrapper makeMenu(String role, String currentHeader, String currentSub){
 		MenuWrapper mw = new MenuWrapper();
 		mw.setHeaderMenus(getHeaderMenus(role));

@@ -1,5 +1,10 @@
 package nju.software.jxjs.view;
 
+/**
+ * 存放于session的统一用户bean
+ * @author Administrator
+ *
+ */
 public class User {
 	private String role;
 	private String username;

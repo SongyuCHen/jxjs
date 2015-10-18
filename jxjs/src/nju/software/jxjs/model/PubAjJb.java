@@ -3,6 +3,11 @@ package nju.software.jxjs.model;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 案件基本信息
+ * @author Administrator
+ *
+ */
 public class PubAjJb implements Serializable
 {
 	private static final long serialVersionUID = 1L;

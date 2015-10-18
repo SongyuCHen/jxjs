@@ -16,6 +16,11 @@ public class UserService extends BaseService{
 	@Autowired
 	private UserDao ud;
 	
+	/**
+	 * 用户登录
+	 * @param user
+	 * @return
+	 */
 	public boolean tr_signIn(User user){
 		
 		
