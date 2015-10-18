@@ -297,7 +297,7 @@ public class XtglYhbDao extends BaseDao {
 	}
 	
 	public PubXtglYhb getPubXtglYhbByYhdm(String yhdm) {
-		String hql = "from PubXtglYhb where yhdm=?";
+		String hql = "from PubXtglYhb p where p.yhdm=?";
 		List<PubXtglYhb> PubXtglYhbs = (List<PubXtglYhb>) getHibernateTemplate().find(hql, yhdm);
 		if (null == PubXtglYhbs) 
 			PubXtglYhbs = new ArrayList<PubXtglYhb>();
