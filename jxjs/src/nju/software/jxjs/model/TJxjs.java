@@ -9,35 +9,35 @@ public class TJxjs implements Serializable
 	
 	//减刑假释编号
 	private int jxjsbh;
-	
+	//生效案件序号，若原始案件不在我库，则为NULL
 	private int sxajxh;
-	
+	//立案案件序号，若尚未立案，则为NULL
 	private int laajxh;
-	
+	//生效案号
 	private String sxah;
-	
+	//生效法院编号
 	private String sxfybh;
-	
+	//申请类型编号（减刑、假释）
 	private String sqlxbh;
-	
+	//申请时间
 	private Date sqsj;
-	
+	//申请次数
 	private int sqcs;
-	
+	//案件状态编号（已审批、被退回、已立案、已结案）
 	private String ajztbh;
-	
+	//服刑地点（XXX监狱）
 	private String fxdd;
-	
+	//原判开始时间（即服刑开始时间）
 	private Date ypksrq;
-	
+	//原判结束时间（即服刑结束时间）
 	private Date ypjsrq;
-	
+	//减刑开始时间
 	private Date sqksrq;
-	
+	//减刑结束时间
 	private Date sqjsrq;
-	
+	//入监日期
 	private Date rjrq;
-	
+	//是否不得假释罪犯申请减刑
 	private int sfjs;
 	
 	public TJxjs()
