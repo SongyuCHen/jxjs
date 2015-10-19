@@ -41,3 +41,10 @@ function shenpi(){
 		keyboard: true
 	});
 }
+
+//退回
+function tuihui(){
+	$("#tuihuiModal").modal({
+		keyboard: true
+	});
+}

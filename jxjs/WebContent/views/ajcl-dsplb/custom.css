@@ -4,3 +4,7 @@
 .dlabel{
 	text-align:right;
 }
+
+.modal-body .row{
+	margin-top:10px;
+}
