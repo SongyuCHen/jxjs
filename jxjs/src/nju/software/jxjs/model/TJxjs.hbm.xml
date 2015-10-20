@@ -10,7 +10,7 @@
         </id>
         
         <property name="sxajxh" type="int">
-            <column name="SXAJBH" />
+            <column name="SXAJXH" />
         </property>
         <property name="laajxh" type="int">
             <column name="LAAJXH" />
