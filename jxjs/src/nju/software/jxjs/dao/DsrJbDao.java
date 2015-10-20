@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.stereotype.Repository;
 
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -26,8 +27,8 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
  * @see software.tjspxt.data.dataobject.DsrJb
  * @author MyEclipse Persistence Tools
  */
-
-public class DsrJbDao extends HibernateDaoSupport {
+@Repository
+public class DsrJbDao extends BaseDao {
 	private static final Logger log = LoggerFactory.getLogger(DsrJbDao.class);
 	// property constants
 	public static final String DSRSSDW = "dsrssdw";
@@ -215,15 +216,13 @@ public class DsrJbDao extends HibernateDaoSupport {
 	public long getMaxDsrjbbh(long ajxh) {
 		String hql = "select max(dsrbh) from DsrJb where ajxh="+ajxh;
 		
-		Session s = this.getSession();
+		Session s = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
 		Query query = s.createQuery(hql);
 
 		int maxbh = 0;
 		if (query.uniqueResult() != null)
 			maxbh = (Integer) query.uniqueResult();
-		
-		//�ͷ���ݿ�����
-		this.releaseSession(s);
+
 		
 		return maxbh;
 	}

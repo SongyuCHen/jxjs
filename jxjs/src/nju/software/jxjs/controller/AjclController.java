@@ -1,13 +1,12 @@
 package nju.software.jxjs.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import nju.software.jxjs.model.TJxjs;
+import nju.software.jxjs.service.DsplbService;
 import nju.software.jxjs.service.MenuService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +23,9 @@ public class AjclController extends BaseController
 	
 	@Autowired
 	private MenuService ms;
+	
+	@Autowired
+	private DsplbService dsplbService;
 	
 	
 	/**
@@ -69,8 +71,6 @@ public class AjclController extends BaseController
 	@RequestMapping(value = "/dsplb.json", method = RequestMethod.GET)
 	@ResponseBody
 	public Object getDsplb(){
-		 Map<String, Object> map=new HashMap<String, Object>();
-	        map.put("msg", "haha");
-	        return map;
+		return dsplbService.getDsplb();
 	}
 }
