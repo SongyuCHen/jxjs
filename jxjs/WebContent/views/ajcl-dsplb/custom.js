@@ -25,6 +25,7 @@ $(function(){
 	});
 	//点击列表，弹出详细信息
 	$("#dataTable").on("click","tbody>tr",viewCaseDetail);
+	fetchData();
 });
 
 
@@ -46,5 +47,19 @@ function shenpi(){
 function tuihui(){
 	$("#tuihuiModal").modal({
 		keyboard: true
+	});
+}
+
+
+//获取数据
+function fetchData(){
+	$.ajax({
+		url :  baseUrl+"/ajcl/dsplb.json",
+		type : "get",
+		data : {},
+		dataType : 'html',
+		success : function(resp) {
+			alert(resp);
+		}
 	});
 }
