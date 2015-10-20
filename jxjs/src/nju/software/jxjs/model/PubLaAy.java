@@ -7,11 +7,11 @@ public class PubLaAy implements Serializable
 	private static final long serialVersionUID = 1L;
 
 	private int ajxh;
-	
+	//立案案由编号 
 	private int laaybh;
-	
+	//统计案由 FBS0022-97
 	private String ay;
-	
+	//立案案由
 	private String laay;
 	
 	public PubLaAy()

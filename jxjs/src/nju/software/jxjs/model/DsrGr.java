@@ -9,36 +9,48 @@ public class DsrGr implements Serializable
 	
 	private Integer ajxh;
 	private Integer dsrbh;
-	
+	//姓名
 	private String xm;
+	//性别 GB2261-80
 	private String xb;
+	//出生年月日
 	private Date csnyr;
+	//民族 FBZ0002-97
 	private String mz;
+	//籍贯 GB2260-91
 	private String jg;
+	//职业 FBZ0128-97	
 	private String zy;
+	//职务 GB12403-90
 	private String zw;
+	//文化程度 GB4658-84
 	private String whcd;
+	//工作单位
 	private String gzdw;
+	//政治面貌 GB4762-84	
 	private String zzmm;
+	//职务级别 FBZ0129-97
 	private String jb;
+	//身份 FBZ0130-97	
 	private String sf;
+	//婚姻情况 GB4766-84	
 	private String hyqk;
+	//家庭情况
 	private String jtqk;
+	//健康情况 GB4767-84
 	private String jkqk;
+	//所属国家 GB2659-86
 	private String ssgj;
+	//身份证号码
 	private String sfzhm;
+	//邮编
 	private String yb;
+	//电话
 	private String dh;
+	//地址
 	private String dz;
-	private String qrjg;
-	private String qrgc;
-	private String zzd;
-	private String zwzy;
-	private String zjlbF;
-	private String zjlb;
-	private String zjlbB;
-	private String zjlbC;
-	private String zjlbE;
+	
+	
 	
 	public DsrGr()
 	{
@@ -48,11 +60,9 @@ public class DsrGr implements Serializable
 			Date csnyr, String mz, String jg, String zy, String zw,
 			String whcd, String gzdw, String zzmm, String jb, String sf,
 			String hyqk, String jtqk, String jkqk, String ssgj, String sfzhm,
-			String yb, String dh, String dz, String qrjg, String qrgc,
-			String zzd, String zwzy, String zjlbF, String zjlb, String zjlbB,
-			String zjlbC, String zjlbE)
+			String yb, String dh, String dz)
 	{
-		super();
+
 		this.ajxh = ajxh;
 		this.dsrbh = dsrbh;
 		this.xm = xm;
@@ -75,15 +85,7 @@ public class DsrGr implements Serializable
 		this.yb = yb;
 		this.dh = dh;
 		this.dz = dz;
-		this.qrjg = qrjg;
-		this.qrgc = qrgc;
-		this.zzd = zzd;
-		this.zwzy = zwzy;
-		this.zjlbF = zjlbF;
-		this.zjlb = zjlb;
-		this.zjlbB = zjlbB;
-		this.zjlbC = zjlbC;
-		this.zjlbE = zjlbE;
+
 	}
 
 	public Integer getAjxh()
@@ -306,95 +308,5 @@ public class DsrGr implements Serializable
 		this.dz = dz;
 	}
 
-	public String getQrjg()
-	{
-		return qrjg;
-	}
 
-	public void setQrjg(String qrjg)
-	{
-		this.qrjg = qrjg;
-	}
-
-	public String getQrgc()
-	{
-		return qrgc;
-	}
-
-	public void setQrgc(String qrgc)
-	{
-		this.qrgc = qrgc;
-	}
-
-	public String getZzd()
-	{
-		return zzd;
-	}
-
-	public void setZzd(String zzd)
-	{
-		this.zzd = zzd;
-	}
-
-	public String getZwzy()
-	{
-		return zwzy;
-	}
-
-	public void setZwzy(String zwzy)
-	{
-		this.zwzy = zwzy;
-	}
-
-	public String getZjlbF()
-	{
-		return zjlbF;
-	}
-
-	public void setZjlbF(String zjlbF)
-	{
-		this.zjlbF = zjlbF;
-	}
-
-	public String getZjlb()
-	{
-		return zjlb;
-	}
-
-	public void setZjlb(String zjlb)
-	{
-		this.zjlb = zjlb;
-	}
-
-	public String getZjlbB()
-	{
-		return zjlbB;
-	}
-
-	public void setZjlbB(String zjlbB)
-	{
-		this.zjlbB = zjlbB;
-	}
-
-	public String getZjlbC()
-	{
-		return zjlbC;
-	}
-
-	public void setZjlbC(String zjlbC)
-	{
-		this.zjlbC = zjlbC;
-	}
-
-	public String getZjlbE()
-	{
-		return zjlbE;
-	}
-
-	public void setZjlbE(String zjlbE)
-	{
-		this.zjlbE = zjlbE;
-	}
-	
-	
 }

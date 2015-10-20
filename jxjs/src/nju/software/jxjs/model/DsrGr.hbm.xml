@@ -71,33 +71,6 @@
         <property name="dz" type="string">
             <column name="DZ" length="100" />
         </property>
-        <property name="qrjg" type="string">
-            <column name="QRJG" length="50" />
-        </property>
-        <property name="qrgc" type="string">
-            <column name="QRGC" length="250" />
-        </property>
-        <property name="zzd" type="string">
-            <column name="ZZD" length="100" />
-        </property>
-        <property name="zwzy" type="string">
-            <column name="ZWZY" length="40" />
-        </property>
-        <property name="zjlbF" type="string">
-            <column name="ZJLB_F" length="10" />
-        </property>
-        <property name="zjlb" type="string">
-            <column name="ZJLB" length="2" />
-        </property>
-        <property name="zjlbB" type="string">
-            <column name="ZJLB_B" length="2" />
-        </property>
-        <property name="zjlbC" type="string">
-            <column name="ZJLB_C" length="2" />
-        </property>
-        <property name="zjlbE" type="string">
-            <column name="ZJLB_E" length="2" />
-        </property>
         
     </class>
 </hibernate-mapping>

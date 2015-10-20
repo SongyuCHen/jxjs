@@ -167,92 +167,11 @@
         <property name="swlx" type="string">
         	<column name="SWLX" />
         </property>
-        <property name="cgksh" type="string">
-            <column name="CGKSH" />
-        </property>
-        <property name="modflag" type="string">
-        	<column name="MODFLAG" />
-        </property>
-        <property name="transflag" type="string">
-            <column name="TRANSFLAG" />
-        </property>
         <property name="psycy" type="string">
         	<column name="PSYCY" />
-        </property>
-        <property name="msajtjs" type="string">
-            <column name="MSAJTJS" />
-        </property>
-        <property name="msajtjsss" type="string">
-        	<column name="MSAJTJSSS" />
-        </property>
-        <property name="shwdfxpg" type="string">
-            <column name="SHWDFXPG" />
-        </property>
-        <property name="ysfysffczs" type="string">
-        	<column name="YSFYSFFCZS" />
-        </property>
-        <property name="yffa" type="string">
-            <column name="YFFA" />
-        </property>
-        <property name="sfyyffa" type="string">
-        	<column name="SFYYFFA" />
-        </property>
+        </property>        
         <property name="sfxess" type="string">
             <column name="SFXESS" />
-        </property>
-        <property name="sftz" type="string">
-        	<column name="SFTZ" />
-        </property>
-        <property name="sfsqsfqr" type="string">
-            <column name="SFSQSFQR" />
-        </property>
-        <property name="sfktsl" type="string">
-        	<column name="SFKTSL" />
-        </property>
-        <property name="sfjgyla" type="string">
-            <column name="SFJGYLA" />
-        </property>
-        <property name="sfhj" type="string">
-        	<column name="SFHJ" />
-        </property>
-        <property name="sfdtpj" type="string">
-            <column name="SFDTPJ" />
-        </property>
-        <property name="pjsffdjfnr" type="string">
-        	<column name="PJSFFDJFNR" />
-        </property>
-        <property name="fxhjcs" type="string">
-            <column name="FXHJCS" />
-        </property>
-        <property name="zytj" type="string">
-        	<column name="ZYTJ" />
-        </property>
-        <property name="ajsfys" type="string">
-            <column name="AJSFYS" />
-        </property>
-        <property name="sfbxf" type="int">
-        	<column name="SFBXF" />
-        </property>
-        <property name="sfcqyscs" type="string">
-            <column name="SFCQYSCS" />
-        </property>
-        <property name="sffcxx" type="string">
-        	<column name="SFFCXX" />
-        </property>
-        <property name="jjar" type="string">
-            <column name="JJAR" />
-        </property>
-        <property name="sptg" type="string">
-        	<column name="SPTG" />
-        </property>
-        <property name="rmpsyid" type="string">
-            <column name="RMPSYID" />
-        </property>
-        <property name="rmpsyxm" type="string">
-        	<column name="RMPSYXM" />
-        </property>
-        <property name="sfladj" type="string">
-            <column name="SFLADJ" />
         </property>
     </class>
 </hibernate-mapping>

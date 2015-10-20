@@ -11,172 +11,122 @@ import java.util.Date;
 public class PubAjJb implements Serializable
 {
 	private static final long serialVersionUID = 1L;
-	
+	//案件序号
 	private int ajxh;
-	
+	//案号
 	private String ah;
-	
+	//案件名称
 	private String ajmc;
-	
+	//案件性质 FBS0021-97	
 	private String ajxz;
-	
+	//案件来源 1AFBS0043-97,1BFBS0044-97,1CFBS0045-97,1DFBSAJLY-FH,1*FBSAJLY-JX,2AFBS0083-98,2BFBS0083-97,2CFBS0084-97,2DFBSAJLY-MT,2EFBSAJLY-MD,2FFBSAJLY-MC,2GFBSAJLY-MP,6AFBSAJLY_XZ,6BFBS0112-97,6CFBS0113-97,7*FBS0131-97,8*FBS0142-97,9*FBSAJLY-SB,A*FBSAJLY-QS
 	private String ajly;
-	
+	//审判程序 1*FBS0041-97,2*FBS0081-97,6*FBS0111-97,7*FBSSPCX-PC,8*FBSSPCX-ZX,9*FBSSPCX-SB,A*FBSSPCX-QS	
 	private String spcx;
-	
+	//审判程序待字 FBS0023-97	
 	private String spcxdz;
-	
+	//适用程序 FBS0042-97
 	private String sycx;
-	
+	//是否一审
 	private String sfys;
-	
+	//是否重大案件
 	private String sfzdaj;
-	
+	//是否交办案件
 	private String sfjbaj;
-	
+	//是否发回重审案件
 	private String sffhcs;
-	
+	//是否外地移交案件
 	private String sfwdyj;
-	
+	//审限
 	private int sx;
-	
+	//附加审限
 	private int fjsx;
-	
+	//来源地区 GB2260-91
 	private String lydq;
-	
+	//办案审判庭 USR206-99
 	private String baspt;
-	
+	//简要案情
 	private String jyaq;
-	
+	//立案日期
 	private Date larq;
-	
+	//立案人
 	private String lar;
-	
+	//办案法院 FBZ0001-97
 	private String bafy;
-	
+	//公(抗)诉机关
 	private String gksjg;
-	
+	//承办人意见
 	private String cbryj;
-	
+	//合议庭意见
 	private String hytyj;
-	
+	//庭长会意见
 	private String tzhyj;
-	
+	//院长会意见
 	private String yzhyj;
-	
+	//审委会意见
 	private String swhyj;
-	
+	//结案日期
 	private Date jarq;
-	
+	//结案方式 1AFBS0048-97,1*FBS0049-97,1HUSR0023-99,1DFBS0050-97,2AFBS0087-97,2*FBS0088-97,2FUSR0026-98,2GUSR706-02,2HUSR0023-99,2TUSR707,2SFBS0087-97,2ZFBS0087-97,6AFBS0117-97,6*FBS0118-97,6HUSR0023-99,7*FBS0133-97,8*FBS0144-97,8HUSR0023-99,A*USR0026-98	
 	private String jafs;
-	
+	//结案原因
 	private String jayy;
-	
+	//结案原因代码
 	private String jayydm;
-	
+	//备注
 	private String bz;
-	
+	//生效日期
 	private Date sxrq;
-	
+	//归档标志
 	private String gdbz;
-	
+	//案件状态 USR414-99
 	private String ajzt;
-	
+	//本院程序代字 USR416-99
 	private String bycxdz;
-	
+	//案件五涉情况  FBS0024-97
 	private String ajwsqk;
-	
+	//归档日期
 	private Date gdrq;
-	
+	//归档序列号
 	private int gdxlh;
-	
+	//承办人报批日期
 	private Date cbrbprq;
-	
+	//结案人
 	private String cjar;
-	
+	//审判长审签日期
 	private Date spzsqrq;
-	
+	//合议庭合议日期
 	private Date hythyrq;
-	
+	//庭长审签日期
 	private Date tzsqrq;
-	
+	//院长审签日期
 	private Date yzsqrq;
-	
+	//审委会决定日期
 	private Date swhjdrq;
-	
+	//院长签发日期
 	private Date yzqfrq;
-	
+	//受理情况 USR603-02
 	private String slqk;
-	
+	//上诉类型 USR617-02
 	private String sslx;
-	
+	//是否公诉
 	private String sfgs;
-	
+	//发回重审原因 2*FBS0099-97,1*FBS0062-97,6*FBS0128-97
 	private String fhcsyy;
-	
+	//改判原因 1*FBS0061-97,2*FBS0098-97,6*FBS0127-97
 	private String gpyy;
 	
 	private String sfzscq;
-	
+	//涉外类型  FBS0031-97
 	private String swlx;
-	
-	private String cgksh;
-	
-	private String modflag;
-	
-	private String transflag;
-	
+		
+	//陪审员参与
 	private String psycy;
 	
-	private String msajtjs;
-	
-	private String msajtjsss;
-	
-	private String shwdfxpg;
-	
-	private String ysfysffczs;
-	
-	private String yffa;
-	
-	private String sfyyffa;
-	
+	//是否小额诉讼
 	private String sfxess;
 	
-	private String sftz;
-	
-	private String sfsqsfqr;
-	
-	private String sfktsl;
-	
-	private String sfjgyla;
-	
-	private String sfhj;
-	
-	private String sfdtpj;
-	
-	private String pjsffdjfnr;
-	
-	private String fxhjcs;
-	
-	private String zytj;
-	
-	private String ajsfys;
-	
-	private int sfbxf;
-	
-	private String sfcqyscs;
-	
-	private String sffcxx;
-	
-	private String jjar;
-	
-	private String sptg;
-	
-	private String rmpsyid;
-	
-	private String rmpsyxm;
-	
-	private String sfladj;
+
 	
 	public PubAjJb()
 	{
@@ -712,215 +662,7 @@ public class PubAjJb implements Serializable
 		this.swlx = swlx;
 	}
 
-	public String getCgksh()
-	{
-		return cgksh;
-	}
 
-	public void setCgksh(String cgksh)
-	{
-		this.cgksh = cgksh;
-	}
-
-	public String getModflag()
-	{
-		return modflag;
-	}
-
-	public void setModflag(String modflag)
-	{
-		this.modflag = modflag;
-	}
-
-	public String getTransflag()
-	{
-		return transflag;
-	}
-
-	public void setTransflag(String transflag)
-	{
-		this.transflag = transflag;
-	}
-
-	public String getPsycy()
-	{
-		return psycy;
-	}
-
-	public void setPsycy(String psycy)
-	{
-		this.psycy = psycy;
-	}
-
-	public String getMsajtjs()
-	{
-		return msajtjs;
-	}
-
-	public void setMsajtjs(String msajtjs)
-	{
-		this.msajtjs = msajtjs;
-	}
-
-	public String getMsajtjsss()
-	{
-		return msajtjsss;
-	}
-
-	public void setMsajtjsss(String msajtjsss)
-	{
-		this.msajtjsss = msajtjsss;
-	}
-
-	public String getShwdfxpg()
-	{
-		return shwdfxpg;
-	}
-
-	public void setShwdfxpg(String shwdfxpg)
-	{
-		this.shwdfxpg = shwdfxpg;
-	}
-
-	public String getYsfysffczs()
-	{
-		return ysfysffczs;
-	}
-
-	public void setYsfysffczs(String ysfysffczs)
-	{
-		this.ysfysffczs = ysfysffczs;
-	}
-
-	public String getYffa()
-	{
-		return yffa;
-	}
-
-	public void setYffa(String yffa)
-	{
-		this.yffa = yffa;
-	}
-
-	public String getSfyyffa()
-	{
-		return sfyyffa;
-	}
-
-	public void setSfyyffa(String sfyyffa)
-	{
-		this.sfyyffa = sfyyffa;
-	}
-
-	public String getSfxess()
-	{
-		return sfxess;
-	}
-
-	public void setSfxess(String sfxess)
-	{
-		this.sfxess = sfxess;
-	}
-
-	public String getSftz()
-	{
-		return sftz;
-	}
-
-	public void setSftz(String sftz)
-	{
-		this.sftz = sftz;
-	}
-
-	public String getSfsqsfqr()
-	{
-		return sfsqsfqr;
-	}
-
-	public void setSfsqsfqr(String sfsqsfqr)
-	{
-		this.sfsqsfqr = sfsqsfqr;
-	}
-
-	public String getSfktsl()
-	{
-		return sfktsl;
-	}
-
-	public void setSfktsl(String sfktsl)
-	{
-		this.sfktsl = sfktsl;
-	}
-
-	public String getSfjgyla()
-	{
-		return sfjgyla;
-	}
-
-	public void setSfjgyla(String sfjgyla)
-	{
-		this.sfjgyla = sfjgyla;
-	}
-
-	public String getSfhj()
-	{
-		return sfhj;
-	}
-
-	public void setSfhj(String sfhj)
-	{
-		this.sfhj = sfhj;
-	}
-
-	public String getSfdtpj()
-	{
-		return sfdtpj;
-	}
-
-	public void setSfdtpj(String sfdtpj)
-	{
-		this.sfdtpj = sfdtpj;
-	}
-
-	public String getPjsffdjfnr()
-	{
-		return pjsffdjfnr;
-	}
-
-	public void setPjsffdjfnr(String pjsffdjfnr)
-	{
-		this.pjsffdjfnr = pjsffdjfnr;
-	}
-
-	public String getFxhjcs()
-	{
-		return fxhjcs;
-	}
-
-	public void setFxhjcs(String fxhjcs)
-	{
-		this.fxhjcs = fxhjcs;
-	}
-
-	public String getZytj()
-	{
-		return zytj;
-	}
-
-	public void setZytj(String zytj)
-	{
-		this.zytj = zytj;
-	}
-
-	public String getAjsfys()
-	{
-		return ajsfys;
-	}
-
-	public void setAjsfys(String ajsfys)
-	{
-		this.ajsfys = ajsfys;
-	}
 
 	public String getSfzdaj()
 	{
@@ -932,85 +674,23 @@ public class PubAjJb implements Serializable
 		this.sfzdaj = sfzdaj;
 	}
 
-	public int getSfbxf()
-	{
-		return sfbxf;
+	public String getPsycy() {
+		return psycy;
 	}
 
-	public void setSfbxf(int sfbxf)
-	{
-		this.sfbxf = sfbxf;
+	public void setPsycy(String psycy) {
+		this.psycy = psycy;
 	}
 
-	public String getSfcqyscs()
-	{
-		return sfcqyscs;
+	public String getSfxess() {
+		return sfxess;
 	}
 
-	public void setSfcqyscs(String sfcqyscs)
-	{
-		this.sfcqyscs = sfcqyscs;
+	public void setSfxess(String sfxess) {
+		this.sfxess = sfxess;
 	}
 
-	public String getSffcxx()
-	{
-		return sffcxx;
-	}
-
-	public void setSffcxx(String sffcxx)
-	{
-		this.sffcxx = sffcxx;
-	}
-
-	public String getJjar()
-	{
-		return jjar;
-	}
-
-	public void setJjar(String jjar)
-	{
-		this.jjar = jjar;
-	}
-
-	public String getSptg()
-	{
-		return sptg;
-	}
-
-	public void setSptg(String sptg)
-	{
-		this.sptg = sptg;
-	}
-
-	public String getRmpsyid()
-	{
-		return rmpsyid;
-	}
-
-	public void setRmpsyid(String rmpsyid)
-	{
-		this.rmpsyid = rmpsyid;
-	}
-
-	public String getRmpsyxm()
-	{
-		return rmpsyxm;
-	}
-
-	public void setRmpsyxm(String rmpsyxm)
-	{
-		this.rmpsyxm = rmpsyxm;
-	}
-
-	public String getSfladj()
-	{
-		return sfladj;
-	}
-
-	public void setSfladj(String sfladj)
-	{
-		this.sfladj = sfladj;
-	}
+	
 	
 	
 }
