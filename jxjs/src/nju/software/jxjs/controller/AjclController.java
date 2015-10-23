@@ -34,7 +34,7 @@ public class AjclController extends BaseController
 	
 	@Autowired
 	private YsplbService ysplbService;
-	
+
 	
 	/**
 	 * export excel

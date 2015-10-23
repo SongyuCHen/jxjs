@@ -4,10 +4,10 @@
 <hibernate-mapping>
     <class name="nju.software.jxjs.model.DsrGr" table="DSR_GR" schema="dbo" catalog="JUDGE">
         <composite-id>
-            <key-property name="ajxh" type="int">
+            <key-property name="ajxh" type="java.lang.Integer">
                 <column name="AJXH" />
             </key-property>
-            <key-property name="dsrbh" type="int">
+            <key-property name="dsrbh" type="java.lang.Integer">
                 <column name="DSRBH" />
             </key-property>
         </composite-id>

@@ -4,15 +4,15 @@
 <hibernate-mapping>
     <class name="nju.software.jxjs.model.TJxjs" table="T_JXJS" schema="dbo" catalog="JUDGE">
         <cache usage="read-write" />
-        <id name="jxjsbh" type="int">
+        <id name="jxjsbh" type="java.lang.Integer">
             <column name="JXJSBH" />
             <generator class="assigned" />
         </id>
         
-        <property name="sxajxh" type="int">
+        <property name="sxajxh" type="java.lang.Integer">
             <column name="SXAJXH" />
         </property>
-        <property name="laajxh" type="int">
+        <property name="laajxh" type="java.lang.Integer">
             <column name="LAAJXH" />
         </property>
         
@@ -26,7 +26,7 @@
         <property name="sqsj" type="java.util.Date">
             <column name="SQSJ" />
         </property>
-        <property name="sqcs" type="int">
+        <property name="sqcs" type="java.lang.Integer">
             <column name="SQCS" />
         </property>
         
@@ -54,7 +54,7 @@
         <property name="rjrq" type="java.util.Date">
             <column name="RJRQ" />
         </property>
-        <property name="sfjs" type="int">
+        <property name="sfjs" type="java.lang.Integer">
             <column name="SFJS" />
         </property>                                   
     </class>
