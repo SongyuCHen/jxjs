@@ -4,7 +4,7 @@
 <hibernate-mapping>
     <class name="nju.software.jxjs.model.PubAjJb" table="PUB_AJ_JB" schema="dbo" catalog="JUDGE">
     	<cache usage="read-write" />
-        <id name="ajxh" type="int">
+        <id name="ajxh" type="java.lang.Integer">
             <column name="AJXH" />
             <generator class="assigned" />
         </id>
@@ -44,10 +44,10 @@
         <property name="sfwdyj" type="string">
             <column name="SFWDYJ" />
         </property>
-        <property name="sx" type="int">
+        <property name="sx" type="java.lang.Integer">
         	<column name="SX" />
         </property>
-        <property name="fjsx" type="int">
+        <property name="fjsx" type="java.lang.Integer">
             <column name="FJSX" />
         </property>
         <property name="lydq" type="string">
@@ -119,7 +119,7 @@
         <property name="gdrq" type="java.util.Date">
         	<column name="GDRQ" />
         </property>
-        <property name="gdxlh" type="int">
+        <property name="gdxlh" type="java.lang.Integer">
             <column name="GDXLH" />
         </property>
         <property name="cbrbprq" type="java.util.Date">
