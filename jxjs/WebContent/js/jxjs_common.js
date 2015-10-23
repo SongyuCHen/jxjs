@@ -69,3 +69,12 @@ function updateTime(){
 	$("#currentTime").text(currentTime);
 	
 }
+
+
+function checkAll(){
+	if($("#checkAll").is(":checked")){
+		$(".checkTD input").attr("checked", true);
+	}else{
+		$(".checkTD input").attr("checked", false);
+	}
+}
