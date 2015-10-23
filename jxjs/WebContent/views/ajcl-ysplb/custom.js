@@ -1,6 +1,7 @@
 /**
  * 
  */
+var baseUrl = getRootPath();
 
 $(function(){
 	g_dataTable = $("#dataTable").DataTable({
@@ -10,4 +11,20 @@ $(function(){
          }],
          order : [[ 7, "desc" ]]
 	});
+	fetchData();
 });
+
+
+
+//获取数据
+function fetchData(){
+	$.ajax({
+		url :  baseUrl+"/ajcl/ysplb.json",
+		type : "get",
+		data : {},
+		dataType : 'html',
+		success : function(resp) {
+			alert(resp);
+		}
+	});
+}
