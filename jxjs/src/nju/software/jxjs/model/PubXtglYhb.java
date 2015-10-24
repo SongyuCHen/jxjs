@@ -9,19 +9,19 @@ public class PubXtglYhb implements Serializable
 	
 	private int yhbh;
 	
-	//用户代码
+	//用户登录名
 	private String yhdm;
-	//用户名
+	//用户姓名
 	private String yhmc;
-	
+	//用户口令
 	private String yhkl;
-	
+	//用户部门 USR206-99
 	private String yhbm;
 	
 	private String klts;
 	
 	private String klda;
-	
+	//用户身份 直接显示，无字典
 	private String yhsf;
 	
 	private Date klszsj;
