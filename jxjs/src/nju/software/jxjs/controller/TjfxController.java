@@ -1,8 +1,12 @@
 package nju.software.jxjs.controller;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
+import nju.software.jxjs.model.TJxjs;
+import nju.software.jxjs.service.DmbService;
+import nju.software.jxjs.service.JxjsService;
 import nju.software.jxjs.service.MenuService;
 import nju.software.jxjs.view.TjfxSearchModel;
 import nju.software.jxjs.view.User;
@@ -22,6 +26,10 @@ public class TjfxController extends BaseController
 	
 	@Autowired
 	private MenuService ms;
+	@Autowired
+	private JxjsService jxjsService;
+	@Autowired
+	private DmbService dmbService;
 	/**
 	 * 基础查询
 	 * 
@@ -83,9 +91,12 @@ public class TjfxController extends BaseController
 		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "tjfx", "jccx"));
 		String[] conditionArr = {"申请", "已审批", "已立案", "已结案"};
 		List<String> conditionList = Arrays.asList(conditionArr);
-		
+		Date begin = model.getStartDate();
+		Date end = model.getEndDate();
+		String type = model.getCondition();
+		List<TJxjs> jxjsList = jxjsService.getJxjsByDateAndType(begin, end, type);
 		mav.addObject("conditionList", conditionList);
-		
+		mav.addObject("jxjsList",jxjsList);
 		
 		return mav;
 	}

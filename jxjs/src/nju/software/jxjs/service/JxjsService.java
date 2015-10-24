@@ -1,5 +1,6 @@
 package nju.software.jxjs.service;
 
+import java.util.Date;
 import java.util.List;
 
 import nju.software.jxjs.dao.JxjsDao;
@@ -30,5 +31,11 @@ public class JxjsService {
 		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", "已审批");
 		String ajztbh = dmb.getDmbh();
 		return jd.getJxjsByAjztbh(ajztbh);
+	}
+	
+	public List<TJxjs> getJxjsByDateAndType(Date begin,Date end,String type){
+		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", type);
+		String ajztbh = dmb.getDmbh();
+		return jd.getJxjsByDateAndAjztbh(begin, end, ajztbh);
 	}
 }

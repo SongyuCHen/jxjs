@@ -6,10 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import nju.software.jxjs.model.TJxjs;
-import nju.software.jxjs.service.DsplbService;
+import nju.software.jxjs.service.JxjsService;
 import nju.software.jxjs.service.MenuService;
-import nju.software.jxjs.service.YlalbService;
-import nju.software.jxjs.service.YsplbService;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,13 +26,9 @@ public class AjclController extends BaseController
 	private MenuService ms;
 	
 	@Autowired
-	private DsplbService dsplbService;
+	private JxjsService jxjsService;
 	
-	@Autowired
-	private YlalbService ylalbService;
-	
-	@Autowired
-	private YsplbService ysplbService;
+
 
 	
 	/**
@@ -79,17 +74,17 @@ public class AjclController extends BaseController
 	@RequestMapping(value = "/dsplb.json", method = RequestMethod.GET)
 	@ResponseBody
 	public Object getDsplb(){
-		return dsplbService.getDsplb();
+		return jxjsService.getDsplb();
 	}
 	
 	@RequestMapping(value = "/ysplb.json", method = RequestMethod.GET)
 	@ResponseBody
 	public Object getYsplb(){
-		return ysplbService.getYsplb();
+		return jxjsService.getYsplb();
 	}
 	@RequestMapping(value = "/ylalb.json", method = RequestMethod.GET)
 	@ResponseBody
 	public Object getYlalb(){
-		return ylalbService.getYlalb();
+		return jxjsService.getYlalb();
 	}
 }

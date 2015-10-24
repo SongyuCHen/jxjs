@@ -1,8 +1,5 @@
 package nju.software.jxjs.controller;
 
-import java.util.List;
-
-import nju.software.jxjs.model.Menu;
 import nju.software.jxjs.service.MenuService;
 import nju.software.jxjs.service.UserService;
 import nju.software.jxjs.view.User;
