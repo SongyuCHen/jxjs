@@ -5,10 +5,16 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import nju.software.jxjs.common.Constants;
+import nju.software.jxjs.model.PubAjJb;
 import nju.software.jxjs.model.TJxjs;
 import nju.software.jxjs.service.JxjsService;
 import nju.software.jxjs.service.MenuService;
 
+
+
+
+import nju.software.jxjs.service.PubAjJbService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +34,8 @@ public class AjclController extends BaseController
 	@Autowired
 	private JxjsService jxjsService;
 	
-
+	@Autowired
+	private PubAjJbService ajService;
 
 	
 	/**
@@ -86,5 +93,48 @@ public class AjclController extends BaseController
 	@ResponseBody
 	public Object getYlalb(){
 		return jxjsService.getYlalb();
+	}
+	
+	//立案
+	@RequestMapping(value = "/la", method = RequestMethod.GET)
+	public ModelAndView la(){
+		int jxjsbh = 0;
+		TJxjs jxjs = jxjsService.getJxjsBybh(jxjsbh);
+		PubAjJb aj = new PubAjJb();
+		aj.setBafy(Constants.BAFY);
+		aj.setAjxz(Constants.AJXZ);
+		if(jxjs.getSqlxbh().equals("1"))
+			aj.setSpcx(Constants.JXSPCX);
+		else
+			aj.setSpcx(Constants.JSSPCX);
+		aj.setSpcxdz(Constants.SPCXDZ);
+		//需要特殊处理，还有撤销假释的
+//		aj.setBycxdz(bycxdz);
+		aj.setAjly(Constants.AJLY);
+		String ah = ajService.generateAh();
+		aj.setAh(ah);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("ajcl-ylalb");
+		mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "ylalb"));
+		return mv;
+	}
+	
+	//审批
+	@RequestMapping(value = "/approval", method = RequestMethod.GET)
+	public ModelAndView approval(){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("ajcl-ylalb");
+		mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "ylalb"));
+		return mv;
+	}
+	
+	//退回
+
+	@RequestMapping(value = "/reject", method = RequestMethod.GET)
+	public ModelAndView reject(){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("ajcl-ylalb");
+		mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "ylalb"));
+		return mv;
 	}
 }

@@ -17,6 +17,9 @@ public class JxjsService {
 	private JxjsDao jd;
 	@Autowired
 	private XtglDmbDao dmbDao;
+	public TJxjs getJxjsBybh(int jxjsbh){
+		return jd.getJxjsByBh(jxjsbh);
+	}
 	public List<TJxjs> getDsplb(){
 		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", "已申请");
 		String ajztbh = dmb.getDmbh();
@@ -37,5 +40,21 @@ public class JxjsService {
 		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", type);
 		String ajztbh = dmb.getDmbh();
 		return jd.getJxjsByDateAndAjztbh(begin, end, ajztbh);
+	}
+	
+	public TJxjs add(TJxjs jxjs){
+		int jxjsbh = jd.getMaxBh();
+		jxjsbh ++;
+		jxjs.setJxjsbh(jxjsbh);
+		jd.save(jxjs);
+		return jxjs;
+	}
+	
+	public void update(TJxjs jxjs){
+		jd.update(jxjs);
+	}
+	
+	public void delete(TJxjs jxjs){
+		jd.delete(jxjs);
 	}
 }

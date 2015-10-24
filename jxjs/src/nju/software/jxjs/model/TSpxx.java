@@ -83,6 +83,46 @@ public class TSpxx implements Serializable
 	{
 		this.aj = aj;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((aj == null) ? 0 : aj.hashCode());
+		result = prime * result + ((spr == null) ? 0 : spr.hashCode());
+		result = prime * result + spxxbh;
+		result = prime * result + ((spyj == null) ? 0 : spyj.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TSpxx other = (TSpxx) obj;
+		if (aj == null) {
+			if (other.aj != null)
+				return false;
+		} else if (!aj.equals(other.aj))
+			return false;
+		if (spr == null) {
+			if (other.spr != null)
+				return false;
+		} else if (!spr.equals(other.spr))
+			return false;
+		if (spxxbh != other.spxxbh)
+			return false;
+		if (spyj == null) {
+			if (other.spyj != null)
+				return false;
+		} else if (!spyj.equals(other.spyj))
+			return false;
+		return true;
+	}
 	
 	
 }

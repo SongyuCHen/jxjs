@@ -1,9 +1,11 @@
 package nju.software.jxjs.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import nju.software.jxjs.model.PubDmb;
 import nju.software.jxjs.model.TJxjs;
 import nju.software.jxjs.service.DmbService;
 import nju.software.jxjs.service.JxjsService;
@@ -40,10 +42,11 @@ public class TjfxController extends BaseController
 	{
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("tjfx-jccx");
-		
-		String[] conditionArr = {"申请", "已审批", "已立案", "已结案"};
-		List<String> conditionList = Arrays.asList(conditionArr);
-		
+		List<PubDmb> dmbList = dmbService.getDmbByLbbh("JXJS-AJZT");
+		List<String> conditionList = new ArrayList<String>();
+		for(PubDmb dmb:dmbList){
+			conditionList.add(dmb.getDmms());
+		}
 		mav.addObject("conditionList", conditionList);
 		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
 		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "tjfx", "jccx"));
@@ -89,8 +92,11 @@ public class TjfxController extends BaseController
 		mav.setViewName("tjfx-jccx");
 		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
 		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "tjfx", "jccx"));
-		String[] conditionArr = {"申请", "已审批", "已立案", "已结案"};
-		List<String> conditionList = Arrays.asList(conditionArr);
+		List<PubDmb> dmbList = dmbService.getDmbByLbbh("JXJS-AJZT");
+		List<String> conditionList = new ArrayList<String>();
+		for(PubDmb dmb:dmbList){
+			conditionList.add(dmb.getDmms());
+		}
 		Date begin = model.getStartDate();
 		Date end = model.getEndDate();
 		String type = model.getCondition();

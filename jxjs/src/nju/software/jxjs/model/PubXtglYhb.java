@@ -272,6 +272,58 @@ public class PubXtglYhb implements Serializable
 		this.phone = phone;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + yhbh;
+		result = prime * result + ((yhbm == null) ? 0 : yhbm.hashCode());
+		result = prime * result + ((yhdm == null) ? 0 : yhdm.hashCode());
+		result = prime * result + ((yhkl == null) ? 0 : yhkl.hashCode());
+		result = prime * result + ((yhmc == null) ? 0 : yhmc.hashCode());
+		result = prime * result + ((yhsf == null) ? 0 : yhsf.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PubXtglYhb other = (PubXtglYhb) obj;
+		if (yhbh != other.yhbh)
+			return false;
+		if (yhbm == null) {
+			if (other.yhbm != null)
+				return false;
+		} else if (!yhbm.equals(other.yhbm))
+			return false;
+		if (yhdm == null) {
+			if (other.yhdm != null)
+				return false;
+		} else if (!yhdm.equals(other.yhdm))
+			return false;
+		if (yhkl == null) {
+			if (other.yhkl != null)
+				return false;
+		} else if (!yhkl.equals(other.yhkl))
+			return false;
+		if (yhmc == null) {
+			if (other.yhmc != null)
+				return false;
+		} else if (!yhmc.equals(other.yhmc))
+			return false;
+		if (yhsf == null) {
+			if (other.yhsf != null)
+				return false;
+		} else if (!yhsf.equals(other.yhsf))
+			return false;
+		return true;
+	}
+
 	
 	
 }

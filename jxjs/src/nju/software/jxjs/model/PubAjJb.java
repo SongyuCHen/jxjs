@@ -804,6 +804,365 @@ public class PubAjJb implements Serializable
 		this.sfxess = sfxess;
 	}
 
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((ah == null) ? 0 : ah.hashCode());
+		result = prime * result + ((ajly == null) ? 0 : ajly.hashCode());
+		result = prime * result + ((ajmc == null) ? 0 : ajmc.hashCode());
+		result = prime * result + ((ajwsqk == null) ? 0 : ajwsqk.hashCode());
+		result = prime * result + ((ajxh == null) ? 0 : ajxh.hashCode());
+		result = prime * result + ((ajxz == null) ? 0 : ajxz.hashCode());
+		result = prime * result + ((ajzt == null) ? 0 : ajzt.hashCode());
+		result = prime * result + ((bafy == null) ? 0 : bafy.hashCode());
+		result = prime * result + ((baspt == null) ? 0 : baspt.hashCode());
+		result = prime * result + ((bycxdz == null) ? 0 : bycxdz.hashCode());
+		result = prime * result + ((bz == null) ? 0 : bz.hashCode());
+		result = prime * result + ((cbrbprq == null) ? 0 : cbrbprq.hashCode());
+		result = prime * result + ((cbryj == null) ? 0 : cbryj.hashCode());
+		result = prime * result + ((cjar == null) ? 0 : cjar.hashCode());
+		result = prime * result + ((fhcsyy == null) ? 0 : fhcsyy.hashCode());
+		result = prime * result + ((fjsx == null) ? 0 : fjsx.hashCode());
+		result = prime * result + ((gdbz == null) ? 0 : gdbz.hashCode());
+		result = prime * result + ((gdrq == null) ? 0 : gdrq.hashCode());
+		result = prime * result + ((gdxlh == null) ? 0 : gdxlh.hashCode());
+		result = prime * result + ((gksjg == null) ? 0 : gksjg.hashCode());
+		result = prime * result + ((gpyy == null) ? 0 : gpyy.hashCode());
+		result = prime * result + ((hythyrq == null) ? 0 : hythyrq.hashCode());
+		result = prime * result + ((hytyj == null) ? 0 : hytyj.hashCode());
+		result = prime * result + ((jafs == null) ? 0 : jafs.hashCode());
+		result = prime * result + ((jarq == null) ? 0 : jarq.hashCode());
+		result = prime * result + ((jayy == null) ? 0 : jayy.hashCode());
+		result = prime * result + ((jayydm == null) ? 0 : jayydm.hashCode());
+		result = prime * result + ((jyaq == null) ? 0 : jyaq.hashCode());
+		result = prime * result + ((lar == null) ? 0 : lar.hashCode());
+		result = prime * result + ((larq == null) ? 0 : larq.hashCode());
+		result = prime * result + ((lydq == null) ? 0 : lydq.hashCode());
+		result = prime * result + ((psycy == null) ? 0 : psycy.hashCode());
+		result = prime * result + ((sffhcs == null) ? 0 : sffhcs.hashCode());
+		result = prime * result + ((sfgs == null) ? 0 : sfgs.hashCode());
+		result = prime * result + ((sfjbaj == null) ? 0 : sfjbaj.hashCode());
+		result = prime * result + ((sfwdyj == null) ? 0 : sfwdyj.hashCode());
+		result = prime * result + ((sfxess == null) ? 0 : sfxess.hashCode());
+		result = prime * result + ((sfys == null) ? 0 : sfys.hashCode());
+		result = prime * result + ((sfzdaj == null) ? 0 : sfzdaj.hashCode());
+		result = prime * result + ((sfzscq == null) ? 0 : sfzscq.hashCode());
+		result = prime * result + ((slqk == null) ? 0 : slqk.hashCode());
+		result = prime * result + ((spcx == null) ? 0 : spcx.hashCode());
+		result = prime * result + ((spcxdz == null) ? 0 : spcxdz.hashCode());
+		result = prime * result + ((spzsqrq == null) ? 0 : spzsqrq.hashCode());
+		result = prime * result + ((sslx == null) ? 0 : sslx.hashCode());
+		result = prime * result + ((swhjdrq == null) ? 0 : swhjdrq.hashCode());
+		result = prime * result + ((swhyj == null) ? 0 : swhyj.hashCode());
+		result = prime * result + ((swlx == null) ? 0 : swlx.hashCode());
+		result = prime * result + ((sx == null) ? 0 : sx.hashCode());
+		result = prime * result + ((sxrq == null) ? 0 : sxrq.hashCode());
+		result = prime * result + ((sycx == null) ? 0 : sycx.hashCode());
+		result = prime * result + ((tzhyj == null) ? 0 : tzhyj.hashCode());
+		result = prime * result + ((tzsqrq == null) ? 0 : tzsqrq.hashCode());
+		result = prime * result + ((yzhyj == null) ? 0 : yzhyj.hashCode());
+		result = prime * result + ((yzqfrq == null) ? 0 : yzqfrq.hashCode());
+		result = prime * result + ((yzsqrq == null) ? 0 : yzsqrq.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PubAjJb other = (PubAjJb) obj;
+		if (ah == null) {
+			if (other.ah != null)
+				return false;
+		} else if (!ah.equals(other.ah))
+			return false;
+		if (ajly == null) {
+			if (other.ajly != null)
+				return false;
+		} else if (!ajly.equals(other.ajly))
+			return false;
+		if (ajmc == null) {
+			if (other.ajmc != null)
+				return false;
+		} else if (!ajmc.equals(other.ajmc))
+			return false;
+		if (ajwsqk == null) {
+			if (other.ajwsqk != null)
+				return false;
+		} else if (!ajwsqk.equals(other.ajwsqk))
+			return false;
+		if (ajxh == null) {
+			if (other.ajxh != null)
+				return false;
+		} else if (!ajxh.equals(other.ajxh))
+			return false;
+		if (ajxz == null) {
+			if (other.ajxz != null)
+				return false;
+		} else if (!ajxz.equals(other.ajxz))
+			return false;
+		if (ajzt == null) {
+			if (other.ajzt != null)
+				return false;
+		} else if (!ajzt.equals(other.ajzt))
+			return false;
+		if (bafy == null) {
+			if (other.bafy != null)
+				return false;
+		} else if (!bafy.equals(other.bafy))
+			return false;
+		if (baspt == null) {
+			if (other.baspt != null)
+				return false;
+		} else if (!baspt.equals(other.baspt))
+			return false;
+		if (bycxdz == null) {
+			if (other.bycxdz != null)
+				return false;
+		} else if (!bycxdz.equals(other.bycxdz))
+			return false;
+		if (bz == null) {
+			if (other.bz != null)
+				return false;
+		} else if (!bz.equals(other.bz))
+			return false;
+		if (cbrbprq == null) {
+			if (other.cbrbprq != null)
+				return false;
+		} else if (!cbrbprq.equals(other.cbrbprq))
+			return false;
+		if (cbryj == null) {
+			if (other.cbryj != null)
+				return false;
+		} else if (!cbryj.equals(other.cbryj))
+			return false;
+		if (cjar == null) {
+			if (other.cjar != null)
+				return false;
+		} else if (!cjar.equals(other.cjar))
+			return false;
+		if (fhcsyy == null) {
+			if (other.fhcsyy != null)
+				return false;
+		} else if (!fhcsyy.equals(other.fhcsyy))
+			return false;
+		if (fjsx == null) {
+			if (other.fjsx != null)
+				return false;
+		} else if (!fjsx.equals(other.fjsx))
+			return false;
+		if (gdbz == null) {
+			if (other.gdbz != null)
+				return false;
+		} else if (!gdbz.equals(other.gdbz))
+			return false;
+		if (gdrq == null) {
+			if (other.gdrq != null)
+				return false;
+		} else if (!gdrq.equals(other.gdrq))
+			return false;
+		if (gdxlh == null) {
+			if (other.gdxlh != null)
+				return false;
+		} else if (!gdxlh.equals(other.gdxlh))
+			return false;
+		if (gksjg == null) {
+			if (other.gksjg != null)
+				return false;
+		} else if (!gksjg.equals(other.gksjg))
+			return false;
+		if (gpyy == null) {
+			if (other.gpyy != null)
+				return false;
+		} else if (!gpyy.equals(other.gpyy))
+			return false;
+		if (hythyrq == null) {
+			if (other.hythyrq != null)
+				return false;
+		} else if (!hythyrq.equals(other.hythyrq))
+			return false;
+		if (hytyj == null) {
+			if (other.hytyj != null)
+				return false;
+		} else if (!hytyj.equals(other.hytyj))
+			return false;
+		if (jafs == null) {
+			if (other.jafs != null)
+				return false;
+		} else if (!jafs.equals(other.jafs))
+			return false;
+		if (jarq == null) {
+			if (other.jarq != null)
+				return false;
+		} else if (!jarq.equals(other.jarq))
+			return false;
+		if (jayy == null) {
+			if (other.jayy != null)
+				return false;
+		} else if (!jayy.equals(other.jayy))
+			return false;
+		if (jayydm == null) {
+			if (other.jayydm != null)
+				return false;
+		} else if (!jayydm.equals(other.jayydm))
+			return false;
+		if (jyaq == null) {
+			if (other.jyaq != null)
+				return false;
+		} else if (!jyaq.equals(other.jyaq))
+			return false;
+		if (lar == null) {
+			if (other.lar != null)
+				return false;
+		} else if (!lar.equals(other.lar))
+			return false;
+		if (larq == null) {
+			if (other.larq != null)
+				return false;
+		} else if (!larq.equals(other.larq))
+			return false;
+		if (lydq == null) {
+			if (other.lydq != null)
+				return false;
+		} else if (!lydq.equals(other.lydq))
+			return false;
+		if (psycy == null) {
+			if (other.psycy != null)
+				return false;
+		} else if (!psycy.equals(other.psycy))
+			return false;
+		if (sffhcs == null) {
+			if (other.sffhcs != null)
+				return false;
+		} else if (!sffhcs.equals(other.sffhcs))
+			return false;
+		if (sfgs == null) {
+			if (other.sfgs != null)
+				return false;
+		} else if (!sfgs.equals(other.sfgs))
+			return false;
+		if (sfjbaj == null) {
+			if (other.sfjbaj != null)
+				return false;
+		} else if (!sfjbaj.equals(other.sfjbaj))
+			return false;
+		if (sfwdyj == null) {
+			if (other.sfwdyj != null)
+				return false;
+		} else if (!sfwdyj.equals(other.sfwdyj))
+			return false;
+		if (sfxess == null) {
+			if (other.sfxess != null)
+				return false;
+		} else if (!sfxess.equals(other.sfxess))
+			return false;
+		if (sfys == null) {
+			if (other.sfys != null)
+				return false;
+		} else if (!sfys.equals(other.sfys))
+			return false;
+		if (sfzdaj == null) {
+			if (other.sfzdaj != null)
+				return false;
+		} else if (!sfzdaj.equals(other.sfzdaj))
+			return false;
+		if (sfzscq == null) {
+			if (other.sfzscq != null)
+				return false;
+		} else if (!sfzscq.equals(other.sfzscq))
+			return false;
+		if (slqk == null) {
+			if (other.slqk != null)
+				return false;
+		} else if (!slqk.equals(other.slqk))
+			return false;
+		if (spcx == null) {
+			if (other.spcx != null)
+				return false;
+		} else if (!spcx.equals(other.spcx))
+			return false;
+		if (spcxdz == null) {
+			if (other.spcxdz != null)
+				return false;
+		} else if (!spcxdz.equals(other.spcxdz))
+			return false;
+		if (spzsqrq == null) {
+			if (other.spzsqrq != null)
+				return false;
+		} else if (!spzsqrq.equals(other.spzsqrq))
+			return false;
+		if (sslx == null) {
+			if (other.sslx != null)
+				return false;
+		} else if (!sslx.equals(other.sslx))
+			return false;
+		if (swhjdrq == null) {
+			if (other.swhjdrq != null)
+				return false;
+		} else if (!swhjdrq.equals(other.swhjdrq))
+			return false;
+		if (swhyj == null) {
+			if (other.swhyj != null)
+				return false;
+		} else if (!swhyj.equals(other.swhyj))
+			return false;
+		if (swlx == null) {
+			if (other.swlx != null)
+				return false;
+		} else if (!swlx.equals(other.swlx))
+			return false;
+		if (sx == null) {
+			if (other.sx != null)
+				return false;
+		} else if (!sx.equals(other.sx))
+			return false;
+		if (sxrq == null) {
+			if (other.sxrq != null)
+				return false;
+		} else if (!sxrq.equals(other.sxrq))
+			return false;
+		if (sycx == null) {
+			if (other.sycx != null)
+				return false;
+		} else if (!sycx.equals(other.sycx))
+			return false;
+		if (tzhyj == null) {
+			if (other.tzhyj != null)
+				return false;
+		} else if (!tzhyj.equals(other.tzhyj))
+			return false;
+		if (tzsqrq == null) {
+			if (other.tzsqrq != null)
+				return false;
+		} else if (!tzsqrq.equals(other.tzsqrq))
+			return false;
+		if (yzhyj == null) {
+			if (other.yzhyj != null)
+				return false;
+		} else if (!yzhyj.equals(other.yzhyj))
+			return false;
+		if (yzqfrq == null) {
+			if (other.yzqfrq != null)
+				return false;
+		} else if (!yzqfrq.equals(other.yzqfrq))
+			return false;
+		if (yzsqrq == null) {
+			if (other.yzsqrq != null)
+				return false;
+		} else if (!yzsqrq.equals(other.yzsqrq))
+			return false;
+		return true;
+	}
+
 	
 	
 	
