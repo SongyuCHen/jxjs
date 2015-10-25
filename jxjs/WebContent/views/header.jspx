@@ -34,7 +34,7 @@
 	</div>
 	<div class="welcome-bar">
 		<div class="welcome-words">
-			欢迎 【${currentUser.username}】 使用本系统，北京时间
+			欢迎 【${currentUser.username}】 使用本系统，
 		</div>
 		<div id="currentTime"></div>
 	</div>

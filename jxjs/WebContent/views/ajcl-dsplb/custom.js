@@ -38,6 +38,10 @@ function viewCaseDetail(){
 
 //审批
 function shenpi(){
+	if(!anyChecked()){
+		alert("请选择要进行审批的项!");
+		return;
+	}
 	$("#shenpiModal").modal({
 		keyboard: true
 	});
@@ -45,6 +49,10 @@ function shenpi(){
 
 //退回
 function tuihui(){
+	if(!anyChecked()){
+		alert("请选择要退回的项!");
+		return;
+	}
 	$("#tuihuiModal").modal({
 		keyboard: true
 	});
