@@ -14,7 +14,9 @@
         <property name="password" type="string">
             <column name="PASSWORD" not-null="true" />
         </property>
-        
+         <property name="name" type="string">
+            <column name="NAME" />
+        </property>
         <many-to-one name="dw" 
                      column="DWBH"
                      class="nju.software.jxjs.model.TDw"
