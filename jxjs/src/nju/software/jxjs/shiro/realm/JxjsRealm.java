@@ -1,6 +1,6 @@
 package nju.software.jxjs.shiro.realm;
 
-import nju.software.jxjs.dao.UserDao;
+import nju.software.jxjs.dao.TUserDao;
 import nju.software.jxjs.dao.XtglYhbDao;
 import nju.software.jxjs.model.PubXtglYhb;
 import nju.software.jxjs.model.TUser;
@@ -20,7 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class JxjsRealm extends AuthorizingRealm{
 	
 	@Autowired
-	private UserDao ud;
+	private TUserDao ud;
 
 	@Autowired
 	private XtglYhbDao yhbDao;
@@ -53,7 +53,7 @@ public class JxjsRealm extends AuthorizingRealm{
 			}
 			authenticationInfo = new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), "jianyu");
 		}else if("fayuan".equals(role)){
-			//待实现
+			//
 			PubXtglYhb yhb = yhbDao.getPubXtglYhbByYhdm(username);
 			if (yhb == null) {
 				throw new UnknownAccountException();// û�ҵ��ʺ�
