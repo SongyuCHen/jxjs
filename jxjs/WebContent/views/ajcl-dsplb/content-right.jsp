@@ -255,7 +255,7 @@
   							2015-10-15
   						</div>
   						<div class="col-md-3 dlabel">审批人:</div>
-  						<div class="col-md-3">${currentUser.username}</div>
+  						<div class="col-md-3">${currentUser.realname}</div>
 					</div>
 					<div class="row">
   						<div class="col-md-3 dlabel">退回原因:</div>

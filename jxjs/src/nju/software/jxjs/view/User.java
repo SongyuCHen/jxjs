@@ -9,6 +9,7 @@ public class User {
 	private String role;
 	private String username;
 	private String password;
+	private String realname;
 	public String getRole() {
 		return role;
 	}
@@ -26,5 +27,11 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getRealname() {
+		return realname;
+	}
+	public void setRealname(String realname) {
+		this.realname = realname;
 	}
 }

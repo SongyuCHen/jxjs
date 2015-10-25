@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class UserDao extends BaseDao{
+public class TUserDao extends BaseDao{
 	
 	
 	@SuppressWarnings("unchecked")

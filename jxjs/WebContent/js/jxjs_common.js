@@ -78,3 +78,16 @@ function checkAll(){
 		$(".checkTD input").attr("checked", false);
 	}
 }
+
+/*
+ * 是否有选择框被选中
+ */
+function anyChecked(){
+	var any = false;
+	$(".checkTD input").each(function(){
+		if($(this).is(":checked")){
+			any = true;
+		}
+	});
+	return any;
+}

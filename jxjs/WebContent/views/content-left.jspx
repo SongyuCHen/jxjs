@@ -19,7 +19,7 @@
 			<ul>
 				<c:forEach items="${menuWrapper.headerMenus}" var="headerMenu">
 					<c:choose>
-						<c:when test="${headerMenu.uniqueName != menuWrapper.currentHeader.uniqueName and headerMenu.uniqueName != 'sy'}">
+						<c:when test="${headerMenu.uniqueName != menuWrapper.currentHeader.uniqueName}">
         					<li><img src="${pageContext.request.contextPath}/images/${headerMenu.uniqueName}.png"/>${headerMenu.zh}</li>
         				</c:when>
 					</c:choose>
