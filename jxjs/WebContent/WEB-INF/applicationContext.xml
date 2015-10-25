@@ -25,7 +25,15 @@
 	<context:component-scan base-package="nju.software.jxjs.*" />
 	<!-- 隐式地向 Spring 容器注册 -->
 	<context:annotation-config />
-
+	<cache:annotation-driven cache-manager="cacheManager"/>  
+      
+     <bean id="cacheManagerFactory" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">  
+        <property name="configLocation" value="classpath:ehcache.xml" />  
+    </bean>  
+      
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">      
+        <property name="cacheManager"  ref="cacheManagerFactory"/>      
+    </bean>  
 
 	<!-- 读取配置属性：菜单、角色权限 -->
 	<bean id="propertiesReader"
