@@ -1,26 +1,10 @@
 package nju.software.jxjs.view;
 
-import java.io.Serializable;
-
-public class DsplbView implements Serializable{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 5010992946598417230L;
-	
-	//##############业务逻辑需要!!!######################
+public class YsplbView {
 	//减刑假释编号
 	private int jxjsbh;
-	//##################################################
 	
 	
-	
-	
-	
-	
-	
-	//########################页面显示相关！！！！####################
 	//序号    略
 	//原审案号
 	private String ysah;
@@ -32,9 +16,9 @@ public class DsplbView implements Serializable{
 	private String sqlx;
 	//申请时间
 	private String sqsj;
-	//申请次数
-	private int sqcs;
-	//####################################################
+	//审批时间
+	private String spsj;
+	
 	public int getJxjsbh() {
 		return jxjsbh;
 	}
@@ -71,10 +55,10 @@ public class DsplbView implements Serializable{
 	public void setSqsj(String sqsj) {
 		this.sqsj = sqsj;
 	}
-	public int getSqcs() {
-		return sqcs;
+	public String getSpsj() {
+		return spsj;
 	}
-	public void setSqcs(int sqcs) {
-		this.sqcs = sqcs;
+	public void setSpsj(String spsj) {
+		this.spsj = spsj;
 	}
 }
