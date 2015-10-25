@@ -56,7 +56,7 @@ public class UserService extends BaseService{
 			user.setRealname(yhb.getYhmc());
 		}else if("jianyu".equals(user.getRole())){
 			TUser tuser = ud.findUser(user.getUsername());
-			user.setRealname(tuser.getUsername());
+			user.setRealname(tuser.getName());
 		}
 		return user;
 		
