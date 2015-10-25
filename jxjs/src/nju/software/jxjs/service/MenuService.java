@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.stereotype.Service;
 
-import com.google.common.collect.Sets;
+import com.googlecode.ehcache.annotations.Cacheable;
 
 /**
  * 生成menu
@@ -33,6 +33,7 @@ public class MenuService extends BaseService{
 	 * @param currentSub      当前子菜单
 	 * @return
 	 */
+	@Cacheable(cacheName="jxjsCache")
 	public MenuWrapper makeMenu(String role, String currentHeader, String currentSub){
 		MenuWrapper mw = new MenuWrapper();
 		mw.setHeaderMenus(getHeaderMenus(role));
