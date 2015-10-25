@@ -28,3 +28,11 @@ function fetchData(){
 		}
 	});
 }
+
+//立案
+function lian(){
+	if(!anyChecked()){
+		alert("请选择要进行立案的项!");
+		return;
+	}
+}

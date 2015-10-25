@@ -41,7 +41,7 @@
 					</tbody>
 			</table>
 			<div class="operating">
-				<button class="btn btn-primary">立案</button>
+				<button class="btn btn-primary" onclick="lian()">立案</button>
 				<button class="btn loc-right" onclick="print()">打印</button>
 				<button class="btn loc-right" onclick="exports()">导出</button>
 				<div class="loc-right">列表：</div>			

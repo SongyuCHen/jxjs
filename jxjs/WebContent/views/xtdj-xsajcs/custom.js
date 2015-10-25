@@ -35,3 +35,12 @@ $(document).ready(function(){
 		});
 
 });
+
+
+// 传输
+function chuanshu(){
+	if(!anyChecked()){
+		alert("请选择要传输的项!");
+		return;
+	}
+}
