@@ -47,6 +47,8 @@ public class PubAjJbDao extends BaseDao {
 		
 		return 0;
 	}
+	
+	
 	public void save(PubAjJb aj){
 		getHibernateTemplate().save(aj);
 	}

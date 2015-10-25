@@ -1,5 +1,7 @@
 package nju.software.jxjs.service;
 
+import java.util.Date;
+
 import nju.software.jxjs.dao.PubAjJbDao;
 import nju.software.jxjs.dao.XtglDmbDao;
 import nju.software.jxjs.model.PubDmb;
@@ -20,9 +22,19 @@ public class PubAjJbService {
 		if(dmb != null){
 			tjzq = dmb.getDmms().trim();
 		}else{
-			tjzq = "21";
+			tjzq = "20";
 		}
-		int year = Integer.parseInt(tjzq);
+		int i_tjzq = Integer.parseInt(tjzq);
+		Date today = new Date();
+		String s_year = "";
+		if(today.getMonth() == 12 && today.getDate() >i_tjzq)
+			s_year=Integer.toString(today.getYear() + 1);
+		else
+			s_year=Integer.toString(today.getYear());
+		
+		dmb = dmbDao.getDmbByLbbhAndDmbh("系统确认", "法院简称");
+		String fyjc = dmb.getDmms();
+		
 		return "";
 	}
 }
