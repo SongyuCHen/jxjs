@@ -3,9 +3,13 @@
 <html>
 <head>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/views/tjfx-sjtj/custom.css"/><jsp:text/>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/echarts-all.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/views/tjfx-sjtj/custom.js"><jsp:text/></script>
 </head>
 <body>
-
+	<div id="statusStat" class="graph-container">
+	</div>
+	<div id="typeStat" class="graph-container">
+	</div>
 </body>
 </html>

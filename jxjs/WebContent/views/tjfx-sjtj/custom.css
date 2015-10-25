@@ -1,1 +1,20 @@
 @CHARSET "UTF-8";
+
+
+.content-wrapper .content-left{
+	height:900px;
+}
+
+.content-wrapper .content-right{
+	height:900px;
+}
+
+
+
+
+.graph-container{
+	width:600px;
+	height:400px;
+	margin-left:50px;
+	margin-top:50px;
+}
