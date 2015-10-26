@@ -8,8 +8,8 @@
             <column name="SPXXBH" />
             <generator class="assigned" />
         </id>
-        <property name="spyj" type="string">
-            <column name="SPYJ" not-null="true" />
+        <property name="jxjsbh" type="int">
+            <column name="JXJSBH" not-null="true" />
         </property>
         
         <many-to-one name="spr" 
@@ -18,13 +18,15 @@
                      cascade="none"
                      lazy="false"
                      fetch="join"/>
-                     
-        <many-to-one name="aj" 
-                     column="AJBH"
-                     class="nju.software.jxjs.model.PubAjJb"
-                     cascade="none"
-                     lazy="false"
-                     fetch="join"/>            
+        <property name="spsj" type="java.util.Date">
+            <column name="SPSJ"  />
+        </property>              
+        <property name="splx" type="string">
+            <column name="SPLX"  />
+        </property>             
+        <property name="spyj" type="string">
+            <column name="SPYJ"  />
+        </property>            
                                     
     </class>
 </hibernate-mapping>

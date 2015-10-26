@@ -1,6 +1,7 @@
 package nju.software.jxjs.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 审批信息
@@ -15,7 +16,10 @@ public class TSpxx implements Serializable
 	 * 审批信息编号
 	 */
 	private int spxxbh;
-	
+	/**
+	 * 减刑假释编号
+	 */
+	private int jxjsbh;
 	/**
 	 * 审批人
 	 */
@@ -25,75 +29,120 @@ public class TSpxx implements Serializable
 	 * 审批意见
 	 */
 	private String spyj;
-	
 	/**
-	 * 案件编号
+	 * 审批时间
 	 */
-	private PubAjJb aj;
-	
+	private Date spsj;
+	/**
+	 * 审批类型
+	 */
+	private String splx;
 	public TSpxx()
 	{
 	}
 
-	public TSpxx(int spxxbh, PubXtglYhb spr, String spyj, PubAjJb aj)
-	{
+
+
+	public TSpxx(int spxxbh, int jxjsbh, PubXtglYhb spr, String spyj,
+			Date spsj, String splx) {
 		super();
 		this.spxxbh = spxxbh;
+		this.jxjsbh = jxjsbh;
 		this.spr = spr;
 		this.spyj = spyj;
-		this.aj = aj;
+		this.spsj = spsj;
+		this.splx = splx;
 	}
 
-	public int getSpxxbh()
-	{
+
+
+
+	public int getSpxxbh() {
 		return spxxbh;
 	}
 
-	public void setSpxxbh(int spxxbh)
-	{
+
+
+	public void setSpxxbh(int spxxbh) {
 		this.spxxbh = spxxbh;
 	}
 
-	public PubXtglYhb getSpr()
-	{
+
+
+	public int getJxjsbh() {
+		return jxjsbh;
+	}
+
+
+
+	public void setJxjsbh(int jxjsbh) {
+		this.jxjsbh = jxjsbh;
+	}
+
+
+
+	public PubXtglYhb getSpr() {
 		return spr;
 	}
 
-	public void setSpr(PubXtglYhb spr)
-	{
+
+
+	public void setSpr(PubXtglYhb spr) {
 		this.spr = spr;
 	}
 
-	public String getSpyj()
-	{
+
+
+	public String getSpyj() {
 		return spyj;
 	}
 
-	public void setSpyj(String spyj)
-	{
+
+
+	public void setSpyj(String spyj) {
 		this.spyj = spyj;
 	}
 
-	public PubAjJb getAj()
-	{
-		return aj;
+
+
+	public Date getSpsj() {
+		return spsj;
 	}
 
-	public void setAj(PubAjJb aj)
-	{
-		this.aj = aj;
+
+
+	public void setSpsj(Date spsj) {
+		this.spsj = spsj;
 	}
+
+
+
+	public String getSplx() {
+		return splx;
+	}
+
+
+
+	public void setSplx(String splx) {
+		this.splx = splx;
+	}
+
+
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((aj == null) ? 0 : aj.hashCode());
+		result = prime * result + jxjsbh;
+		result = prime * result + ((splx == null) ? 0 : splx.hashCode());
 		result = prime * result + ((spr == null) ? 0 : spr.hashCode());
+		result = prime * result + ((spsj == null) ? 0 : spsj.hashCode());
 		result = prime * result + spxxbh;
 		result = prime * result + ((spyj == null) ? 0 : spyj.hashCode());
 		return result;
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -104,15 +153,22 @@ public class TSpxx implements Serializable
 		if (getClass() != obj.getClass())
 			return false;
 		TSpxx other = (TSpxx) obj;
-		if (aj == null) {
-			if (other.aj != null)
+		if (jxjsbh != other.jxjsbh)
+			return false;
+		if (splx == null) {
+			if (other.splx != null)
 				return false;
-		} else if (!aj.equals(other.aj))
+		} else if (!splx.equals(other.splx))
 			return false;
 		if (spr == null) {
 			if (other.spr != null)
 				return false;
 		} else if (!spr.equals(other.spr))
+			return false;
+		if (spsj == null) {
+			if (other.spsj != null)
+				return false;
+		} else if (!spsj.equals(other.spsj))
 			return false;
 		if (spxxbh != other.spxxbh)
 			return false;
@@ -123,6 +179,10 @@ public class TSpxx implements Serializable
 			return false;
 		return true;
 	}
+
+
+
+	
 	
 	
 }

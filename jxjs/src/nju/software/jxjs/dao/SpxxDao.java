@@ -10,7 +10,7 @@ import nju.software.jxjs.model.TSpxx;
 public class SpxxDao extends BaseDao {
 	@SuppressWarnings("unchecked")
 	public List<TSpxx> getSPxxByJxjsbh(int jxjsbh){
-		String hql = "from TSpxx sp where sp.username=?";
+		String hql = "from TSpxx sp where sp.jxjsbh=?";
 		List<TSpxx> spxx = (List<TSpxx>) getHibernateTemplate().find(hql, new Object[]{jxjsbh});
 		return spxx;
 	}

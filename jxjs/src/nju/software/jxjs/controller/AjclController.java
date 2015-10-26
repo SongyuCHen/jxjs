@@ -1,5 +1,6 @@
 package nju.software.jxjs.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,7 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import nju.software.jxjs.common.Constants;
 import nju.software.jxjs.model.PubAjJb;
+import nju.software.jxjs.model.PubDmb;
+import nju.software.jxjs.model.TDsr;
 import nju.software.jxjs.model.TJxjs;
+import nju.software.jxjs.model.TSpxx;
+import nju.software.jxjs.service.DmbService;
 import nju.software.jxjs.service.JxjsService;
 import nju.software.jxjs.service.MenuService;
 
@@ -15,6 +20,12 @@ import nju.software.jxjs.service.MenuService;
 
 
 import nju.software.jxjs.service.PubAjJbService;
+import nju.software.jxjs.service.SpxxService;
+import nju.software.jxjs.service.TDsrService;
+import nju.software.jxjs.util.DateUtil;
+import nju.software.jxjs.view.DsplbView;
+import nju.software.jxjs.view.YlalbView;
+import nju.software.jxjs.view.YsplbView;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,8 +47,12 @@ public class AjclController extends BaseController
 	
 	@Autowired
 	private PubAjJbService ajService;
-
-	
+	@Autowired
+	private TDsrService dsrService;
+	@Autowired
+	private DmbService dmbService;
+	@Autowired
+	private SpxxService spxxService;
 	/**
 	 * export excel
 	 * 
@@ -81,18 +96,76 @@ public class AjclController extends BaseController
 	@RequestMapping(value = "/dsplb.json", method = RequestMethod.GET)
 	@ResponseBody
 	public Object getDsplb(){
-		return jxjsService.getDsplb();
+		List<DsplbView> dsplbView = new ArrayList<DsplbView>();
+		List<TJxjs> jxjsList = jxjsService.getDsplb();
+		for(TJxjs jxjs:jxjsList){
+			DsplbView vo = new DsplbView();
+			vo.setJxjsbh(jxjs.getJxjsbh());
+			TDsr dsr = dsrService.getDsrByjxjsbh(jxjs.getJxjsbh());
+			vo.setDsr(dsr.getXm());
+			vo.setSqcs(jxjs.getSqcs());
+			PubDmb dmb = dmbService.getDmbByLbbhAndDmbh("JXJS-SQLX", jxjs.getSqlxbh());
+			if(dmb != null)
+				vo.setSqlx(dmb.getDmms());
+			vo.setSqsj(DateUtil.getStandardFormat(jxjs.getSqsj()));
+			dmb = dmbService.getDmbByLbbhAndDmbh("FBZ", jxjs.getSxfybh());
+			if(dmb != null)
+				vo.setSxfy(dmb.getDmms());			
+			vo.setYsah(jxjs.getSxah());
+			dsplbView.add(vo);
+			
+		}
+		return dsplbView;
 	}
 	
 	@RequestMapping(value = "/ysplb.json", method = RequestMethod.GET)
 	@ResponseBody
-	public Object getYsplb(){
-		return jxjsService.getYsplb();
+	public Object getYsplb(){		
+		List<YsplbView> ysplbView = new ArrayList<YsplbView>();
+		List<TJxjs> jxjsList = jxjsService.getYsplb();
+		for(TJxjs jxjs:jxjsList){
+			YsplbView vo = new YsplbView();
+			vo.setJxjsbh(jxjs.getJxjsbh());
+			TDsr dsr = dsrService.getDsrByjxjsbh(jxjs.getJxjsbh());
+			vo.setDsr(dsr.getXm());
+			PubDmb dmb = dmbService.getDmbByLbbhAndDmbh("JXJS-SQLX", jxjs.getSqlxbh());
+			if(dmb != null)
+				vo.setSqlx(dmb.getDmms());
+			vo.setSqsj(DateUtil.getStandardFormat(jxjs.getSqsj()));
+			dmb = dmbService.getDmbByLbbhAndDmbh("FBZ", jxjs.getSxfybh());
+			if(dmb != null)
+				vo.setSxfy(dmb.getDmms());			
+			vo.setYsah(jxjs.getSxah());
+			List<TSpxx> spxxList = spxxService.getSPxxByJxjsbh(jxjs.getJxjsbh());
+			if(spxxList != null && spxxList.size()>0){
+				TSpxx spxx = spxxList.get(spxxList.size() - 1);
+				vo.setSpsj(DateUtil.getStandardFormat(spxx.getSpsj()));
+			}
+			ysplbView.add(vo);
+			
+		}
+		return ysplbView;
 	}
 	@RequestMapping(value = "/ylalb.json", method = RequestMethod.GET)
 	@ResponseBody
 	public Object getYlalb(){
-		return jxjsService.getYlalb();
+		List<YlalbView> ylalbView = new ArrayList<YlalbView>();
+		List<TJxjs> jxjsList = jxjsService.getYlalb();
+		for(TJxjs jxjs:jxjsList){
+			YlalbView vo = new YlalbView();
+			vo.setJxjsbh(jxjs.getJxjsbh());
+			PubAjJb aj = ajService.getAjByAjxh(jxjs.getLaajxh());
+			vo.setAh(aj.getAh());
+			vo.setAjmc(aj.getAjmc());
+			vo.setLasj(DateUtil.getStandardFormat(aj.getLarq()));
+			PubDmb dmb = dmbService.getDmbByLbbhAndDmbh("JXJS-SQLX", jxjs.getSqlxbh());
+			if(dmb != null)
+				vo.setSqlx(dmb.getDmms());
+			vo.setYsah(jxjs.getSxah());
+			ylalbView.add(vo);
+			
+		}
+		return ylalbView;
 	}
 	
 	//立案
@@ -111,6 +184,7 @@ public class AjclController extends BaseController
 		//需要特殊处理，还有撤销假释的
 //		aj.setBycxdz(bycxdz);
 		aj.setAjly(Constants.AJLY);
+		aj.setSycx(Constants.SYCX);
 		String ah = ajService.generateAh();
 		aj.setAh(ah);
 		ModelAndView mv = new ModelAndView();

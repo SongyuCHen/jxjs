@@ -8,16 +8,57 @@
             <column name="DSRBH" />
             <generator class="assigned" />
         </id>
-        <property name="dsrxm" type="string">
-        	<column name="DSRXM" not-null="true" />
+        <property name="jsjsbh" type="int">
+            <column name="JXJSBH" />
         </property>
-        
-        <many-to-one name="dw" 
-             column="DWBH"
-             class="nju.software.jxjs.model.TDw"
-             cascade="none"
-             lazy="false"
-             fetch="join"/>
+         <property name="xm" type="string">
+            <column name="XM" length="50" />
+        </property>
+        <property name="xb" type="string">
+            <column name="XB" length="10" />
+        </property>
+        <property name="csnyr" type="timestamp">
+            <column name="CSNYR" length="19" />
+        </property>
+        <property name="mz" type="string">
+            <column name="MZ" length="10" />
+        </property>
+        <property name="jg" type="string">
+            <column name="JG" length="50" />
+        </property>
+        <property name="JB" type="string">
+            <column name="JB" length="10" />
+        </property>
+        <property name="zw" type="string">
+            <column name="ZW" length="10" />
+        </property>
+        <property name="whcd" type="string">
+            <column name="WHCD" length="10" />
+        </property>
+        <property name="gzdw" type="string">
+            <column name="GZDW" length="50" />
+        </property>
+        <property name="zzmm" type="string">
+            <column name="ZZMM" length="10" />
+        </property>
+        <property name="sf" type="string">
+            <column name="SF" length="10" />
+        </property>
+        <property name="ssgj" type="string">
+            <column name="SSGJ" length="10" />
+        </property>
+        <property name="sfzhm" type="string">
+            <column name="SFZHM" length="50" />
+        </property>
+        <property name="yb" type="string">
+            <column name="YB" length="10" />
+        </property>
+        <property name="dh" type="string">
+            <column name="DH" length="40" />
+        </property>
+        <property name="dz" type="string">
+            <column name="DZ" length="100" />
+        </property>
         
         
     </class>
