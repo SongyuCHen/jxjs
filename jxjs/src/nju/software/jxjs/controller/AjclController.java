@@ -102,13 +102,14 @@ public class AjclController extends BaseController
 			DsplbView vo = new DsplbView();
 			vo.setJxjsbh(jxjs.getJxjsbh());
 			TDsr dsr = dsrService.getDsrByjxjsbh(jxjs.getJxjsbh());
-			vo.setDsr(dsr.getXm());
+			if(dsr != null)
+				vo.setDsr(dsr.getXm());
 			vo.setSqcs(jxjs.getSqcs());
 			PubDmb dmb = dmbService.getDmbByLbbhAndDmbh("JXJS-SQLX", jxjs.getSqlxbh());
 			if(dmb != null)
 				vo.setSqlx(dmb.getDmms());
 			vo.setSqsj(DateUtil.getStandardFormat(jxjs.getSqsj()));
-			dmb = dmbService.getDmbByLbbhAndDmbh("FBZ", jxjs.getSxfybh());
+			dmb = dmbService.getDmbByLbbhAndDmbh("FBZ0001-97", jxjs.getSxfybh());
 			if(dmb != null)
 				vo.setSxfy(dmb.getDmms());			
 			vo.setYsah(jxjs.getSxah());
@@ -127,12 +128,13 @@ public class AjclController extends BaseController
 			YsplbView vo = new YsplbView();
 			vo.setJxjsbh(jxjs.getJxjsbh());
 			TDsr dsr = dsrService.getDsrByjxjsbh(jxjs.getJxjsbh());
-			vo.setDsr(dsr.getXm());
+			if(dsr != null)
+				vo.setDsr(dsr.getXm());
 			PubDmb dmb = dmbService.getDmbByLbbhAndDmbh("JXJS-SQLX", jxjs.getSqlxbh());
 			if(dmb != null)
 				vo.setSqlx(dmb.getDmms());
 			vo.setSqsj(DateUtil.getStandardFormat(jxjs.getSqsj()));
-			dmb = dmbService.getDmbByLbbhAndDmbh("FBZ", jxjs.getSxfybh());
+			dmb = dmbService.getDmbByLbbhAndDmbh("FBZ0001-97", jxjs.getSxfybh());
 			if(dmb != null)
 				vo.setSxfy(dmb.getDmms());			
 			vo.setYsah(jxjs.getSxah());
@@ -187,6 +189,8 @@ public class AjclController extends BaseController
 		aj.setSycx(Constants.SYCX);
 		String ah = ajService.generateAh();
 		aj.setAh(ah);
+		
+		//DSR_JB DSR_GR(T_DSR)
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("ajcl-ylalb");
 		mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "ylalb"));

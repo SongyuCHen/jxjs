@@ -22,7 +22,9 @@
         <property name="sxfybh" type="string">
             <column name="SXFYBH" />
         </property>
-        
+         <property name="sqlxbh" type="string">
+            <column name="SQLXBH" />
+        </property>
         <property name="sqsj" type="java.util.Date">
             <column name="SQSJ" />
         </property>

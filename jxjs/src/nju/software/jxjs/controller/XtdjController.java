@@ -42,5 +42,15 @@ public class XtdjController extends BaseController
 		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "xtdj", "jajgfk"));
 		return mav;
 	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public ModelAndView searchByAh(){
+		String ah = "";
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("xtdj-xsajcs");
+		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
+		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "xtdj", "xsajcs"));
+		return mav;
+	}
 
 }

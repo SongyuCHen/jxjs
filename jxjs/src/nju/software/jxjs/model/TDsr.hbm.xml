@@ -8,7 +8,7 @@
             <column name="DSRBH" />
             <generator class="assigned" />
         </id>
-        <property name="jsjsbh" type="int">
+        <property name="jxjsbh" type="int">
             <column name="JXJSBH" />
         </property>
          <property name="xm" type="string">
@@ -26,7 +26,7 @@
         <property name="jg" type="string">
             <column name="JG" length="50" />
         </property>
-        <property name="JB" type="string">
+        <property name="jb" type="string">
             <column name="JB" length="10" />
         </property>
         <property name="zw" type="string">
