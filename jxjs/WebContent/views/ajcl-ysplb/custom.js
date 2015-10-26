@@ -30,7 +30,7 @@ function fetchData(){
 			for(var i = 0 ; i < resp.length ; i++){
 				$("#dataTable>tbody").append("<tr>"+
 						"<td  class='checkTD'><input type='checkbox'/></td>"+
-						"<td>"+i+"</td>"+
+						"<td>"+(i+1)+"</td>"+
 						"<td>"+resp[i].ysah+"</td>"+
 						"<td>"+resp[i].dsr+"</td>"+
 						"<td>"+resp[i].sxfy+"</td>"+

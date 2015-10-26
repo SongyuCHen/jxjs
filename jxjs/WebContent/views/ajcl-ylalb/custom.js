@@ -24,7 +24,7 @@ function fetchData(){
 			$("#dataTable>tbody").empty();
 			for(var i = 0 ; i < resp.length ; i++){
 				$("#dataTable>tbody").append("<tr>"+
-						"<td>"+i+"</td>"+
+						"<td>"+(i+1)+"</td>"+
 						"<td>"+resp[i].ah+"</td>"+
 						"<td>"+resp[i].ajmc+"</td>"+
 						"<td>"+resp[i].sqlx+"</td>"+
