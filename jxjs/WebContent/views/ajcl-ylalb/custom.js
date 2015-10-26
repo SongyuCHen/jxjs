@@ -13,6 +13,7 @@ $(function(){
 
 //获取数据
 function fetchData(){
+	$("#loading").show();
 	$.ajax({
 		url :  baseUrl+"/ajcl/ylalb.json",
 		type : "get",
@@ -35,6 +36,9 @@ function fetchData(){
 			g_dataTable = $("#dataTable").DataTable({
 				 order : [[ 5, "desc" ]]
 			});
+		},
+		complete:function(resp){
+			$("#loading").hide();
 		}
 	});
 }

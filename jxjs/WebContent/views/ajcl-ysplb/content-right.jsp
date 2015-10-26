@@ -12,6 +12,7 @@
 		<input id="dataTable-search-input" type="text" class="form-control" />
 	</div>
 	<div class="table-wrapper">
+		<img id="loading" src="${pageContext.request.contextPath}/images/loading.gif"/>
 		<div class="table-main">
 			<table id="dataTable"
 				class="dataTable table table-hover table-striped">

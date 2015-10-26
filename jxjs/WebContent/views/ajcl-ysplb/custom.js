@@ -18,6 +18,7 @@ $(function(){
 
 //获取数据
 function fetchData(){
+	$("#loading").show();
 	$.ajax({
 		url :  baseUrl+"/ajcl/ysplb.json",
 		type : "get",
@@ -46,7 +47,11 @@ function fetchData(){
 		         }],
 		         order : [[ 7, "desc" ]]
 			});
+		},
+		complete:function(resp){
+			$("#loading").hide();
 		}
+		
 	});
 }
 
@@ -56,4 +61,13 @@ function lian(){
 		alert("请选择要进行立案的项!");
 		return;
 	}
+	$.ajax({
+		url :  baseUrl+"/ajcl/la",
+		type : "get",
+		data : {},
+		dataType : 'html',
+		success : function(resp) {
+			fetchData();
+		}
+	});
 }

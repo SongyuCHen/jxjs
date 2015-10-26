@@ -36,7 +36,7 @@ function viewCaseDetail(){
 	});
 }
 
-//审批
+//弹出审批框
 function shenpi(){
 	if(!anyChecked()){
 		alert("请选择要进行审批的项!");
@@ -47,7 +47,7 @@ function shenpi(){
 	});
 }
 
-//退回
+//弹出退回框
 function tuihui(){
 	if(!anyChecked()){
 		alert("请选择要退回的项!");
@@ -61,6 +61,7 @@ function tuihui(){
 
 //获取数据
 function fetchData(){
+	$("#loading").show();
 	$.ajax({
 		url :  baseUrl+"/ajcl/dsplb.json",
 		type : "get",
@@ -89,6 +90,34 @@ function fetchData(){
 		        }],
 		        order : [[ 6, "desc" ]]
 			});
+		},
+		complete:function(resp){
+			$("#loading").hide();
+		}
+	});
+}
+
+function approval(){
+	$.ajax({
+		url :  baseUrl+"/ajcl/approval",
+		type : "get",
+		data : {},
+		dataType : 'html',
+		success : function(resp) {
+			fetchData();
+		}
+	});
+}
+
+
+function reject(){
+	$.ajax({
+		url :  baseUrl+"/ajcl/reject",
+		type : "get",
+		data : {},
+		dataType : 'html',
+		success : function(resp) {
+			fetchData();
 		}
 	});
 }

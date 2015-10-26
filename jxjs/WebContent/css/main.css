@@ -160,3 +160,15 @@ body{
 .modal-header button.close{
 	color:white;
 }
+
+
+
+#loading{
+	diplay:none;
+	position:absolute;
+	width:75px;
+	height:75px;
+	left:50%;
+	top:50%;
+	z-index:10;
+}

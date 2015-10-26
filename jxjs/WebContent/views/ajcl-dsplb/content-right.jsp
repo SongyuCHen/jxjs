@@ -13,6 +13,7 @@
 		<!-- <button class="btn btn-info" onclick="dataTable_search();">检索</button> -->
 	</div>
 	<div class="table-wrapper">
+		<img id="loading" src="${pageContext.request.contextPath}/images/loading.gif"/>
 		<div class="table-main">
 			<table id="dataTable"
 				class="dataTable table table-hover table-striped">
@@ -91,7 +92,7 @@
       		</div>
       		<div class="modal-footer">
         		<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        		<button type="button" class="btn btn-primary" data-dismiss="modal">确定 </button>
+        		<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="approval()">确定 </button>
       		</div>
     		</div><!-- /.modal-content -->
   		</div><!-- /.modal-dialog -->
@@ -128,7 +129,7 @@
       		</div>
       		<div class="modal-footer">
         		<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        		<button type="button" class="btn btn-primary" data-dismiss="modal">确定 </button>
+        		<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="reject()">确定 </button>
       		</div>
     		</div><!-- /.modal-content -->
   		</div><!-- /.modal-dialog -->
