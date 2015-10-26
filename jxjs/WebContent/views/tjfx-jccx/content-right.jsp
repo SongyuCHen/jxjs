@@ -56,7 +56,24 @@
 	</div>
 	
 	<div class="table-wrapper">
-		
+		<div class="table-main">
+			<table id="dataTable"
+				class="dataTable table table-hover table-striped">
+				<thead>
+					<tr id="table-main-thead-tr">
+						<th>序号</th>
+						<th>原审案号</th>
+						<th>当事人</th>
+						<th>生效法院</th>
+						<th>申请类型</th>
+						<th>申请时间</th>
+						<th>申请次数</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </body>
 </html>

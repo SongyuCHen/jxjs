@@ -25,4 +25,8 @@ $(document).ready(function(){
 	var date = new Date();
 	$("#startDate").val(date.Format("yyyy-MM")+"-01");
 	$("#endDate").val(date.Format("yyyy-MM-dd"));
+	
+	
+	g_dataTable = $("#dataTable").DataTable({
+	});
 });
