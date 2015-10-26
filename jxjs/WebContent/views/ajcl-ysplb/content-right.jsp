@@ -27,18 +27,8 @@
 						<th>审批时间</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr>
-						<td  class="checkTD"><input type="checkbox" /></td>
-						<td>1</td>
-						<td>(2014)临刑初字第146号</td>
-						<td>麻花藤</td>
-						<td>定西中级人民法院</td>
-						<td>减刑</td>
-						<td>2015-09-23</td>
-						<td>2015-09-15</td>
-					</tr>
-					</tbody>
+				<tbody>					
+				</tbody>
 			</table>
 			<div class="operating">
 				<button class="btn btn-primary" onclick="lian()">立案</button>

@@ -26,15 +26,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td>(2015)临刑初字第146号</td>
-						<td>麻花藤减刑</td>
-						<td>减刑</td>
-						<td>(2013)临刑初字第146号</td>
-						<td>2015-09-15</td>
-					</tr>
-					</tbody>
+				</tbody>
 			</table>
 			<div class="operating">
 				<button class="btn loc-right" onclick="print()">打印</button>
