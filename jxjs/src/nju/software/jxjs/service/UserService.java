@@ -1,5 +1,7 @@
 package nju.software.jxjs.service;
 
+import java.util.List;
+
 import nju.software.jxjs.dao.TUserDao;
 import nju.software.jxjs.dao.XtglYhbDao;
 import nju.software.jxjs.model.PubXtglYhb;
@@ -60,6 +62,17 @@ public class UserService extends BaseService{
 		}
 		return user;
 		
+	}
+	
+	public PubXtglYhb getYhbById(int yhbh){
+		return yhbDao.findById(yhbh);
+	}
+	public PubXtglYhb getYhbByXM(String xm){
+		List<PubXtglYhb> yhbs = yhbDao.findByYhmc(xm);
+		if(yhbs != null && yhbs.size()>0)
+			return yhbs.get(0);
+		else
+			return null;
 	}
 
 }

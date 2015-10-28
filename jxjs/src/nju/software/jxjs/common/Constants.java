@@ -10,4 +10,5 @@ public class Constants {
 	public final static String BYCXDZ="19";//审判程度待字  USR416-99
 	public final static String AJLY="1";//案件来源
 	public final static String SYCX="1";//适用程序
+	
 }
