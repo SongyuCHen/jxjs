@@ -100,8 +100,12 @@ function fetchData(){
 function approval(){
 	$.ajax({
 		url :  baseUrl+"/ajcl/approval",
-		type : "get",
-		data : {},
+		type : "post",
+		data : {
+			jxjsbhList:"1,2,3",
+			spyj:"新皇登基，天下大赦",
+			spsj:"2015-10-28"
+		},
 		dataType : 'html',
 		success : function(resp) {
 			fetchData();

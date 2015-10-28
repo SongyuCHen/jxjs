@@ -31,6 +31,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -198,17 +199,18 @@ public class AjclController extends BaseController
 	}
 	
 	//审批
-	@RequestMapping(value = "/approval", method = RequestMethod.GET)
-	public ModelAndView approval(){
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("ajcl-ylalb");
-		mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "ylalb"));
-		return mv;
+	@RequestMapping(value = "/approval", method = RequestMethod.POST)
+	@ResponseBody
+	public Object approval(@RequestParam("jxjsbhList") String jxjsbhList,@RequestParam("spyj") String spyj,
+			@RequestParam("spsj") String spsj){
+		//处理逻辑
+		System.out.println(jxjsbhList+" "+spyj+" "+spsj);
+		return "ok";
 	}
 	
 	//退回
 
-	@RequestMapping(value = "/reject", method = RequestMethod.GET)
+	@RequestMapping(value = "/reject", method = RequestMethod.POST)
 	public ModelAndView reject(){
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("ajcl-ylalb");
