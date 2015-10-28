@@ -1,6 +1,7 @@
 package nju.software.jxjs.service;
 
 import java.util.Date;
+import java.util.List;
 
 import nju.software.jxjs.common.Constants;
 import nju.software.jxjs.dao.PubAjJbDao;
@@ -46,6 +47,10 @@ public class PubAjJbService {
 	public PubAjJb getAjByAjxh(int ajxh){
 		return ajDao.getAjJbByAjxh(ajxh);
 	}
+	
+	public PubAjJb getAjByAh(String ah){
+		return ajDao.getAjJbByAh(ah);
+	}
 	public PubAjJb add(PubAjJb aj){
 		int ajxh = ajDao.getMaxBh();
 		ajxh ++;
@@ -53,4 +58,10 @@ public class PubAjJbService {
 		ajDao.save(aj);
 		return aj;
 	}
+	
+	public List<PubAjJb> getXsajByDate(Date kssj,Date jssj){
+		return ajDao.getXSajByLarq(kssj, jssj);
+	}
+	
+
 }

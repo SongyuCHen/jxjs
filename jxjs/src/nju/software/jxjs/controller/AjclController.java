@@ -1,14 +1,18 @@
 package nju.software.jxjs.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import nju.software.jxjs.common.Constants;
+import nju.software.jxjs.model.DsrGr;
+import nju.software.jxjs.model.DsrJb;
 import nju.software.jxjs.model.PubAjJb;
 import nju.software.jxjs.model.PubDmb;
+import nju.software.jxjs.model.PubXtglYhb;
 import nju.software.jxjs.model.TDsr;
 import nju.software.jxjs.model.TJxjs;
 import nju.software.jxjs.model.TSpxx;
@@ -22,11 +26,14 @@ import nju.software.jxjs.service.MenuService;
 import nju.software.jxjs.service.PubAjJbService;
 import nju.software.jxjs.service.SpxxService;
 import nju.software.jxjs.service.TDsrService;
+import nju.software.jxjs.service.UserService;
 import nju.software.jxjs.util.DateUtil;
 import nju.software.jxjs.view.DsplbView;
+import nju.software.jxjs.view.User;
 import nju.software.jxjs.view.YlalbView;
 import nju.software.jxjs.view.YsplbView;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,6 +61,8 @@ public class AjclController extends BaseController
 	private DmbService dmbService;
 	@Autowired
 	private SpxxService spxxService;
+	@Autowired
+	private UserService userService;
 	/**
 	 * export excel
 	 * 
@@ -173,25 +182,138 @@ public class AjclController extends BaseController
 	
 	//立案
 	@RequestMapping(value = "/la", method = RequestMethod.GET)
-	public ModelAndView la(){
-		int jxjsbh = 0;
-		TJxjs jxjs = jxjsService.getJxjsBybh(jxjsbh);
-		PubAjJb aj = new PubAjJb();
-		aj.setBafy(Constants.BAFY);
-		aj.setAjxz(Constants.AJXZ);
-		if(jxjs.getSqlxbh().equals("1"))
-			aj.setSpcx(Constants.JXSPCX);
-		else
-			aj.setSpcx(Constants.JSSPCX);
-		aj.setSpcxdz(Constants.SPCXDZ);
-		//需要特殊处理，还有撤销假释的
-//		aj.setBycxdz(bycxdz);
-		aj.setAjly(Constants.AJLY);
-		aj.setSycx(Constants.SYCX);
-		String ah = ajService.generateAh();
-		aj.setAh(ah);
+	@ResponseBody
+	public Object la(@RequestParam("jxjsbhList") String jxjsbhList){
+		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
+		String[] bhList = jxjsbhList.split(",");
+		int jxjsbh;
+		for(String bh:bhList){
+			jxjsbh = Integer.valueOf(bh);
+			TJxjs jxjs = jxjsService.getJxjsBybh(jxjsbh);
+			PubAjJb aj = new PubAjJb();
+			String spcx;
+			aj.setBafy(Constants.BAFY);
+			String ajxz=Constants.AJXZ;
+			aj.setAjxz(Constants.AJXZ);
+			if(jxjs.getSqlxbh().equals("1"))
+			{
+				aj.setSpcx(Constants.JXSPCX);
+				spcx=Constants.JXSPCX;
+			}
+			else
+			{
+				aj.setSpcx(Constants.JSSPCX);
+				spcx=Constants.JSSPCX;
+			}
+			aj.setSpcxdz(Constants.SPCXDZ);
+			//需要特殊处理，还有撤销假释的
+//			aj.setBycxdz(bycxdz);
+			String ajly=Constants.AJLY;
+			aj.setAjly(Constants.AJLY);
+			aj.setSycx(Constants.SYCX);
+			String ah = ajService.generateAh();
+			aj.setAh(ah);
+			aj.setAjmc("");
+
+			aj.setAjzt(null);
+
+			//aj.setFhcsyy(fhcsyy);
+			
+//			aj.setFjsx(fjsx);
+
+	
+			//,,/aj.setGksjg(gksjg);
 		
-		//DSR_JB DSR_GR(T_DSR)
+			aj.setJyaq(null);
+
+			aj.setLar(user.getUsername());
+			java.util.Date larq = new java.util.Date();
+			aj.setLarq(larq);
+			PubDmb pub= dmbService.getDmbByLbbhAndDmbh("系统缺省","来源地区");
+			String lydq=pub.getDmms();
+			aj.setLydq(lydq);
+//			aj.setPsycy();
+//			aj.setSffhcs(sffhcs);
+//			aj.setSfgs(sfgs);
+			aj.setSfjbaj("N");
+			//aj.setSfxess(sfxess);
+			//aj.setSfys(sfys);
+			aj.setSfzdaj("N");
+			//aj.setSfzscq(sfzscq);
+			//aj.setSlqk(slqk);
+			//aj.setSpzsqrq(spzsqrq);
+			String sslx = "4";
+			if(spcx=="2"){
+				switch(ajxz){
+							case "1":
+								if(ajly=="13"||ajly=="14"||ajly == "23"){ sslx = "2";}
+								break;
+							case "2":
+								if(ajly == "102"){sslx = "2";}
+								if(ajly == "103"){sslx = "1";}
+								if(ajly == "104"){sslx ="3";}
+								break;
+							case "6":
+								if(ajly == "101"){ sslx = "2";}
+								if(ajly == "103"){ sslx = "1";}
+								break;
+								}
+			}
+			aj.setSslx(sslx);
+		
+			//aj.setSwlx(swlx);
+//			aj.setSx(sx);
+
+//			aj.setTzhyj(null);
+			//aj.setTzsqrq(tzsqrq);
+//			aj.setYzhyj(null);
+			//aj.setYzqfrq(yzqfrq);
+			//aj.setYzsqrq(yzsqrq);
+			aj = ajService.add(aj);
+			
+			//DSR_JB 
+			TDsr dsr=dsrService.getDsrByjxjsbh(jxjsbh);
+			DsrJb dsrjb=new DsrJb();
+			dsrjb.setAjxh(aj.getAjxh());
+			dsrjb.setDsrbh(dsr.getDsrbh());
+			//dsrjb.setDsrssdw(dsr.getds);
+			//dsrjb.setDsrlb(dsr.getd);
+			//dsrjb.setSfssdbr(dsr.gets);
+			//dsrjb.setSfsa(dsr.gets);
+			//dsrjb.setSfsg(dsr.gets);
+			//dsrjb.setSfsq(dsr.getsfs);
+			//dsrjb.setSfst(dsr.getsfs);
+			//dsrjb.setSfsw(dsr.getsfs);
+			
+			
+			//DSR_GR(T_DSR)
+			DsrGr dsrgr=new DsrGr();
+			dsrgr.setAjxh(aj.getAjxh());
+			dsrgr.setDsrbh(dsr.getDsrbh());
+			dsrgr.setCsnyr(dsr.getCsnyr());
+			dsrgr.setDh(dsr.getDh());
+			dsrgr.setDz(dsr.getDz());
+			dsrgr.setGzdw(dsr.getGzdw());
+			//dsrgr.setHyqk(dsr.geth);
+			dsrgr.setJb(dsr.getJb());
+			dsrgr.setJg(dsr.getJg());
+			//dsrgr.setJkqk(dsr.getjk);
+			//dsrgr.setJtqk(dsr.getjt);
+			dsrgr.setMz(dsr.getMz());
+			dsrgr.setSf(dsr.getSf());
+			dsrgr.setSfzhm(dsr.getSfzhm());
+			dsrgr.setSsgj(dsr.getSsgj());
+			dsrgr.setWhcd(dsr.getWhcd());
+			dsrgr.setXm(dsr.getXm());
+			dsrgr.setXb(dsr.getXb());
+			dsrgr.setYb(dsr.getYb());
+			dsrgr.setZw(dsr.getZw());
+			//dsrgr.setZy(dsr.getzy);
+			//dsrgr.setZzmm(dsr.zz);
+//			int ajxh_gr=Integer.parseInt(request.getParameter("id"));
+//			int dsrbh_gr=Integer.parseInt(request.getParameter("dsrbh"));
+		}
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("ajcl-ylalb");
 		mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "ylalb"));
@@ -203,15 +325,55 @@ public class AjclController extends BaseController
 	@ResponseBody
 	public Object approval(@RequestParam("jxjsbhList") String jxjsbhList,@RequestParam("spyj") String spyj,
 			@RequestParam("spsj") String spsj){
-		//处理逻辑
-		System.out.println(jxjsbhList+" "+spyj+" "+spsj);
-		return "ok";
+		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
+		String[] bhList = jxjsbhList.split(",");
+		int jxjsbh;
+		PubDmb dmb = dmbService.getDmbByLbbhAndDmms("JXJS-AJZT", "已审批");	
+		PubXtglYhb yhb = userService.getYhbByXM(user.getUsername());
+		for(String bh:bhList){
+			jxjsbh = Integer.valueOf(bh);
+			TJxjs jxjs = jxjsService.getJxjsBybh(jxjsbh);				
+			jxjs.setAjztbh(dmb.getDmbh());
+			jxjsService.update(jxjs);
+			TSpxx spxx = new TSpxx();
+			spxx.setJxjsbh(jxjsbh);
+			spxx.setSplx("1");
+			spxx.setSpr(yhb);
+			spxx.setSpsj(new Date());
+			spxx.setSpyj(spyj);
+			spxxService.add(spxx);
+		}
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("ajcl-ylalb");
+		mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "ylalb"));
+		return mv;
 	}
 	
 	//退回
 
-	@RequestMapping(value = "/reject", method = RequestMethod.POST)
-	public ModelAndView reject(){
+	@RequestMapping(value = "/reject", method = RequestMethod.GET)
+	@ResponseBody
+	public Object reject(@RequestParam("jxjsbhList") String jxjsbhList,@RequestParam("spyj") String spyj,
+			@RequestParam("spsj") String spsj){
+		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
+		String[] bhList = jxjsbhList.split(",");
+		int jxjsbh;
+		PubDmb dmb = dmbService.getDmbByLbbhAndDmms("JXJS-AJZT", "被退回");	
+		PubXtglYhb yhb = userService.getYhbByXM(user.getUsername());
+		for(String bh:bhList){
+			jxjsbh = Integer.valueOf(bh);
+			TJxjs jxjs = jxjsService.getJxjsBybh(jxjsbh);				
+			jxjs.setAjztbh(dmb.getDmbh());
+			jxjsService.update(jxjs);
+			TSpxx spxx = new TSpxx();
+			spxx.setJxjsbh(jxjsbh);
+			spxx.setSplx("2");
+			spxx.setSpr(yhb);
+			spxx.setSpsj(new Date());
+			spxx.setSpyj(spyj);
+			spxxService.add(spxx);
+		}
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("ajcl-ylalb");
 		mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "ylalb"));

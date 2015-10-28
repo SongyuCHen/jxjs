@@ -1,6 +1,7 @@
 package nju.software.jxjs.controller;
 
 import nju.software.jxjs.service.MenuService;
+import nju.software.jxjs.service.PubAjJbService;
 import nju.software.jxjs.view.User;
 
 import org.apache.shiro.SecurityUtils;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -16,7 +18,8 @@ public class XtdjController extends BaseController
 {
 	@Autowired
 	private MenuService ms;
-	
+	@Autowired
+	private PubAjJbService ajService;
 	
 	@RequestMapping(value = "/xsajcs", method = RequestMethod.GET)
 	public ModelAndView xsajcs(){
@@ -44,8 +47,9 @@ public class XtdjController extends BaseController
 	}
 	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public ModelAndView searchByAh(){
-		String ah = "";
+	public ModelAndView searchByAh(@RequestParam("kssj") String kssj,
+			@RequestParam("jssj") String jssh){
+//		ajService.;//
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("xtdj-xsajcs");
 		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
