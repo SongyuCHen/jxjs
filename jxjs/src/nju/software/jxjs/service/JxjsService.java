@@ -51,7 +51,7 @@ public class JxjsService {
 	}
 	
 	public void update(TJxjs jxjs){
-		jd.update(jxjs);
+		jd.updateJxjs(jxjs);
 	}
 	
 	public void delete(TJxjs jxjs){

@@ -13,12 +13,14 @@ import nju.software.jxjs.service.MenuService;
 import nju.software.jxjs.view.TjfxSearchModel;
 import nju.software.jxjs.view.User;
 
+import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -59,8 +61,15 @@ public class TjfxController extends BaseController
 	 * @return
 	 */
 	@RequestMapping(value = "/sjtj", method = RequestMethod.GET)
-	public ModelAndView sjtj()
+	public ModelAndView sjtj(@RequestParam("kssj") String kssj,
+			@RequestParam("jssj") String jssj)
 	{
+		Date begin = DateUtil.parseYYYYMMDDDate(kssj);
+		Date end = DateUtil.parseYYYYMMDDDate(jssj);
+		List<PubDmb> ajztDmb = dmbService.getDmbByLbbh("JXJS-AJZT");
+		for(PubDmb dmb:ajztDmb){
+			
+		}
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("tjfx-sjtj");
 		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");

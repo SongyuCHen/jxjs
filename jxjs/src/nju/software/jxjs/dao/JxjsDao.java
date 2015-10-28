@@ -49,7 +49,7 @@ public class JxjsDao extends BaseDao {
 		getHibernateTemplate().save(jxjs);
 	}
 	
-	public void update(TJxjs jxjs){
+	public void updateJxjs(TJxjs jxjs){
 		getHibernateTemplate().update(jxjs);
 	}
 	
