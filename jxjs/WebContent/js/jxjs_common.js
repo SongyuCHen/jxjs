@@ -73,9 +73,9 @@ function updateTime(){
 
 function checkAll(){
 	if($("#checkAll").is(":checked")){
-		$(".checkTD input").attr("checked", true);
+		$(".checkTD input").prop("checked", true);
 	}else{
-		$(".checkTD input").attr("checked", false);
+		$(".checkTD input").prop("checked", false);
 	}
 }
 
