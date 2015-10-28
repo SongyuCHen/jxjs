@@ -48,7 +48,7 @@ public class PubAjJbService {
 		return ajDao.getAjJbByAjxh(ajxh);
 	}
 	
-	public PubAjJb getAjByAh(String ah){
+	public PubAjJb getXsajByAh(String ah){
 		return ajDao.getAjJbByAh(ah);
 	}
 	public PubAjJb add(PubAjJb aj){
