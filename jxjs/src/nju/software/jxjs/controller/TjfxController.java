@@ -6,11 +6,14 @@ import java.util.Date;
 import java.util.List;
 
 import nju.software.jxjs.model.PubDmb;
+import nju.software.jxjs.model.TDsr;
 import nju.software.jxjs.model.TJxjs;
 import nju.software.jxjs.service.DmbService;
 import nju.software.jxjs.service.JxjsService;
 import nju.software.jxjs.service.MenuService;
 import nju.software.jxjs.service.SpxxService;
+import nju.software.jxjs.service.TDsrService;
+import nju.software.jxjs.view.JccxView;
 import nju.software.jxjs.view.TjfxResultModel;
 import nju.software.jxjs.view.TjfxSearchModel;
 import nju.software.jxjs.view.User;
@@ -23,6 +26,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -36,6 +40,8 @@ public class TjfxController extends BaseController
 	private JxjsService jxjsService;
 	@Autowired
 	private DmbService dmbService;
+	@Autowired
+	private TDsrService dsrService;
 
 	/**
 	 * 基础查询
@@ -101,14 +107,10 @@ public class TjfxController extends BaseController
 	}
 	
 	@RequestMapping(value = "/cx", method = RequestMethod.POST)
-	public ModelAndView cx(@ModelAttribute("model")TjfxSearchModel model)
+	@ResponseBody
+	public Object cx(@ModelAttribute("model")TjfxSearchModel model)
 	{
 		logger.info("start date:" + model.getStartDate() + "  end date:" + model.getEndDate() + "  condition:" + model.getCondition());
-		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("tjfx-jccx");
-		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
-		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "tjfx", "jccx"));
 		List<PubDmb> dmbList = dmbService.getDmbByLbbh("JXJS-AJZT");
 		List<String> conditionList = new ArrayList<String>();
 		for(PubDmb dmb:dmbList){
@@ -118,9 +120,24 @@ public class TjfxController extends BaseController
 		Date end = model.getEndDate();
 		String type = model.getCondition();
 		List<TJxjs> jxjsList = jxjsService.getJxjsByDateAndType(begin, end, type);
-		mav.addObject("conditionList", conditionList);
-		mav.addObject("jxjsList",jxjsList);
-		
-		return mav;
+		List<JccxView> jccxList = new ArrayList<JccxView>();
+		for(TJxjs jxjs:jxjsList){
+			JccxView jv = new JccxView();
+			jv.setYsah(jxjs.getSxah());
+			TDsr dsr = dsrService.getDsrByjxjsbh(jxjs.getJxjsbh());
+			if(dsr != null)
+				jv.setDsr(dsr.getXm());
+			PubDmb dmb = dmbService.getDmbByLbbhAndDmbh("JXJS-SQLX", jxjs.getSqlxbh());
+			if(dmb != null)
+				jv.setSqlx(dmb.getDmms());
+			jv.setSqsj(nju.software.jxjs.util.DateUtil.getStandardFormat(jxjs.getSqsj()));
+			dmb = dmbService.getDmbByLbbhAndDmbh("FBZ0001-97", jxjs.getSxfybh());
+			if(dmb != null)
+				jv.setSxfy(dmb.getDmms());			
+			jv.setSqsj(nju.software.jxjs.util.DateUtil.getStandardFormat(jxjs.getSqsj()));
+			jv.setSqcs(jxjs.getSqcs());
+			
+		}
+		return jxjsList;
 	}
 }
