@@ -4,9 +4,13 @@ import java.util.Date;
 import java.util.List;
 
 import nju.software.jxjs.dao.JxjsDao;
+import nju.software.jxjs.dao.SpxxDao;
 import nju.software.jxjs.dao.XtglDmbDao;
+import nju.software.jxjs.dao.XtglYhbDao;
 import nju.software.jxjs.model.PubDmb;
+import nju.software.jxjs.model.PubXtglYhb;
 import nju.software.jxjs.model.TJxjs;
+import nju.software.jxjs.model.TSpxx;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +21,10 @@ public class JxjsService {
 	private JxjsDao jd;
 	@Autowired
 	private XtglDmbDao dmbDao;
+	@Autowired
+	private XtglYhbDao yhbDao;
+	@Autowired
+	private SpxxDao spxxDao;
 	public TJxjs getJxjsBybh(int jxjsbh){
 		return jd.getJxjsByBh(jxjsbh);
 	}
@@ -50,6 +58,34 @@ public class JxjsService {
 //		}
 //		return jd.getSumByDateAndType(kssj, jssj, type);
 //	}
+	
+	public void approval(String jxjsbhList,String spr,String spyj,Date spsj){
+		String[] bhList = jxjsbhList.split(",");
+		int jxjsbh;
+		int spxxbh;
+		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", "已审批");
+		PubXtglYhb yhb = new PubXtglYhb();
+		List<PubXtglYhb> yhbs = yhbDao.findByYhmc(spr);
+		if(yhbs != null && yhbs.size()>0)
+			yhb = yhbs.get(0);
+		for(String bh:bhList){
+			jxjsbh = Integer.valueOf(bh);
+			TJxjs jxjs = jd.getJxjsByBh(jxjsbh);				
+			jxjs.setAjztbh(dmb.getDmbh());
+			jd.updateJxjs(jxjs);
+			TSpxx spxx = new TSpxx();
+			spxx.setJxjsbh(jxjsbh);
+			spxx.setSplx("1");
+			spxx.setSpr(yhb);
+			spxx.setSpsj(new Date());
+			spxx.setSpyj(spyj);
+			spxxbh = spxxDao.getMaxBh();
+			spxxbh ++;
+			spxx.setSpxxbh(spxxbh);
+			spxxDao.save(spxx);
+		}
+		 
+	}
 	
 	
 	public TJxjs add(TJxjs jxjs){

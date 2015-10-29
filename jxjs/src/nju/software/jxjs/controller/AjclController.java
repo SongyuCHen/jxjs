@@ -118,7 +118,7 @@ public class AjclController extends BaseController
 			PubDmb dmb = dmbService.getDmbByLbbhAndDmbh("JXJS-SQLX", jxjs.getSqlxbh());
 			if(dmb != null)
 				vo.setSqlx(dmb.getDmms());
-			vo.setSqsj(DateUtil.getStandardFormat(jxjs.getSqsj()));
+			vo.setSqsj(DateUtil.format(jxjs.getSqsj(),DateUtil.webFormat));
 			dmb = dmbService.getDmbByLbbhAndDmbh("FBZ0001-97", jxjs.getSxfybh());
 			if(dmb != null)
 				vo.setSxfy(dmb.getDmms());			
@@ -143,7 +143,7 @@ public class AjclController extends BaseController
 			PubDmb dmb = dmbService.getDmbByLbbhAndDmbh("JXJS-SQLX", jxjs.getSqlxbh());
 			if(dmb != null)
 				vo.setSqlx(dmb.getDmms());
-			vo.setSqsj(DateUtil.getStandardFormat(jxjs.getSqsj()));
+			vo.setSqsj(DateUtil.format(jxjs.getSqsj(), DateUtil.webFormat));
 			dmb = dmbService.getDmbByLbbhAndDmbh("FBZ0001-97", jxjs.getSxfybh());
 			if(dmb != null)
 				vo.setSxfy(dmb.getDmms());			
@@ -151,7 +151,7 @@ public class AjclController extends BaseController
 			List<TSpxx> spxxList = spxxService.getSPxxByJxjsbh(jxjs.getJxjsbh());
 			if(spxxList != null && spxxList.size()>0){
 				TSpxx spxx = spxxList.get(spxxList.size() - 1);
-				vo.setSpsj(DateUtil.getStandardFormat(spxx.getSpsj()));
+				vo.setSpsj(DateUtil.format(spxx.getSpsj(), DateUtil.webFormat));
 			}
 			ysplbView.add(vo);
 			
@@ -169,7 +169,7 @@ public class AjclController extends BaseController
 			PubAjJb aj = ajService.getAjByAjxh(jxjs.getLaajxh());
 			vo.setAh(aj.getAh());
 			vo.setAjmc(aj.getAjmc());
-			vo.setLasj(DateUtil.getStandardFormat(aj.getLarq()));
+			vo.setLasj(DateUtil.format(aj.getLarq(), DateUtil.webFormat));
 			PubDmb dmb = dmbService.getDmbByLbbhAndDmbh("JXJS-SQLX", jxjs.getSqlxbh());
 			if(dmb != null)
 				vo.setSqlx(dmb.getDmms());
@@ -326,23 +326,9 @@ public class AjclController extends BaseController
 	public Object approval(@RequestParam("jxjsbhList") String jxjsbhList,@RequestParam("spyj") String spyj,
 			@RequestParam("spsj") String spsj){
 		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
-		String[] bhList = jxjsbhList.split(",");
-		int jxjsbh;
-		PubDmb dmb = dmbService.getDmbByLbbhAndDmms("JXJS-AJZT", "已审批");	
-		PubXtglYhb yhb = userService.getYhbByXM(user.getUsername());
-		for(String bh:bhList){
-			jxjsbh = Integer.valueOf(bh);
-			TJxjs jxjs = jxjsService.getJxjsBybh(jxjsbh);				
-			jxjs.setAjztbh(dmb.getDmbh());
-			jxjsService.update(jxjs);
-			TSpxx spxx = new TSpxx();
-			spxx.setJxjsbh(jxjsbh);
-			spxx.setSplx("1");
-			spxx.setSpr(yhb);
-			spxx.setSpsj(new Date());
-			spxx.setSpyj(spyj);
-			spxxService.add(spxx);
-		}
+		String spr = user.getUsername();
+		Date dSpsj = DateUtil.parse(spsj, DateUtil.webFormat);
+		jxjsService.approval(jxjsbhList, spr, spyj, dSpsj);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("ajcl-ylalb");

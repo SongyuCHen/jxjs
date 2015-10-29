@@ -91,7 +91,7 @@ public class AjclExcelView extends AbstractExcelView
         
         response.setContentType("application/vnd.ms-excel");     
         //set filename
-        String curDateStr = DateUtil.getStandardFormat(new Date());
+        String curDateStr = DateUtil.format(new Date(), DateUtil.webFormat);
         String filename = "减刑假释-"+curDateStr+".xls";
 		response.setHeader("Content-Disposition", "attachment; filename=" 
 				+ EncodeUtil.encodeFilename(filename, request));
