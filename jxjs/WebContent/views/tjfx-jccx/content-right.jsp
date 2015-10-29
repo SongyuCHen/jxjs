@@ -42,7 +42,7 @@
 			
 			<div class="float-left float-gap">
 				<label class="label-control">条件</label>
-				<select class="select-control select-condition" name="condition">
+				<select class="select-control select-condition" name="condition" id="condition">
 					<c:forEach items="${conditionList }" var="condition">
 						<option>${condition }</option>
 					</c:forEach>
@@ -56,6 +56,7 @@
 	</div>
 	
 	<div class="table-wrapper">
+		<img id="loading" src="${pageContext.request.contextPath}/images/loading.gif"/>
 		<div class="table-main">
 			<table id="dataTable"
 				class="dataTable table table-hover table-striped">
@@ -68,6 +69,8 @@
 						<th>申请类型</th>
 						<th>申请时间</th>
 						<th>申请次数</th>
+						<th>处理状态</th>
+						<th>已服刑期</th>
 					</tr>
 				</thead>
 				<tbody>
