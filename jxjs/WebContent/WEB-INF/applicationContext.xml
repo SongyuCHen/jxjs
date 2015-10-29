@@ -76,7 +76,6 @@
 				<prop key="hibernate.cache.use_second_level_cache">false</prop>
 			</props>
 		</property>
-
 	</bean>
 
 

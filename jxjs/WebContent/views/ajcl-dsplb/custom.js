@@ -102,7 +102,7 @@ function approval(){
 		url :  baseUrl+"/ajcl/approval",
 		type : "post",
 		data : {
-			jxjsbhList:"1,2,3",
+			jxjsbhList:"4",
 			spyj:"新皇登基，天下大赦",
 			spsj:"2015-10-28"
 		},
