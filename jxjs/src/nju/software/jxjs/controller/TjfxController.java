@@ -13,12 +13,14 @@ import nju.software.jxjs.service.JxjsService;
 import nju.software.jxjs.service.MenuService;
 import nju.software.jxjs.service.SpxxService;
 import nju.software.jxjs.service.TDsrService;
+import nju.software.jxjs.util.DateUtil;
 import nju.software.jxjs.view.JccxView;
 import nju.software.jxjs.view.TjfxResultModel;
 import nju.software.jxjs.view.TjfxSearchModel;
 import nju.software.jxjs.view.User;
 
-import org.apache.poi.ss.usermodel.DateUtil;
+
+
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -73,8 +75,8 @@ public class TjfxController extends BaseController
 	public ModelAndView sjtj(@RequestParam("kssj") String kssj,
 			@RequestParam("jssj") String jssj)
 	{
-		Date begin = DateUtil.parseYYYYMMDDDate(kssj);
-		Date end = DateUtil.parseYYYYMMDDDate(jssj);
+		Date begin = DateUtil.parse(kssj, DateUtil.webFormat);
+		Date end = DateUtil.parse(jssj, DateUtil.webFormat);
 		List<PubDmb> ajztDmb = dmbService.getDmbByLbbh("JXJS-AJZT");
 		List<TjfxResultModel> resultList = new ArrayList<TjfxResultModel>();
 		int sz;
@@ -130,11 +132,11 @@ public class TjfxController extends BaseController
 			PubDmb dmb = dmbService.getDmbByLbbhAndDmbh("JXJS-SQLX", jxjs.getSqlxbh());
 			if(dmb != null)
 				jv.setSqlx(dmb.getDmms());
-			jv.setSqsj(nju.software.jxjs.util.DateUtil.getStandardFormat(jxjs.getSqsj()));
+			jv.setSqsj(DateUtil.format(jxjs.getSqsj(), DateUtil.webFormat));
 			dmb = dmbService.getDmbByLbbhAndDmbh("FBZ0001-97", jxjs.getSxfybh());
 			if(dmb != null)
 				jv.setSxfy(dmb.getDmms());			
-			jv.setSqsj(nju.software.jxjs.util.DateUtil.getStandardFormat(jxjs.getSqsj()));
+			jv.setSqsj(DateUtil.format(jxjs.getSqsj(), DateUtil.webFormat));
 			jv.setSqcs(jxjs.getSqcs());
 			
 		}

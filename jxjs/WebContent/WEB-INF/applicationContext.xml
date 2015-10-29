@@ -108,6 +108,7 @@
 			<tx:method name="modify*" propagation="REQUIRED" />
 			<tx:method name="edit*" propagation="REQUIRED" />
 			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="*" propagation="REQUIRED" /> 
 		</tx:attributes>
 	</tx:advice>
 	<aop:config>
@@ -117,7 +118,7 @@
 		<!-- 指定在userpointCut切入点应用txAdvice事务增强处理 -->
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="userPointCut" />
 	</aop:config>
-
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
 
 
