@@ -2,9 +2,12 @@ package nju.software.jxjs.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import nju.software.jxjs.model.TSpxx;
+
 
 @Repository
 public class SpxxDao extends BaseDao {
@@ -26,6 +29,7 @@ public class SpxxDao extends BaseDao {
 		
 		return 0;
 	}
+
 	public void save(TSpxx spxx){
 		getHibernateTemplate().save(spxx);
 	}

@@ -3,6 +3,8 @@ package nju.software.jxjs.dao;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import nju.software.jxjs.model.TJxjs;
@@ -44,7 +46,25 @@ public class JxjsDao extends BaseDao {
 		
 		return 0;
 	}
-	
+	/**
+	 * 根据时间段获取减刑假释申请的申请总数
+	 * @param kssj
+	 * @param jssj
+	 * @return
+	 */
+	public int getSqSumByDateAndType(Date kssj,Date jssj){
+		String hql = "select count(*) from TJxjs jxjs where jxjs.ajztbh='1'and jxjs.jxjsbh in(select jxjsbh from TSpxx where spxx"+jssj+" and sp.sp";
+		
+		Session s = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
+		Query query = s.createQuery(hql);
+
+		int maxbh = 0;
+		if (query.uniqueResult() != null)
+			maxbh = (Integer) query.uniqueResult();
+
+		
+		return maxbh;
+	}
 	public void save(TJxjs jxjs){
 		getHibernateTemplate().save(jxjs);
 	}

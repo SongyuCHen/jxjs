@@ -16,6 +16,8 @@ public class SpxxService {
 		return spxxDao.getSPxxByJxjsbh(jxjsbh);
 	}
 	
+	
+	
 	public TSpxx add(TSpxx spxx){
 		int spxxbh = spxxDao.getMaxBh();
 		spxxbh ++;

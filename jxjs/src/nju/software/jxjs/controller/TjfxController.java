@@ -10,6 +10,8 @@ import nju.software.jxjs.model.TJxjs;
 import nju.software.jxjs.service.DmbService;
 import nju.software.jxjs.service.JxjsService;
 import nju.software.jxjs.service.MenuService;
+import nju.software.jxjs.service.SpxxService;
+import nju.software.jxjs.view.TjfxResultModel;
 import nju.software.jxjs.view.TjfxSearchModel;
 import nju.software.jxjs.view.User;
 
@@ -34,6 +36,7 @@ public class TjfxController extends BaseController
 	private JxjsService jxjsService;
 	@Autowired
 	private DmbService dmbService;
+
 	/**
 	 * 基础查询
 	 * 
@@ -67,8 +70,13 @@ public class TjfxController extends BaseController
 		Date begin = DateUtil.parseYYYYMMDDDate(kssj);
 		Date end = DateUtil.parseYYYYMMDDDate(jssj);
 		List<PubDmb> ajztDmb = dmbService.getDmbByLbbh("JXJS-AJZT");
+		List<TjfxResultModel> resultList = new ArrayList<TjfxResultModel>();
+		int sz;
 		for(PubDmb dmb:ajztDmb){
-			
+//			TjfxResultModel result = new TjfxResultModel();
+//			result.setS_type(dmb.getDmms());
+//			sz = jxjsService.getSumByDateAndType(kssj, jssj, type)
+//			result.setI_sz(i_sz);
 		}
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("tjfx-sjtj");

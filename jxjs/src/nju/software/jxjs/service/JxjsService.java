@@ -42,6 +42,16 @@ public class JxjsService {
 		return jd.getJxjsByDateAndAjztbh(begin, end, ajztbh);
 	}
 	
+//	public int getSumByDateAndType(Date kssj,Date jssj,String type){
+//		int sz = 0;
+//		switch(type){
+//			case "1":
+//				sz = jd.get
+//		}
+//		return jd.getSumByDateAndType(kssj, jssj, type);
+//	}
+	
+	
 	public TJxjs add(TJxjs jxjs){
 		int jxjsbh = jd.getMaxBh();
 		jxjsbh ++;
