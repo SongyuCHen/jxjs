@@ -1,4 +1,5 @@
 var baseUrl = getRootPath();
+var g_resp;
 
 $(document).ready(function(){
 	
@@ -74,6 +75,7 @@ function fetchData(){
 		dataType : 'html',
 		success : function(resp) {
 			resp = $.parseJSON(resp);
+			g_resp = resp;
 			g_dataTable.clear().destroy();
 			$("#dataTable>tbody").empty();
 			for(var i = 0 ; i < resp.length ; i++){
@@ -108,7 +110,9 @@ function approval(){
 	var jxjsbhList = [];
 	$("#dataTable td.checkTD input").each(function(){
 		if($(this).is(":checked")){
-			jxjsbhList.push($(this).parent().parent().children().eq(1).text());
+			var i = $(this).parent().parent().children().eq(1).text();
+			i--;
+			jxjsbhList.push(g_resp[i].jxjsbh);
 		}
 	});
 	$.ajax({
@@ -128,10 +132,24 @@ function approval(){
 
 
 function reject(){
+	var spsj = $("#currentDateTuihui").text();
+	var spyj = $("#spyjTuihui").val();
+	var jxjsbhList = [];
+	$("#dataTable td.checkTD input").each(function(){
+		if($(this).is(":checked")){
+			var i = $(this).parent().parent().children().eq(1).text();
+			i--;
+			jxjsbhList.push(g_resp[i].jxjsbh);
+		}
+	});
 	$.ajax({
 		url :  baseUrl+"/ajcl/reject",
 		type : "get",
-		data : {},
+		data : {
+			jxjsbhList:jxjsbhList.join(),
+			spyj:spyj,
+			spsj:spsj
+		},
 		dataType : 'html',
 		success : function(resp) {
 			fetchData();
