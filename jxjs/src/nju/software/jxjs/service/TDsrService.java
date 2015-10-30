@@ -1,7 +1,5 @@
 package nju.software.jxjs.service;
 
-import java.util.List;
-
 import nju.software.jxjs.dao.TDsrDao;
 import nju.software.jxjs.model.TDsr;
 

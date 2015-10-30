@@ -5,8 +5,10 @@ import java.util.Date;
 import java.util.List;
 
 import nju.software.jxjs.model.PubAjJb;
+import nju.software.jxjs.model.PubLaAy;
 import nju.software.jxjs.service.MenuService;
 import nju.software.jxjs.service.PubAjJbService;
+import nju.software.jxjs.service.PubLaAyService;
 import nju.software.jxjs.util.DateUtil;
 import nju.software.jxjs.util.StringUtil;
 import nju.software.jxjs.view.User;
@@ -28,7 +30,8 @@ public class XtdjController extends BaseController
 	private MenuService ms;
 	@Autowired
 	private PubAjJbService ajService;
-	
+	@Autowired
+	private PubLaAyService ayService;
 	@RequestMapping(value = "/xsajcs", method = RequestMethod.GET)
 	public ModelAndView xsajcs(){
 		ModelAndView mav = new ModelAndView();
@@ -80,8 +83,9 @@ public class XtdjController extends BaseController
 			XsajcsView view = new XsajcsView();
 			view.setAh(aj.getAh());
 			view.setAjmc(aj.getAjmc());
-//			ayService.
-//			view.setAy();
+			PubLaAy ay = ayService.getAyByAjxh(aj.getAjxh());
+			if(ay!=null)
+				view.setAy(ay.getLaay());
 //			view.setBafy(bafy);
 			view.setLarq(DateUtil.format(aj.getLarq(), DateUtil.webFormat));
 			view.setJarq(DateUtil.format(aj.getJarq(), DateUtil.webFormat));
