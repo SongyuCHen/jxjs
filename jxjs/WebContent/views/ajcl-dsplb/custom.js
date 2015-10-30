@@ -16,6 +16,7 @@ $(document).ready(function(){
 });
 
 $(function(){
+
 	g_dataTable = $("#dataTable").DataTable({
 		 columnDefs:[{
            orderable:false,//禁用排序
@@ -42,6 +43,8 @@ function shenpi(){
 		alert("请选择要进行审批的项!");
 		return;
 	}
+	var date = new Date();
+	$("#currentDateShenpi").text(date.Format("yyyy-MM-dd"));
 	$("#shenpiModal").modal({
 		keyboard: true
 	});
@@ -53,6 +56,8 @@ function tuihui(){
 		alert("请选择要退回的项!");
 		return;
 	}
+	var date = new Date();
+	$("#currentDateTuihui").text(date.Format("yyyy-MM-dd"));
 	$("#tuihuiModal").modal({
 		keyboard: true
 	});
@@ -98,13 +103,21 @@ function fetchData(){
 }
 
 function approval(){
+	var spsj = $("#currentDateShenpi").text();
+	var spyj = $("#spyjShenpi").val();
+	var jxjsbhList = [];
+	$("#dataTable td.checkTD input").each(function(){
+		if($(this).is(":checked")){
+			jxjsbhList.push($(this).parent().parent().children().eq(1).text());
+		}
+	});
 	$.ajax({
 		url :  baseUrl+"/ajcl/approval",
 		type : "post",
 		data : {
-			jxjsbhList:"4",
-			spyj:"新皇登基，天下大赦",
-			spsj:"2015-10-28"
+			jxjsbhList:jxjsbhList.join(),
+			spyj:spyj,
+			spsj:spsj
 		},
 		dataType : 'html',
 		success : function(resp) {

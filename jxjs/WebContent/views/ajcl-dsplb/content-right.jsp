@@ -75,7 +75,7 @@
   						<div class="col-md-3 dlabel">
   							审批时间:
   						</div>
-  						<div class="col-md-3">
+  						<div class="col-md-3" id="currentDateShenpi">
   							2015-10-15
   						</div>
   						<div class="col-md-3 dlabel">审批人:</div>
@@ -84,7 +84,7 @@
 					<div class="row">
   						<div class="col-md-3 dlabel">审批意见:</div>
   						<div class="col-md-9">
-  							<textarea rows="3" cols="50">符合立案条件</textarea>
+  							<textarea rows="3" cols="50" id="spyjShenpi">符合立案条件</textarea>  							
   						</div>
 					</div>
 					<div class="row"></div>
@@ -112,7 +112,7 @@
   						<div class="col-md-3 dlabel">
   							审批时间:
   						</div>
-  						<div class="col-md-3">
+  						<div class="col-md-3"  id="currentDateTuihui">
   							2015-10-15
   						</div>
   						<div class="col-md-3 dlabel">审批人:</div>
@@ -121,7 +121,7 @@
 					<div class="row">
   						<div class="col-md-3 dlabel">退回原因:</div>
   						<div class="col-md-9">
-  							<textarea rows="3" cols="50">材料不全</textarea>
+  							<textarea rows="3" cols="50" id="spyjTuihui">材料不全</textarea>
   						</div>
 					</div>
 					<div class="row"></div>
