@@ -61,7 +61,7 @@
 	</bean>
 
 	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource" ref="DataSource" />
 		<property name="mappingLocations">
 			<value>classpath:nju/software/jxjs/model/*.hbm.xml </value>
@@ -79,7 +79,7 @@
 	</bean>
 
 
-	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
 		<property name="sessionFactory" ref="sessionFactory" />
 		<property name="cacheQueries">
 			<value>true</value>
@@ -89,7 +89,7 @@
 
 	<!-- 事务管理器 -->
 	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 
@@ -112,7 +112,7 @@
 	</tx:advice>
 	<aop:config>
 		<!-- 配置一个切入点，匹配UserManager的所有方法的执行 -->
-		<aop:pointcut expression="execution(public * nju.software.jxjs.service.*.*(..))"
+		<aop:pointcut expression="execution(* nju.software.jxjs.service.*.*(..))"
 			id="userPointCut" />
 		<!-- 指定在userpointCut切入点应用txAdvice事务增强处理 -->
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="userPointCut" />

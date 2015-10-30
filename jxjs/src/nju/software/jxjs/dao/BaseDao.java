@@ -2,7 +2,7 @@ package nju.software.jxjs.dao;
 
 import org.hibernate.FlushMode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate4.HibernateTemplate;
+import org.springframework.orm.hibernate3.HibernateTemplate;
 
 public class BaseDao {
 	
@@ -11,7 +11,7 @@ public class BaseDao {
 	
 	public HibernateTemplate getHibernateTemplate()
 	{
-		hibernateTemplate.getSessionFactory().getCurrentSession().setFlushMode(FlushMode.AUTO);
+		//hibernateTemplate.getSessionFactory().getCurrentSession().setFlushMode(FlushMode.AUTO);
 		return hibernateTemplate;
 	}
 
