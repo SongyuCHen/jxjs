@@ -67,12 +67,12 @@ public class TjfxController extends BaseController
 	}
 	
 	/**
-	 * 数据统计
+	 * 数据统计-统计时间段内不同状态的减刑假释申请
 	 * 
 	 * @return
 	 */
 	@RequestMapping(value = "/sjtj", method = RequestMethod.GET)
-	public ModelAndView sjtj(@RequestParam("kssj") String kssj,
+	public Object sjtj(@RequestParam("kssj") String kssj,
 			@RequestParam("jssj") String jssj)
 	{
 		Date begin = DateUtil.parse(kssj, DateUtil.webFormat);
@@ -81,16 +81,35 @@ public class TjfxController extends BaseController
 		List<TjfxResultModel> resultList = new ArrayList<TjfxResultModel>();
 		int sz;
 		for(PubDmb dmb:ajztDmb){
-//			TjfxResultModel result = new TjfxResultModel();
-//			result.setS_type(dmb.getDmms());
-//			sz = jxjsService.getSumByDateAndType(kssj, jssj, type)
-//			result.setI_sz(i_sz);
+			TjfxResultModel result = new TjfxResultModel();
+			result.setS_type(dmb.getDmms());
+			sz = jxjsService.getSumByDate(begin, end, dmb.getDmbh());
+			result.setI_sz(sz);
 		}
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("tjfx-sjtj");
-		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
-		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "tjfx", "sjtj"));
-		return mav;
+		return resultList;
+	}
+	
+	/**
+	 * 数据统计-统计时间段内不同状态的减刑假释申请
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/sjtj1", method = RequestMethod.GET)
+	public Object sjtj1(@RequestParam("kssj") String kssj,
+			@RequestParam("jssj") String jssj)
+	{
+		Date begin = DateUtil.parse(kssj, DateUtil.webFormat);
+		Date end = DateUtil.parse(jssj, DateUtil.webFormat);
+		List<PubDmb> ajztDmb = dmbService.getDmbByLbbh("JXJS-AJZT");
+		List<TjfxResultModel> resultList = new ArrayList<TjfxResultModel>();
+		int sz;
+		for(PubDmb dmb:ajztDmb){
+			TjfxResultModel result = new TjfxResultModel();
+			result.setS_type(dmb.getDmms());
+			sz = jxjsService.getSumByCondition(begin, end, dmb.getDmbh());
+			result.setI_sz(sz);
+		}
+		return resultList;
 	}
 	
 	/**
@@ -138,8 +157,8 @@ public class TjfxController extends BaseController
 				jv.setSxfy(dmb.getDmms());			
 			jv.setSqsj(DateUtil.format(jxjs.getSqsj(), DateUtil.webFormat));
 			jv.setSqcs(jxjs.getSqcs());
-			
+			jccxList.add(jv);
 		}
-		return jxjsList;
+		return jccxList;
 	}
 }

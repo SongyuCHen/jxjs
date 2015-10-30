@@ -50,12 +50,25 @@ public class PubAjJbDao extends BaseDao {
 		
 		return 0;
 	}
+	@SuppressWarnings("unchecked")
 	public List<PubAjJb> getXSajByLarq(Date begin,Date end){
 		String hql = "from PubAjJb aj where aj.larq>=? and aj.larq<=? and aj.ajxz = '1'";
 		List<PubAjJb> ajList = (List<PubAjJb>) getHibernateTemplate().find(hql, new Object[]{begin,end});
 		return ajList;
 	}
-
+	@SuppressWarnings("unchecked")
+	public List<PubAjJb> getXSajAfterLarq(Date begin){
+		String hql = "from PubAjJb aj where aj.larq>=? and aj.ajxz = '1'";
+		List<PubAjJb> ajList = (List<PubAjJb>) getHibernateTemplate().find(hql, new Object[]{begin});
+		return ajList;
+	}
+	@SuppressWarnings("unchecked")
+	public List<PubAjJb> getXSajBeforeLarq(Date end){
+		String hql = "from PubAjJb aj where aj.larq<=? and aj.ajxz = '1'";
+		List<PubAjJb> ajList = (List<PubAjJb>) getHibernateTemplate().find(hql, new Object[]{end});
+		return ajList;
+	}
+	
 	
 	public List<PubAjJb> getCsaj(Date begin,Date end){
 		String hql = "select aj.ah,aj.ajmc,aj.larq,aj.jarq,aj.bafy from PubAjJb aj where aj.larq>=? and aj.larq<=? and aj.ajxh in(select ajxh from TXsaj)";		

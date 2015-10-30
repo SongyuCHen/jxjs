@@ -28,6 +28,7 @@ import nju.software.jxjs.service.SpxxService;
 import nju.software.jxjs.service.TDsrService;
 import nju.software.jxjs.service.UserService;
 import nju.software.jxjs.util.DateUtil;
+import nju.software.jxjs.view.BthlbView;
 import nju.software.jxjs.view.DsplbView;
 import nju.software.jxjs.view.User;
 import nju.software.jxjs.view.YlalbView;
@@ -101,7 +102,13 @@ public class AjclController extends BaseController
 		mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "ylalb"));
 		return mv;
 	}
-	
+	@RequestMapping(value = "/bthlb", method = RequestMethod.GET)
+	public ModelAndView bthlb(){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("ajcl-bthlb");
+		mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "bthlb"));
+		return mv;
+	}
 	
 	@RequestMapping(value = "/dsplb.json", method = RequestMethod.GET)
 	@ResponseBody
@@ -178,6 +185,35 @@ public class AjclController extends BaseController
 			
 		}
 		return ylalbView;
+	}
+	@RequestMapping(value = "/bthlb.json", method = RequestMethod.GET)
+	@ResponseBody
+	public Object getBthlb(){
+		List<BthlbView> bthlbView = new ArrayList<BthlbView>();
+		List<TJxjs> jxjsList = jxjsService.getBthlb();
+		for(TJxjs jxjs:jxjsList){
+			BthlbView vo = new BthlbView();
+			vo.setJxjsbh(jxjs.getJxjsbh());
+			TDsr dsr = dsrService.getDsrByjxjsbh(jxjs.getJxjsbh());
+			if(dsr != null)
+				vo.setDsr(dsr.getXm());
+			PubDmb dmb = dmbService.getDmbByLbbhAndDmbh("JXJS-SQLX", jxjs.getSqlxbh());
+			if(dmb != null)
+				vo.setSqlx(dmb.getDmms());
+			vo.setSqsj(DateUtil.format(jxjs.getSqsj(), DateUtil.webFormat));
+			dmb = dmbService.getDmbByLbbhAndDmbh("FBZ0001-97", jxjs.getSxfybh());
+			if(dmb != null)
+				vo.setSxfy(dmb.getDmms());			
+			vo.setYsah(jxjs.getSxah());
+			List<TSpxx> spxxList = spxxService.getSPxxByJxjsbh(jxjs.getJxjsbh());
+			if(spxxList != null && spxxList.size()>0){
+				TSpxx spxx = spxxList.get(spxxList.size() - 1);
+				vo.setThsj(DateUtil.format(spxx.getSpsj(), DateUtil.webFormat));
+			}
+			bthlbView.add(vo);
+			
+		}
+		return bthlbView;
 	}
 	
 	//立案
@@ -328,8 +364,7 @@ public class AjclController extends BaseController
 		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
 		String spr = user.getUsername();
 		Date dSpsj = DateUtil.parse(spsj, DateUtil.webFormat);
-		jxjsService.approval(jxjsbhList, spr, spyj, dSpsj);
-		
+		jxjsService.approval(jxjsbhList, spr, spyj, dSpsj);		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("ajcl-ylalb");
 		mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "ylalb"));
@@ -343,23 +378,9 @@ public class AjclController extends BaseController
 	public Object reject(@RequestParam("jxjsbhList") String jxjsbhList,@RequestParam("spyj") String spyj,
 			@RequestParam("spsj") String spsj){
 		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
-		String[] bhList = jxjsbhList.split(",");
-		int jxjsbh;
-		PubDmb dmb = dmbService.getDmbByLbbhAndDmms("JXJS-AJZT", "被退回");	
-		PubXtglYhb yhb = userService.getYhbByXM(user.getUsername());
-		for(String bh:bhList){
-			jxjsbh = Integer.valueOf(bh);
-			TJxjs jxjs = jxjsService.getJxjsBybh(jxjsbh);				
-			jxjs.setAjztbh(dmb.getDmbh());
-			jxjsService.update(jxjs);
-			TSpxx spxx = new TSpxx();
-			spxx.setJxjsbh(jxjsbh);
-			spxx.setSplx("2");
-			spxx.setSpr(yhb);
-			spxx.setSpsj(new Date());
-			spxx.setSpyj(spyj);
-			spxxService.add(spxx);
-		}
+		String spr = user.getUsername();
+		Date dSpsj = DateUtil.parse(spsj, DateUtil.webFormat);
+		jxjsService.reject(jxjsbhList, spr, spyj, dSpsj);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("ajcl-ylalb");
 		mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "ylalb"));

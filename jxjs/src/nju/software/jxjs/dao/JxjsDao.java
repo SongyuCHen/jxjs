@@ -52,18 +52,95 @@ public class JxjsDao extends BaseDao {
 	 * @param jssj
 	 * @return
 	 */
-	public int getSqSumByDateAndType(Date kssj,Date jssj){
-		String hql = "select count(*) from TJxjs jxjs where jxjs.ajztbh='1'and jxjs.jxjsbh in(select jxjsbh from TSpxx where spxx"+jssj+" and sp.sp";
+	public int getSqSumByDate(Date kssj,Date jssj){
+		String hql = "select count(*) from TJxjs jxjs where jxjs.sqsj>='"+kssj+"' and jxjs.sqsj <='"+jssj+"'";
 		
 		Session s = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
 		Query query = s.createQuery(hql);
-
-		int maxbh = 0;
+		int sz = 0;
 		if (query.uniqueResult() != null)
-			maxbh = (Integer) query.uniqueResult();
-
+			sz = (Integer) query.uniqueResult();
+		return sz;
+	}
+	/**
+	 * 根据时间段获取减刑假释申请的审批总数
+	 * @param kssj
+	 * @param jssj
+	 * @return
+	 */
+	public int getSpSumByDate(Date kssj,Date jssj){
+		String hql = "select count(*) from Tspxx spxx where spxx.splx = '1' and spxx.spsj>='"+kssj+"' and spxx.spsj <='"+jssj+"'";
 		
-		return maxbh;
+		Session s = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
+		Query query = s.createQuery(hql);
+		int sz = 0;
+		if (query.uniqueResult() != null)
+			sz = (Integer) query.uniqueResult();
+		return sz;
+	}
+	/**
+	 * 根据时间段获取减刑假释申请的立案总数
+	 * @param kssj
+	 * @param jssj
+	 * @return
+	 */
+	public int getlaSumByDate(Date kssj,Date jssj){
+		String hql = "select count(*) from PubAjJb aj where aj.ajxh in(select laajxh from TJxjs) and aj.larq>='"+kssj+"' and aj.larq <='"+jssj+"'";
+		
+		Session s = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
+		Query query = s.createQuery(hql);
+		int sz = 0;
+		if (query.uniqueResult() != null)
+			sz = (Integer) query.uniqueResult();
+		return sz;
+	}
+	/**
+	 * 根据时间段获取减刑假释申请的结案总数
+	 * @param kssj
+	 * @param jssj
+	 * @return
+	 */
+	public int getjaSumByDate(Date kssj,Date jssj){
+		String hql = "select count(*) from PubAjJb aj where aj.ajxh in(select laajxh from TJxjs) and aj.jarq>='"+kssj+"' and aj.jarq <='"+jssj+"'";
+		
+		Session s = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
+		Query query = s.createQuery(hql);
+		int sz = 0;
+		if (query.uniqueResult() != null)
+			sz = (Integer) query.uniqueResult();
+		return sz;
+	}
+	/**
+	 * 根据时间段获取减刑假释申请的结案总数
+	 * @param kssj
+	 * @param jssj
+	 * @return
+	 */
+	public int getfkSumByDate(Date kssj,Date jssj){
+		String hql = "select count(*) from PubAjJb aj where aj.ajxh in(select laajxh from TJxjs) and aj.jarq>='"+kssj+"' and aj.jarq <='"+jssj+"'";
+		
+		Session s = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
+		Query query = s.createQuery(hql);
+		int sz = 0;
+		if (query.uniqueResult() != null)
+			sz = (Integer) query.uniqueResult();
+		return sz;
+	}
+	
+	/**
+	 * 根据申请时间段获取减刑假释申请的不同状态的总数
+	 * @param kssj
+	 * @param jssj
+	 * @return
+	 */
+	public int getSumByCondition(Date kssj,Date jssj,String type){
+		String hql = "select count(*) from TJxjs jxjs where jxjs.ajztbh ='"+type+"' and jxjs.sqsj>='"+kssj+"' and jxjs.sqsj <='"+jssj+"'";		
+		Session s = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
+		Query query = s.createQuery(hql);
+		int sz = 0;
+		if (query.uniqueResult() != null)
+			sz = (Integer) query.uniqueResult();
+		return sz;
 	}
 	public void save(TJxjs jxjs){
 		getHibernateTemplate().save(jxjs);

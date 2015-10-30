@@ -43,21 +43,44 @@ public class JxjsService {
 		String ajztbh = dmb.getDmbh();
 		return jd.getJxjsByAjztbh(ajztbh);
 	}
-	
+	public List<TJxjs> getBthlb(){
+		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", "被退回");
+		String ajztbh = dmb.getDmbh();
+		return jd.getJxjsByAjztbh(ajztbh);
+	}
 	public List<TJxjs> getJxjsByDateAndType(Date begin,Date end,String type){
 		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", type);
 		String ajztbh = dmb.getDmbh();
 		return jd.getJxjsByDateAndAjztbh(begin, end, ajztbh);
 	}
 	
-//	public int getSumByDateAndType(Date kssj,Date jssj,String type){
-//		int sz = 0;
-//		switch(type){
-//			case "1":
-//				sz = jd.get
-//		}
-//		return jd.getSumByDateAndType(kssj, jssj, type);
-//	}
+	public int getSumByDate(Date kssj,Date jssj,String type){
+		int sz = 0;
+		switch(type){
+			case "1":
+				sz = jd.getSqSumByDate(kssj, jssj);
+			case "2":
+				sz = jd.getSpSumByDate(kssj, jssj);
+			case "3":
+				sz = jd.getlaSumByDate(kssj, jssj);
+			case "4":
+				sz = jd.getjaSumByDate(kssj, jssj);
+			case "5":
+				sz = jd.getfkSumByDate(kssj, jssj);
+			
+		}
+		return sz;
+	}
+	
+	public int getSumByCondition(Date kssj,Date jssj,String type){
+		return jd.getSumByCondition(kssj, jssj, type);
+	}
+	
+	public int getSpSumByDate(Date kssj,Date jssj){
+		int sz = 0;
+		
+		return sz;
+	}
 	
 	public void approval(String jxjsbhList,String spr,String spyj,Date spsj){
 		String[] bhList = jxjsbhList.split(",");
@@ -87,6 +110,33 @@ public class JxjsService {
 		 
 	}
 	
+	public void reject(String jxjsbhList,String spr,String spyj,Date spsj){
+		String[] bhList = jxjsbhList.split(",");
+		int jxjsbh;
+		int spxxbh;
+		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", "被退回");
+		PubXtglYhb yhb = new PubXtglYhb();
+		List<PubXtglYhb> yhbs = yhbDao.findByYhdm(spr);
+		if(yhbs != null && yhbs.size()>0)
+			yhb = yhbs.get(0);
+		for(String bh:bhList){
+			jxjsbh = Integer.valueOf(bh);
+			TJxjs jxjs = jd.getJxjsByBh(jxjsbh);				
+			jxjs.setAjztbh(dmb.getDmbh());
+			jd.updateJxjs(jxjs);
+			TSpxx spxx = new TSpxx();
+			spxx.setJxjsbh(jxjsbh);
+			spxx.setSplx("2");
+			spxx.setSpr(yhb);
+			spxx.setSpsj(new Date());
+			spxx.setSpyj(spyj);
+			spxxbh = spxxDao.getMaxBh();
+			spxxbh ++;
+			spxx.setSpxxbh(spxxbh);
+			spxxDao.save(spxx);
+		}
+		 
+	}
 	
 	public TJxjs add(TJxjs jxjs){
 		int jxjsbh = jd.getMaxBh();
