@@ -65,7 +65,7 @@ public class JxjsService {
 		int spxxbh;
 		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", "已审批");
 		PubXtglYhb yhb = new PubXtglYhb();
-		List<PubXtglYhb> yhbs = yhbDao.findByYhmc(spr);
+		List<PubXtglYhb> yhbs = yhbDao.findByYhdm(spr);
 		if(yhbs != null && yhbs.size()>0)
 			yhb = yhbs.get(0);
 		for(String bh:bhList){
