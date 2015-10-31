@@ -20,10 +20,11 @@ $(function(){
 
 
 function tongji1(){
+	fetchData1();
 }
 
 function tongji2(){
-	
+	fetchData2();
 }
 
 
@@ -32,7 +33,7 @@ function fetchData1(){
 	var endDate = $("#endDate1").val();
 	$.ajax({
 		url :  baseUrl+"/tjfx/sjtj/graph1",
-		type : "get",
+		type : "post",
 		data : {
 			kssj:startDate,
 			jssj:endDate
@@ -50,12 +51,15 @@ function fetchData1(){
 			var option1 = {
 				    title : {
 				        text: '案件状态柱形图',
-				        subtext: startDate+" 至 "+endDate
+				        subtext: startDate+" 至 "+endDate,
+				        x:'center'
 				    },
 				    tooltip : {
 				        trigger: 'axis'
 				    },
 				    legend: {
+				    	orient : 'vertical',
+				        x : 'left',
 				        data:['案件数量']
 				    },
 				    toolbox: {
@@ -112,7 +116,7 @@ function fetchData2(){
 	var condition = $("#condition").val();
 	$.ajax({
 		url :  baseUrl+"/tjfx/sjtj/graph2",
-		type : "get",
+		type : "post",
 		data : {
 			kssj:startDate,
 			jssj:endDate,
@@ -121,12 +125,17 @@ function fetchData2(){
 		dataType : 'html',
 		success : function(resp) {
 			resp = $.parseJSON(resp);
-			alert(resp);
+			var legend = [];
+			var nums = [];
+			for(var i = 0 ; i < resp.length ; i++){
+				legend.push(resp[i].s_type);
+				nums.push({value:resp[i].i_sz,name:resp[i].s_type});
+			}
 			var typeStatChart = echarts.init(document.getElementById('typeStat'));
 			option2 = {
 				    title : {
-				        text: '某站点用户访问来源',
-				        subtext: '纯属虚构',
+				        text: '案件状态饼图',
+				        subtext: startDate+" 至 "+endDate+" "+condition,
 				        x:'center'
 				    },
 				    tooltip : {
@@ -136,10 +145,10 @@ function fetchData2(){
 				    legend: {
 				        orient : 'vertical',
 				        x : 'left',
-				        data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+				        data:legend
 				    },
 				    toolbox: {
-				        show : true,
+				        show : false,
 				        feature : {
 				            mark : {show: true},
 				            dataView : {show: true, readOnly: false},
@@ -162,17 +171,11 @@ function fetchData2(){
 				    calculable : true,
 				    series : [
 				        {
-				            name:'访问来源',
+				            name:'案件数量',
 				            type:'pie',
 				            radius : '55%',
 				            center: ['50%', '60%'],
-				            data:[
-				                {value:335, name:'直接访问'},
-				                {value:310, name:'邮件营销'},
-				                {value:234, name:'联盟广告'},
-				                {value:135, name:'视频广告'},
-				                {value:1548, name:'搜索引擎'}
-				            ]
+				            data:nums
 				        }
 				    ]
 				};

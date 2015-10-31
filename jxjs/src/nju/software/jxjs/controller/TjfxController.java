@@ -98,7 +98,7 @@ public class TjfxController extends BaseController
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/sjtj/graph1", method = RequestMethod.GET)
+	@RequestMapping(value = "/sjtj/graph1", method = RequestMethod.POST)
 	@ResponseBody
 	public Object sjtjGraph1(@RequestParam("kssj") String kssj,
 			@RequestParam("jssj") String jssj)
@@ -123,7 +123,7 @@ public class TjfxController extends BaseController
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/sjtj/graph2", method = RequestMethod.GET)
+	@RequestMapping(value = "/sjtj/graph2", method = RequestMethod.POST)
 	@ResponseBody
 	public Object sjtjGraph2(@RequestParam("kssj") String kssj,
 			@RequestParam("jssj") String jssj,@RequestParam("condition") String condition)
