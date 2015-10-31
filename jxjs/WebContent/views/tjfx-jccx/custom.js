@@ -55,7 +55,6 @@ function fetchData(){
 		},
 		dataType : 'html',
 		success : function(resp) {
-			alert(resp);
 			resp = $.parseJSON(resp);
 			g_dataTable.clear().destroy();
 			$("#dataTable>tbody").empty();
