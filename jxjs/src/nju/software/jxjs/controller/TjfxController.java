@@ -137,7 +137,7 @@ public class TjfxController extends BaseController
 		for(PubDmb dmb:ajztDmb){
 			TjfxResultModel result = new TjfxResultModel();
 			result.setS_type(dmb.getDmms());
-			sz = jxjsService.getSumByCondition(begin, end, dmb.getDmbh());
+			sz = jxjsService.getSumByCondition(begin, end, dmb.getDmbh(),condition);
 			sum += sz;
 			result.setI_sz(sz);
 			resultList.add(result);

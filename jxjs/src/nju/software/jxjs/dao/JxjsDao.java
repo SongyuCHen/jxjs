@@ -155,6 +155,25 @@ public class JxjsDao extends BaseDao {
 			sz = Integer.parseInt(String.valueOf(query.uniqueResult())); 
 		return sz;
 	}
+	
+	/**
+	 * 根据申请时间段获取减刑或者假释申请的不同状态的总数
+	 * @param kssj
+	 * @param jssj
+	 * @return
+	 */
+	public int getSumByConditionAndLx(Date kssj,Date jssj,String type,String sqlx){
+		String s_kssj = DateUtil.format(kssj, DateUtil.webFormat);
+		String s_jssj = DateUtil.format(jssj, DateUtil.webFormat);
+		String hql = "select count(*) from TJxjs jxjs where jxjs.ajztbh ='"+type+"' and jxjs.sqlxbh = '"+sqlx+"' and jxjs.sqsj>='"+s_kssj+"' and jxjs.sqsj <='"+s_jssj+"'";		
+		Session s = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
+		Query query = s.createQuery(hql);
+		int sz = 0;
+		if (query.uniqueResult() != null)
+			sz = Integer.parseInt(String.valueOf(query.uniqueResult())); 
+		return sz;
+	}
+	
 	public void save(TJxjs jxjs){
 		getHibernateTemplate().save(jxjs);
 	}

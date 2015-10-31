@@ -77,8 +77,14 @@ public class JxjsService {
 		return sz;
 	}
 	
-	public int getSumByCondition(Date kssj,Date jssj,String type){
-		return jd.getSumByCondition(kssj, jssj, type);
+	public int getSumByCondition(Date kssj,Date jssj,String type,String sqlx){
+		if(sqlx.equals("全部"))
+			return jd.getSumByCondition(kssj, jssj, type);
+		else{
+			PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-SQLX", sqlx);
+			String sqlxbh = dmb.getDmbh();
+			return jd.getSumByConditionAndLx(kssj, jssj, type, sqlxbh);
+		}
 	}
 	
 	public int getSpSumByDate(Date kssj,Date jssj){
