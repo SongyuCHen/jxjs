@@ -7,12 +7,16 @@ import java.util.List;
 import nju.software.jxjs.model.PubAjJb;
 import nju.software.jxjs.model.PubDmb;
 import nju.software.jxjs.model.PubLaAy;
+import nju.software.jxjs.model.TDsr;
+import nju.software.jxjs.model.TJxjs;
+import nju.software.jxjs.model.TSpxx;
 import nju.software.jxjs.service.DmbService;
 import nju.software.jxjs.service.MenuService;
 import nju.software.jxjs.service.PubAjJbService;
 import nju.software.jxjs.service.PubLaAyService;
 import nju.software.jxjs.util.DateUtil;
 import nju.software.jxjs.util.StringUtil;
+import nju.software.jxjs.view.BthlbView;
 import nju.software.jxjs.view.User;
 import nju.software.jxjs.view.XsajcsView;
 
@@ -78,6 +82,50 @@ public class XtdjController extends BaseController
 	@RequestMapping(value = "/xsajcs/search", method = RequestMethod.GET)
 	@ResponseBody
 	public Object searchByDateOrAh(@RequestParam("ah") String ah,@RequestParam("kssj") String kssj,
+			@RequestParam("jssj") String jssj){
+		List<XsajcsView> ajcsView = new ArrayList<XsajcsView>();
+		List<PubAjJb> ajList = new ArrayList<PubAjJb>();
+		if(!StringUtil.isBlank(ah)){
+			PubAjJb aj = ajService.getXsajByAh(ah);
+			ajList.add(aj);
+		}else{
+			if(!StringUtil.isBlank(kssj) && !StringUtil.isAlpha(jssj)){
+				Date begin = DateUtil.parse(kssj, DateUtil.webFormat);
+				Date end = DateUtil.parse(jssj, DateUtil.webFormat);
+				ajList = ajService.getXsajByDate(begin, end);
+			}else if(!StringUtil.isBlank(kssj)){
+				Date begin = DateUtil.parse(kssj, DateUtil.webFormat);
+				ajList = ajService.getXsajAfterDate(begin);
+			}else if(!StringUtil.isBlank(jssj)){
+				Date end = DateUtil.parse(jssj, DateUtil.webFormat);
+				ajList = ajService.getXsajBeforeDate(end);
+			}
+			
+		}
+		for(PubAjJb aj:ajList){
+			XsajcsView view = new XsajcsView();
+			view.setAjxh(aj.getAjxh());
+			view.setAh(aj.getAh());
+			view.setAjmc(aj.getAjmc());
+			PubLaAy ay = ayService.getAyByAjxh(aj.getAjxh());
+			if(ay!=null)
+				view.setAy(ay.getLaay());
+			if(!StringUtil.isBlank(aj.getBafy())){
+				PubDmb dmb = dmbService.getDmbByLbbhAndDmbh("FBZ0001-97", aj.getBafy().trim());
+				view.setBafy(dmb.getDmms());
+			}
+			view.setLarq(DateUtil.format(aj.getLarq(), DateUtil.webFormat));
+			view.setJarq(DateUtil.format(aj.getJarq(), DateUtil.webFormat));
+			ajcsView.add(view);
+		}
+		
+		return ajcsView;
+	}
+	
+	
+	@RequestMapping(value = "/jxjssq.json", method = RequestMethod.GET)
+	@ResponseBody
+	public Object getcsajlb(@RequestParam("ah") String ah,@RequestParam("kssj") String kssj,
 			@RequestParam("jssj") String jssj){
 		List<XsajcsView> ajcsView = new ArrayList<XsajcsView>();
 		List<PubAjJb> ajList = new ArrayList<PubAjJb>();
