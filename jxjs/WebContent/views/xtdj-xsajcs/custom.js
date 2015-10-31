@@ -2,10 +2,6 @@
  * 
  */
 
-/**
- * 
- */
-
 var baseUrl = getRootPath();
 var g_resp;
 
