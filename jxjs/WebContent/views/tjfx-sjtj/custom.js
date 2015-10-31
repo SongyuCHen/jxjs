@@ -14,6 +14,7 @@ $(function(){
 	
 	
 	fetchData1();
+	fetchData2();
 		                    
 });
 
@@ -27,8 +28,8 @@ function tongji2(){
 
 
 function fetchData1(){
-	var startDate = "2015-10-1";
-	var endDate = "2015-10-31";
+	var startDate = $("#startDate1").val();
+	var endDate = $("#endDate1").val();
 	$.ajax({
 		url :  baseUrl+"/tjfx/sjtj/graph1",
 		type : "get",
@@ -39,21 +40,26 @@ function fetchData1(){
 		dataType : 'html',
 		success : function(resp) {
 			resp = $.parseJSON(resp);
-			alert(resp);
+			var barTitles = [];
+			var nums = [];
+			for(var i = 0 ; i < resp.length ; i++){
+				barTitles.push(resp[i].s_type);
+				nums.push(resp[i].i_sz);
+			}
 			var statusStatChart = echarts.init(document.getElementById('statusStat'));
 			var option1 = {
 				    title : {
-				        text: '某地区蒸发量和降水量',
-				        subtext: '纯属虚构'
+				        text: '案件状态柱形图',
+				        subtext: startDate+" 至 "+endDate
 				    },
 				    tooltip : {
 				        trigger: 'axis'
 				    },
 				    legend: {
-				        data:['蒸发量','降水量']
+				        data:['案件数量']
 				    },
 				    toolbox: {
-				        show : true,
+				        show : false,
 				        feature : {
 				            mark : {show: true},
 				            dataView : {show: true, readOnly: false},
@@ -66,7 +72,7 @@ function fetchData1(){
 				    xAxis : [
 				        {
 				            type : 'category',
-				            data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+				            data : barTitles
 				        }
 				    ],
 				    yAxis : [
@@ -76,9 +82,9 @@ function fetchData1(){
 				    ],
 				    series : [
 				        {
-				            name:'蒸发量',
+				            name:'案件数量',
 				            type:'bar',
-				            data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+				            data:nums,
 				            markPoint : {
 				                data : [
 				                    {type : 'max', name: '最大值'},
@@ -88,22 +94,6 @@ function fetchData1(){
 				            markLine : {
 				                data : [
 				                    {type : 'average', name: '平均值'}
-				                ]
-				            }
-				        },
-				        {
-				            name:'降水量',
-				            type:'bar',
-				            data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
-				            markPoint : {
-				                data : [
-				                    {name : '年最高', value : 182.2, xAxis: 7, yAxis: 183, symbolSize:18},
-				                    {name : '年最低', value : 2.3, xAxis: 11, yAxis: 3}
-				                ]
-				            },
-				            markLine : {
-				                data : [
-				                    {type : 'average', name : '平均值'}
 				                ]
 				            }
 				        }
@@ -117,10 +107,15 @@ function fetchData1(){
 }
 
 function fetchData2(){
+	var startDate = $("#startDate1").val();
+	var endDate = $("#endDate1").val();
 	$.ajax({
 		url :  baseUrl+"/tjfx/sjtj/graph2",
 		type : "get",
-		data : {},
+		data : {
+			kssj:startDate,
+			jssj:endDate
+		},
 		dataType : 'html',
 		success : function(resp) {
 			resp = $.parseJSON(resp);

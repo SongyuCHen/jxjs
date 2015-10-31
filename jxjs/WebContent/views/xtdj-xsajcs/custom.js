@@ -50,9 +50,9 @@ function search(){
 
 //获取数据
 function fetchData(){
-	var ah = "";
-	var kssj = "2015-10-1";
-	var jssj = "2015-10-31";
+	var ah = $("#caseNumber").val();
+	var kssj = $("#startDate").val();
+	var jssj = $("#endDate").val();
 	$("#loading").show();
 	$.ajax({
 		url :  baseUrl+"/xtdj/xsajcs/search",
