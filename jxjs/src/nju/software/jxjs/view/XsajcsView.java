@@ -1,6 +1,7 @@
 package nju.software.jxjs.view;
 
 public class XsajcsView {
+	private int ajxh;
 	private String ah;//案号
 	private String ajmc;//案件名称
 	private String larq;//立案日期
@@ -42,6 +43,12 @@ public class XsajcsView {
 	}
 	public void setAy(String ay) {
 		this.ay = ay;
+	}
+	public int getAjxh() {
+		return ajxh;
+	}
+	public void setAjxh(int ajxh) {
+		this.ajxh = ajxh;
 	}
 	
 
