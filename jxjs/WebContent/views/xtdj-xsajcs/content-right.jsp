@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div class="search-area">
-		<form id="searchForm" method="post" class="form-horizontal" action="${pageContext.request.contextPath}/xtdj/xsajcs/search">
+		
 			<div class="float-left float-gap">
 				<div class="float-left time-text">
 					<label class="control-label">案号</label>
@@ -51,12 +51,13 @@
 			</div>
 			
 			<div class="float-left float-gap">
-				<button type="submit" class="btn btn-success">查询</button>
+				<button class="btn btn-success" onclick="search();">查询</button>
 			</div>
-		</form>
+		
 	</div>
 	
 	<div class="table-wrapper">
+		<img id="loading" src="${pageContext.request.contextPath}/images/loading.gif"/>
 		<div class="table-main">
 			<table id="dataTable"
 				class="dataTable table table-hover table-striped">
@@ -65,14 +66,15 @@
 						<th><input type="checkbox" id="checkAll" onclick="checkAll();"/></th>
 						<th>序号</th>
 						<th>案号</th>
-						<th>当事人</th>
-						<th>生效法院</th>
-						<th>罪名</th>
+						<th>案件名称</th>
+						<th>立案日期</th>
 						<th>结案日期</th>
-						<th>刑期</th>
+						<th>办案法院</th>
+						<th>案由</th>
 					</tr>
 				</thead>
 				<tbody>
+				<!-- 
 					<tr>
 						<td class="checkTD"><input type="checkbox" /></td>
 						<td>1</td>
@@ -83,6 +85,7 @@
 						<td>2015-09-23</td>
 						<td>二年</td>
 					</tr>
+				 -->
 					</tbody>
 			</table>
 			<div class="operating">

@@ -20,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -57,8 +58,9 @@ public class XtdjController extends BaseController
 		return mav;
 	}
 	
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public ModelAndView searchByDateOrAh(@RequestParam("ah") String ah,@RequestParam("kssj") String kssj,
+	@RequestMapping(value = "/xsajcs/search", method = RequestMethod.GET)
+	@ResponseBody
+	public Object searchByDateOrAh(@RequestParam("ah") String ah,@RequestParam("kssj") String kssj,
 			@RequestParam("jssj") String jssj){
 		List<XsajcsView> ajcsView = new ArrayList<XsajcsView>();
 		List<PubAjJb> ajList = new ArrayList<PubAjJb>();
@@ -89,12 +91,10 @@ public class XtdjController extends BaseController
 //			view.setBafy(bafy);
 			view.setLarq(DateUtil.format(aj.getLarq(), DateUtil.webFormat));
 			view.setJarq(DateUtil.format(aj.getJarq(), DateUtil.webFormat));
+			ajcsView.add(view);
 		}
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("xtdj-xsajcs");
-		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
-		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "xtdj", "xsajcs"));
-		return mav;
+		
+		return ajcsView;
 	}
 
 }
