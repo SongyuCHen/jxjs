@@ -74,19 +74,7 @@
 					</tr>
 				</thead>
 				<tbody>
-				<!-- 
-					<tr>
-						<td class="checkTD"><input type="checkbox" /></td>
-						<td>1</td>
-						<td>(2013)临刑初字第146号</td>
-						<td>麻花藤</td>
-						<td>定西中级人民法院</td>
-						<td>抄袭</td>
-						<td>2015-09-23</td>
-						<td>二年</td>
-					</tr>
-				 -->
-					</tbody>
+				</tbody>
 			</table>
 			<div class="operating">
 				<button class="btn btn-primary" onclick="chuanshu()">传输</button>
@@ -96,6 +84,24 @@
 			</div>
 		</div>
 	</div>
-
+	<div class="modal fade" role="dialog" id="chuanshuModal">
+  		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+      			<div class="modal-header">
+        			<h4 class="modal-title" id="gridSystemModalLabel">请等待</h4>
+      			</div>
+      		<div class="modal-body">
+        		<div class="container-fluid">        			
+					<div class="row chuanshuText">
+  							案件正在传输中... 
+					</div>
+					<div class="row chuanshuText">
+  						<img src="${pageContext.request.contextPath}/images/Preloader_3.gif"/>
+					</div>
+				</div>
+      		</div>
+    		</div><!-- /.modal-content -->
+  		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 </body>
 </html>

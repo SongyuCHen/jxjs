@@ -102,4 +102,8 @@ function chuanshu(){
 		alert("请选择要传输的项!");
 		return;
 	}
+	$("#chuanshuModal").modal({
+		keyboard: false,
+		backdrop: 'static'
+	});
 }
