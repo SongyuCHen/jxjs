@@ -32,7 +32,7 @@ $(document).ready(function(){
 	             orderable:false,//禁用排序
 	             targets:[0]   //指定的列
 	         }],
-	         order : [[ 6, "desc" ]]
+	         order : [[ 1, "asc" ]]
 		});
 	
 		
@@ -65,7 +65,6 @@ function fetchData(){
 		dataType : 'html',
 		success : function(resp) {
 			resp = $.parseJSON(resp);
-			alert(resp);
 			g_resp = resp;
 			
 			g_dataTable.clear().destroy();
@@ -87,7 +86,7 @@ function fetchData(){
 		            orderable:false,//禁用排序
 		            targets:[0]   //指定的列
 		        }],
-		        order : [[ 6, "desc" ]]
+		        order : [[ 1, "asc" ]]
 			});
 		},
 		complete:function(resp){
