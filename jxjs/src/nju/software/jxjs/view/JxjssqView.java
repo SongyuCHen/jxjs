@@ -1,6 +1,7 @@
 package nju.software.jxjs.view;
 
 public class JxjssqView {
+	private int ajxh;
 	private String ah;//案号
 	private String ajmc;//案件名称
 	private String larq;//立案日期
@@ -49,6 +50,12 @@ public class JxjssqView {
 	}
 	public void setDsr(String dsr) {
 		this.dsr = dsr;
+	}
+	public int getAjxh() {
+		return ajxh;
+	}
+	public void setAjxh(int ajxh) {
+		this.ajxh = ajxh;
 	}
 	
 
