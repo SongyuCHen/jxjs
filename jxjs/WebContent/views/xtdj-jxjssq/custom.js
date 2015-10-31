@@ -29,7 +29,7 @@ $(function(){
             orderable:false,//禁用排序
             targets:[0]   //指定的列
         }],
-        order : [[ 6, "desc" ]]
+        order : [[ 1, "asc" ]]
 	});
 
 });
@@ -47,6 +47,10 @@ function fetchData(){
 	var kssj = $("#startDate").val();
 	var jssj = $("#endDate").val();
 	//alert(ah+","+dsr+","+kssj+","+jssj);
+	if(ah.length==0&&dsr.length==0&&kssj.length==0&&jssj.length==0){
+		alert("查询条件不能都为空！");
+		return;
+	}
 	$("#loading").show();
 	$.ajax({
 		url :  baseUrl+"/xtdj/jxjssq.json",
@@ -61,20 +65,20 @@ function fetchData(){
 		success : function(resp) {
 			resp = $.parseJSON(resp);
 			g_resp = resp;
-			alert(resp);
-			/*
+			
 			g_dataTable.clear().destroy();
 			$("#dataTable>tbody").empty();
 			for(var i = 0 ; i < resp.length ; i++){
 				$("#dataTable>tbody").append("<tr>"+
 						"<td  class='checkTD'><input type='checkbox'/></td>"+
 						"<td>"+(i+1)+"</td>"+
-						"<td>"+resp[i].ysah+"</td>"+
+						"<td>"+resp[i].ah+"</td>"+
+						"<td>"+resp[i].ajmc+"</td>"+
+						"<td>"+resp[i].larq+"</td>"+
+						"<td>"+resp[i].jarq+"</td>"+
+						"<td>"+resp[i].bafy+"</td>"+
+						"<td>"+resp[i].ay+"</td>"+
 						"<td>"+resp[i].dsr+"</td>"+
-						"<td>"+resp[i].sxfy+"</td>"+
-						"<td>"+resp[i].sqlx+"</td>"+
-						"<td>"+resp[i].sqsj+"</td>"+
-						"<td>"+resp[i].sqcs+"</td>"+
 					"</tr>");
 			}
 			g_dataTable = $("#dataTable").DataTable({
@@ -82,8 +86,8 @@ function fetchData(){
 		            orderable:false,//禁用排序
 		            targets:[0]   //指定的列
 		        }],
-		        order : [[ 6, "desc" ]]
-			});*/
+		        order : [[ 1, "asc" ]]
+			});
 		},
 		complete:function(resp){
 			$("#loading").hide();
