@@ -67,19 +67,19 @@ function fetchData(){
 			resp = $.parseJSON(resp);
 			alert(resp);
 			g_resp = resp;
-			/*
+			
 			g_dataTable.clear().destroy();
 			$("#dataTable>tbody").empty();
 			for(var i = 0 ; i < resp.length ; i++){
 				$("#dataTable>tbody").append("<tr>"+
 						"<td  class='checkTD'><input type='checkbox'/></td>"+
 						"<td>"+(i+1)+"</td>"+
-						"<td>"+resp[i].ysah+"</td>"+
-						"<td>"+resp[i].dsr+"</td>"+
-						"<td>"+resp[i].sxfy+"</td>"+
-						"<td>"+resp[i].sqlx+"</td>"+
-						"<td>"+resp[i].sqsj+"</td>"+
-						"<td>"+resp[i].sqcs+"</td>"+
+						"<td>"+resp[i].ah+"</td>"+
+						"<td>"+resp[i].ajmc+"</td>"+
+						"<td>"+resp[i].larq+"</td>"+
+						"<td>"+resp[i].jarq+"</td>"+
+						"<td>"+resp[i].bafy+"</td>"+
+						"<td>"+resp[i].ay+"</td>"+
 					"</tr>");
 			}
 			g_dataTable = $("#dataTable").DataTable({
@@ -88,7 +88,7 @@ function fetchData(){
 		            targets:[0]   //指定的列
 		        }],
 		        order : [[ 6, "desc" ]]
-			});*/
+			});
 		},
 		complete:function(resp){
 			$("#loading").hide();
