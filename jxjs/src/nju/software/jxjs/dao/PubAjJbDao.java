@@ -86,6 +86,8 @@ public class PubAjJbDao extends BaseDao {
 		getHibernateTemplate().save(xsaj);
 	}
 	
+
+	
 	public void save(PubAjJb aj){
 		getHibernateTemplate().save(aj);
 	}

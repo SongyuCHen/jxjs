@@ -6,8 +6,11 @@ import java.util.List;
 import nju.software.jxjs.common.Constants;
 import nju.software.jxjs.dao.PubAjJbDao;
 import nju.software.jxjs.dao.XtglDmbDao;
+import nju.software.jxjs.dao.XtglYhbDao;
 import nju.software.jxjs.model.PubAjJb;
 import nju.software.jxjs.model.PubDmb;
+import nju.software.jxjs.model.PubXtglYhb;
+import nju.software.jxjs.model.TXsaj;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +22,8 @@ public class PubAjJbService {
 	private PubAjJbDao ajDao;
 	@Autowired
 	private XtglDmbDao dmbDao;
+	@Autowired
+	private XtglYhbDao yhbDao;
 	@SuppressWarnings("deprecation")
 	public String generateAh(){
 		String tjzq = "";
@@ -67,6 +72,26 @@ public class PubAjJbService {
 	}
 	public List<PubAjJb> getXsajBeforeDate(Date jssj){
 		return ajDao.getXSajBeforeLarq(jssj);
+	}
+	
+	public int addXsajTrans(String ajxhList,String csr,Date cssj){
+		String[] bhList = ajxhList.split(",");
+		int ajxh;
+		int sum = 0;
+		PubXtglYhb yhb = new PubXtglYhb();
+		List<PubXtglYhb> yhbs = yhbDao.findByYhdm(csr);
+		if(yhbs != null && yhbs.size()>0)
+			yhb = yhbs.get(0);
+		for(String bh:bhList){
+			ajxh = Integer.valueOf(bh);
+			TXsaj xsaj = new TXsaj();
+			xsaj.setAjxh(ajxh);
+			xsaj.setCsrbh(yhb.getYhbh());
+			xsaj.setCssj(cssj);
+			ajDao.addXsajTrans(xsaj);
+			sum ++;
+		}
+		return sum;
 	}
 	
 	

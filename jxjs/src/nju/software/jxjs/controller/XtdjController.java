@@ -67,11 +67,12 @@ public class XtdjController extends BaseController
 	public Object transport(@RequestParam("ajxhList") String ajxhList){
 		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
 		String csr = user.getUsername();
-		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("xtdj-jajgfk");
-		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "xtdj", "jajgfk"));
-		return mav;
+		Date cssj = new Date();
+		int sum = ajService.addXsajTrans(ajxhList, csr, cssj);
+//		ModelAndView mav = new ModelAndView();
+//		mav.setViewName("xtdj-jajgfk");
+//		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "xtdj", "jajgfk"));
+		return sum;
 	}
 	
 	@RequestMapping(value = "/xsajcs/search", method = RequestMethod.GET)
