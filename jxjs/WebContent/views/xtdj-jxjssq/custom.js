@@ -31,6 +31,11 @@ $(function(){
         }],
         order : [[ 1, "asc" ]]
 	});
+	
+	$("#dataTable").on("click","tbody>tr>td.checkTD",function(){
+		$("#dataTable td.checkTD input").prop("checked", false);
+		$(this).children("input").prop("checked", true);
+	});
 
 });
 
@@ -93,4 +98,9 @@ function fetchData(){
 			$("#loading").hide();
 		}
 	});
+}
+
+
+function shenqing(){
+	
 }
