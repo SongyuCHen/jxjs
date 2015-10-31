@@ -123,16 +123,19 @@ public class XtdjController extends BaseController
 	}
 	
 	
-	@RequestMapping(value = "/jxjssq.json", method = RequestMethod.GET)
+	@RequestMapping(value = "/jxjssq.json", method = RequestMethod.POST)
 	@ResponseBody
-	public Object getcsajlb(@RequestParam("ah") String ah,@RequestParam("kssj") String kssj,
+	public Object getcsajlb(@RequestParam("ah") String ah,@RequestParam("dsr") String dsr,@RequestParam("kssj") String kssj,
 			@RequestParam("jssj") String jssj){
 		List<XsajcsView> ajcsView = new ArrayList<XsajcsView>();
 		List<PubAjJb> ajList = new ArrayList<PubAjJb>();
 		if(!StringUtil.isBlank(ah)){
 			PubAjJb aj = ajService.getXsajByAh(ah);
 			ajList.add(aj);
+		}else if(StringUtil.isBlank(dsr)){
+			ajList = ajService.getXsajByDsr(dsr);
 		}else{
+
 			if(!StringUtil.isBlank(kssj) && !StringUtil.isAlpha(jssj)){
 				Date begin = DateUtil.parse(kssj, DateUtil.webFormat);
 				Date end = DateUtil.parse(jssj, DateUtil.webFormat);

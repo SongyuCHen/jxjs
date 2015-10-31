@@ -1,12 +1,15 @@
 package nju.software.jxjs.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import nju.software.jxjs.common.Constants;
+import nju.software.jxjs.dao.DsrJbDao;
 import nju.software.jxjs.dao.PubAjJbDao;
 import nju.software.jxjs.dao.XtglDmbDao;
 import nju.software.jxjs.dao.XtglYhbDao;
+import nju.software.jxjs.model.DsrJb;
 import nju.software.jxjs.model.PubAjJb;
 import nju.software.jxjs.model.PubDmb;
 import nju.software.jxjs.model.PubXtglYhb;
@@ -24,6 +27,8 @@ public class PubAjJbService {
 	private XtglDmbDao dmbDao;
 	@Autowired
 	private XtglYhbDao yhbDao;
+	@Autowired
+	private DsrJbDao dsrJbDao;
 	@SuppressWarnings("deprecation")
 	public String generateAh(){
 		String tjzq = "";
@@ -55,6 +60,18 @@ public class PubAjJbService {
 	
 	public PubAjJb getXsajByAh(String ah){
 		return ajDao.getAjJbByAh(ah);
+	}
+	
+	public List<PubAjJb> getXsajByDsr(String dsr){
+		List<DsrJb> dsrList = dsrJbDao.findByDsrjc(dsr);
+		if(dsrList!=null && dsrList.size()>0){
+			List<PubAjJb> ajList = new ArrayList<PubAjJb>();
+			for(DsrJb dsrjb:dsrList){
+				ajList.add(ajDao.getAjJbByAjxh(dsrjb.getAjxh()));
+			}
+			return ajList;
+		}else
+			return null;
 	}
 	public PubAjJb add(PubAjJb aj){
 		int ajxh = ajDao.getMaxBh();
