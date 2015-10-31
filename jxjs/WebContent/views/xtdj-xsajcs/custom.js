@@ -34,6 +34,12 @@ $(document).ready(function(){
 	         }],
 	         order : [[ 6, "desc" ]]
 		});
+	
+		
+		//初始化日期
+		var date = new Date();
+		$("#startDate").val(date.Format("yyyy-MM")+"-01");
+		$("#endDate").val(date.Format("yyyy-MM-dd"));
 
 });
 

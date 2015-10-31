@@ -14,45 +14,45 @@
 <body>
 	<div class="search-area">
 		
-			<div class="float-left float-gap">
-				<div class="float-left time-text">
-					<label class="control-label">案号</label>
-				</div>
-				<div class="float-left time-input">
-					<input type="text" class="form-control" name="caseNumber" id="caseNumber"/>
-				</div>				
+		<div class="float-left float-gap">
+			<div class="float-left time-text">
+				<label class="control-label">案号</label>
 			</div>
-			<div class="float-left float-gap">
-				<div class="float-left time-text">
-					<label class="label-control">开始时间</label>
-				</div>
-				<div class="float-left time-input">
-					<div class="input-group date form_date">
-						<input type="text" class="form-control" name="startDate" id="startDate" readonly />
-						<span class="input-group-addon" id="addSpan">
-							<span class="glyphicon glyphicon-calendar"></span>
-						</span>
-					</div>
+			<div class="float-left time-input">
+				<input type="text" class="form-control" name="caseNumber" id="caseNumber"/>
+			</div>				
+		</div>
+		<div class="float-left float-gap">
+			<div class="float-left time-text">
+				<label class="label-control">开始时间</label>
+			</div>
+			<div class="float-left time-input">
+				<div class="input-group date form_date">
+					<input type="text" class="form-control" name="startDate" id="startDate" readonly />
+					<span class="input-group-addon" id="addSpan">
+						<span class="glyphicon glyphicon-calendar"></span>
+					</span>
 				</div>
 			</div>
+		</div>
 
-			<div class="float-left float-gap">
-				<div class="float-left time-text">
-					<label class="label-control">结束时间</label>
-				</div>
-				<div class="float-left time-input">
-					<div class="input-group date form_date">
-						<input type="text" class="form-control" name="endDate" id="endDate" readonly />
-						<span class="input-group-addon" id="addSpan">
-							<span class="glyphicon glyphicon-calendar"></span>
-						</span>
-					</div>
+		<div class="float-left float-gap">
+			<div class="float-left time-text">
+				<label class="label-control">结束时间</label>
+			</div>
+			<div class="float-left time-input">
+				<div class="input-group date form_date">
+					<input type="text" class="form-control" name="endDate" id="endDate" readonly />
+					<span class="input-group-addon" id="addSpan">
+						<span class="glyphicon glyphicon-calendar"></span>
+					</span>
 				</div>
 			</div>
+		</div>
 			
-			<div class="float-left float-gap">
-				<button class="btn btn-success" onclick="search();">查询</button>
-			</div>
+		<div class="float-left float-gap">
+			<button class="btn btn-success" onclick="search();">查询</button>
+		</div>
 		
 	</div>
 	
