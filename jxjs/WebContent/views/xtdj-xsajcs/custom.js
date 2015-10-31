@@ -98,6 +98,10 @@ function chuanshu(){
 		alert("请选择要传输的项!");
 		return;
 	}
+	$("#chuanshuModal").modal({
+		keyboard: false,
+		backdrop: 'static'
+	});
 	chuanshuModalSwitch(true);
 	var ajxh = [];
 	$("#dataTable td.checkTD input").each(function(){
@@ -106,10 +110,6 @@ function chuanshu(){
 			i--;
 			ajxh.push(g_resp[i].ajxh);
 		}
-	});
-	$("#chuanshuModal").modal({
-		keyboard: false,
-		backdrop: 'static'
 	});
 	$.ajax({
 		url :  baseUrl+"/xtdj/xsajcs/transport",
@@ -138,12 +138,12 @@ function chuanshuModalSwitch(flag){
 		$("#chuanshuMsg").show();
 		$("#chuanshuImg").show();
 		$("#chuanshuSuc").hide();
-		$("#chuanshuBtn").attr("disabled",true);
+		$("#chuanshuBtn").attr("disabled",true);		
 	}else{
 		$("#chuanshuMsg").hide();
 		$("#chuanshuImg").hide();
 		$("#chuanshuSuc").show();
-		$("#chuanshuBtn").attr("disabled",false);
+		$("#chuanshuBtn").attr("disabled",false);		
 	}
 	
 }
