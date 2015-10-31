@@ -11,48 +11,48 @@
 </head>
 <body>
 	<div class="search-area">
-		<form id="searchForm" method="post" class="form-horizontal" action="${pageContext.request.contextPath}/tjfx/cx">
-			<div class="float-left float-gap">
-				<div class="float-left time-text">
-					<label class="label-control">开始时间</label>
-				</div>
-				<div class="float-left time-input">
-					<div class="input-group date form_date">
-						<input type="text" class="form-control" name="startDate" id="startDate" readonly />
-						<span class="input-group-addon" id="addSpan">
-							<span class="glyphicon glyphicon-calendar"></span>
-						</span>
-					</div>
-				</div>
-			</div>
 
-			<div class="float-left float-gap">
-				<div class="float-left time-text">
-					<label class="label-control">结束时间</label>
+		<div class="float-left float-gap">
+			<div class="float-left time-text">
+				<label class="label-control">开始时间</label>
+			</div>
+			<div class="float-left time-input">
+				<div class="input-group date form_date">
+					<input type="text" class="form-control" name="startDate" id="startDate" readonly />
+					<span class="input-group-addon" id="addSpan">
+						<span class="glyphicon glyphicon-calendar"></span>
+					</span>
 				</div>
-				<div class="float-left time-input">
-					<div class="input-group date form_date">
-						<input type="text" class="form-control" name="endDate" id="endDate" readonly />
-						<span class="input-group-addon" id="addSpan">
-							<span class="glyphicon glyphicon-calendar"></span>
-						</span>
-					</div>
+			</div>
+		</div>
+
+		<div class="float-left float-gap">
+			<div class="float-left time-text">
+				<label class="label-control">结束时间</label>
+			</div>
+			<div class="float-left time-input">
+				<div class="input-group date form_date">
+					<input type="text" class="form-control" name="endDate" id="endDate" readonly />
+					<span class="input-group-addon" id="addSpan">
+						<span class="glyphicon glyphicon-calendar"></span>
+					</span>
 				</div>
 			</div>
+		</div>
 			
-			<div class="float-left float-gap">
-				<label class="label-control">条件</label>
-				<select class="select-control select-condition" name="condition" id="condition">
-					<c:forEach items="${conditionList }" var="condition">
-						<option>${condition }</option>
-					</c:forEach>
-				</select>
-			</div>
+		<div class="float-left float-gap">
+			<label class="label-control">条件</label>
+			<select class="select-control select-condition" name="condition" id="condition">
+				<c:forEach items="${conditionList }" var="condition">
+					<option>${condition }</option>
+				</c:forEach>
+			</select>
+		</div>
 			
-			<div class="float-left float-gap">
-				<button type="submit" class="btn btn-success">统计</button>
-			</div>
-		</form>
+		<div class="float-left float-gap">
+			<button class="btn btn-success" onclick="tongji();">统计</button>
+		</div>
+
 	</div>
 	
 	<div class="table-wrapper">
