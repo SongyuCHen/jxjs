@@ -102,14 +102,23 @@ function chuanshu(){
 		alert("请选择要传输的项!");
 		return;
 	}
+	var ajxh = [];
+	$("#dataTable td.checkTD input").each(function(){
+		if($(this).is(":checked")){
+			var i = $(this).parent().parent().children().eq(1).text();
+			i--;
+			ajxh.push(g_resp[i].ajxh);
+		}
+	});
 	$("#chuanshuModal").modal({
 		keyboard: false,
 		backdrop: 'static'
 	});
 	$.ajax({
 		url :  baseUrl+"/xtdj/xsajcs/transport",
-		type : "get",
+		type : "post",
 		data : {
+			ajxhList:ajxh.join()
 		},
 		dataType : 'html',
 		success : function(resp) {
