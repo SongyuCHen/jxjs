@@ -132,7 +132,7 @@ public class XtdjController extends BaseController
 		if(!StringUtil.isBlank(ah)){
 			PubAjJb aj = ajService.getXsajByAh(ah);
 			ajList.add(aj);
-		}else if(StringUtil.isBlank(dsr)){
+		}else if(!StringUtil.isBlank(dsr)){
 			ajList = ajService.getXsajByDsr(dsr);
 		}else{
 
