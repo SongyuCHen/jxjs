@@ -1,7 +1,7 @@
 /**
  * 
  */
-
+var baseUrl = getRootPath();
 $(function(){
 	var statusStatChart = echarts.init(document.getElementById('statusStat'));
 	var option1 = {
@@ -129,6 +129,48 @@ $(function(){
 		        }
 		    ]
 		};
-		typeStatChart.setOption(option2);               
+		typeStatChart.setOption(option2);
+		
+		
+		fetchData1();
 		                    
 });
+
+
+
+
+
+function fetchData1(){
+	var startDate = "2015-10-1";
+	var endDate = "2015-10-31";
+	$.ajax({
+		url :  baseUrl+"/tjfx/sjtj/graph1",
+		type : "get",
+		data : {
+			kssj:startDate,
+			jssj:endDate
+		},
+		dataType : 'html',
+		success : function(resp) {
+			resp = $.parseJSON(resp);
+			alert(resp);
+		},
+		complete:function(resp){
+		}
+	});
+}
+
+function fetchData2(){
+	$.ajax({
+		url :  baseUrl+"/tjfx/sjtj/graph2",
+		type : "get",
+		data : {},
+		dataType : 'html',
+		success : function(resp) {
+			resp = $.parseJSON(resp);
+			alert(resp);
+		},
+		complete:function(resp){
+		}
+	});
+}

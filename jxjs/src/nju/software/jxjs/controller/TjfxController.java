@@ -66,13 +66,34 @@ public class TjfxController extends BaseController
 		return mav;
 	}
 	
+	
 	/**
-	 * 数据统计-统计时间段内不同状态的减刑假释申请
+	 * 数据统计
 	 * 
 	 * @return
 	 */
 	@RequestMapping(value = "/sjtj", method = RequestMethod.GET)
-	public Object sjtj(@RequestParam("kssj") String kssj,
+	public ModelAndView sjtj()
+	{
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("tjfx-sjtj");
+		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
+		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "tjfx", "sjtj"));
+		return mav;
+	}
+	
+	
+	
+	
+	
+	/**
+	 * 数据统计-统计时间段内不同状态的减刑假释申请  图
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/sjtj/graph1", method = RequestMethod.GET)
+	@ResponseBody
+	public Object sjtjGraph1(@RequestParam("kssj") String kssj,
 			@RequestParam("jssj") String jssj)
 	{
 		Date begin = DateUtil.parse(kssj, DateUtil.webFormat);
@@ -90,12 +111,13 @@ public class TjfxController extends BaseController
 	}
 	
 	/**
-	 * 数据统计-统计时间段内不同状态的减刑假释申请
+	 * 数据统计-统计时间段内不同状态的减刑假释申请 图
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/sjtj1", method = RequestMethod.GET)
-	public Object sjtj1(@RequestParam("kssj") String kssj,
+	@RequestMapping(value = "/sjtj/graph2", method = RequestMethod.GET)
+	@ResponseBody
+	public Object sjtjGraph2(@RequestParam("kssj") String kssj,
 			@RequestParam("jssj") String jssj)
 	{
 		Date begin = DateUtil.parse(kssj, DateUtil.webFormat);
