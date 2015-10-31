@@ -89,6 +89,84 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class="modal fade" role="dialog" id="shenqingModal">
+  		<div class="modal-dialog modal-lg" role="document">
+    		<div class="modal-content">
+      			<div class="modal-header">
+        			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        			<h4 class="modal-title" id="gridSystemModalLabel">申请</h4>
+      				</div>
+      		<div class="modal-body">
+        		<div class="container-fluid">
+  					<div class="row">
+  						<div class="col-md-2">
+  							案号
+  						</div>
+  						<div class="col-md-6">
+  							null
+  						</div>
+  						<div class="col-md-2">当事人</div>
+  						<div class="col-md-2">null</div>
+					</div>
+					<div class="row">
+  						<div class="col-md-2">
+  							案件名称
+  						</div>
+  						<div class="col-md-6">
+  							null
+  						</div>
+  						<div class="col-md-2">申请类型</div>
+  						<div class="col-md-2">null</div>
+					</div>
+					<div class="space"></div>
+					<div class="row">
+  						<div class="col-md-2">
+  							办案法院
+  						</div>
+  						<div class="col-md-6">
+  							null
+  						</div>
+  						<div class="col-md-2">申请时间</div>
+  						<div class="col-md-2">null</div>
+					</div>
+					<div class="row">
+  						<div class="col-md-2">
+  							服刑地点
+  						</div>
+  						<div class="col-md-6">
+  							null
+  						</div>
+  						<div class="col-md-2">申请次数</div>
+  						<div class="col-md-2">null</div>
+					</div>
+					<div class="space"></div>
+					<div class="row">
+  						<div class="col-md-2">入监日期</div>
+  						<div class="col-md-2">null</div>
+  						<div class="col-md-2">刑期开始时间</div>
+  						<div class="col-md-2">null</div>
+  						<div class="col-md-2">刑期结束时间</div>
+  						<div class="col-md-2">null</div>
+					</div>
+					<div class="row">
+  						<div class="col-md-2">减刑开始时间</div>
+  						<div class="col-md-2">null</div>
+  						<div class="col-md-2">减刑结束时间</div>
+  						<div class="col-md-2">null</div>
+  						<div class="col-md-2" style="font-size:10px;padding-top:2px;">是否不得假释罪犯申请减刑</div>
+  						<div class="col-md-2">null</div>
+					</div>
+				
+				</div>
+      		</div>
+      		<div class="modal-footer">
+        		<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        		<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="apply();">确定 </button>
+      		</div>
+    		</div><!-- /.modal-content -->
+  		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 
 </body>
 </html>

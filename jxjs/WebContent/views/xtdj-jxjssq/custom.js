@@ -102,5 +102,7 @@ function fetchData(){
 
 
 function shenqing(){
-	
+	$("#shenqingModal").modal({
+		keyboard: true
+	});
 }
