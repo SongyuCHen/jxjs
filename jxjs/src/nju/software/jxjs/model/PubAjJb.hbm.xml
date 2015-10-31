@@ -126,7 +126,7 @@
         	<column name="CBRBPRQ" />
         </property>
         <property name="cjar" type="string">
-            <column name="CJAR" />
+            <column name="JJAR" />
         </property>
         <property name="spzsqrq" type="java.util.Date">
         	<column name="SPZSQRQ" />
