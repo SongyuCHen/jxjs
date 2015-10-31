@@ -62,7 +62,8 @@ public class XtdjController extends BaseController
 		return mav;
 	}
 	
-	@RequestMapping(value = "/transport", method = RequestMethod.GET)
+	@RequestMapping(value = "/xsajcs/transport", method = RequestMethod.POST)
+	@ResponseBody
 	public Object transport(@RequestParam("ajxhList") String ajxhList){
 		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
 		String csr = user.getUsername();

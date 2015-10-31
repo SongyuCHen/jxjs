@@ -106,4 +106,17 @@ function chuanshu(){
 		keyboard: false,
 		backdrop: 'static'
 	});
+	$.ajax({
+		url :  baseUrl+"/xtdj/xsajcs/transport",
+		type : "get",
+		data : {
+		},
+		dataType : 'html',
+		success : function(resp) {
+			fetchData();
+		},
+		complete:function(resp){
+			$("#chuanshuModal").hide();
+		}
+	});
 }
