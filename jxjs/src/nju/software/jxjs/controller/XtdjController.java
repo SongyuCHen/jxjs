@@ -5,7 +5,9 @@ import java.util.Date;
 import java.util.List;
 
 import nju.software.jxjs.model.PubAjJb;
+import nju.software.jxjs.model.PubDmb;
 import nju.software.jxjs.model.PubLaAy;
+import nju.software.jxjs.service.DmbService;
 import nju.software.jxjs.service.MenuService;
 import nju.software.jxjs.service.PubAjJbService;
 import nju.software.jxjs.service.PubLaAyService;
@@ -33,6 +35,8 @@ public class XtdjController extends BaseController
 	private PubAjJbService ajService;
 	@Autowired
 	private PubLaAyService ayService;
+	@Autowired
+	private DmbService dmbService;
 	@RequestMapping(value = "/xsajcs", method = RequestMethod.GET)
 	public ModelAndView xsajcs(){
 		ModelAndView mav = new ModelAndView();
@@ -88,7 +92,10 @@ public class XtdjController extends BaseController
 			PubLaAy ay = ayService.getAyByAjxh(aj.getAjxh());
 			if(ay!=null)
 				view.setAy(ay.getLaay());
-//			view.setBafy(bafy);
+			if(StringUtil.isBlank(aj.getBafy())){
+				PubDmb dmb = dmbService.getDmbByLbbhAndDmbh(" FBZ0001-97", aj.getBafy());
+				view.setBafy(dmb.getDmms());
+			}
 			view.setLarq(DateUtil.format(aj.getLarq(), DateUtil.webFormat));
 			view.setJarq(DateUtil.format(aj.getJarq(), DateUtil.webFormat));
 			ajcsView.add(view);

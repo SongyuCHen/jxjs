@@ -77,6 +77,13 @@ public class TjfxController extends BaseController
 	{
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("tjfx-sjtj");
+		List<PubDmb> dmbList = dmbService.getDmbByLbbh("JXJS-SQLX");
+		List<String> conditionList = new ArrayList<String>();
+		conditionList.add("全部");
+		for(PubDmb dmb:dmbList){
+			conditionList.add(dmb.getDmms());
+		}
+		mav.addObject("conditionList", conditionList);
 		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
 		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "tjfx", "sjtj"));
 		return mav;
@@ -126,12 +133,18 @@ public class TjfxController extends BaseController
 		List<PubDmb> ajztDmb = dmbService.getDmbByLbbh("JXJS-AJZT");
 		List<TjfxResultModel> resultList = new ArrayList<TjfxResultModel>();
 		int sz;
+		int sum = 0;
 		for(PubDmb dmb:ajztDmb){
 			TjfxResultModel result = new TjfxResultModel();
 			result.setS_type(dmb.getDmms());
 			sz = jxjsService.getSumByCondition(begin, end, dmb.getDmbh());
+			sum += sz;
 			result.setI_sz(sz);
 			resultList.add(result);
+		}
+		for(TjfxResultModel result:resultList){
+			Double d_sz = (result.getI_sz()+0.0)/sum;
+			result.setD_sz(d_sz);
 		}
 		return resultList;
 	}
