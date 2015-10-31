@@ -91,14 +91,18 @@
         			<h4 class="modal-title" id="gridSystemModalLabel">请等待</h4>
       			</div>
       		<div class="modal-body">
-        		<div class="container-fluid">        			
-					<div class="row chuanshuText">
+        		<div class="container-fluid" id="chuanshuShow">        			
+					<div class="row chuanshuText" id="chuanshuMsg">
   							案件正在传输中... 
 					</div>
-					<div class="row chuanshuText">
+					<div class="row chuanshuText" id="chuanshuImg">
   						<img src="${pageContext.request.contextPath}/images/Preloader_3.gif"/>
 					</div>
+					<div class='row chuanshuText' id="chuanshuSuc">成功传输n个案件</div>
 				</div>
+      		</div>
+      		<div class="modal-footer">
+        		<button type="button" class="btn btn-default" data-dismiss="modal" id="chuanshuBtn" onclick="fetchData();">关闭</button>
       		</div>
     		</div><!-- /.modal-content -->
   		</div><!-- /.modal-dialog -->

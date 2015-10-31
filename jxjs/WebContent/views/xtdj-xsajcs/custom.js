@@ -102,6 +102,7 @@ function chuanshu(){
 		alert("请选择要传输的项!");
 		return;
 	}
+	chuanshuModalSwitch(true);
 	var ajxh = [];
 	$("#dataTable td.checkTD input").each(function(){
 		if($(this).is(":checked")){
@@ -122,10 +123,31 @@ function chuanshu(){
 		},
 		dataType : 'html',
 		success : function(resp) {
-			fetchData();
+			$("#chuanshuSuc").text("成功传输"+resp+"个案件！");
+			chuanshuModalSwitch(false);
+		},
+		error : function(resp){
+			$("#chuanshuSuc").text("传输失败！");
+			chuanshuModalSwitch(false);
 		},
 		complete:function(resp){
-			$("#chuanshuModal").hide();
+			//$("#chuanshuModal").hide();
 		}
 	});
+}
+
+
+function chuanshuModalSwitch(flag){
+	if(flag){
+		$("#chuanshuMsg").show();
+		$("#chuanshuImg").show();
+		$("#chuanshuSuc").hide();
+		$("#chuanshuBtn").attr("disabled",true);
+	}else{
+		$("#chuanshuMsg").hide();
+		$("#chuanshuImg").hide();
+		$("#chuanshuSuc").show();
+		$("#chuanshuBtn").attr("disabled",false);
+	}
+	
 }
