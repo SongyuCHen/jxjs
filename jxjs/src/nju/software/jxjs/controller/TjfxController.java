@@ -106,6 +106,7 @@ public class TjfxController extends BaseController
 			result.setS_type(dmb.getDmms());
 			sz = jxjsService.getSumByDate(begin, end, dmb.getDmbh());
 			result.setI_sz(sz);
+			resultList.add(result);
 		}
 		return resultList;
 	}
@@ -130,6 +131,7 @@ public class TjfxController extends BaseController
 			result.setS_type(dmb.getDmms());
 			sz = jxjsService.getSumByCondition(begin, end, dmb.getDmbh());
 			result.setI_sz(sz);
+			resultList.add(result);
 		}
 		return resultList;
 	}

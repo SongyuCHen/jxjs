@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import nju.software.jxjs.model.TJxjs;
+import nju.software.jxjs.util.DateUtil;
 
 @Repository
 public class JxjsDao extends BaseDao {
@@ -53,13 +54,15 @@ public class JxjsDao extends BaseDao {
 	 * @return
 	 */
 	public int getSqSumByDate(Date kssj,Date jssj){
-		String hql = "select count(*) from TJxjs jxjs where jxjs.sqsj>='"+kssj+"' and jxjs.sqsj <='"+jssj+"'";
+		String s_kssj = DateUtil.format(kssj, DateUtil.webFormat);
+		String s_jssj = DateUtil.format(jssj, DateUtil.webFormat);
+		String hql = "select count(*) from TJxjs jxjs where jxjs.sqsj>='"+s_kssj+"' and jxjs.sqsj <='"+s_jssj+"'";
 		
 		Session s = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
 		Query query = s.createQuery(hql);
 		int sz = 0;
-		if (query.uniqueResult() != null)
-			sz = (Integer) query.uniqueResult();
+		if (query.uniqueResult() != null)			
+			sz = Integer.parseInt(String.valueOf(query.uniqueResult())); 
 		return sz;
 	}
 	/**
@@ -69,13 +72,15 @@ public class JxjsDao extends BaseDao {
 	 * @return
 	 */
 	public int getSpSumByDate(Date kssj,Date jssj){
-		String hql = "select count(*) from Tspxx spxx where spxx.splx = '1' and spxx.spsj>='"+kssj+"' and spxx.spsj <='"+jssj+"'";
+		String s_kssj = DateUtil.format(kssj, DateUtil.webFormat);
+		String s_jssj = DateUtil.format(jssj, DateUtil.webFormat);
+		String hql = "select count(*) from TSpxx spxx where spxx.splx = '1' and spxx.spsj>='"+s_kssj+"' and spxx.spsj <='"+s_jssj+"'";
 		
 		Session s = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
 		Query query = s.createQuery(hql);
 		int sz = 0;
 		if (query.uniqueResult() != null)
-			sz = (Integer) query.uniqueResult();
+			sz = Integer.parseInt(String.valueOf(query.uniqueResult())); 
 		return sz;
 	}
 	/**
@@ -85,13 +90,15 @@ public class JxjsDao extends BaseDao {
 	 * @return
 	 */
 	public int getlaSumByDate(Date kssj,Date jssj){
-		String hql = "select count(*) from PubAjJb aj where aj.ajxh in(select laajxh from TJxjs) and aj.larq>='"+kssj+"' and aj.larq <='"+jssj+"'";
+		String s_kssj = DateUtil.format(kssj, DateUtil.webFormat);
+		String s_jssj = DateUtil.format(jssj, DateUtil.webFormat);
+		String hql = "select count(*) from PubAjJb aj where aj.ajxh in(select laajxh from TJxjs) and aj.larq>='"+s_kssj+"' and aj.larq <='"+s_jssj+"'";
 		
 		Session s = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
 		Query query = s.createQuery(hql);
 		int sz = 0;
 		if (query.uniqueResult() != null)
-			sz = (Integer) query.uniqueResult();
+			sz = Integer.parseInt(String.valueOf(query.uniqueResult())); 
 		return sz;
 	}
 	/**
@@ -101,13 +108,15 @@ public class JxjsDao extends BaseDao {
 	 * @return
 	 */
 	public int getjaSumByDate(Date kssj,Date jssj){
-		String hql = "select count(*) from PubAjJb aj where aj.ajxh in(select laajxh from TJxjs) and aj.jarq>='"+kssj+"' and aj.jarq <='"+jssj+"'";
+		String s_kssj = DateUtil.format(kssj, DateUtil.webFormat);
+		String s_jssj = DateUtil.format(jssj, DateUtil.webFormat);
+		String hql = "select count(*) from PubAjJb aj where aj.ajxh in(select laajxh from TJxjs) and aj.jarq>='"+s_kssj+"' and aj.jarq <='"+s_jssj+"'";
 		
 		Session s = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
 		Query query = s.createQuery(hql);
 		int sz = 0;
 		if (query.uniqueResult() != null)
-			sz = (Integer) query.uniqueResult();
+			sz = Integer.parseInt(String.valueOf(query.uniqueResult())); 
 		return sz;
 	}
 	/**
@@ -117,13 +126,15 @@ public class JxjsDao extends BaseDao {
 	 * @return
 	 */
 	public int getfkSumByDate(Date kssj,Date jssj){
-		String hql = "select count(*) from PubAjJb aj where aj.ajxh in(select laajxh from TJxjs) and aj.jarq>='"+kssj+"' and aj.jarq <='"+jssj+"'";
+		String s_kssj = DateUtil.format(kssj, DateUtil.webFormat);
+		String s_jssj = DateUtil.format(jssj, DateUtil.webFormat);
+		String hql = "select count(*) from PubAjJb aj where aj.ajxh in(select laajxh from TJxjs) and aj.jarq>='"+s_kssj+"' and aj.jarq <='"+s_jssj+"'";
 		
 		Session s = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
 		Query query = s.createQuery(hql);
 		int sz = 0;
 		if (query.uniqueResult() != null)
-			sz = (Integer) query.uniqueResult();
+			sz = Integer.parseInt(String.valueOf(query.uniqueResult())); 
 		return sz;
 	}
 	
@@ -134,12 +145,14 @@ public class JxjsDao extends BaseDao {
 	 * @return
 	 */
 	public int getSumByCondition(Date kssj,Date jssj,String type){
-		String hql = "select count(*) from TJxjs jxjs where jxjs.ajztbh ='"+type+"' and jxjs.sqsj>='"+kssj+"' and jxjs.sqsj <='"+jssj+"'";		
+		String s_kssj = DateUtil.format(kssj, DateUtil.webFormat);
+		String s_jssj = DateUtil.format(jssj, DateUtil.webFormat);
+		String hql = "select count(*) from TJxjs jxjs where jxjs.ajztbh ='"+type+"' and jxjs.sqsj>='"+s_kssj+"' and jxjs.sqsj <='"+s_jssj+"'";		
 		Session s = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
 		Query query = s.createQuery(hql);
 		int sz = 0;
 		if (query.uniqueResult() != null)
-			sz = (Integer) query.uniqueResult();
+			sz = Integer.parseInt(String.valueOf(query.uniqueResult())); 
 		return sz;
 	}
 	public void save(TJxjs jxjs){
