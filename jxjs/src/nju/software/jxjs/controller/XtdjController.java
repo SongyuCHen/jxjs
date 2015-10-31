@@ -93,7 +93,7 @@ public class XtdjController extends BaseController
 			if(ay!=null)
 				view.setAy(ay.getLaay());
 			if(StringUtil.isBlank(aj.getBafy())){
-				PubDmb dmb = dmbService.getDmbByLbbhAndDmbh(" FBZ0001-97", aj.getBafy());
+				PubDmb dmb = dmbService.getDmbByLbbhAndDmbh(" FBZ0001-97", aj.getBafy().trim());
 				view.setBafy(dmb.getDmms());
 			}
 			view.setLarq(DateUtil.format(aj.getLarq(), DateUtil.webFormat));
