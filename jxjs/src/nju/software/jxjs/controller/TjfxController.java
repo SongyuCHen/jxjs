@@ -126,7 +126,7 @@ public class TjfxController extends BaseController
 	@RequestMapping(value = "/sjtj/graph2", method = RequestMethod.GET)
 	@ResponseBody
 	public Object sjtjGraph2(@RequestParam("kssj") String kssj,
-			@RequestParam("jssj") String jssj)
+			@RequestParam("jssj") String jssj,@RequestParam("condition") String condition)
 	{
 		Date begin = DateUtil.parse(kssj, DateUtil.webFormat);
 		Date end = DateUtil.parse(jssj, DateUtil.webFormat);

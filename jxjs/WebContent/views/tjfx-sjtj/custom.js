@@ -109,12 +109,14 @@ function fetchData1(){
 function fetchData2(){
 	var startDate = $("#startDate1").val();
 	var endDate = $("#endDate1").val();
+	var condition = $("#condition").val();
 	$.ajax({
 		url :  baseUrl+"/tjfx/sjtj/graph2",
 		type : "get",
 		data : {
 			kssj:startDate,
-			jssj:endDate
+			jssj:endDate,
+			condition:condition
 		},
 		dataType : 'html',
 		success : function(resp) {

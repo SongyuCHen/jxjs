@@ -73,16 +73,12 @@
 			</div>
 		</div>
 		<div class="float-left float-gap">
-			<div class="float-left time-text">
-				<label class="label-control">类型</label>
-			</div>
-			<div class="float-left time-input">
-				<select class="form-control">
-					<option>全部</option>
-					<option>减刑</option>
-					<option>假释</option>
-				</select>	
-			</div>
+			<label class="label-control">类型</label>
+			<select class="select-control select-condition" name="condition" id="condition">
+				<c:forEach items="${conditionList }" var="condition">
+					<option>${condition }</option>
+				</c:forEach>
+			</select>
 		</div>
 			
 		<div class="float-left float-gap">
