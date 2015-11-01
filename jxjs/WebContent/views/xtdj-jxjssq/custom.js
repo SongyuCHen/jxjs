@@ -102,6 +102,8 @@ function fetchData(){
 
 
 function shenqing(){
+	var date = new Date();
+	$("#shenqingTime").val(date.Format("yyyy-MM-dd"));
 	$("#shenqingModal").modal({
 		keyboard: true
 	});

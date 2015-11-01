@@ -107,7 +107,12 @@
   							null
   						</div>
   						<div class="col-md-2">当事人</div>
-  						<div class="col-md-2">null</div>
+  						<div class="col-md-2 noborder" style="padding:0px;">
+  							<select style="width:100%;height:100%">
+  								<option>张三分</option>
+  								<option>马虎疼</option>
+  							</select>
+  						</div>
 					</div>
 					<div class="row">
   						<div class="col-md-2">
@@ -117,7 +122,12 @@
   							null
   						</div>
   						<div class="col-md-2">申请类型</div>
-  						<div class="col-md-2">null</div>
+  						<div class="col-md-2 noborder" style="padding:0px;">
+  							<select style="width:100%;height:100%;">
+  								<option>减刑</option>
+  								<option>假释</option>
+  							</select>
+  						</div>
 					</div>
 					<div class="space"></div>
 					<div class="row">
@@ -128,7 +138,15 @@
   							null
   						</div>
   						<div class="col-md-2">申请时间</div>
-  						<div class="col-md-2">null</div>
+  						<div class="col-md-2" style="padding:2px 0px;">
+  							<div class="input-group date form_date">
+								<input type="text" class="form-control" id="shenqingTime" readonly />
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar">
+									</span>
+								</span>
+							</div>
+  						</div>
 					</div>
 					<div class="row">
   						<div class="col-md-2">
