@@ -138,6 +138,10 @@ function shenqing(){
 			$("#msqlx").html(toOptions(resp.sqlxList));
 			$("#mdsr").html(toOptions(resp.dsrList));
 			
+			
+			$("#msqkssjLabel").text(toLabel(resp.sqlxList)+"开始时间");
+			$("#msqjssjLabel").text(toLabel(resp.sqlxList)+"结束时间");
+			
 		},
 		complete:function(resp){
 			
@@ -177,4 +181,20 @@ function toOptions(l){
 		html+="<option>"+l[i]+"</option>";
 	}
 	return html;
+}
+
+
+function sqlxChanged(sel){	
+	$("#msqkssjLabel").text($(sel).val()+"开始时间");
+	$("#msqjssjLabel").text($(sel).val()+"结束时间");
+}
+
+function toLabel(l){
+	var label = "";
+	if(l.length>0){
+		label = l[0];
+	}else{
+		label="申请";
+	}
+	return label;
 }

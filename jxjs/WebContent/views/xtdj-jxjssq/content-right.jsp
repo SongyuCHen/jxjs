@@ -123,7 +123,7 @@
   						</div>
   						<div class="col-md-2">申请类型</div>
   						<div class="col-md-2 noborder" style="padding:0px;">
-  							<select style="width:100%;height:100%;"  id="msqlx">
+  							<select style="width:100%;height:100%;"  id="msqlx" onchange="sqlxChanged(this);">  							
   								<option>减刑</option>
   								<option>假释</option>
   							</select>
@@ -168,9 +168,9 @@
   						<div class="col-md-2" id="mxqjssj">null</div>
 					</div>
 					<div class="row">
-  						<div class="col-md-2">减刑开始时间</div>
+  						<div class="col-md-2" id="msqkssjLabel">申请开始时间</div>
   						<div class="col-md-2" id="msqkssj">null</div>
-  						<div class="col-md-2">减刑结束时间</div>
+  						<div class="col-md-2" id="msqjssjLabel">申请结束时间</div>
   						<div class="col-md-2" id="msqjssj">null</div>
   						<div class="col-md-2" style="font-size:10px;padding-top:2px;">是否不得假释罪犯申请减刑</div>
   						<div class="col-md-2" id="msfjs">null</div>
