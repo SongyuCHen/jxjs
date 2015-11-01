@@ -169,9 +169,25 @@
 					</div>
 					<div class="row">
   						<div class="col-md-2" id="msqkssjLabel">申请开始时间</div>
-  						<div class="col-md-2" id="msqkssj">null</div>
+  						<div class="col-md-2"  style="padding:2px 0px;">
+  							<div class="input-group date form_date">
+								<input type="text" class="form-control" id="msqkssj" readonly />
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar">
+									</span>
+								</span>
+							</div>
+  						</div>
   						<div class="col-md-2" id="msqjssjLabel">申请结束时间</div>
-  						<div class="col-md-2" id="msqjssj">null</div>
+  						<div class="col-md-2"  style="padding:2px 0px;">
+  							<div class="input-group date form_date">
+								<input type="text" class="form-control"  id="msqjssj" readonly />
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar">
+									</span>
+								</span>
+							</div>
+  						</div>
   						<div class="col-md-2" style="font-size:10px;padding-top:2px;">是否不得假释罪犯申请减刑</div>
   						<div class="col-md-2" id="msfjs">null</div>
 					</div>
@@ -180,7 +196,7 @@
       		</div>
       		<div class="modal-footer">
         		<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        		<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="apply();">确定 </button>
+        		<button type="button" class="btn btn-primary" onclick="apply();">确定 </button>
       		</div>
     		</div><!-- /.modal-content -->
   		</div><!-- /.modal-dialog -->

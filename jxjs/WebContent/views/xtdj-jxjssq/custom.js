@@ -100,7 +100,7 @@ function fetchData(){
 	});
 }
 
-
+//获取申请信息
 function shenqing(){
 	shenqingModalReset();
 	$("#shenqingModal").modal({
@@ -131,8 +131,6 @@ function shenqing(){
 			$("#mrjrq").text(resp.rjrq);
 			$("#mxqkssj").text(resp.xqkssj);
 			$("#mxqjssj").text(resp.xqjssj);
-			$("#msqkssj").text(resp.sqkssj);
-			$("#msqjssj").text(resp.sqjssj);
 			$("#msfjs").text(resp.sfjs);
 			
 			$("#msqlx").html(toOptions(resp.sqlxList));
@@ -149,11 +147,53 @@ function shenqing(){
 	});
 }
 
-
+//发起申请
 function apply(){
+	var ajxh = -1;
+	$("#dataTable td.checkTD input").each(function(){
+		if($(this).is(":checked")){
+			var i = $(this).parent().parent().children().eq(1).text();
+			i--;
+			ajxh = g_resp[i].ajxh;
+		}
+	});
+	var dsr = $("#mdsr").val()==null?"":$("#mdsr").val();
+	var sqlx = $("#msqlx").val()==null?"":$("#msqlx").val();
+	var sqsj = $("#msqsj").val();
+	var sqkssj = $("#msqkssj").val();
+	var sqjssj = $("#msqjssj").val();
+	if(sqkssj.length==0||sqjssj.length==0||dsr.length==0){
+		alert("参数不能为空，请填写完整！");
+		return;
+	}
+	$.ajax({
+		url :  baseUrl+"/xtdj/apply",
+		type : "post",
+		data : {
+			ajxh:ajxh,
+			dsr:dsr,
+			sqlx:sqlx,
+			sqsj:sqsj,
+			sqkssj:sqkssj,
+			sqjssj:sqjssj
+		},
+		dataType : 'html',
+		success : function(resp) {
+			resp = $.parseJSON(resp);
+			alert("申请成功！");
+		},
+		error : function(resp){
+			alert("申请失败!");
+		},
+		complete:function(resp){
+			fetchData();
+			$("#shenqingModal").hide();
+		}
+	});
 	
 }
 
+//重置modal
 function shenqingModalReset(){
 	
 	$("#mah").text("载入中。。。");
@@ -164,14 +204,15 @@ function shenqingModalReset(){
 	$("#mrjrq").text("载入中。。。");
 	$("#mxqkssj").text("载入中。。。");
 	$("#mxqjssj").text("载入中。。。");
-	$("#msqkssj").text("载入中。。。");
-	$("#msqjssj").text("载入中。。。");
+
 	$("#msfjs").text("载入中。。。");
 	$("#msqlx").html(toOptions([]));
 	$("#mdsr").html(toOptions([]));
 	
 	var date = new Date();
 	$("#msqsj").val(date.Format("yyyy-MM-dd"));
+	$("#msqkssj").val("");
+	$("#msqjssj").val("");
 }
 
 
