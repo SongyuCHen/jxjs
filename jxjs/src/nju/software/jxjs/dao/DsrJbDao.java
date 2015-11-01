@@ -260,4 +260,17 @@ public class DsrJbDao extends BaseDao {
 			throw re;
 		}
 	}
+	public DsrJb getDsrByAjxhAndJc(int ajxh,String dsrjc){
+		String hql = "from DsrJb where ajxh = " + ajxh + " and dsrjc = '"+dsrjc+"'";
+		try{
+			List<DsrJb> dsrList = (List<DsrJb>) getHibernateTemplate().find(hql);
+			if(dsrList!=null && dsrList.size()>0)
+				return dsrList.get(0);
+			else
+				return null;
+		}catch (RuntimeException re) {
+			log.error("getDsrByAjxhAndJc failed", re);
+			throw re;
+		}
+	}
 }

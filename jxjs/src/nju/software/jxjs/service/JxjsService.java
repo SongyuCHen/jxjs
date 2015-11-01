@@ -3,10 +3,14 @@ package nju.software.jxjs.service;
 import java.util.Date;
 import java.util.List;
 
+import nju.software.jxjs.dao.DsrJbDao;
 import nju.software.jxjs.dao.JxjsDao;
+import nju.software.jxjs.dao.PubAjJbDao;
 import nju.software.jxjs.dao.SpxxDao;
 import nju.software.jxjs.dao.XtglDmbDao;
 import nju.software.jxjs.dao.XtglYhbDao;
+import nju.software.jxjs.model.DsrJb;
+import nju.software.jxjs.model.PubAjJb;
 import nju.software.jxjs.model.PubDmb;
 import nju.software.jxjs.model.PubXtglYhb;
 import nju.software.jxjs.model.TJxjs;
@@ -25,6 +29,10 @@ public class JxjsService {
 	private XtglYhbDao yhbDao;
 	@Autowired
 	private SpxxDao spxxDao;
+	@Autowired
+	private PubAjJbDao ajDao;
+	@Autowired
+	private DsrJbDao dsrjbDao;
 	public TJxjs getJxjsBybh(int jxjsbh){
 		return jd.getJxjsByBh(jxjsbh);
 	}
@@ -147,6 +155,13 @@ public class JxjsService {
 			spxxDao.save(spxx);
 		}
 		 
+	}
+	public void addJxjsByAjxhDsr(int ajxh,String dsr,String sqlx,Date sqsj,Date sqkssj,Date sqjssj){
+		TJxjs jxjs = new TJxjs();
+		PubAjJb aj = ajDao.getAjJbByAjxh(ajxh);
+		DsrJb dsrjb = dsrjbDao.getDsrByAjxhAndJc(ajxh, dsr);
+		
+		
 	}
 	
 	public TJxjs add(TJxjs jxjs){

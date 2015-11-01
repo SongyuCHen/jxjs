@@ -11,6 +11,7 @@ import nju.software.jxjs.model.TDsr;
 import nju.software.jxjs.model.TJxjs;
 import nju.software.jxjs.model.TSpxx;
 import nju.software.jxjs.service.DmbService;
+import nju.software.jxjs.service.JxjsService;
 import nju.software.jxjs.service.MenuService;
 import nju.software.jxjs.service.PubAjJbService;
 import nju.software.jxjs.service.PubLaAyService;
@@ -42,6 +43,8 @@ public class XtdjController extends BaseController
 	private PubLaAyService ayService;
 	@Autowired
 	private DmbService dmbService;
+	@Autowired
+	private JxjsService jxjsService;
 	@RequestMapping(value = "/xsajcs", method = RequestMethod.GET)
 	public ModelAndView xsajcs(){
 		ModelAndView mav = new ModelAndView();
@@ -68,15 +71,28 @@ public class XtdjController extends BaseController
 	}
 	@RequestMapping(value = "/getInfoForApply", method = RequestMethod.POST)
 	@ResponseBody
-	public Object apply(@RequestParam("ajxh") String ajxh){
+	public Object getInfoForApply(@RequestParam("ajxh") String ajxh){
 		int i_ajxh = Integer.valueOf(ajxh);
 		JxjsApplyView view = ajService.getApplyByAjxh(i_ajxh);
-
-//		ModelAndView mav = new ModelAndView();
-//		mav.setViewName("xtdj-jajgfk");
-//		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "xtdj", "jajgfk"));
 		return view;
 	}
+	@RequestMapping(value = "/apply", method = RequestMethod.GET)
+	@ResponseBody
+	public Object apply(@RequestParam("ajxh") String ajxh,@RequestParam("dsr") String dsr,
+			@RequestParam("sqlx") String sqlx,@RequestParam("sqsj") String sqsj,
+			@RequestParam("sqkssj") String sqkssj,@RequestParam("sqjssj") String sqjssj){
+		int i_ajxh = Integer.valueOf(ajxh);
+		Date d_sqsj = DateUtil.parse(sqsj, DateUtil.webFormat);
+		Date d_sqkssj = DateUtil.parse(sqkssj, DateUtil.webFormat);
+		Date d_sqjssj = DateUtil.parse(sqjssj, DateUtil.webFormat);
+		jxjsService.addJxjsByAjxhDsr(i_ajxh, dsr, sqlx,d_sqsj,d_sqkssj,d_sqjssj);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("xtdj-jxjssq");
+		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
+		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "xtdj", "jxjssq"));
+		return mav;
+	}
+	
 	@RequestMapping(value = "/xsajcs/transport", method = RequestMethod.POST)
 	@ResponseBody
 	public Object transport(@RequestParam("ajxhList") String ajxhList){
