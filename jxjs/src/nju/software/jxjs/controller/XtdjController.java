@@ -66,7 +66,7 @@ public class XtdjController extends BaseController
 		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "xtdj", "jajgfk"));
 		return mav;
 	}
-	@RequestMapping(value = "/apply", method = RequestMethod.POST)
+	@RequestMapping(value = "/getInfoForApply", method = RequestMethod.POST)
 	@ResponseBody
 	public Object apply(@RequestParam("ajxh") String ajxh){
 		int i_ajxh = Integer.valueOf(ajxh);

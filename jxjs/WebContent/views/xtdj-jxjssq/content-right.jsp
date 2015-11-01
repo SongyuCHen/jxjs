@@ -103,12 +103,12 @@
   						<div class="col-md-2">
   							案号
   						</div>
-  						<div class="col-md-6">
+  						<div class="col-md-6" id="mah">
   							null
   						</div>
   						<div class="col-md-2">当事人</div>
   						<div class="col-md-2 noborder" style="padding:0px;">
-  							<select style="width:100%;height:100%">
+  							<select style="width:100%;height:100%"  id="mdsr">
   								<option>张三分</option>
   								<option>马虎疼</option>
   							</select>
@@ -118,12 +118,12 @@
   						<div class="col-md-2">
   							案件名称
   						</div>
-  						<div class="col-md-6">
+  						<div class="col-md-6"   id="majmc">
   							null
   						</div>
   						<div class="col-md-2">申请类型</div>
   						<div class="col-md-2 noborder" style="padding:0px;">
-  							<select style="width:100%;height:100%;">
+  							<select style="width:100%;height:100%;"  id="msqlx">
   								<option>减刑</option>
   								<option>假释</option>
   							</select>
@@ -134,13 +134,13 @@
   						<div class="col-md-2">
   							办案法院
   						</div>
-  						<div class="col-md-6">
+  						<div class="col-md-6" id="mbafy">
   							null
   						</div>
   						<div class="col-md-2">申请时间</div>
   						<div class="col-md-2" style="padding:2px 0px;">
   							<div class="input-group date form_date">
-								<input type="text" class="form-control" id="shenqingTime" readonly />
+								<input type="text" class="form-control" id="msqsj" readonly />
 								<span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar">
 									</span>
@@ -152,28 +152,28 @@
   						<div class="col-md-2">
   							服刑地点
   						</div>
-  						<div class="col-md-6">
+  						<div class="col-md-6" id="mfxdd">
   							null
   						</div>
   						<div class="col-md-2">申请次数</div>
-  						<div class="col-md-2">null</div>
+  						<div class="col-md-2" id="msqcs">null</div>
 					</div>
 					<div class="space"></div>
 					<div class="row">
   						<div class="col-md-2">入监日期</div>
-  						<div class="col-md-2">null</div>
+  						<div class="col-md-2" id="mrjrq">null</div>
   						<div class="col-md-2">刑期开始时间</div>
-  						<div class="col-md-2">null</div>
+  						<div class="col-md-2" id="mxqkssj">null</div>
   						<div class="col-md-2">刑期结束时间</div>
-  						<div class="col-md-2">null</div>
+  						<div class="col-md-2" id="mxqjssj">null</div>
 					</div>
 					<div class="row">
   						<div class="col-md-2">减刑开始时间</div>
-  						<div class="col-md-2">null</div>
+  						<div class="col-md-2" id="msqkssj">null</div>
   						<div class="col-md-2">减刑结束时间</div>
-  						<div class="col-md-2">null</div>
+  						<div class="col-md-2" id="msqjssj">null</div>
   						<div class="col-md-2" style="font-size:10px;padding-top:2px;">是否不得假释罪犯申请减刑</div>
-  						<div class="col-md-2">null</div>
+  						<div class="col-md-2" id="msfjs">null</div>
 					</div>
 				
 				</div>

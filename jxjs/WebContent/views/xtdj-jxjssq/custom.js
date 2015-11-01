@@ -102,9 +102,79 @@ function fetchData(){
 
 
 function shenqing(){
-	var date = new Date();
-	$("#shenqingTime").val(date.Format("yyyy-MM-dd"));
+	shenqingModalReset();
 	$("#shenqingModal").modal({
 		keyboard: true
 	});
+	var ajxh = -1;
+	$("#dataTable td.checkTD input").each(function(){
+		if($(this).is(":checked")){
+			var i = $(this).parent().parent().children().eq(1).text();
+			i--;
+			ajxh = g_resp[i].ajxh;
+		}
+	});
+	$.ajax({
+		url :  baseUrl+"/xtdj/getInfoForApply",
+		type : "post",
+		data : {
+			ajxh:ajxh
+		},
+		dataType : 'html',
+		success : function(resp) {
+			resp = $.parseJSON(resp);
+			$("#mah").text(resp.ah);
+			$("#majmc").text(resp.ajmc);
+			$("#mbafy").text(resp.bafy);
+			$("#mfxdd").text(resp.fxdd);
+			$("#msqcs").text(resp.sqcs);
+			$("#mrjrq").text(resp.rjrq);
+			$("#mxqkssj").text(resp.xqkssj);
+			$("#mxqjssj").text(resp.xqjssj);
+			$("#msqkssj").text(resp.sqkssj);
+			$("#msqjssj").text(resp.sqjssj);
+			$("#msfjs").text(resp.sfjs);
+			
+			$("#msqlx").html(toOptions(resp.sqlxList));
+			$("#mdsr").html(toOptions(resp.dsrList));
+			
+		},
+		complete:function(resp){
+			
+		}
+	});
+}
+
+
+function apply(){
+	
+}
+
+function shenqingModalReset(){
+	
+	$("#mah").text("载入中。。。");
+	$("#majmc").text("载入中。。。");
+	$("#mbafy").text("载入中。。。");
+	$("#mfxdd").text("载入中。。。");
+	$("#msqcs").text("载入中。。。");
+	$("#mrjrq").text("载入中。。。");
+	$("#mxqkssj").text("载入中。。。");
+	$("#mxqjssj").text("载入中。。。");
+	$("#msqkssj").text("载入中。。。");
+	$("#msqjssj").text("载入中。。。");
+	$("#msfjs").text("载入中。。。");
+	$("#msqlx").html(toOptions([]));
+	$("#mdsr").html(toOptions([]));
+	
+	var date = new Date();
+	$("#msqsj").val(date.Format("yyyy-MM-dd"));
+}
+
+
+function toOptions(l){
+	var html = "";
+	for(var i = 0 ; i < l.length ; i++){
+		html+="<option>"+l[i]+"</option>";
+	}
+	return html;
 }
