@@ -14,6 +14,8 @@ import nju.software.jxjs.model.PubAjJb;
 import nju.software.jxjs.model.PubDmb;
 import nju.software.jxjs.model.PubXtglYhb;
 import nju.software.jxjs.model.TXsaj;
+import nju.software.jxjs.util.StringUtil;
+import nju.software.jxjs.view.JxjsApplyView;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -89,6 +91,38 @@ public class PubAjJbService {
 	}
 	public List<PubAjJb> getXsajBeforeDate(Date jssj){
 		return ajDao.getXSajBeforeLarq(jssj);
+	}
+	
+	public JxjsApplyView getApplyByAjxh(int ajxh){
+		JxjsApplyView view = new JxjsApplyView();
+		PubAjJb aj = ajDao.getAjJbByAjxh(ajxh);
+		List<DsrJb> dsrJbList = dsrJbDao.getDsrByAjxh(ajxh);
+		List<PubDmb> dmbList = dmbDao.getDmbByLbbh("JXJS-SQLX");
+		view.setAjxh(ajxh);
+		view.setAh(aj.getAh());
+		view.setAjmc(aj.getAjmc());
+		if(!StringUtil.isBlank(aj.getBafy()))
+			view.setBafy(dmbDao.getDmbByLbbhAndDmbh("FBZ0001-97", aj.getBafy().trim()).getDmms());
+		view.setFxdd("定西市监狱");
+		view.setRjrq("2015-11-01");
+		view.setSfjs("否");
+		view.setSqcs(1);
+		view.setSqjssj("2016-01-01");
+		view.setSqkssj("2015-11-01");
+		List<String> sqlxList = new ArrayList<String>();
+		for(PubDmb dmb:dmbList){
+			sqlxList.add(dmb.getDmms());
+		}
+		List<String> dsrList = new ArrayList<String>();
+		for(DsrJb dsrjb:dsrJbList){
+			dsrList.add(dsrjb.getDsrjc());
+		}
+		view.setSqlxList(sqlxList);
+		view.setDsrList(dsrList);
+		view.setSqsj("2015-11-01");
+		view.setXqjssj("2018-12-31");
+		view.setXqkssj("2013-01-01");
+		return view;
 	}
 	
 	public int addXsajTrans(String ajxhList,String csr,Date cssj){

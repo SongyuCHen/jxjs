@@ -17,6 +17,7 @@ import nju.software.jxjs.service.PubLaAyService;
 import nju.software.jxjs.util.DateUtil;
 import nju.software.jxjs.util.StringUtil;
 import nju.software.jxjs.view.BthlbView;
+import nju.software.jxjs.view.JxjsApplyView;
 import nju.software.jxjs.view.User;
 import nju.software.jxjs.view.XsajcsView;
 
@@ -65,7 +66,17 @@ public class XtdjController extends BaseController
 		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "xtdj", "jajgfk"));
 		return mav;
 	}
-	
+	@RequestMapping(value = "/apply", method = RequestMethod.POST)
+	@ResponseBody
+	public Object apply(@RequestParam("ajxh") String ajxh){
+		int i_ajxh = Integer.valueOf(ajxh);
+		JxjsApplyView view = ajService.getApplyByAjxh(i_ajxh);
+
+//		ModelAndView mav = new ModelAndView();
+//		mav.setViewName("xtdj-jajgfk");
+//		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "xtdj", "jajgfk"));
+		return view;
+	}
 	@RequestMapping(value = "/xsajcs/transport", method = RequestMethod.POST)
 	@ResponseBody
 	public Object transport(@RequestParam("ajxhList") String ajxhList){
