@@ -3,16 +3,20 @@ package nju.software.jxjs.service;
 import java.util.Date;
 import java.util.List;
 
+import nju.software.jxjs.dao.DsrGrDao;
 import nju.software.jxjs.dao.DsrJbDao;
 import nju.software.jxjs.dao.JxjsDao;
 import nju.software.jxjs.dao.PubAjJbDao;
 import nju.software.jxjs.dao.SpxxDao;
+import nju.software.jxjs.dao.TDsrDao;
 import nju.software.jxjs.dao.XtglDmbDao;
 import nju.software.jxjs.dao.XtglYhbDao;
+import nju.software.jxjs.model.DsrGr;
 import nju.software.jxjs.model.DsrJb;
 import nju.software.jxjs.model.PubAjJb;
 import nju.software.jxjs.model.PubDmb;
 import nju.software.jxjs.model.PubXtglYhb;
+import nju.software.jxjs.model.TDsr;
 import nju.software.jxjs.model.TJxjs;
 import nju.software.jxjs.model.TSpxx;
 
@@ -32,7 +36,9 @@ public class JxjsService {
 	@Autowired
 	private PubAjJbDao ajDao;
 	@Autowired
-	private DsrJbDao dsrjbDao;
+	private DsrGrDao dsrgrDao;
+	@Autowired
+	private TDsrDao dsrDao;
 	public TJxjs getJxjsBybh(int jxjsbh){
 		return jd.getJxjsByBh(jxjsbh);
 	}
@@ -158,12 +164,57 @@ public class JxjsService {
 	}
 	public void addJxjsByAjxhDsr(int ajxh,String dsr,String sqlx,Date sqsj,Date sqkssj,Date sqjssj){
 		TJxjs jxjs = new TJxjs();
-		PubAjJb aj = ajDao.getAjJbByAjxh(ajxh);
-		DsrJb dsrjb = dsrjbDao.getDsrByAjxhAndJc(ajxh, dsr);
 		
+		PubAjJb aj = ajDao.getAjJbByAjxh(ajxh);
+		DsrGr dsrgr = dsrgrDao.getDsrgrByAjxhAndXm(ajxh, dsr);
+		jxjs.setAjztbh("1");
+		jxjs.setFxdd("定西市监狱");
+		jxjs.setRjrq(new Date());
+		jxjs.setSfjs(0);
+		jxjs.setSqcs(getSqcs(dsr));
+		jxjs.setSqksrq(sqkssj);
+		jxjs.setSqjsrq(sqjssj);
+		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-SQLX", sqlx);
+		if(dmb!=null)
+			jxjs.setSqlxbh(dmb.getDmbh());
+		jxjs.setSqsj(sqsj);
+		jxjs.setSxah(aj.getAh());
+		jxjs.setSxajxh(aj.getAjxh());
+		jxjs.setSxfybh(aj.getBafy());
+		jxjs.setYpjsrq(new Date());
+		jxjs.setYpksrq(new Date());
+		jxjs = add(jxjs);
+		TDsr jxjsDsr = convertDsr(dsrgr);
+		jxjsDsr.setJxjsbh(jxjs.getJxjsbh());
+		int dsrbh = dsrDao.getMaxDsrbh();
+		dsrbh ++;
+		jxjsDsr.setDsrbh(dsrbh);
+		dsrDao.save(jxjsDsr);
 		
 	}
+	public TDsr convertDsr(DsrGr gr){
+		TDsr dsr = new TDsr();
+		dsr.setCsnyr(gr.getCsnyr());
+		dsr.setDh(gr.getDh());
+		dsr.setDz(gr.getDz());
+		dsr.setGzdw(gr.getGzdw());
+		dsr.setJb(gr.getJb());
+		dsr.setJg(gr.getJg());
+		dsr.setMz(gr.getMz());
+		dsr.setSf(gr.getSf());
+		dsr.setSfzhm(gr.getSfzhm());
+		dsr.setSsgj(gr.getSsgj());
+		dsr.setWhcd(gr.getWhcd());
+		dsr.setXb(gr.getXb());
+		dsr.setXm(gr.getXm());
+		dsr.setZw(gr.getZw());
+		dsr.setZzmm(gr.getZzmm());
+		return dsr;
+	}
 	
+	public int getSqcs(String dsr){
+		return jd.getSqcs(dsr);
+	}
 	public TJxjs add(TJxjs jxjs){
 		int jxjsbh = jd.getMaxBh();
 		jxjsbh ++;

@@ -76,7 +76,7 @@ public class XtdjController extends BaseController
 		JxjsApplyView view = ajService.getApplyByAjxh(i_ajxh);
 		return view;
 	}
-	@RequestMapping(value = "/apply", method = RequestMethod.GET)
+	@RequestMapping(value = "/apply", method = RequestMethod.POST)
 	@ResponseBody
 	public Object apply(@RequestParam("ajxh") String ajxh,@RequestParam("dsr") String dsr,
 			@RequestParam("sqlx") String sqlx,@RequestParam("sqsj") String sqsj,

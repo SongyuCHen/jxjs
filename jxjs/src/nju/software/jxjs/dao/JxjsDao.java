@@ -173,6 +173,21 @@ public class JxjsDao extends BaseDao {
 			sz = Integer.parseInt(String.valueOf(query.uniqueResult())); 
 		return sz;
 	}
+	/**
+	 * 根据当事人属性获取减刑假释已经申请的次数，是否直接根据身份证？
+	 * @param dsr
+	 * @return
+	 */
+			
+	public int getSqcs(String dsr){
+		String hql = "select distinct(jxjsbh) from TDsr where xm = '"+dsr+"'";
+		Session s = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
+		Query query = s.createQuery(hql);
+		int sz = 0;
+		if (query.uniqueResult() != null)
+			sz = Integer.parseInt(String.valueOf(query.uniqueResult())); 
+		return sz;
+	}
 	
 	public void save(TJxjs jxjs){
 		getHibernateTemplate().save(jxjs);

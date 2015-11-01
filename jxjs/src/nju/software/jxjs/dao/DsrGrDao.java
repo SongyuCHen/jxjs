@@ -93,6 +93,16 @@ public class DsrGrDao extends BaseDao {
 			throw re;
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	public DsrGr getDsrgrByAjxhAndXm(int ajxh,String xm){
+		String hql = "from DsrGr gr where gr.ajxh=? and gr.xm=?";
+		List<DsrGr> grList = (List<DsrGr>) getHibernateTemplate().find(hql, new Object[]{ajxh,xm});
+		if(grList!=null && grList.size()>0)
+			return grList.get(0);
+		else
+			return null;
+	}
 
 	public List<DsrGr> findByExample(DsrGr instance) {
 		log.debug("finding DsrGr instance by example");
