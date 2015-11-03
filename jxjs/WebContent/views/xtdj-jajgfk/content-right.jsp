@@ -16,9 +16,8 @@
 						<th>序号</th>
 						<th>案号</th>
 						<th>案件名称</th>
+						<th>当事人</th>
 						<th>申请类型</th>
-						<th>原审案号</th>
-						<th>立案时间</th>
 					</tr>
 				</thead>
 				<tbody>

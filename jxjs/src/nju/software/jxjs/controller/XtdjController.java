@@ -18,6 +18,7 @@ import nju.software.jxjs.service.PubLaAyService;
 import nju.software.jxjs.util.DateUtil;
 import nju.software.jxjs.util.StringUtil;
 import nju.software.jxjs.view.BthlbView;
+import nju.software.jxjs.view.JajgfkView;
 import nju.software.jxjs.view.JxjsApplyView;
 import nju.software.jxjs.view.User;
 import nju.software.jxjs.view.XsajcsView;
@@ -196,4 +197,11 @@ public class XtdjController extends BaseController
 		return ajcsView;
 	}
 
+	
+	@RequestMapping(value = "/jajgfk.json", method = RequestMethod.GET)
+	@ResponseBody
+	public Object getJajgfk(){
+		List<JajgfkView> jvList = new ArrayList<JajgfkView>();
+		return jvList;
+	}
 }

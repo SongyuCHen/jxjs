@@ -62,6 +62,11 @@ public class JxjsService {
 		String ajztbh = dmb.getDmbh();
 		return jd.getJxjsByAjztbh(ajztbh);
 	}
+	public List<TJxjs> getJajgfk(){
+		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", "已反馈");
+		String ajztbh = dmb.getDmbh();
+		return jd.getJxjsByAjztbh(ajztbh);
+	}
 	public List<TJxjs> getJxjsByDateAndType(Date begin,Date end,String type){
 		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", type);
 		String ajztbh = dmb.getDmbh();
