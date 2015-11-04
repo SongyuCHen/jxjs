@@ -3,7 +3,21 @@
  */
 var baseUrl = getRootPath();
 $(function(){
-
+	/**
+	 * 日期选择控件
+	 */
+	$('.form_date').datetimepicker({
+	    language:  'zh-CN',
+	    format: 'yyyy-mm-dd',
+	    weekStart: 1,
+	    todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0,
+		pickerPosition: "bottom-left"
+	});
 	//初始化日期
 	var date = new Date();
 	$("#startDate1").val(date.Format("yyyy-MM")+"-01");
@@ -111,8 +125,8 @@ function fetchData1(){
 }
 
 function fetchData2(){
-	var startDate = $("#startDate1").val();
-	var endDate = $("#endDate1").val();
+	var startDate = $("#startDate2").val();
+	var endDate = $("#endDate2").val();
 	var condition = $("#condition").val();
 	$.ajax({
 		url :  baseUrl+"/tjfx/sjtj/graph2",

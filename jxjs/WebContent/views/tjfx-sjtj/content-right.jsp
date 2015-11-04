@@ -2,8 +2,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-datetimepicker.css"/><jsp:text/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/views/tjfx-sjtj/custom.css"/><jsp:text/>
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/echarts-all.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap-datetimepicker.js"><jsp:text/></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/locales/bootstrap-datetimepicker.zh-CN.js"><jsp:text/></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/views/tjfx-sjtj/custom.js"><jsp:text/></script>
 </head>
 <body>
@@ -14,7 +18,7 @@
 			</div>
 			<div class="float-left time-input">
 				<div class="input-group date form_date">
-					<input type="text" class="form-control" id="startDate1"  />
+					<input type="text" class="form-control" id="startDate1" readonly />
 					<span class="input-group-addon" id="addSpan">
 						<span class="glyphicon glyphicon-calendar"></span>
 					</span>
@@ -28,7 +32,7 @@
 			</div>
 			<div class="float-left time-input">
 				<div class="input-group date form_date">
-					<input type="text" class="form-control"  id="endDate1"  />
+					<input type="text" class="form-control"  id="endDate1" readonly />
 					<span class="input-group-addon" id="addSpan">
 						<span class="glyphicon glyphicon-calendar"></span>
 					</span>
@@ -51,7 +55,7 @@
 			</div>
 			<div class="float-left time-input">
 				<div class="input-group date form_date">
-					<input type="text" class="form-control" id="startDate2"  />
+					<input type="text" class="form-control" id="startDate2"  readonly/>
 					<span class="input-group-addon" id="addSpan">
 						<span class="glyphicon glyphicon-calendar"></span>
 					</span>
@@ -65,7 +69,7 @@
 			</div>
 			<div class="float-left time-input">
 				<div class="input-group date form_date">
-					<input type="text" class="form-control"  id="endDate2"  />
+					<input type="text" class="form-control"  id="endDate2"  readonly/>
 					<span class="input-group-addon" id="addSpan">
 						<span class="glyphicon glyphicon-calendar"></span>
 					</span>
