@@ -150,6 +150,37 @@ public class TjfxController extends BaseController
 	}
 	
 	/**
+	 * 数据统计-统计时间段内不同状态的减刑假释申请 图
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/sjtj/graph3", method = RequestMethod.POST)
+	@ResponseBody
+	public Object sjtjGraph3(@RequestParam("kssj") String kssj,
+			@RequestParam("jssj") String jssj,@RequestParam("condition") String condition)
+	{
+		Date begin = DateUtil.parse(kssj, DateUtil.webFormat);
+		Date end = DateUtil.parse(jssj, DateUtil.webFormat);
+		List<PubDmb> ajztDmb = dmbService.getDmbByLbbh("JXJS-AJZT");
+		List<TjfxResultModel> resultList = new ArrayList<TjfxResultModel>();
+		int sz;
+		int sum = 0;
+		for(PubDmb dmb:ajztDmb){
+			TjfxResultModel result = new TjfxResultModel();
+			result.setS_type(dmb.getDmms());
+			sz = jxjsService.getSumByCondition(begin, end, dmb.getDmbh(),condition);
+			sum += sz;
+			result.setI_sz(sz);
+			resultList.add(result);
+		}
+		for(TjfxResultModel result:resultList){
+			Double d_sz = (result.getI_sz()+0.0)/sum;
+			result.setD_sz(d_sz);
+		}
+		return resultList;
+	}
+	
+	/**
 	 * 已立案列表
 	 * 
 	 * @return
@@ -194,6 +225,9 @@ public class TjfxController extends BaseController
 				jv.setSxfy(dmb.getDmms());			
 			jv.setSqsj(DateUtil.format(jxjs.getSqsj(), DateUtil.webFormat));
 			jv.setSqcs(jxjs.getSqcs());
+			jv.setClzt(type);
+			long days = DateUtil.getDiffDays(jxjs.getYpksrq(), new Date());
+			jv.setYfxq(Long.toString(days).concat("天"));
 			jccxList.add(jv);
 		}
 		return jccxList;

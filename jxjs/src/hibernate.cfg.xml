@@ -5,7 +5,7 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">com.sybase.jdbc3.jdbc.SybDriver</property>
-        <property name="hibernate.connection.url">jdbc:sybase:Tds:115.28.43.92:5000/JUDGE?charset=cp936</property>
+        <property name="hibernate.connection.url">jdbc:sybase:Tds:155.36.0.240:5000/JUDGE?charset=cp936</property>
         <property name="hibernate.connection.username">sa</property>
         <property name="hibernate.dialect">org.hibernate.dialect.SybaseDialect</property>
     </session-factory>

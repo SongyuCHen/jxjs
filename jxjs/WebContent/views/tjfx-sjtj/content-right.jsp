@@ -14,7 +14,7 @@
 			</div>
 			<div class="float-left time-input">
 				<div class="input-group date form_date">
-					<input type="text" class="form-control" id="startDate1" readonly />
+					<input type="text" class="form-control" id="startDate1"  />
 					<span class="input-group-addon" id="addSpan">
 						<span class="glyphicon glyphicon-calendar"></span>
 					</span>
@@ -28,7 +28,7 @@
 			</div>
 			<div class="float-left time-input">
 				<div class="input-group date form_date">
-					<input type="text" class="form-control"  id="endDate1" readonly />
+					<input type="text" class="form-control"  id="endDate1"  />
 					<span class="input-group-addon" id="addSpan">
 						<span class="glyphicon glyphicon-calendar"></span>
 					</span>
@@ -51,7 +51,7 @@
 			</div>
 			<div class="float-left time-input">
 				<div class="input-group date form_date">
-					<input type="text" class="form-control" id="startDate2" readonly />
+					<input type="text" class="form-control" id="startDate2"  />
 					<span class="input-group-addon" id="addSpan">
 						<span class="glyphicon glyphicon-calendar"></span>
 					</span>
@@ -65,7 +65,7 @@
 			</div>
 			<div class="float-left time-input">
 				<div class="input-group date form_date">
-					<input type="text" class="form-control"  id="endDate2" readonly />
+					<input type="text" class="form-control"  id="endDate2"  />
 					<span class="input-group-addon" id="addSpan">
 						<span class="glyphicon glyphicon-calendar"></span>
 					</span>
