@@ -51,7 +51,7 @@ public class XtglController extends BaseController {
 		}
 		mav.addObject("conditionList", conditionList);
 		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
-		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "tjfx", "jccx"));
+		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "xtgl", "rzgl"));
 		return mav;
 	}
 	//日志查询

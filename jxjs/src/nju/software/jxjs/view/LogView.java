@@ -12,7 +12,7 @@ public class LogView implements Serializable{
 	private String type;//操作类型
 	private String czsj;//操作时间
 	private String czip;//操作IP
-	private String bz;
+	private String bz;//备注
 	public String getCzr() {
 		return czr;
 	}
