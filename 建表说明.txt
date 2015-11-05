@@ -106,4 +106,8 @@ INSERT INTO PUB_DMB(LBBH,DMBH,DMMS) VALUES('JXJS-LOGTYPE','6','减刑假释申�
 
 
 
-1、减刑假释
+1、减刑假释(上审委会)
+2、存在完全不同意、部分不同意
+3、只要报上来就给予裁定
+4、退回（材料不全）
+

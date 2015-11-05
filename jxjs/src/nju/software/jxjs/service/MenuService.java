@@ -33,7 +33,7 @@ public class MenuService extends BaseService{
 	 * @param currentSub      当前子菜单
 	 * @return
 	 */
-	@Cacheable(cacheName="jxjsCache")
+	@Cacheable(cacheName="menuCache")
 	public MenuWrapper makeMenu(String role, String currentHeader, String currentSub){
 		MenuWrapper mw = new MenuWrapper();
 		mw.setHeaderMenus(getHeaderMenus(role));
@@ -47,6 +47,7 @@ public class MenuService extends BaseService{
 	 * 获得所有主菜单
 	 * @return
 	 */
+	@Cacheable(cacheName="menuCache")
 	private List<Menu> getHeaderMenus(String role){
 		List<Menu> menus = new ArrayList<Menu>();
 		Properties ps = getProperties();
@@ -71,7 +72,7 @@ public class MenuService extends BaseService{
 		
 		return menus;
 	}
-	
+	@Cacheable(cacheName="menuCache")
 	private List<Menu> getSubMenus(String role,String currentHeader){
 		List<Menu> menus = new ArrayList<Menu>();
 		Properties ps = getProperties();

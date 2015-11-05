@@ -63,7 +63,9 @@ public class UserService extends BaseService{
 		return user;
 		
 	}
-	
+	public TUser getUserById(int yhbh){
+		return ud.getUserById(yhbh);
+	}
 	public PubXtglYhb getYhbById(int yhbh){
 		return yhbDao.findById(yhbh);
 	}
@@ -74,5 +76,6 @@ public class UserService extends BaseService{
 		else
 			return null;
 	}
+
 
 }

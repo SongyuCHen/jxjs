@@ -21,4 +21,15 @@ public class TUserDao extends BaseDao{
 		}
 		return null;
 	}
+
+	@SuppressWarnings("unchecked")
+	public TUser getUserById(int yhbh){
+		String hql = "from TUser u where u.userbh=?";
+		List<TUser> list = (List<TUser>) getHibernateTemplate().find(hql, new Object[]{yhbh});
+		if(list != null && !list.isEmpty())
+		{
+			return list.get(0);
+		}
+		return null;
+	}
 }

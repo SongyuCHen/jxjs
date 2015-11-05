@@ -12,7 +12,6 @@ import nju.software.jxjs.model.DsrGr;
 import nju.software.jxjs.model.DsrJb;
 import nju.software.jxjs.model.PubAjJb;
 import nju.software.jxjs.model.PubDmb;
-import nju.software.jxjs.model.PubXtglYhb;
 import nju.software.jxjs.model.TDsr;
 import nju.software.jxjs.model.TJxjs;
 import nju.software.jxjs.model.TSpxx;

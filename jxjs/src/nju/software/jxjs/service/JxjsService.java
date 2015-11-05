@@ -21,7 +21,10 @@ import nju.software.jxjs.model.TJxjs;
 import nju.software.jxjs.model.TSpxx;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
+
+import com.googlecode.ehcache.annotations.Cacheable;
 
 @Service
 public class JxjsService {
@@ -39,29 +42,35 @@ public class JxjsService {
 	private DsrGrDao dsrgrDao;
 	@Autowired
 	private TDsrDao dsrDao;
+	@Cacheable(cacheName="jxjsCache")
 	public TJxjs getJxjsBybh(int jxjsbh){
 		return jd.getJxjsByBh(jxjsbh);
 	}
+	@Cacheable(cacheName="jxjsCache")
 	public List<TJxjs> getDsplb(){
 		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", "已申请");
 		String ajztbh = dmb.getDmbh();
 		return jd.getJxjsByAjztbh(ajztbh);
 	}
+	@Cacheable(cacheName="jxjsCache")
 	public List<TJxjs> getYlalb(){
 		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", "已立案");
 		String ajztbh = dmb.getDmbh();
 		return jd.getJxjsByAjztbh(ajztbh);
 	}
+	@Cacheable(cacheName="jxjsCache")
 	public List<TJxjs> getYsplb(){
 		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", "已审批");
 		String ajztbh = dmb.getDmbh();
 		return jd.getJxjsByAjztbh(ajztbh);
 	}
+	@Cacheable(cacheName="jxjsCache")
 	public List<TJxjs> getBthlb(){
 		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", "被退回");
 		String ajztbh = dmb.getDmbh();
 		return jd.getJxjsByAjztbh(ajztbh);
 	}
+	@Cacheable(cacheName="jxjsCache")
 	public List<TJxjs> getJajgfk(){
 		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", "已反馈");
 		String ajztbh = dmb.getDmbh();
@@ -111,7 +120,7 @@ public class JxjsService {
 		
 		return sz;
 	}
-	
+	@CacheEvict(value="jxjsCache", allEntries=true)
 	public void approval(String jxjsbhList,String spr,String spyj,Date spsj){
 		String[] bhList = jxjsbhList.split(",");
 		int jxjsbh;
@@ -139,7 +148,7 @@ public class JxjsService {
 		}
 		 
 	}
-	
+	@CacheEvict(value="jxjsCache", allEntries=true)
 	public void reject(String jxjsbhList,String spr,String spyj,Date spsj){
 		String[] bhList = jxjsbhList.split(",");
 		int jxjsbh;
@@ -167,6 +176,7 @@ public class JxjsService {
 		}
 		 
 	}
+	@CacheEvict(value="jxjsCache", allEntries=true)
 	public void addJxjsByAjxhDsr(int ajxh,String dsr,String sqlx,Date sqsj,Date sqkssj,Date sqjssj){
 		TJxjs jxjs = new TJxjs();
 		
@@ -220,6 +230,7 @@ public class JxjsService {
 	public int getSqcs(String dsr){
 		return jd.getSqcs(dsr);
 	}
+	@CacheEvict(value="jxjsCache", allEntries=true)
 	public TJxjs add(TJxjs jxjs){
 		int jxjsbh = jd.getMaxBh();
 		jxjsbh ++;
@@ -227,11 +238,11 @@ public class JxjsService {
 		jd.save(jxjs);
 		return jxjs;
 	}
-	
+	@CacheEvict(value="jxjsCache", allEntries=true)
 	public void update(TJxjs jxjs){
 		jd.updateJxjs(jxjs);
 	}
-	
+	@CacheEvict(value="jxjsCache", allEntries=true)
 	public void delete(TJxjs jxjs){
 		jd.delete(jxjs);
 	}

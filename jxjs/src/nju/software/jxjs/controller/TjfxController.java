@@ -1,7 +1,6 @@
 package nju.software.jxjs.controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +10,6 @@ import nju.software.jxjs.model.TJxjs;
 import nju.software.jxjs.service.DmbService;
 import nju.software.jxjs.service.JxjsService;
 import nju.software.jxjs.service.MenuService;
-import nju.software.jxjs.service.SpxxService;
 import nju.software.jxjs.service.TDsrService;
 import nju.software.jxjs.util.DateUtil;
 import nju.software.jxjs.view.JccxView;
