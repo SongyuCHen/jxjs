@@ -7,27 +7,53 @@ import nju.software.jxjs.model.PubDmb;
 import nju.software.jxjs.model.TLog;
 import nju.software.jxjs.service.DmbService;
 import nju.software.jxjs.service.LogService;
+import nju.software.jxjs.service.MenuService;
 import nju.software.jxjs.service.UserService;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import nju.software.jxjs.util.DateUtil;
 import nju.software.jxjs.view.LogView;
+import nju.software.jxjs.view.User;
 
 @Controller
 @RequestMapping("/xtgl")
 public class XtglController extends BaseController {
+	@Autowired
+	private MenuService ms;
 	@Autowired
 	private LogService logService;
 	@Autowired
 	private DmbService dmbService;
 	@Autowired
 	private UserService userService;
+	/**
+	 * 日志管理
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/rzgl", method = RequestMethod.GET)
+	public ModelAndView rzgl()
+	{
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("xtgl-rzgl");
+		List<PubDmb> dmbList = dmbService.getDmbByLbbh("JXJS-LOGTYPE");
+		List<String> conditionList = new ArrayList<String>();
+		for(PubDmb dmb:dmbList){
+			conditionList.add(dmb.getDmms());
+		}
+		mav.addObject("conditionList", conditionList);
+		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
+		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "tjfx", "jccx"));
+		return mav;
+	}
 	//日志查询
 	@RequestMapping(value = "/rzcx", method = RequestMethod.POST)
 	@ResponseBody
