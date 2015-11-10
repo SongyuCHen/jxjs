@@ -52,6 +52,13 @@ $(function() {
 	//时间更新
 	updateTime();
 	setInterval(updateTime,1000*60);
+	$("#dataTable-search-input").bind("input propertychange",function(){
+		 $('#dataTable').DataTable().search(
+			        $(this).val(),
+			        false,
+			        true
+			    ).draw();
+	});
 
 });
 
