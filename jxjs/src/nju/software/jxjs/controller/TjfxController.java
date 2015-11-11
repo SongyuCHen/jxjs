@@ -224,7 +224,7 @@ public class TjfxController extends BaseController
 			jv.setSqsj(DateUtil.format(jxjs.getSqsj(), DateUtil.webFormat));
 			jv.setSqcs(jxjs.getSqcs());
 			jv.setClzt(type);
-			long days = DateUtil.getDiffDays(jxjs.getYpksrq(), new Date());
+			long days = DateUtil.getDiffDays(new Date(),jxjs.getYpksrq());
 			jv.setYfxq(Long.toString(days).concat("天"));
 			jccxList.add(jv);
 		}

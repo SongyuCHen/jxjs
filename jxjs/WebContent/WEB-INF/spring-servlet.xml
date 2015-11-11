@@ -18,7 +18,7 @@
         http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
         http://cxf.apache.org/transports/http/configuration
         http://cxf.apache.org/schemas/configuration/http-conf.xsd">
-    <aop:aspectj-autoproxy/>     
+    <aop:aspectj-autoproxy  proxy-target-class="true"/>     
     <!-- excel view resolver -->
     <bean id="excelviewResolver" class="org.springframework.web.servlet.view.XmlViewResolver">
         <property name="order" value="0"/>

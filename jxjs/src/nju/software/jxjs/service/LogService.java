@@ -18,5 +18,13 @@ public class LogService {
 	public List<TLog> getLogByDateAndType(String begin,String end,String type){
 		return logDao.getLogByDateAndType(begin, end, type);
 	}
+	
+	public TLog addLog(TLog log){
+		int bh = logDao.getMaxBh();
+		bh ++;
+		log.setLogid(bh);
+		logDao.save(log);
+		return log;
+	}
 
 }

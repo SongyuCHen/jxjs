@@ -1,5 +1,6 @@
 package nju.software.jxjs.service;
 
+import java.net.InetAddress;
 import java.util.List;
 
 import nju.software.jxjs.dao.TUserDao;
@@ -35,7 +36,11 @@ public class UserService extends BaseService{
 		Subject subject = SecurityUtils.getSubject();
 		JxjsToken token =  new JxjsToken(user.getUsername(),user.getPassword());
 		token.setRole(user.getRole());
+		String localip = "";
+		InetAddress ia=null;
 		try{
+			ia = ia.getLocalHost();
+			localip = ia.getHostAddress();
 			subject.login(token);
 		}catch(Exception e){
 
@@ -43,6 +48,7 @@ public class UserService extends BaseService{
 		}
 
 		SecurityUtils.getSubject().getSession().setAttribute("currentUser", adapt(user));
+		SecurityUtils.getSubject().getSession().setAttribute("currentIP", localip);
 		return true;
 	}
 	
