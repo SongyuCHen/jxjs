@@ -57,7 +57,7 @@ public class XtglController extends BaseController {
 	//日志查询
 	@RequestMapping(value = "/rzcx", method = RequestMethod.POST)
 	@ResponseBody
-	public Object approval(@RequestParam("kssj") String kssj,@RequestParam("jssj") String jssj,
+	public Object rzcx(@RequestParam("kssj") String kssj,@RequestParam("jssj") String jssj,
 			@RequestParam("type") String type){
 		List<LogView> views = new ArrayList<LogView>();
 		String logType = null;

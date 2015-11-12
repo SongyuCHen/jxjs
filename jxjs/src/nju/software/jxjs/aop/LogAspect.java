@@ -57,25 +57,35 @@ public class LogAspect {
 	 @Around(value = "execution(* nju.software.jxjs.service.JxjsService.reject(..))" )
      public void rejectAspect(ProceedingJoinPoint pjp) {
 		 /* 获取request对象 */
-		HttpServletRequest request = (HttpServletRequest)pjp.getArgs()[0];
-		logger.info("after show."+ request.getParameterValues("jxjsbhList"));
-		String[] jxjsbhList = request.getParameterValues("jxjsbhList");
+		String parm = (String) pjp.getArgs()[0];
+		String[] jxjsbhList = parm.split(",");
+		int[] jxjsbh = null;
 		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
+		String ip = (String) SecurityUtils.getSubject().getSession().getAttribute("currentIP");
+		int rybh = userService.getYhbByXM(user.getRealname()).getYhbh();
+		TLog log;
+		Date today = new Date();
 		if(jxjsbhList!=null){
-			
+			jxjsbh = new int[jxjsbhList.length];
+			for(int i=0;i<jxjsbhList.length;i++){
+				jxjsbh[i] = Integer.parseInt(jxjsbhList[i]);
+				log = new TLog();
+				log.setCzid(1);
+				log.setCzsj(today);
+				log.setRybh(rybh);
+				log.setType("0");
+				log.setCzip(ip);
+				log.setBz(user.getRealname()+"退回减刑假释");
+				logService.addLog(log);
+			}
 		}
           
     }
 	 @Around(value = "execution(* nju.software.jxjs.service.JxjsService.addJxjsByAjxhDsr(..))" )
      public void addAspect(ProceedingJoinPoint pjp) {
 		 /* 获取request对象 */
-		HttpServletRequest request = (HttpServletRequest)pjp.getArgs()[0];
-		logger.info("after show."+ request.getParameterValues("jxjsbhList"));
-		String[] jxjsbhList = request.getParameterValues("jxjsbhList");
-		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
-		if(jxjsbhList!=null){
-			
-		}
+		 int ajxh = (int) pjp.getArgs()[0];
+		 String dsr = (String) pjp.getArgs()[1];
           
     }
 	 
