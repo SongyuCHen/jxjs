@@ -21,15 +21,20 @@ $(function(){
 		pickerPosition: "bottom-left"
 	});
 	
+	//初始化日期
+	var date = new Date();
+	$("#startDate").val(date.Format("yyyy-MM")+"-01");
+	$("#endDate").val(date.Format("yyyy-MM-dd"));
+	
 	g_dataTable = $("#dataTable").DataTable({
 	});
-	fetchData();
+
 });
 
 function search(){
 	var startDate = $("#startDate").val();
 	var endDate = $("#endDate").val();
-	var type = "1";
+	var type = $("#condition").val();
 	$("#loading").show();
 	$.ajax({
 		url :  baseUrl+"/xtgl/rzcx",
@@ -61,34 +66,4 @@ function search(){
 			$("#loading").hide();
 		}
 	});
-}
-
-function fetchData(){
-//	$("#loading").show();
-//	$.ajax({
-//		url :  baseUrl+"/xtdj/rzcx",
-//		type : "get",
-//		data : {},
-//		dataType : 'html',
-//		success : function(resp) {
-//			resp = $.parseJSON(resp);
-//			g_dataTable.clear().destroy();
-//			$("#dataTable>tbody").empty();
-//			for(var i = 0 ; i < resp.length ; i++){
-//				$("#dataTable>tbody").append("<tr>"+
-//						"<td>"+(i+1)+"</td>"+
-//						"<td>"+resp[i].ah+"</td>"+
-//						"<td>"+resp[i].ajmc+"</td>"+
-//						"<td>"+resp[i].dsr+"</td>"+
-//						"<td>"+resp[i].sqlx+"</td>"+
-//					"</tr>");
-//			}
-//			g_dataTable = $("#dataTable").DataTable({
-//			});
-//		},
-//		complete:function(resp){
-//			$("#loading").hide();
-//		}
-//	});
-	
 }

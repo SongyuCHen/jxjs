@@ -38,7 +38,16 @@
 				</div>
 			</div>
 		</div>
-			
+		
+		<div class="float-left float-gap">
+			<label class="label-control">操作类型</label>
+			<select class="select-control select-condition" name="condition" id="condition">
+				<option selected>全部</option>
+				<c:forEach items="${conditionList}" var="condition">
+					<option>${condition }</option>
+				</c:forEach>
+			</select>
+		</div>
 		<div class="float-left float-gap">
 			<button class="btn btn-success" onclick="search();">查询</button>
 		</div>
