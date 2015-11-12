@@ -42,37 +42,37 @@ public class JxjsService {
 	private DsrGrDao dsrgrDao;
 	@Autowired
 	private TDsrDao dsrDao;
-	@Cacheable(value="jxjsCache")
+	@Cacheable(value="jxjsCache",key="'getjxjsbybh'")
 	public TJxjs getJxjsBybh(int jxjsbh){
 		return jd.getJxjsByBh(jxjsbh);
 	}
-	@Cacheable(value="jxjsCache")
+	@Cacheable(value="jxjsCache",key="'dsplb'")
 	public List<TJxjs> getDsplb(){
-		System.out.println("@@@@@@@dsplb");
+		//System.out.println("@@@@@@@dsplb");
 		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", "已申请");
 		String ajztbh = dmb.getDmbh();
 		return jd.getJxjsByAjztbh(ajztbh);
 	}
-	@Cacheable(value="jxjsCache")
+	@Cacheable(value="jxjsCache",key="'ylalb'")
 	public List<TJxjs> getYlalb(){
 		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", "已立案");
 		String ajztbh = dmb.getDmbh();
 		return jd.getJxjsByAjztbh(ajztbh);
 	}
-	@Cacheable(value="jxjsCache")
+	@Cacheable(value="jxjsCache",key="'ysplb'")
 	public List<TJxjs> getYsplb(){
-		System.out.println("#########ysplb");
+		//System.out.println("#########ysplb");
 		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", "已审批");
 		String ajztbh = dmb.getDmbh();
 		return jd.getJxjsByAjztbh(ajztbh);
 	}
-	@Cacheable(value="jxjsCache")
+	@Cacheable(value="jxjsCache",key="'bthlb'")
 	public List<TJxjs> getBthlb(){
 		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", "被退回");
 		String ajztbh = dmb.getDmbh();
 		return jd.getJxjsByAjztbh(ajztbh);
 	}
-	@Cacheable(value="jxjsCache")
+	@Cacheable(value="jxjsCache",key="'getjajgfk'")
 	public List<TJxjs> getJajgfk(){
 		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", "已反馈");
 		String ajztbh = dmb.getDmbh();
