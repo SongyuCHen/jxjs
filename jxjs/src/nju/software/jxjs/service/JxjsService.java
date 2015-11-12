@@ -22,9 +22,9 @@ import nju.software.jxjs.model.TSpxx;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import com.googlecode.ehcache.annotations.Cacheable;
 
 @Service
 public class JxjsService {
@@ -42,35 +42,37 @@ public class JxjsService {
 	private DsrGrDao dsrgrDao;
 	@Autowired
 	private TDsrDao dsrDao;
-	@Cacheable(cacheName="jxjsCache")
+	@Cacheable(value="jxjsCache")
 	public TJxjs getJxjsBybh(int jxjsbh){
 		return jd.getJxjsByBh(jxjsbh);
 	}
-	@Cacheable(cacheName="jxjsCache")
+	@Cacheable(value="jxjsCache")
 	public List<TJxjs> getDsplb(){
+		System.out.println("@@@@@@@dsplb");
 		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", "已申请");
 		String ajztbh = dmb.getDmbh();
 		return jd.getJxjsByAjztbh(ajztbh);
 	}
-	@Cacheable(cacheName="jxjsCache")
+	@Cacheable(value="jxjsCache")
 	public List<TJxjs> getYlalb(){
 		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", "已立案");
 		String ajztbh = dmb.getDmbh();
 		return jd.getJxjsByAjztbh(ajztbh);
 	}
-	@Cacheable(cacheName="jxjsCache")
+	@Cacheable(value="jxjsCache")
 	public List<TJxjs> getYsplb(){
+		System.out.println("#########ysplb");
 		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", "已审批");
 		String ajztbh = dmb.getDmbh();
 		return jd.getJxjsByAjztbh(ajztbh);
 	}
-	@Cacheable(cacheName="jxjsCache")
+	@Cacheable(value="jxjsCache")
 	public List<TJxjs> getBthlb(){
 		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", "被退回");
 		String ajztbh = dmb.getDmbh();
 		return jd.getJxjsByAjztbh(ajztbh);
 	}
-	@Cacheable(cacheName="jxjsCache")
+	@Cacheable(value="jxjsCache")
 	public List<TJxjs> getJajgfk(){
 		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", "已反馈");
 		String ajztbh = dmb.getDmbh();

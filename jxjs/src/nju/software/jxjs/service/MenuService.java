@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.stereotype.Service;
 
-import com.googlecode.ehcache.annotations.Cacheable;
+import org.springframework.cache.annotation.Cacheable;
 
 /**
  * 生成menu
@@ -33,8 +33,9 @@ public class MenuService extends BaseService{
 	 * @param currentSub      当前子菜单
 	 * @return
 	 */
-	@Cacheable(cacheName="menuCache")
+	@Cacheable(value="menuCache")
 	public MenuWrapper makeMenu(String role, String currentHeader, String currentSub){
+		//System.out.println("###########"+role+" "+currentHeader+" "+currentSub);
 		MenuWrapper mw = new MenuWrapper();
 		mw.setHeaderMenus(getHeaderMenus(role));
 		mw.setSubMenus(getSubMenus(role,currentHeader));
@@ -47,7 +48,7 @@ public class MenuService extends BaseService{
 	 * 获得所有主菜单
 	 * @return
 	 */
-	@Cacheable(cacheName="menuCache")
+	@Cacheable(value="menuCache")
 	private List<Menu> getHeaderMenus(String role){
 		List<Menu> menus = new ArrayList<Menu>();
 		Properties ps = getProperties();
@@ -72,7 +73,7 @@ public class MenuService extends BaseService{
 		
 		return menus;
 	}
-	@Cacheable(cacheName="menuCache")
+	@Cacheable(value="menuCache")
 	private List<Menu> getSubMenus(String role,String currentHeader){
 		List<Menu> menus = new ArrayList<Menu>();
 		Properties ps = getProperties();
