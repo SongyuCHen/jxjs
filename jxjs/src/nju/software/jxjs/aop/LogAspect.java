@@ -43,7 +43,7 @@ public class LogAspect {
 			for(int i=0;i<jxjsbhList.length;i++){
 				jxjsbh[i] = Integer.parseInt(jxjsbhList[i]);
 				log = new TLog();
-				log.setCzid(1);
+				log.setCzid(jxjsbh[i]);
 				log.setCzsj(today);
 				log.setRybh(rybh);
 				log.setType("1");
@@ -51,6 +51,12 @@ public class LogAspect {
 				log.setBz(user.getRealname()+"审批减刑假释");
 				logService.addLog(log);
 			}
+		}
+		try {
+			pjp.proceed();
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
           
     }
