@@ -1,7 +1,5 @@
 package nju.software.jxjs.dao;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import nju.software.jxjs.model.DsrGr;
@@ -11,7 +9,6 @@ import org.hibernate.LockMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
 

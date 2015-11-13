@@ -1,7 +1,6 @@
 package nju.software.jxjs.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class PubDmb implements Serializable
 {

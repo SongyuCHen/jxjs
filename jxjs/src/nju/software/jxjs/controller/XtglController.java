@@ -58,7 +58,7 @@ public class XtglController extends BaseController {
 	@RequestMapping(value = "/rzcx", method = RequestMethod.POST)
 	@ResponseBody
 	public Object rzcx(@RequestParam("kssj") String kssj,@RequestParam("jssj") String jssj,
-			@RequestParam("type") String type){
+			@RequestParam("condition") String type){
 		List<LogView> views = new ArrayList<LogView>();
 		String logType = null;
 		PubDmb dmb = dmbService.getDmbByLbbhAndDmms("JXJS-LOGTYPE", type);

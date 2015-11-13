@@ -70,6 +70,7 @@ public class PubAjJbDao extends BaseDao {
 	}
 	
 	
+	@SuppressWarnings("unchecked")
 	public List<PubAjJb> getCsaj(Date begin,Date end){
 		String hql = "select aj.ah,aj.ajmc,aj.larq,aj.jarq,aj.bafy from PubAjJb aj where aj.larq>=? and aj.larq<=? and aj.ajxh in(select ajxh from TXsaj)";		
 		Session s = this.getHibernateTemplate().getSessionFactory().getCurrentSession();

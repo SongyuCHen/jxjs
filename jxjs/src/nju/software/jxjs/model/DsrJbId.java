@@ -1,7 +1,6 @@
 package nju.software.jxjs.model;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 
 /**
  * DsrJbDOId entity. @author MyEclipse Persistence Tools
@@ -11,6 +10,10 @@ public class DsrJbId implements java.io.Serializable {
 
 	// Fields
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6115631945794511280L;
 	private Integer ajxh;
 	private Integer dsrbh;
 

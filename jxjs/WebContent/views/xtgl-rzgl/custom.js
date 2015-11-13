@@ -30,11 +30,14 @@ $(function(){
 	});
 
 });
-
+//用户按下统计按钮
 function search(){
+	cx();
+}
+function cx(){
 	var startDate = $("#startDate").val();
 	var endDate = $("#endDate").val();
-	var type = $("#condition").val();
+	var condition = $("#condition").val();
 	$("#loading").show();
 	$.ajax({
 		url :  baseUrl+"/xtgl/rzcx",
@@ -42,7 +45,7 @@ function search(){
 		data : {
 			startDate:startDate,
 			endDate:endDate,
-			type:type
+			condition:condition
 		},
 		dataType : 'html',
 		success : function(resp) {

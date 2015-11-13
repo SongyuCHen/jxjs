@@ -30,6 +30,7 @@ public class UserService extends BaseService{
 	 * @param user
 	 * @return
 	 */
+	@SuppressWarnings("static-access")
 	public boolean tr_signIn(User user){
 		
 		

@@ -3,9 +3,6 @@
  */
 package nju.software.jxjs.util;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 字符串工具类
  * 
