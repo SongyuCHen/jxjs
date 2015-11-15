@@ -41,3 +41,15 @@ function fetchData(){
 		}
 	});
 }
+
+function print(){
+	var cont = $("#dataTable").html();
+	printTable(cont);
+};
+
+function exports(){
+	var url = baseUrl + "/ajcl/exportBthlbExcel";
+	var data = "";
+	
+	exportExcel(url, data);
+};

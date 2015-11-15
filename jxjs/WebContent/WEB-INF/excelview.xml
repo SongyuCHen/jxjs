@@ -4,6 +4,10 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
     
-    <bean id="ajclExcelView" class="nju.software.jxjs.util.excel.AjclExcelView" /> 
+    <bean id="bthlbExcelView" class="nju.software.jxjs.util.excel.BthlbExcelView" /> 
+    <bean id="dsplbExcelView" class="nju.software.jxjs.util.excel.DsplbExcelView" /> 
+    <bean id="ylalbExcelView" class="nju.software.jxjs.util.excel.YlalbExcelView" /> 
+    <bean id="ysplbExcelView" class="nju.software.jxjs.util.excel.YsplbExcelView" />
     
+    <bean id="rzglExcelView" class="nju.software.jxjs.util.excel.RzglExcelView" /> 
 </beans>

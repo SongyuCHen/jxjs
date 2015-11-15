@@ -8,9 +8,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import nju.software.jxjs.model.TJxjs;
 import nju.software.jxjs.util.DateUtil;
 import nju.software.jxjs.util.EncodeUtil;
+import nju.software.jxjs.view.LogView;
 
 import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -21,19 +21,17 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
 import org.springframework.web.servlet.view.document.AbstractExcelView;
 
-public class AjclExcelView extends AbstractExcelView 
+public class RzglExcelView extends AbstractExcelView 
 {
 
-	
-	
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void buildExcelDocument(Map<String, Object> model,
-			HSSFWorkbook workbook, HttpServletRequest request, HttpServletResponse response)
-			throws Exception
+			HSSFWorkbook workbook, HttpServletRequest request,
+			HttpServletResponse response) throws Exception 
 	{
 		// create sheet
-        HSSFSheet sheet = workbook.createSheet("");
+        HSSFSheet sheet = workbook.createSheet("日志列表");
         sheet.setDefaultColumnWidth(20);
         
         // create style
@@ -51,47 +49,42 @@ public class AjclExcelView extends AbstractExcelView
         // create header
         HSSFRow header = sheet.createRow(0);
          
-        header.createCell(0).setCellValue("原审案号");
+        header.createCell(0).setCellValue("操作人");
         header.getCell(0).setCellStyle(style);
          
-        header.createCell(1).setCellValue("当事人");
+        header.createCell(1).setCellValue("操作类型");
         header.getCell(1).setCellStyle(style);
          
-        header.createCell(2).setCellValue("生效法院");
+        header.createCell(2).setCellValue("操作时间");
         header.getCell(2).setCellStyle(style);
          
-        header.createCell(3).setCellValue("申请类型");
+        header.createCell(3).setCellValue("操作IP");
         header.getCell(3).setCellStyle(style);
         
-        header.createCell(4).setCellValue("申请时间");
+        header.createCell(4).setCellValue("备注");
         header.getCell(4).setCellStyle(style);
-        
-        header.createCell(5).setCellValue("申请次数");
-        header.getCell(5).setCellStyle(style);
         
         // create data item
         int rowCount = 1;
-        List<TJxjs> jxjsList = (List<TJxjs>)model.get("jxjsList");
-        if(jxjsList != null)
+        List<LogView> logList = (List<LogView>)model.get("logList");
+        if(logList != null)
         {
-        	for(TJxjs jxjs : jxjsList)
+        	for(LogView view : logList)
         	{
         		HSSFRow aRow = sheet.createRow(rowCount++);
         		
-                aRow.createCell(0).setCellValue(jxjs.getSxah());
-                
-//                aRow.createCell(1).setCellValue(jxjs.getDsr().getDsrxm());
-//                aRow.createCell(2).setCellValue(jxjs.getSxfy().getFymc());
-//                aRow.createCell(3).setCellValue(jxjs.getSqlxbh());
-                aRow.createCell(4).setCellValue(jxjs.getSqsj());
-                aRow.createCell(5).setCellValue(jxjs.getSqcs());
+                aRow.createCell(0).setCellValue(view.getCzr());
+                aRow.createCell(1).setCellValue(view.getType());
+                aRow.createCell(2).setCellValue(view.getCzsj());
+                aRow.createCell(3).setCellValue(view.getCzip());
+                aRow.createCell(4).setCellValue(view.getBz());
         	}
         }
         
         response.setContentType("application/vnd.ms-excel");     
         //set filename
         String curDateStr = DateUtil.format(new Date(), DateUtil.webFormat);
-        String filename = "减刑假释-"+curDateStr+".xls";
+        String filename = "日志列表-"+curDateStr+".xls";
 		response.setHeader("Content-Disposition", "attachment; filename=" 
 				+ EncodeUtil.encodeFilename(filename, request));
         OutputStream ouputStream = response.getOutputStream();     

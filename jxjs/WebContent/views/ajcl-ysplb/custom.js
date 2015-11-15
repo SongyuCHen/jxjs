@@ -71,3 +71,17 @@ function lian(){
 		}
 	});
 }
+
+// 打印
+function print(){
+	var cont = $("#dataTable").html();
+	printTable(cont);
+}
+
+// 导出
+function exports(){
+	var url = baseUrl + "/ajcl/exportYsplbExcel";
+	var data = "";
+	
+	exportExcel(url, data);
+}

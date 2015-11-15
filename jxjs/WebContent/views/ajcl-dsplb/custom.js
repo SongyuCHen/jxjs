@@ -9,7 +9,7 @@ $(document).ready(function(){
 	};
 	
 	exports = function(){
-		var url = baseUrl + "/ajcl/exportExcel";
+		var url = baseUrl + "/ajcl/exportDsplbExcel";
 		var data = "";
 		
 		exportExcel(url, data);

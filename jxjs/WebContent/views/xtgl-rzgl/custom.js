@@ -3,6 +3,9 @@
  */
 var baseUrl = getRootPath();
 
+// 开始时间、结束时间、操作类型
+var kssj, jssj, czlx;
+
 $(function(){
 	
 	/**
@@ -64,9 +67,30 @@ function cx(){
 			}
 			g_dataTable = $("#dataTable").DataTable({
 			});
+			
+			// 保存查询的条件，导出表格用到
+			kssj = startDate;
+			jssj = endDate;
+			czlx = condition;
 		},
 		complete:function(resp){
 			$("#loading").hide();
 		}
 	});
+}
+
+function print(){
+	var cont = $("#dataTable").html();
+	printTable(cont);
+}
+
+function exports(){
+	var url = baseUrl + "/xtgl/exportRzglExcel";
+	var data = {
+		"kssj": kssj,
+		"jssj": jssj,
+		"czlx": czlx
+	};
+	
+	exportExcel(url, data);
 }

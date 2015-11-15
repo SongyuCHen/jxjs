@@ -42,3 +42,15 @@ function fetchData(){
 		}
 	});
 }
+
+print = function(){
+	var cont = $("#dataTable").html();
+	printTable(cont);
+};
+
+exports = function(){
+	var url = baseUrl + "/ajcl/exportYlalbExcel";
+	var data = "";
+	
+	exportExcel(url, data);
+};

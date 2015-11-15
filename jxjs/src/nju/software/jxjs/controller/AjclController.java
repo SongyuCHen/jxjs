@@ -63,22 +63,6 @@ public class AjclController extends BaseController
 	private SpxxService spxxService;
 	@Autowired
 	private UserService userService;
-	/**
-	 * export excel
-	 * 
-	 * @param request
-	 * @param response
-	 * @return
-	 */
-	@RequestMapping(value = "/exportExcel", method = RequestMethod.GET)
-    public ModelAndView exportExcel(HttpServletRequest request, HttpServletResponse response) 
-	{
-		logger.info("export excel for ajcl");
-		
-		List<TJxjs> ajclList = null;
-		
-        return new ModelAndView("ajclExcelView", "ajclList", ajclList);
-    }
 	
 	@RequestMapping(value = "/dsplb", method = RequestMethod.GET)
 	public ModelAndView dsplb(){
@@ -385,4 +369,48 @@ public class AjclController extends BaseController
 		mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "ylalb"));
 		return mv;
 	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/exportBthlbExcel", method = RequestMethod.GET)
+    public ModelAndView exportBthlbExcel(HttpServletRequest request, HttpServletResponse response) 
+	{
+		logger.info("export excel for ajcl bthlb");
+		
+		List<BthlbView> bthlbList = (List<BthlbView>)getBthlb();
+		
+        return new ModelAndView("bthlbExcelView", "bthlbList", bthlbList);
+    }
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/exportDsplbExcel", method = RequestMethod.GET)
+    public ModelAndView exportDsplbExcel(HttpServletRequest request, HttpServletResponse response) 
+	{
+		logger.info("export excel for ajcl dsplb");
+		
+		List<DsplbView> dsplbList = (List<DsplbView>)getDsplb();
+		
+        return new ModelAndView("dsplbExcelView", "dsplbList", dsplbList);
+    }
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/exportYlalbExcel", method = RequestMethod.GET)
+    public ModelAndView exportYlalbExcel(HttpServletRequest request, HttpServletResponse response) 
+	{
+		logger.info("export excel for ajcl ylalb");
+		
+		List<YlalbView> ylalbList = (List<YlalbView>)getDsplb();
+		
+        return new ModelAndView("ylalbExcelView", "ylalbList", ylalbList);
+    }
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/exportYsplbExcel", method = RequestMethod.GET)
+    public ModelAndView exportYsplbExcel(HttpServletRequest request, HttpServletResponse response) 
+	{
+		logger.info("export excel for ajcl ysplb");
+		
+		List<YsplbView> ysplbList = (List<YsplbView>)getYsplb();
+		
+        return new ModelAndView("ysplbExcelView", "ysplbList", ysplbList);
+    }
 }

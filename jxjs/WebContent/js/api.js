@@ -39,7 +39,11 @@ function printTable(cont){
  * @param data	json data
  */
 function exportExcel(url, data){
-	url = url + parseJson(data);
+	var paramStr = parseJson(data);
+	if(paramStr != null && paramStr != ""){
+		url = url + "?" + paramStr;
+	}
+	
 	window.location = url;
 }
 
@@ -52,7 +56,7 @@ function parseJson(jsonObj){
 	var paramStr = "";
 	
 	for(var key in jsonObj){
-		if(jsonObj[key]!= -1){
+		if(jsonObj[key]!= undefined){
 			paramStr += key + "=" + jsonObj[key] + "&";
 		}
 	}
