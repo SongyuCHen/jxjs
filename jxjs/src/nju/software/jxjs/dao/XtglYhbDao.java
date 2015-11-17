@@ -79,7 +79,7 @@ public class XtglYhbDao extends BaseDao {
 		log.debug("getting PubXtglYhb instance with id: " + id);
 		try {
 			PubXtglYhb instance = (PubXtglYhb) getHibernateTemplate().get(
-					"software.tjspxt.data.dataobject.PubXtglYhb", id);
+					"nju.software.jxjs.model.PubXtglYhb", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);

@@ -46,8 +46,8 @@ function cx(){
 		url :  baseUrl+"/xtgl/rzcx",
 		type : "post",
 		data : {
-			startDate:startDate,
-			endDate:endDate,
+			kssj:startDate,
+			jssj:endDate,
 			condition:condition
 		},
 		dataType : 'html',
