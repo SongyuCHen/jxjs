@@ -95,7 +95,7 @@
 	</tx:advice>
 	<aop:config>
 		<!-- 配置一个切入点，匹配UserManager的所有方法的执行 -->
-		<aop:pointcut expression="execution(* nju.software.jxjs.service.*.*(..))"
+		<aop:pointcut expression="execution(* nju.software.jxjs.logic.*.*(..))"
 			id="userPointCut" />
 		<!-- 指定在userpointCut切入点应用txAdvice事务增强处理 -->
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="userPointCut" />

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import nju.software.jxjs.logic.TjfxLogic;
 import nju.software.jxjs.model.PubDmb;
 import nju.software.jxjs.model.TDsr;
 import nju.software.jxjs.model.TJxjs;
@@ -16,6 +17,7 @@ import nju.software.jxjs.view.JccxView;
 import nju.software.jxjs.view.TjfxResultModel;
 import nju.software.jxjs.view.TjfxSearchModel;
 import nju.software.jxjs.view.User;
+
 
 
 
@@ -37,11 +39,8 @@ public class TjfxController extends BaseController
 	@Autowired
 	private MenuService ms;
 	@Autowired
-	private JxjsService jxjsService;
-	@Autowired
-	private DmbService dmbService;
-	@Autowired
-	private TDsrService dsrService;
+	private TjfxLogic tl;
+	
 
 	/**
 	 * 基础查询
@@ -53,12 +52,8 @@ public class TjfxController extends BaseController
 	{
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("tjfx-jccx");
-		List<PubDmb> dmbList = dmbService.getDmbByLbbh("JXJS-AJZT");
-		List<String> conditionList = new ArrayList<String>();
-		for(PubDmb dmb:dmbList){
-			conditionList.add(dmb.getDmms());
-		}
-		mav.addObject("conditionList", conditionList);
+		
+		mav.addObject("conditionList", tl.jccx());
 		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
 		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "tjfx", "jccx"));
 		return mav;
@@ -75,13 +70,8 @@ public class TjfxController extends BaseController
 	{
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("tjfx-sjtj");
-		List<PubDmb> dmbList = dmbService.getDmbByLbbh("JXJS-SQLX");
-		List<String> conditionList = new ArrayList<String>();
-		conditionList.add("全部");
-		for(PubDmb dmb:dmbList){
-			conditionList.add(dmb.getDmms());
-		}
-		mav.addObject("conditionList", conditionList);
+		
+		mav.addObject("conditionList", tl.sjtj());
 		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
 		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "tjfx", "sjtj"));
 		return mav;
@@ -101,19 +91,7 @@ public class TjfxController extends BaseController
 	public Object sjtjGraph1(@RequestParam("kssj") String kssj,
 			@RequestParam("jssj") String jssj)
 	{
-		Date begin = DateUtil.parse(kssj, DateUtil.webFormat);
-		Date end = DateUtil.parse(jssj, DateUtil.webFormat);
-		List<PubDmb> ajztDmb = dmbService.getDmbByLbbh("JXJS-AJZT");
-		List<TjfxResultModel> resultList = new ArrayList<TjfxResultModel>();
-		int sz;
-		for(PubDmb dmb:ajztDmb){
-			TjfxResultModel result = new TjfxResultModel();
-			result.setS_type(dmb.getDmms());
-			sz = jxjsService.getSumByDate(begin, end, dmb.getDmbh());
-			result.setI_sz(sz);
-			resultList.add(result);
-		}
-		return resultList;
+		return tl.sjtjGraph1(kssj, jssj);
 	}
 	
 	/**
@@ -126,25 +104,7 @@ public class TjfxController extends BaseController
 	public Object sjtjGraph2(@RequestParam("kssj") String kssj,
 			@RequestParam("jssj") String jssj,@RequestParam("condition") String condition)
 	{
-		Date begin = DateUtil.parse(kssj, DateUtil.webFormat);
-		Date end = DateUtil.parse(jssj, DateUtil.webFormat);
-		List<PubDmb> ajztDmb = dmbService.getDmbByLbbh("JXJS-AJZT");
-		List<TjfxResultModel> resultList = new ArrayList<TjfxResultModel>();
-		int sz;
-		int sum = 0;
-		for(PubDmb dmb:ajztDmb){
-			TjfxResultModel result = new TjfxResultModel();
-			result.setS_type(dmb.getDmms());
-			sz = jxjsService.getSumByCondition(begin, end, dmb.getDmbh(),condition);
-			sum += sz;
-			result.setI_sz(sz);
-			resultList.add(result);
-		}
-		for(TjfxResultModel result:resultList){
-			Double d_sz = (result.getI_sz()+0.0)/sum;
-			result.setD_sz(d_sz);
-		}
-		return resultList;
+		return tl.sjtjGraph2(kssj, jssj, condition);
 	}
 	
 	/**
@@ -157,25 +117,7 @@ public class TjfxController extends BaseController
 	public Object sjtjGraph3(@RequestParam("kssj") String kssj,
 			@RequestParam("jssj") String jssj,@RequestParam("condition") String condition)
 	{
-		Date begin = DateUtil.parse(kssj, DateUtil.webFormat);
-		Date end = DateUtil.parse(jssj, DateUtil.webFormat);
-		List<PubDmb> ajztDmb = dmbService.getDmbByLbbh("JXJS-AJZT");
-		List<TjfxResultModel> resultList = new ArrayList<TjfxResultModel>();
-		int sz;
-		int sum = 0;
-		for(PubDmb dmb:ajztDmb){
-			TjfxResultModel result = new TjfxResultModel();
-			result.setS_type(dmb.getDmms());
-			sz = jxjsService.getSumByCondition(begin, end, dmb.getDmbh(),condition);
-			sum += sz;
-			result.setI_sz(sz);
-			resultList.add(result);
-		}
-		for(TjfxResultModel result:resultList){
-			Double d_sz = (result.getI_sz()+0.0)/sum;
-			result.setD_sz(d_sz);
-		}
-		return resultList;
+		return tl.sjtjGraph3(kssj, jssj, condition);
 	}
 	
 	/**
@@ -198,36 +140,6 @@ public class TjfxController extends BaseController
 	public Object cx(@ModelAttribute("model")TjfxSearchModel model)
 	{
 		logger.info("start date:" + model.getStartDate() + "  end date:" + model.getEndDate() + "  condition:" + model.getCondition());
-		List<PubDmb> dmbList = dmbService.getDmbByLbbh("JXJS-AJZT");
-		List<String> conditionList = new ArrayList<String>();
-		for(PubDmb dmb:dmbList){
-			conditionList.add(dmb.getDmms());
-		}
-		Date begin = model.getStartDate();
-		Date end = model.getEndDate();
-		String type = model.getCondition();
-		List<TJxjs> jxjsList = jxjsService.getJxjsByDateAndType(begin, end, type);
-		List<JccxView> jccxList = new ArrayList<JccxView>();
-		for(TJxjs jxjs:jxjsList){
-			JccxView jv = new JccxView();
-			jv.setYsah(jxjs.getSxah());
-			TDsr dsr = dsrService.getDsrByjxjsbh(jxjs.getJxjsbh());
-			if(dsr != null)
-				jv.setDsr(dsr.getXm());
-			PubDmb dmb = dmbService.getDmbByLbbhAndDmbh("JXJS-SQLX", jxjs.getSqlxbh());
-			if(dmb != null)
-				jv.setSqlx(dmb.getDmms());
-			jv.setSqsj(DateUtil.format(jxjs.getSqsj(), DateUtil.webFormat));
-			dmb = dmbService.getDmbByLbbhAndDmbh("FBZ0001-97", jxjs.getSxfybh());
-			if(dmb != null)
-				jv.setSxfy(dmb.getDmms());			
-			jv.setSqsj(DateUtil.format(jxjs.getSqsj(), DateUtil.webFormat));
-			jv.setSqcs(jxjs.getSqcs());
-			jv.setClzt(type);
-			long days = DateUtil.getDiffDays(new Date(),jxjs.getYpksrq());
-			jv.setYfxq(Long.toString(days).concat("天"));
-			jccxList.add(jv);
-		}
-		return jccxList;
+		return tl.cx(model);
 	}
 }

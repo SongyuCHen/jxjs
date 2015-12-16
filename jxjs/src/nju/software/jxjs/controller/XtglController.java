@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import nju.software.jxjs.logic.XtglLogic;
 import nju.software.jxjs.model.PubDmb;
 import nju.software.jxjs.model.TLog;
 import nju.software.jxjs.service.DmbService;
@@ -30,12 +31,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class XtglController extends BaseController {
 	@Autowired
 	private MenuService ms;
+	
 	@Autowired
-	private LogService logService;
-	@Autowired
-	private DmbService dmbService;
-	@Autowired
-	private UserService userService;
+	private XtglLogic xl;
 	/**
 	 * 日志管理
 	 * 
@@ -46,12 +44,8 @@ public class XtglController extends BaseController {
 	{
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("xtgl-rzgl");
-		List<PubDmb> dmbList = dmbService.getDmbByLbbh("JXJS-LOGTYPE");
-		List<String> conditionList = new ArrayList<String>();
-		for(PubDmb dmb:dmbList){
-			conditionList.add(dmb.getDmms());
-		}
-		mav.addObject("conditionList", conditionList);
+		
+		mav.addObject("conditionList", xl.rzgl());
 		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
 		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "xtgl", "rzgl"));
 		return mav;
@@ -61,26 +55,7 @@ public class XtglController extends BaseController {
 	@ResponseBody
 	public Object rzcx(@RequestParam("kssj") String kssj,@RequestParam("jssj") String jssj,
 			@RequestParam("condition") String type){
-		List<LogView> views = new ArrayList<LogView>();
-		String logType = null;
-		PubDmb dmb = dmbService.getDmbByLbbhAndDmms("JXJS-LOGTYPE", type);
-		if(dmb!=null)
-			logType = dmb.getDmbh();
-		List<TLog> logs = logService.getLogByDateAndType(kssj, jssj, logType);
-		for(TLog log:logs){
-			LogView vo = new LogView();
-			dmb = dmbService.getDmbByLbbhAndDmbh("JXJS-LOGTYPE", log.getType());
-			vo.setType(dmb.getDmms());
-			vo.setCzsj(DateUtil.format(log.getCzsj(), DateUtil.webFormat));
-			vo.setCzip(log.getCzip());
-			vo.setBz(log.getBz());
-			if(log.getType().equals("6"))//监狱用户只有申请，其余的操作都是法院用户
-				vo.setCzr(userService.getUserById(log.getRybh()).getUsername());
-			else
-				vo.setCzr(userService.getYhbById(log.getRybh()).getYhmc());
-			views.add(vo);
-		}
-		return views;
+		return xl.rzcx(kssj, jssj, type);
 	}
 	
 	@SuppressWarnings("unchecked")

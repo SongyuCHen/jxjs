@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import nju.software.jxjs.logic.XtdjLogic;
 import nju.software.jxjs.model.PubAjJb;
 import nju.software.jxjs.model.PubDmb;
 import nju.software.jxjs.model.PubLaAy;
@@ -34,14 +35,10 @@ public class XtdjController extends BaseController
 {
 	@Autowired
 	private MenuService ms;
+	
 	@Autowired
-	private PubAjJbService ajService;
-	@Autowired
-	private PubLaAyService ayService;
-	@Autowired
-	private DmbService dmbService;
-	@Autowired
-	private JxjsService jxjsService;
+	private XtdjLogic xl;
+	
 	@RequestMapping(value = "/xsajcs", method = RequestMethod.GET)
 	public ModelAndView xsajcs(){
 		ModelAndView mav = new ModelAndView();
@@ -69,20 +66,14 @@ public class XtdjController extends BaseController
 	@RequestMapping(value = "/getInfoForApply", method = RequestMethod.POST)
 	@ResponseBody
 	public Object getInfoForApply(@RequestParam("ajxh") String ajxh){
-		int i_ajxh = Integer.valueOf(ajxh);
-		JxjsApplyView view = ajService.getApplyByAjxh(i_ajxh);
-		return view;
+		return xl.getInfoForApply(ajxh);
 	}
 	@RequestMapping(value = "/apply", method = RequestMethod.POST)
 	@ResponseBody
 	public Object apply(@RequestParam("ajxh") String ajxh,@RequestParam("dsr") String dsr,
 			@RequestParam("sqlx") String sqlx,@RequestParam("sqsj") String sqsj,
 			@RequestParam("sqkssj") String sqkssj,@RequestParam("sqjssj") String sqjssj){
-		int i_ajxh = Integer.valueOf(ajxh);
-		Date d_sqsj = DateUtil.parse(sqsj, DateUtil.webFormat);
-		Date d_sqkssj = DateUtil.parse(sqkssj, DateUtil.webFormat);
-		Date d_sqjssj = DateUtil.parse(sqjssj, DateUtil.webFormat);
-		jxjsService.addJxjsByAjxhDsr(i_ajxh, dsr, sqlx,d_sqsj,d_sqkssj,d_sqjssj);
+		xl.apply(ajxh, dsr, sqlx, sqsj, sqkssj, sqjssj);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("xtdj-jxjssq");
 		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
@@ -93,57 +84,14 @@ public class XtdjController extends BaseController
 	@RequestMapping(value = "/xsajcs/transport", method = RequestMethod.POST)
 	@ResponseBody
 	public Object transport(@RequestParam("ajxhList") String ajxhList){
-		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
-		String csr = user.getUsername();
-		Date cssj = new Date();
-		int sum = ajService.addXsajTrans(ajxhList, csr, cssj);
-//		ModelAndView mav = new ModelAndView();
-//		mav.setViewName("xtdj-jajgfk");
-//		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "xtdj", "jajgfk"));
-		return sum;
+		return xl.transport(ajxhList);
 	}
 	
 	@RequestMapping(value = "/xsajcs/search", method = RequestMethod.GET)
 	@ResponseBody
 	public Object searchByDateOrAh(@RequestParam("ah") String ah,@RequestParam("kssj") String kssj,
 			@RequestParam("jssj") String jssj){
-		List<XsajcsView> ajcsView = new ArrayList<XsajcsView>();
-		List<PubAjJb> ajList = new ArrayList<PubAjJb>();
-		if(!StringUtil.isBlank(ah)){
-			PubAjJb aj = ajService.getXsajByAh(ah);
-			ajList.add(aj);
-		}else{
-			if(!StringUtil.isBlank(kssj) && !StringUtil.isAlpha(jssj)){
-				Date begin = DateUtil.parse(kssj, DateUtil.webFormat);
-				Date end = DateUtil.parse(jssj, DateUtil.webFormat);
-				ajList = ajService.getXsajByDate(begin, end);
-			}else if(!StringUtil.isBlank(kssj)){
-				Date begin = DateUtil.parse(kssj, DateUtil.webFormat);
-				ajList = ajService.getXsajAfterDate(begin);
-			}else if(!StringUtil.isBlank(jssj)){
-				Date end = DateUtil.parse(jssj, DateUtil.webFormat);
-				ajList = ajService.getXsajBeforeDate(end);
-			}
-			
-		}
-		for(PubAjJb aj:ajList){
-			XsajcsView view = new XsajcsView();
-			view.setAjxh(aj.getAjxh());
-			view.setAh(aj.getAh());
-			view.setAjmc(aj.getAjmc());
-			PubLaAy ay = ayService.getAyByAjxh(aj.getAjxh());
-			if(ay!=null)
-				view.setAy(ay.getLaay());
-			if(!StringUtil.isBlank(aj.getBafy())){
-				PubDmb dmb = dmbService.getDmbByLbbhAndDmbh("FBZ0001-97", aj.getBafy().trim());
-				view.setBafy(dmb.getDmms());
-			}
-			view.setLarq(DateUtil.format(aj.getLarq(), DateUtil.webFormat));
-			view.setJarq(DateUtil.format(aj.getJarq(), DateUtil.webFormat));
-			ajcsView.add(view);
-		}
-		
-		return ajcsView;
+		return xl.searchByDateOrAh(ah, kssj, jssj);
 	}
 	
 	
@@ -151,46 +99,7 @@ public class XtdjController extends BaseController
 	@ResponseBody
 	public Object getcsajlb(@RequestParam("ah") String ah,@RequestParam("dsr") String dsr,@RequestParam("kssj") String kssj,
 			@RequestParam("jssj") String jssj){
-		List<XsajcsView> ajcsView = new ArrayList<XsajcsView>();
-		List<PubAjJb> ajList = new ArrayList<PubAjJb>();
-		if(!StringUtil.isBlank(ah)){
-			PubAjJb aj = ajService.getXsajByAh(ah);
-			ajList.add(aj);
-		}else if(!StringUtil.isBlank(dsr)){
-			ajList = ajService.getXsajByDsr(dsr);
-		}else{
-
-			if(!StringUtil.isBlank(kssj) && !StringUtil.isAlpha(jssj)){
-				Date begin = DateUtil.parse(kssj, DateUtil.webFormat);
-				Date end = DateUtil.parse(jssj, DateUtil.webFormat);
-				ajList = ajService.getXsajByDate(begin, end);
-			}else if(!StringUtil.isBlank(kssj)){
-				Date begin = DateUtil.parse(kssj, DateUtil.webFormat);
-				ajList = ajService.getXsajAfterDate(begin);
-			}else if(!StringUtil.isBlank(jssj)){
-				Date end = DateUtil.parse(jssj, DateUtil.webFormat);
-				ajList = ajService.getXsajBeforeDate(end);
-			}
-			
-		}
-		for(PubAjJb aj:ajList){
-			XsajcsView view = new XsajcsView();
-			view.setAjxh(aj.getAjxh());
-			view.setAh(aj.getAh());
-			view.setAjmc(aj.getAjmc());
-			PubLaAy ay = ayService.getAyByAjxh(aj.getAjxh());
-			if(ay!=null)
-				view.setAy(ay.getLaay());
-			if(!StringUtil.isBlank(aj.getBafy())){
-				PubDmb dmb = dmbService.getDmbByLbbhAndDmbh("FBZ0001-97", aj.getBafy().trim());
-				view.setBafy(dmb.getDmms());
-			}
-			view.setLarq(DateUtil.format(aj.getLarq(), DateUtil.webFormat));
-			view.setJarq(DateUtil.format(aj.getJarq(), DateUtil.webFormat));
-			ajcsView.add(view);
-		}
-		
-		return ajcsView;
+		return xl.getcsajlb(ah, dsr, kssj, jssj);
 	}
 
 	
