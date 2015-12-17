@@ -83,7 +83,6 @@ function fetchData(){
 						"<td>"+resp[i].jarq+"</td>"+
 						"<td>"+resp[i].bafy+"</td>"+
 						"<td>"+resp[i].ay+"</td>"+
-						"<td>"+resp[i].dsr+"</td>"+
 					"</tr>");
 			}
 			g_dataTable = $("#dataTable").DataTable({

@@ -54,11 +54,13 @@ public class XtdjLogic {
 		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
 		String csr = user.getUsername();
 		Date cssj = new Date();
-		int sum = ajService.addXsajTrans(ajxhList, csr, cssj);
+		int sum = 0;
+		sum = ajService.addXsajTrans(ajxhList, csr, cssj);
+		Integer result = sum;
 //		ModelAndView mav = new ModelAndView();
 //		mav.setViewName("xtdj-jajgfk");
 //		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "xtdj", "jajgfk"));
-		return sum;
+		return result;
 	}
 	
 	
@@ -116,13 +118,13 @@ public class XtdjLogic {
 			if(!StringUtil.isBlank(kssj) && !StringUtil.isAlpha(jssj)){
 				Date begin = DateUtil.parse(kssj, DateUtil.webFormat);
 				Date end = DateUtil.parse(jssj, DateUtil.webFormat);
-				ajList = ajService.getXsajByDate(begin, end);
+				ajList = ajService.getCsajByDate(begin, end);
 			}else if(!StringUtil.isBlank(kssj)){
 				Date begin = DateUtil.parse(kssj, DateUtil.webFormat);
-				ajList = ajService.getXsajAfterDate(begin);
+				ajList = ajService.getCsajAfterDate(begin);
 			}else if(!StringUtil.isBlank(jssj)){
 				Date end = DateUtil.parse(jssj, DateUtil.webFormat);
-				ajList = ajService.getXsajBeforeDate(end);
+				ajList = ajService.getCasjBeforeDate(end);
 			}
 			
 		}

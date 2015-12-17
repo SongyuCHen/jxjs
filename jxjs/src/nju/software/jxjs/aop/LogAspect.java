@@ -9,7 +9,9 @@ import nju.software.jxjs.service.UserService;
 import nju.software.jxjs.view.User;
 
 import org.apache.shiro.SecurityUtils;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.slf4j.Logger;
@@ -158,8 +160,8 @@ public class LogAspect {
 	  * 案件传输切面
 	  * @param pjp
 	  */
-	 @Around(value = "execution(* nju.software.jxjs.service.PubAjJbService.addXsajTrans(..))" ) 
-	 public void transAspect(ProceedingJoinPoint pjp){
+	 @After(value = "execution(* nju.software.jxjs.service.PubAjJbService.addXsajTrans(..))" ) 
+	 public void transAspect(JoinPoint pjp){
 		 String ajxhList = (String)pjp.getArgs()[0];
 		 TLog log = new TLog();
 		 User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
@@ -172,7 +174,7 @@ public class LogAspect {
 		 log.setBz(user.getRealname()+"刑事案件传输:"+ajxhList);
 		 logService.addLog(log);
 		 try {
-				pjp.proceed();
+//				pjp.proceed();
 			} catch (Throwable e) {
 				// TODO Auto-generated catch block
 				logger.error("刑事案件传输切面错误");

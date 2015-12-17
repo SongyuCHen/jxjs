@@ -93,6 +93,16 @@ public class PubAjJbService {
 		return ajDao.getXSajBeforeLarq(jssj);
 	}
 	
+	public List<PubAjJb> getCsajByDate(Date kssj,Date jssj){
+		return ajDao.getCsaj(kssj, jssj);
+	}
+	public List<PubAjJb> getCsajAfterDate(Date kssj){
+		return ajDao.getCSajAfterLarq(kssj);
+	}
+	public List<PubAjJb> getCasjBeforeDate(Date jssj){
+		return ajDao.getCSajBeforeLarq(jssj);
+	}
+	
 	public JxjsApplyView getApplyByAjxh(int ajxh){
 		JxjsApplyView view = new JxjsApplyView();
 		PubAjJb aj = ajDao.getAjJbByAjxh(ajxh);

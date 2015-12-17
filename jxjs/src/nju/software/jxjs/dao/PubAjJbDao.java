@@ -83,6 +83,21 @@ public class PubAjJbDao extends BaseDao {
 
 		return ajList;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<PubAjJb> getCSajAfterLarq(Date begin){
+		String hql = "from PubAjJb aj where aj.larq>=? and aj.ajxz = '1' and aj.ajxh in(select ajxh from TXsaj)";
+		List<PubAjJb> ajList = (List<PubAjJb>) getHibernateTemplate().find(hql, new Object[]{begin});
+		return ajList;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<PubAjJb> getCSajBeforeLarq(Date end){
+		String hql = "from PubAjJb aj where aj.larq<=? and aj.ajxz = '1' and aj.ajxh in(select ajxh from TXsaj)";
+		List<PubAjJb> ajList = (List<PubAjJb>) getHibernateTemplate().find(hql, new Object[]{end});
+		return ajList;
+	}
+	
 	public void addXsajTrans(TXsaj xsaj){
 		getHibernateTemplate().save(xsaj);
 	}

@@ -75,7 +75,6 @@
 						<th>结案日期</th>
 						<th>办案法院</th>
 						<th>案由</th>
-						<th>当事人</th>
 					</tr>
 				</thead>
 				<tbody>					
