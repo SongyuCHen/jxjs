@@ -5,7 +5,10 @@
 var baseUrl = getRootPath();
 $(function(){
 	g_dataTable = $("#dataTable").DataTable({
-         order : [[ 5, "desc" ]]
+         order : [[ 5, "desc" ]],
+         language : {
+        	 "sEmptyTable" : "没有立案"
+         }
 	});
 	fetchData();
 });
@@ -34,7 +37,10 @@ function fetchData(){
 					"</tr>");
 			}
 			g_dataTable = $("#dataTable").DataTable({
-				 order : [[ 5, "desc" ]]
+				 order : [[ 5, "desc" ]],
+				 language : {
+		        	 "sEmptyTable" : "没有立案"
+		         }
 			});
 		},
 		complete:function(resp){
