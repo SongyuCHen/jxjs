@@ -84,6 +84,24 @@ public class JxjsDao extends BaseDao {
 		return sz;
 	}
 	/**
+	 * 根据时间段获取减刑假释申请的退回总数
+	 * @param kssj
+	 * @param jssj
+	 * @return
+	 */
+	public int getThSumByDate(Date kssj,Date jssj){
+		String s_kssj = DateUtil.format(kssj, DateUtil.webFormat);
+		String s_jssj = DateUtil.format(jssj, DateUtil.webFormat);
+		String hql = "select count(*) from TSpxx spxx where spxx.splx = '2' and spxx.spsj>='"+s_kssj+"' and spxx.spsj <='"+s_jssj+"'";
+		
+		Session s = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
+		Query query = s.createQuery(hql);
+		int sz = 0;
+		if (query.uniqueResult() != null)
+			sz = Integer.parseInt(String.valueOf(query.uniqueResult())); 
+		return sz;
+	}
+	/**
 	 * 根据时间段获取减刑假释申请的立案总数
 	 * @param kssj
 	 * @param jssj
@@ -120,7 +138,7 @@ public class JxjsDao extends BaseDao {
 		return sz;
 	}
 	/**
-	 * 根据时间段获取减刑假释申请的结案总数
+	 * 根据时间段获取减刑假释申请的反馈总数
 	 * @param kssj
 	 * @param jssj
 	 * @return

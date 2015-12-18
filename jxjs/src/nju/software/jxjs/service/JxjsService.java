@@ -92,15 +92,16 @@ public class JxjsService {
 				sz = jd.getSpSumByDate(kssj, jssj);
 				break;
 			case "3":
-				sz = jd.getlaSumByDate(kssj, jssj);
+				sz = jd.getThSumByDate(kssj, jssj);
 				break;
 			case "4":
-				sz = jd.getjaSumByDate(kssj, jssj);
+				sz = jd.getlaSumByDate(kssj, jssj);
 				break;
 			case "5":
-				sz = jd.getfkSumByDate(kssj, jssj);
+				sz = jd.getjaSumByDate(kssj, jssj);
 				break;
-			
+			case "6":
+				sz = jd.getfkSumByDate(kssj, jssj);
 		}
 		return sz;
 	}
