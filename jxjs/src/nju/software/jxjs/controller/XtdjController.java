@@ -1,24 +1,13 @@
 package nju.software.jxjs.controller;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import nju.software.jxjs.logic.XtdjLogic;
-import nju.software.jxjs.model.PubAjJb;
-import nju.software.jxjs.model.PubDmb;
-import nju.software.jxjs.model.PubLaAy;
-import nju.software.jxjs.service.DmbService;
-import nju.software.jxjs.service.JxjsService;
 import nju.software.jxjs.service.MenuService;
-import nju.software.jxjs.service.PubAjJbService;
-import nju.software.jxjs.service.PubLaAyService;
-import nju.software.jxjs.util.DateUtil;
-import nju.software.jxjs.util.StringUtil;
 import nju.software.jxjs.view.JajgfkView;
-import nju.software.jxjs.view.JxjsApplyView;
 import nju.software.jxjs.view.User;
-import nju.software.jxjs.view.XsajcsView;
+
 
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;

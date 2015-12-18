@@ -1,40 +1,26 @@
 package nju.software.jxjs.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import nju.software.jxjs.common.Constants;
+
 import nju.software.jxjs.logic.AjclLogic;
-import nju.software.jxjs.model.DsrGr;
-import nju.software.jxjs.model.DsrJb;
-import nju.software.jxjs.model.PubAjJb;
-import nju.software.jxjs.model.PubDmb;
-import nju.software.jxjs.model.TDsr;
-import nju.software.jxjs.model.TJxjs;
-import nju.software.jxjs.model.TSpxx;
-import nju.software.jxjs.service.DmbService;
-import nju.software.jxjs.service.JxjsService;
+
 import nju.software.jxjs.service.MenuService;
 
 
 
 
-import nju.software.jxjs.service.PubAjJbService;
-import nju.software.jxjs.service.SpxxService;
-import nju.software.jxjs.service.TDsrService;
-import nju.software.jxjs.service.UserService;
-import nju.software.jxjs.util.DateUtil;
+
 import nju.software.jxjs.view.BthlbView;
 import nju.software.jxjs.view.DsplbView;
-import nju.software.jxjs.view.User;
+
 import nju.software.jxjs.view.YlalbView;
 import nju.software.jxjs.view.YsplbView;
 
-import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -7,13 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import nju.software.jxjs.logic.XtglLogic;
-import nju.software.jxjs.model.PubDmb;
-import nju.software.jxjs.model.TLog;
-import nju.software.jxjs.service.DmbService;
-import nju.software.jxjs.service.LogService;
 import nju.software.jxjs.service.MenuService;
-import nju.software.jxjs.service.UserService;
-import nju.software.jxjs.util.DateUtil;
 import nju.software.jxjs.view.LogView;
 import nju.software.jxjs.view.User;
 

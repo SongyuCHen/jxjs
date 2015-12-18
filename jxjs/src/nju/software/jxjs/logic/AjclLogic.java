@@ -14,11 +14,9 @@ import nju.software.jxjs.model.TJxjs;
 import nju.software.jxjs.model.TSpxx;
 import nju.software.jxjs.service.DmbService;
 import nju.software.jxjs.service.JxjsService;
-import nju.software.jxjs.service.MenuService;
 import nju.software.jxjs.service.PubAjJbService;
 import nju.software.jxjs.service.SpxxService;
 import nju.software.jxjs.service.TDsrService;
-import nju.software.jxjs.service.UserService;
 import nju.software.jxjs.util.DateUtil;
 import nju.software.jxjs.view.BthlbView;
 import nju.software.jxjs.view.DsplbView;
@@ -29,8 +27,6 @@ import nju.software.jxjs.view.YsplbView;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 @Component
 public class AjclLogic {
@@ -46,8 +42,6 @@ public class AjclLogic {
 	private DmbService dmbService;
 	@Autowired
 	private SpxxService spxxService;
-	@Autowired
-	private UserService userService;
 
 	public Object getDsplb() {
 		List<DsplbView> dsplbView = new ArrayList<DsplbView>();

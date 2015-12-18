@@ -1,20 +1,8 @@
 package nju.software.jxjs.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 import nju.software.jxjs.logic.TjfxLogic;
-import nju.software.jxjs.model.PubDmb;
-import nju.software.jxjs.model.TDsr;
-import nju.software.jxjs.model.TJxjs;
-import nju.software.jxjs.service.DmbService;
-import nju.software.jxjs.service.JxjsService;
 import nju.software.jxjs.service.MenuService;
-import nju.software.jxjs.service.TDsrService;
-import nju.software.jxjs.util.DateUtil;
-import nju.software.jxjs.view.JccxView;
-import nju.software.jxjs.view.TjfxResultModel;
 import nju.software.jxjs.view.TjfxSearchModel;
 import nju.software.jxjs.view.User;
 
