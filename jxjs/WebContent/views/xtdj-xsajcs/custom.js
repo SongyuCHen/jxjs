@@ -69,12 +69,12 @@ function fetchData(){
 				$("#dataTable>tbody").append("<tr>"+
 						"<td  class='checkTD'><input type='checkbox'/></td>"+
 						"<td>"+(i+1)+"</td>"+
-						"<td>"+resp[i].ah+"</td>"+
-						"<td>"+resp[i].ajmc+"</td>"+
-						"<td>"+resp[i].larq+"</td>"+
-						"<td>"+resp[i].jarq+"</td>"+
-						"<td>"+resp[i].bafy+"</td>"+
-						"<td>"+resp[i].ay+"</td>"+
+						"<td>"+null2empty(resp[i].ah)+"</td>"+
+						"<td>"+null2empty(resp[i].ajmc)+"</td>"+
+						"<td>"+null2empty(resp[i].larq)+"</td>"+
+						"<td>"+null2empty(resp[i].jarq)+"</td>"+
+						"<td>"+null2empty(resp[i].bafy)+"</td>"+
+						"<td>"+null2empty(resp[i].ay)+"</td>"+
 					"</tr>");
 			}
 			g_dataTable = $("#dataTable").DataTable({

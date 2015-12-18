@@ -98,3 +98,12 @@ function anyChecked(){
 	});
 	return any;
 }
+
+
+function null2empty(str){
+	if(str==null){
+		return "";
+	}else{
+		return str;
+	}
+}
