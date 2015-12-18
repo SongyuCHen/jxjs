@@ -156,6 +156,7 @@ function fetchData2(){
 				        trigger: 'item',
 				        formatter: "{a} <br/>{b} : {c} ({d}%)"
 				    },
+				    color:['red', 'green','orange','blueviolet','blue','pink'],
 				    legend: {
 				        orient : 'vertical',
 				        x : 'left',
