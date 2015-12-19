@@ -98,4 +98,15 @@ public class XtdjController extends BaseController
 		List<JajgfkView> jvList = new ArrayList<JajgfkView>();
 		return jvList;
 	}
+	
+	
+	
+	@RequestMapping(value = "/ysqlb", method = RequestMethod.GET)
+	public ModelAndView ysqlb(){
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("xtdj-ysqlb");
+		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
+		mav.addObject("menuWrapper", ms.makeMenu(user.getRole(), "xtdj", "ysqlb"));
+		return mav;
+	}
 }
