@@ -27,9 +27,29 @@ function printTable(cont){
 	var wind=window.open('about:blank', '', '');
     
     wind.document.write(
-    		'<style>@media print{.no-print{display:none;}.no-wrap{word-break: ' + 
-    		'keep-all;white-space:nowrap;}} @media all{th,td{border:1px solid #000;}' + 
-    		'table{border-collapse:collapse;width:95%;}}</style><table>'+cont+'</table>');
+    		'<style>' +
+    			'@media print{' +
+    				'.no-print{' + 
+    					'display:none;' + 
+    				'}' + 
+    				'.no-wrap{' + 
+    					'word-break: keep-all;' + 
+    					'white-space:nowrap;' + 
+    				'}' + 
+    			'}' + 
+    			'@media all{' + 
+    				'th,td{' + 
+    					'border:1px solid #000;' + 
+    				'}' + 
+    				'table{' + 
+    					'border-collapse:collapse;width:95%;' + 
+    				'}' + 
+    			'}' + 
+    			'@page{' +
+    				'size: landscape' +
+    			'}' +
+    		'</style>' + 
+    		'<table>'+cont+'</table>');
     wind.print();
 }
 
