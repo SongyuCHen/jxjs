@@ -114,7 +114,8 @@ public class LogAspect {
 		 String dsr = (String) pjp.getArgs()[1];
 		 String sqlx = (String)pjp.getArgs()[2];
 		 User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");
-		 int rybh = userService.getYhbByXM(user.getRealname()).getYhbh();
+		//此处的人员编号是监狱方的人员编号，因为申请人必然是监狱方
+		int rybh = userService.getUserByXm(user.getRealname()).getUserbh();
 		 String ip = (String) SecurityUtils.getSubject().getSession().getAttribute("currentIP");
 		 TLog log = new TLog();
 		 log.setCzid(ajxh);

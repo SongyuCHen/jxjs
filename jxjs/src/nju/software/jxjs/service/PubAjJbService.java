@@ -105,33 +105,40 @@ public class PubAjJbService {
 	
 	public JxjsApplyView getApplyByAjxh(int ajxh){
 		JxjsApplyView view = new JxjsApplyView();
-		PubAjJb aj = ajDao.getAjJbByAjxh(ajxh);
-		List<DsrJb> dsrJbList = dsrJbDao.getDsrByAjxh(ajxh);
-		List<PubDmb> dmbList = dmbDao.getDmbByLbbh("JXJS-SQLX");
-		view.setAjxh(ajxh);
-		view.setAh(aj.getAh());
-		view.setAjmc(aj.getAjmc());
-		if(!StringUtil.isBlank(aj.getBafy()))
-			view.setBafy(dmbDao.getDmbByLbbhAndDmbh("FBZ0001-97", aj.getBafy().trim()).getDmms());
+		if(ajxh > 0){
+			PubAjJb aj = ajDao.getAjJbByAjxh(ajxh);
+			List<DsrJb> dsrJbList = dsrJbDao.getDsrByAjxh(ajxh);
+			view.setAjxh(ajxh);
+			view.setAh(aj.getAh());
+			view.setAjmc(aj.getAjmc());
+			if(!StringUtil.isBlank(aj.getBafy()))
+				view.setBafy(dmbDao.getDmbByLbbhAndDmbh("FBZ0001-97", aj.getBafy().trim()).getDmms());
+			List<String> dsrList = new ArrayList<String>();
+			for(DsrJb dsrjb:dsrJbList){
+				dsrList.add(dsrjb.getDsrjc());
+			}
+			view.setDsrList(dsrList);
+		}
+			
+		
+		List<PubDmb> dmbList = dmbDao.getDmbByLbbh("JXJS-SQLX");		
 		view.setFxdd("定西市监狱");
-		view.setRjrq("2015-11-01");
+//		view.setRjrq("2015-11-01");
 		view.setSfjs("否");
 		view.setSqcs(1);
-		view.setSqjssj("2016-01-01");
-		view.setSqkssj("2015-11-01");
+//		view.setSqjssj("2016-01-01");
+//		view.setSqkssj("2015-11-01");
 		List<String> sqlxList = new ArrayList<String>();
 		for(PubDmb dmb:dmbList){
 			sqlxList.add(dmb.getDmms());
 		}
-		List<String> dsrList = new ArrayList<String>();
-		for(DsrJb dsrjb:dsrJbList){
-			dsrList.add(dsrjb.getDsrjc());
-		}
+		
+		
 		view.setSqlxList(sqlxList);
-		view.setDsrList(dsrList);
+
 		view.setSqsj("2015-11-01");
-		view.setXqjssj("2018-12-31");
-		view.setXqkssj("2013-01-01");
+//		view.setXqjssj("2018-12-31");
+//		view.setXqkssj("2013-01-01");
 		return view;
 	}
 	

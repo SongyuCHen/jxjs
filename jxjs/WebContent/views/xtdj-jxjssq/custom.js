@@ -122,15 +122,15 @@ function shenqing(){
 		dataType : 'html',
 		success : function(resp) {
 			resp = $.parseJSON(resp);
-			$("#mah").text(resp.ah);
-			$("#majmc").text(resp.ajmc);
-			$("#mbafy").text(resp.bafy);
-			$("#mfxdd").text(resp.fxdd);
-			$("#msqcs").text(resp.sqcs);
+			$("#mah").val(resp.ah);
+			$("#majmc").val(resp.ajmc);
+			$("#mbafy").val(resp.bafy);
+			$("#mfxdd").val(resp.fxdd);
+			$("#msqcs").val(resp.sqcs);
 			$("#mrjrq").text(resp.rjrq);
 			$("#mxqkssj").text(resp.xqkssj);
 			$("#mxqjssj").text(resp.xqjssj);
-			$("#msfjs").text(resp.sfjs);
+
 			
 			$("#msqlx").html(toOptions(resp.sqlxList));
 			$("#mdsr").html(toOptions(resp.dsrList));
@@ -195,16 +195,16 @@ function apply(){
 //重置modal
 function shenqingModalReset(){
 	
-	$("#mah").text("载入中。。。");
-	$("#majmc").text("载入中。。。");
-	$("#mbafy").text("载入中。。。");
-	$("#mfxdd").text("载入中。。。");
-	$("#msqcs").text("载入中。。。");
-	$("#mrjrq").text("载入中。。。");
-	$("#mxqkssj").text("载入中。。。");
-	$("#mxqjssj").text("载入中。。。");
+	$("#mah").text("");
+	$("#majmc").text("");
+	$("#mbafy").text("");
+	$("#mfxdd").text("");
+	$("#msqcs").text("");
+	$("#mrjrq").text("");
+	$("#mxqkssj").text("");
+	$("#mxqjssj").text("");
 
-	$("#msfjs").text("载入中。。。");
+	$("#msfjs").text("");
 	$("#msqlx").html(toOptions([]));
 	$("#mdsr").html(toOptions([]));
 	

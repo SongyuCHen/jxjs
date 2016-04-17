@@ -64,7 +64,7 @@ public class UserService extends BaseService{
 			PubXtglYhb yhb = yhbDao.getPubXtglYhbByYhdm(user.getUsername());
 			user.setRealname(yhb.getYhmc());
 		}else if("jianyu".equals(user.getRole())){
-			TUser tuser = ud.findUser(user.getUsername());
+			TUser tuser = ud.findUsername(user.getUsername());
 			user.setRealname(tuser.getName());
 		}
 		return user;
@@ -82,6 +82,10 @@ public class UserService extends BaseService{
 			return yhbs.get(0);
 		else
 			return null;
+	}
+	
+	public TUser getUserByXm(String xm){
+		return ud.findUser(xm);
 	}
 
 

@@ -32,11 +32,11 @@
 }
 
 .float-gap{
-	padding: 0 15px;
+	padding: 0 10px;
 }
 
 .time-text{
-	width: 65px;
+	margin:0 2px;
 }
 
 .label-control{
@@ -45,6 +45,24 @@
 
 .time-input{
 	width: 150px;
+}
+
+.sq-input{
+	width: 434px;
+}
+
+.sq-text{
+	width: 434px;
+	height:40px;
+}
+
+.sq-input2{
+	width: 144px;
+}
+
+.sq-text2{
+	width: 144px;
+	height:40px;
 }
 
 .select-condition{

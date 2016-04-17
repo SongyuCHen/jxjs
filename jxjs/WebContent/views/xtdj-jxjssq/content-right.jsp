@@ -13,7 +13,7 @@
 	<div class="search-area">
 		<div class="float-left float-gap">
 			<div class="float-left time-text">
-				<label class="control-label">案号</label>
+				<label class="label-control">案号</label>
 			</div>
 			<div class="float-left time-input">
 				<input type="text" class="form-control" id="caseNumber"/>
@@ -22,7 +22,7 @@
 				
 		<div class="float-left float-gap">
 			<div class="float-left time-text">
-				<label class="control-label">当事人</label>
+				<label class="label-control">当事人</label>
 			</div>
 			<div class="float-left time-input">
 				<input type="text" class="form-control" id="dsr"/>
@@ -102,8 +102,8 @@
   						<div class="col-md-2">
   							案号
   						</div>
-  						<div class="col-md-6" id="mah">
-  							null
+  						<div class="float-left sq-input">
+  							<input type="text" class="sq-text" id="mah">  
   						</div>
   						<div class="col-md-2">当事人</div>
   						<div class="col-md-2 noborder" style="padding:0px;">
@@ -117,8 +117,8 @@
   						<div class="col-md-2">
   							案件名称
   						</div>
-  						<div class="col-md-6"   id="majmc">
-  							null
+  						<div class="float-left sq-input">
+  							<input type="text" class="sq-text" id="majmc"> 
   						</div>
   						<div class="col-md-2">申请类型</div>
   						<div class="col-md-2 noborder" style="padding:0px;">
@@ -151,20 +151,46 @@
   						<div class="col-md-2">
   							服刑地点
   						</div>
-  						<div class="col-md-6" id="mfxdd">
-  							null
+  						<div class="float-left sq-input" >
+  							<input type="text" class="sq-text" id="mfxdd"> 
   						</div>
   						<div class="col-md-2">申请次数</div>
-  						<div class="col-md-2" id="msqcs">null</div>
+  						<div class="float-left sq-input2">
+  							<input type="text" class="sq-text2" id="msqcs"> 
+  						</div>
 					</div>
 					<div class="space"></div>
 					<div class="row">
   						<div class="col-md-2">入监日期</div>
-  						<div class="col-md-2" id="mrjrq">null</div>
+  						<div class="col-md-2"  style="padding:2px 0px;">
+  							<div class="input-group date form_date">
+								<input type="text" class="form-control" id="mrjrq" readonly />
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar">
+									</span>
+								</span>
+							</div>
+  						</div>
   						<div class="col-md-2">刑期开始时间</div>
-  						<div class="col-md-2" id="mxqkssj">null</div>
+  						<div class="col-md-2"  style="padding:2px 0px;">
+  							<div class="input-group date form_date">
+								<input type="text" class="form-control" id="mxqkssj" readonly />
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar">
+									</span>
+								</span>
+							</div>
+  						</div>
   						<div class="col-md-2">刑期结束时间</div>
-  						<div class="col-md-2" id="mxqjssj">null</div>
+  						<div class="col-md-2"  style="padding:2px 0px;">
+  							<div class="input-group date form_date">
+								<input type="text" class="form-control" id="mxqjssj" readonly />
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar">
+									</span>
+								</span>
+							</div>
+  						</div>
 					</div>
 					<div class="row">
   						<div class="col-md-2" id="msqkssjLabel">申请开始时间</div>
@@ -188,7 +214,11 @@
 							</div>
   						</div>
   						<div class="col-md-2" style="font-size:10px;padding-top:2px;">是否不得假释罪犯申请减刑</div>
-  						<div class="col-md-2" id="msfjs">null</div>
+  						<div class="col-md-2" style="padding:0px;">
+  						<select style="width:100%;height:100%"  id="msfjs">
+  								<option>是</option>
+  								<option>否</option>
+  							</select></div>
 					</div>
 				
 				</div>

@@ -21,7 +21,7 @@ body{
 
 .content-wrapper .content-left{
 	float:left;
-	width:20%;
+	width:16%;
 	min-height:600px;
 	background-color:white;
 	padding:2px;
@@ -30,7 +30,7 @@ body{
 
 .content-wrapper .content-right{
 	float:left;
-	width:80%;
+	width:84%;
 	background-color:white;
 	padding:2px;
 	font-size:14px;

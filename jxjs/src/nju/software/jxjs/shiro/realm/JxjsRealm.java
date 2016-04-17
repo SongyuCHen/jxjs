@@ -47,7 +47,7 @@ public class JxjsRealm extends AuthorizingRealm{
 		String role = ((JxjsToken)token).getRole();
 		SimpleAuthenticationInfo authenticationInfo = null;
 		if("jianyu".equals(role)){
-			TUser user = ud.findUser(username);
+			TUser user = ud.findUsername(username);
 			if (user == null) {
 				throw new UnknownAccountException();// û�ҵ��ʺ�
 			}
