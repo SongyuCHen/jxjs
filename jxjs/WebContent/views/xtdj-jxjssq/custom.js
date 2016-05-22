@@ -75,14 +75,14 @@ function fetchData(){
 			$("#dataTable>tbody").empty();
 			for(var i = 0 ; i < resp.length ; i++){
 				$("#dataTable>tbody").append("<tr>"+
-						"<td  class='checkTD'><input type='checkbox'/></td>"+
-						"<td>"+(i+1)+"</td>"+
-						"<td>"+resp[i].ah+"</td>"+
-						"<td>"+resp[i].ajmc+"</td>"+
-						"<td>"+resp[i].larq+"</td>"+
-						"<td>"+resp[i].jarq+"</td>"+
-						"<td>"+resp[i].bafy+"</td>"+
-						"<td>"+resp[i].ay+"</td>"+
+						"<td width='5%' class='checkTD'><input type='checkbox'/></td>"+
+						"<td width='8%'>"+(i+1)+"</td>"+
+						"<td width='17%'>"+resp[i].ah+"</td>"+
+						"<td width='15%'>"+resp[i].ajmc+"</td>"+
+						"<td width='15%'>"+resp[i].larq+"</td>"+
+						"<td width='15%'>"+resp[i].jarq+"</td>"+
+						"<td width='15%'>"+resp[i].bafy+"</td>"+
+						"<td width='10%'>"+resp[i].ay+"</td>"+
 					"</tr>");
 			}
 			g_dataTable = $("#dataTable").DataTable({
@@ -204,7 +204,10 @@ function shenqingModalReset(){
 	$("#mxqkssj").text("");
 	$("#mxqjssj").text("");
 
-	$("#msfjs").text("");
+//	$("#msfjs").text("");
+	$("#msfjs option:selected").attr("selected", false);
+	$("#msfjs option:first").attr("selected", "selected");
+	
 	$("#msqlx").html(toOptions([]));
 	$("#mdsr").html(toOptions([]));
 	

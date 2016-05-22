@@ -18,14 +18,14 @@
 				class="dataTable table table-hover table-striped">
 				<thead>
 					<tr id="table-main-thead-tr">
-						<th><input type="checkbox" id="checkAll" onclick="checkAll();"/></th>
-						<th>序号</th>
-						<th>原审案号</th>
-						<th>当事人</th>
-						<th>生效法院</th>
-						<th>申请类型</th>
-						<th>申请时间</th>
-						<th>审批时间</th>
+						<th width="5%"><input type="checkbox" id="checkAll" onclick="checkAll();"/></th>
+						<th width="10%">序号</th>
+						<th width="20%">原审案号</th>
+						<th width="10%">当事人</th>
+						<th width="15%">生效法院</th>
+						<th width="10%">申请类型</th>
+						<th width="15%">申请时间</th>
+						<th width="15%">审批时间</th>
 					</tr>
 				</thead>
 				<tbody>					

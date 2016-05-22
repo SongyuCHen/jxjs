@@ -30,14 +30,14 @@ function fetchData(){
 			$("#dataTable>tbody").empty();
 			for(var i = 0 ; i < resp.length ; i++){
 				$("#dataTable>tbody").append("<tr>"+
-						"<td  class='checkTD'><input type='checkbox'/></td>"+
-						"<td>"+(i+1)+"</td>"+
-						"<td>"+resp[i].ysah+"</td>"+
-						"<td>"+resp[i].dsr+"</td>"+
-						"<td>"+resp[i].sxfy+"</td>"+
-						"<td>"+resp[i].sqlx+"</td>"+
-						"<td>"+resp[i].sqsj+"</td>"+
-						"<td>"+resp[i].spsj+"</td>"+
+						"<td width='5%' class='checkTD'><input type='checkbox'/></td>"+
+						"<td width='10%'>"+(i+1)+"</td>"+
+						"<td width='20%'>"+resp[i].ysah+"</td>"+
+						"<td width='10%'>"+resp[i].dsr+"</td>"+
+						"<td width='15%'>"+resp[i].sxfy+"</td>"+
+						"<td width='10%'>"+resp[i].sqlx+"</td>"+
+						"<td width='15%'>"+resp[i].sqsj+"</td>"+
+						"<td width='15%'>"+resp[i].spsj+"</td>"+
 					"</tr>");
 			}
 			g_dataTable = $("#dataTable").DataTable({
@@ -45,7 +45,8 @@ function fetchData(){
 		             orderable:false,//禁用排序
 		             targets:[0]   //指定的列
 		         }],
-		         order : [[ 7, "desc" ]]
+//		         order : [[ 7, "desc" ]]
+		         order : [[ 1, "asc" ]]
 			});
 		},
 		complete:function(resp){

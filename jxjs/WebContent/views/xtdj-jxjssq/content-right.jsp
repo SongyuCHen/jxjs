@@ -67,14 +67,14 @@
 				class="dataTable table table-hover table-striped">
 				<thead>
 					<tr id="table-main-thead-tr">
-						<th></th>
-						<th>序号</th>
-						<th>案号</th>
-						<th>案件名称</th>
-						<th>立案日期</th>
-						<th>结案日期</th>
-						<th>办案法院</th>
-						<th>案由</th>
+						<th width="5%"></th>
+						<th width="8%">序号</th>
+						<th width="17%">案号</th>
+						<th width="15%">案件名称</th>
+						<th width="15%">立案日期</th>
+						<th width="15%">结案日期</th>
+						<th width="15%">办案法院</th>
+						<th width="10%">案由</th>
 					</tr>
 				</thead>
 				<tbody>					
