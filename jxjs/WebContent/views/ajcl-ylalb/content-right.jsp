@@ -18,6 +18,7 @@
 				class="dataTable table table-hover table-striped">
 				<thead>
 					<tr id="table-main-thead-tr">
+						<th><input type="checkbox" id="checkAll" onclick="checkAll();"/></th>
 						<th>序号</th>
 						<th>案号</th>
 						<th>案件名称</th>

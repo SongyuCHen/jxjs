@@ -11,9 +11,16 @@ $(function(){
          }],
          order : [[ 7, "desc" ]]
 	});
+	//点击列表，弹出详细信息
+	$("#dataTable").on("click","tbody>tr>td:not([class='checkTD'])",viewCaseDetail);
 	fetchData();
 });
-
+//弹出详细信息
+function viewCaseDetail(){
+	$("#caseDetailModal").modal({
+		keyboard: true
+	});
+}
 
 
 //获取数据
