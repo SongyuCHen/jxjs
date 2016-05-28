@@ -17,7 +17,23 @@ $(document).ready(function(){
 });
 
 $(function(){
-
+	
+	/**
+	 * 日期选择控件
+	 */
+	$('.form_date').datetimepicker({
+	    language:  'zh-CN',
+	    format: 'yyyy-mm-dd',
+	    weekStart: 1,
+	    todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0,
+		pickerPosition: "bottom-left"
+	});
+	
 	g_dataTable = $("#dataTable").DataTable({
 		 columnDefs:[{
            orderable:false,//禁用排序
@@ -33,7 +49,11 @@ $(function(){
 
 //弹出详细信息
 function viewCaseDetail(){
-	$("#caseDetailModal").modal({
+//	$("#caseDetailModal").modal({
+//		keyboard: true
+//	});
+	shenqingModalReset();
+	$("#shenqingModal").modal({
 		keyboard: true
 	});
 }
@@ -155,4 +175,82 @@ function reject(){
 			fetchData();
 		}
 	});
+}
+
+function shenqingModalReset(){
+	
+	$("#mah").text("");
+	$("#majmc").text("");
+	$("#mbafy").text("");
+	$("#mfxdd").text("");
+	$("#msqcs").text("");
+	$("#mrjrq").text("");
+	$("#mxqkssj").text("");
+	$("#mxqjssj").text("");
+
+//	$("#msfjs").text("");
+	$("#msfjs option:selected").attr("selected", false);
+	$("#msfjs option:first").attr("selected", "selected");
+	
+	$("#msqlx").html(toOptions([]));
+	$("#mdsr").html(toOptions([]));
+	
+	var date = new Date();
+	$("#msqsj").val(date.Format("yyyy-MM-dd"));
+	$("#msqkssj").val("");
+	$("#msqjssj").val("");
+}
+
+function toOptions(l){
+	var html = "";
+	for(var i = 0 ; i < l.length ; i++){
+		html+="<option>"+l[i]+"</option>";
+	}
+	return html;
+}
+
+//发起申请
+function apply(){
+	var ajxh = -1;
+	$("#dataTable td.checkTD input").each(function(){
+		if($(this).is(":checked")){
+			var i = $(this).parent().parent().children().eq(1).text();
+			i--;
+			ajxh = g_resp[i].ajxh;
+		}
+	});
+	var dsr = $("#mdsr").val()==null?"":$("#mdsr").val();
+	var sqlx = $("#msqlx").val()==null?"":$("#msqlx").val();
+	var sqsj = $("#msqsj").val();
+	var sqkssj = $("#msqkssj").val();
+	var sqjssj = $("#msqjssj").val();
+	if(sqkssj.length==0||sqjssj.length==0||dsr.length==0){
+		alert("参数不能为空，请填写完整！");
+		return;
+	}
+	$.ajax({
+		url :  baseUrl+"/xtdj/apply",
+		type : "post",
+		data : {
+			ajxh:ajxh,
+			dsr:dsr,
+			sqlx:sqlx,
+			sqsj:sqsj,
+			sqkssj:sqkssj,
+			sqjssj:sqjssj
+		},
+		dataType : 'html',
+		success : function(resp) {
+			resp = $.parseJSON(resp);
+			alert("申请成功！");
+		},
+		error : function(resp){
+			alert("申请失败!");
+		},
+		complete:function(resp){
+			fetchData();
+			$("#shenqingModal").hide();
+		}
+	});
+	
 }
