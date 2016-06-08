@@ -106,7 +106,7 @@
   							<input type="text" class="sq-text" id="mah">  
   						</div>
   						<div class="col-md-2">当事人</div>
-  						<div class="col-md-2 noborder" style="padding:0px;">
+  						<div class="col-md-2 noborder" style="padding:0px;" edited="true">
   							<select style="width:100%;height:100%"  id="mdsr">
   								<option>张三分</option>
   								<option>马虎疼</option>
@@ -133,7 +133,7 @@
   						<div class="col-md-2">
   							办案法院
   						</div>
-  						<div class="col-md-6" id="mbafy">
+  						<div class="col-md-6" id="mbafy" edited="true">
   							null
   						</div>
   						<div class="col-md-2">申请时间</div>

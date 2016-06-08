@@ -25,7 +25,12 @@ public class JxjsDao extends BaseDao {
 		List<TJxjs> jxjs = (List<TJxjs>) getHibernateTemplate().find(hql, new Object[]{begin,end,ajztbh});
 		return jxjs;
 	}
-	
+	@SuppressWarnings("unchecked")
+	public List<TJxjs> getJxjsByDate(Date begin,Date end){
+		String hql = "from TJxjs jxjs where jxjs.sqsj >= ? and jxjs.sqsj <= ?";
+		List<TJxjs> jxjs = (List<TJxjs>) getHibernateTemplate().find(hql, new Object[]{begin,end});
+		return jxjs;
+	}
 	@SuppressWarnings("unchecked")
 	public TJxjs getJxjsByBh(int bh){
 		String hql = "from TJxjs jxjs where jxjs.jxjsbh=?";
@@ -56,7 +61,7 @@ public class JxjsDao extends BaseDao {
 	public int getSqSumByDate(Date kssj,Date jssj){
 		String s_kssj = DateUtil.format(kssj, DateUtil.webFormat);
 		String s_jssj = DateUtil.format(jssj, DateUtil.webFormat);
-		String hql = "select count(*) from TJxjs jxjs where jxjs.sqsj>='"+s_kssj+"' and jxjs.sqsj <='"+s_jssj+"'";
+		String hql = "select count(*) from TJxjs jxjs where jxjs.ajztbh='1' and jxjs.sqsj>='"+s_kssj+"' and jxjs.sqsj <='"+s_jssj+"'";
 		
 		Session s = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
 		Query query = s.createQuery(hql);

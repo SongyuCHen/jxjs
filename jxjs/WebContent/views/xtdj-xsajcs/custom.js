@@ -28,7 +28,7 @@ $(document).ready(function(){
 	             orderable:false,//禁用排序
 	             targets:[0]   //指定的列
 	         }],
-	         order : [[ 1, "asc" ]]
+	         order : [[ 0, "asc" ]]
 		});
 	
 		
@@ -82,7 +82,7 @@ function fetchData(){
 		            orderable:false,//禁用排序
 		            targets:[0]   //指定的列
 		        }],
-		        order : [[ 1, "asc" ]]
+		        order : [[ 0, "asc" ]]
 			});
 		},
 		complete:function(resp){

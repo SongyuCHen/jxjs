@@ -13,8 +13,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class PubAjJbDao extends BaseDao {
 	@SuppressWarnings("unchecked")
-	public List<PubAjJb> getAjJbByLarq(Date begin,Date end){
-		String hql = "from PubAjJb aj where aj.larq>=? and aj.larq<=?";
+	public List<PubAjJb> getAjJbByJarq(Date begin,Date end){
+		String hql = "from PubAjJb aj where aj.jarq>=? and aj.jarq<=?";
 		List<PubAjJb> ajList = (List<PubAjJb>) getHibernateTemplate().find(hql, new Object[]{begin,end});
 		return ajList;
 	}
@@ -51,20 +51,20 @@ public class PubAjJbDao extends BaseDao {
 		return 0;
 	}
 	@SuppressWarnings("unchecked")
-	public List<PubAjJb> getXSajByLarq(Date begin,Date end){
-		String hql = "from PubAjJb aj where aj.larq>=? and aj.larq<=? and aj.ajxz = '1' and aj.ajxh not in(select ajxh from TXsaj)";
+	public List<PubAjJb> getXSajByJarq(Date begin,Date end){
+		String hql = "from PubAjJb aj where aj.jarq>=? and aj.jarq<=? and aj.ajxz = '1' and aj.ajxh not in(select ajxh from TXsaj)";
 		List<PubAjJb> ajList = (List<PubAjJb>) getHibernateTemplate().find(hql, new Object[]{begin,end});
 		return ajList;
 	}
 	@SuppressWarnings("unchecked")
-	public List<PubAjJb> getXSajAfterLarq(Date begin){
-		String hql = "from PubAjJb aj where aj.larq>=? and aj.ajxz = '1' and aj.ajxh not in(select ajxh from TXsaj)";
+	public List<PubAjJb> getXSajAfterJarq(Date begin){
+		String hql = "from PubAjJb aj where aj.jarq>=? and aj.ajxz = '1' and aj.ajxh not in(select ajxh from TXsaj)";
 		List<PubAjJb> ajList = (List<PubAjJb>) getHibernateTemplate().find(hql, new Object[]{begin});
 		return ajList;
 	}
 	@SuppressWarnings("unchecked")
-	public List<PubAjJb> getXSajBeforeLarq(Date end){
-		String hql = "from PubAjJb aj where aj.larq<=? and aj.ajxz = '1' and aj.ajxh not in(select ajxh from TXsaj)";
+	public List<PubAjJb> getXSajBeforeJarq(Date end){
+		String hql = "from PubAjJb aj where aj.jarq<=? and aj.ajxz = '1' and aj.ajxh not in(select ajxh from TXsaj)";
 		List<PubAjJb> ajList = (List<PubAjJb>) getHibernateTemplate().find(hql, new Object[]{end});
 		return ajList;
 	}

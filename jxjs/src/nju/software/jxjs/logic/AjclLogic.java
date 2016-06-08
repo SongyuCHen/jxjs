@@ -20,6 +20,7 @@ import nju.software.jxjs.service.TDsrService;
 import nju.software.jxjs.util.DateUtil;
 import nju.software.jxjs.view.BthlbView;
 import nju.software.jxjs.view.DsplbView;
+import nju.software.jxjs.view.SqlbView;
 import nju.software.jxjs.view.User;
 import nju.software.jxjs.view.YlalbView;
 import nju.software.jxjs.view.YsplbView;
@@ -150,6 +151,50 @@ public class AjclLogic {
 
 		}
 		return bthlbView;
+	}
+	
+	public Object getSqlb(Date begin, Date end){
+		List<SqlbView> sqlbView = new ArrayList<SqlbView>();
+		List<TJxjs> jxjsList = jxjsService.getSqlb(begin,end);
+		for (TJxjs jxjs : jxjsList) {
+			SqlbView vo = new SqlbView();
+			vo.setJxjsbh(jxjs.getJxjsbh());
+			TDsr dsr = dsrService.getDsrByjxjsbh(jxjs.getJxjsbh());
+			if (dsr != null)
+				vo.setDsr(dsr.getXm());
+			PubDmb dmb = dmbService.getDmbByLbbhAndDmbh("JXJS-SQLX",
+					jxjs.getSqlxbh());
+			if (dmb != null)
+				vo.setSqlx(dmb.getDmms());
+			vo.setSqsj(DateUtil.format(jxjs.getSqsj(), DateUtil.webFormat));
+			dmb = dmbService
+					.getDmbByLbbhAndDmbh("FBZ0001-97", jxjs.getSxfybh());
+			if (dmb != null)
+				vo.setSxfy(dmb.getDmms());
+			vo.setYsah(jxjs.getSxah());
+			int ajztbh = Integer.valueOf(jxjs.getAjztbh().trim());
+			if(ajztbh<4 && ajztbh>1){//要么退回要么
+				List<TSpxx> spxxList = spxxService
+						.getSPxxByJxjsbh(jxjs.getJxjsbh());
+				if (spxxList != null && spxxList.size() > 0) {
+					TSpxx spxx = spxxList.get(spxxList.size() - 1);
+					vo.setClsj(DateUtil.format(spxx.getSpsj(), DateUtil.webFormat));
+				}
+			}else if(ajztbh == 4){//立案
+				PubAjJb aj = ajService.getAjByAjxh(jxjs.getLaajxh());
+				vo.setClsj(DateUtil.format(aj.getLarq(), DateUtil.webFormat));
+			}else if(ajztbh == 5){//结案
+				PubAjJb aj = ajService.getAjByAjxh(jxjs.getLaajxh());
+				vo.setClsj(DateUtil.format(aj.getJarq(), DateUtil.webFormat));
+			}
+			
+			dmb = dmbService.getDmbByLbbhAndDmbh("JXJS-AJZT", jxjs.getAjztbh());
+			if(dmb != null)
+				vo.setClzt(dmb.getDmms());
+			sqlbView.add(vo);
+
+		}
+		return sqlbView;
 	}
 
 	public void la(String jxjsbhList) {

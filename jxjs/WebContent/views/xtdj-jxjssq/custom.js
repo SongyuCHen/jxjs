@@ -29,7 +29,7 @@ $(function(){
             orderable:false,//禁用排序
             targets:[0]   //指定的列
         }],
-        order : [[ 1, "asc" ]]
+        order : [[ 0, "asc" ]]
 	});
 	
 	$("#dataTable").on("click","tbody>tr>td.checkTD",function(){
@@ -90,7 +90,7 @@ function fetchData(){
 		            orderable:false,//禁用排序
 		            targets:[0]   //指定的列
 		        }],
-		        order : [[ 1, "asc" ]]
+		        order : [[ 0, "asc" ]]
 			});
 		},
 		complete:function(resp){
@@ -124,7 +124,7 @@ function shenqing(){
 			resp = $.parseJSON(resp);
 			$("#mah").val(resp.ah);
 			$("#majmc").val(resp.ajmc);
-			$("#mbafy").val(resp.bafy);
+			$("#mbafy").text(resp.bafy);
 			$("#mfxdd").val(resp.fxdd);
 			$("#msqcs").val(resp.sqcs);
 			$("#mrjrq").text(resp.rjrq);

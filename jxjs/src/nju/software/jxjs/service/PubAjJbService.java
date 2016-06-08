@@ -84,13 +84,13 @@ public class PubAjJbService {
 	}
 	
 	public List<PubAjJb> getXsajByDate(Date kssj,Date jssj){
-		return ajDao.getXSajByLarq(kssj, jssj);
+		return ajDao.getXSajByJarq(kssj, jssj);
 	}
 	public List<PubAjJb> getXsajAfterDate(Date kssj){
-		return ajDao.getXSajAfterLarq(kssj);
+		return ajDao.getXSajAfterJarq(kssj);
 	}
 	public List<PubAjJb> getXsajBeforeDate(Date jssj){
-		return ajDao.getXSajBeforeLarq(jssj);
+		return ajDao.getXSajBeforeJarq(jssj);
 	}
 	
 	public List<PubAjJb> getCsajByDate(Date kssj,Date jssj){

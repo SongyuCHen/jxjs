@@ -1,23 +1,25 @@
 package nju.software.jxjs.controller;
 
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-import nju.software.jxjs.logic.AjclLogic;
 
+
+import nju.software.jxjs.logic.AjclLogic;
 import nju.software.jxjs.service.MenuService;
 
 
 
 
 
+import nju.software.jxjs.util.DateUtil;
 import nju.software.jxjs.view.BthlbView;
 import nju.software.jxjs.view.DsplbView;
-
 import nju.software.jxjs.view.YlalbView;
 import nju.software.jxjs.view.YsplbView;
 
@@ -40,6 +42,10 @@ public class AjclController extends BaseController
 	@Autowired
 	private AjclLogic al;
 	
+	/**
+	 * 待审批列表导航
+	 * @return
+	 */
 	@RequestMapping(value = "/dsplb", method = RequestMethod.GET)
 	public ModelAndView dsplb(){
 		ModelAndView mv = new ModelAndView();
@@ -47,6 +53,10 @@ public class AjclController extends BaseController
 		mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "dsplb"));
 		return mv;
 	}
+	/**
+	 * 已审批列表导航
+	 * @return
+	 */
 	@RequestMapping(value = "/ysplb", method = RequestMethod.GET)
 	public ModelAndView ysplb(){
 		ModelAndView mv = new ModelAndView();
@@ -54,6 +64,10 @@ public class AjclController extends BaseController
 		mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "ysplb"));
 		return mv;
 	}
+	/**
+	 * 已立案列表导航
+	 * @return
+	 */
 	@RequestMapping(value = "/ylalb", method = RequestMethod.GET)
 	public ModelAndView ylalb(){
 		ModelAndView mv = new ModelAndView();
@@ -61,6 +75,10 @@ public class AjclController extends BaseController
 		mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "ylalb"));
 		return mv;
 	}
+	/**
+	 * 被退回列表导航
+	 * @return
+	 */
 	@RequestMapping(value = "/bthlb", method = RequestMethod.GET)
 	public ModelAndView bthlb(){
 		ModelAndView mv = new ModelAndView();
@@ -69,28 +87,57 @@ public class AjclController extends BaseController
 		return mv;
 	}
 	
+	/**
+	 * 获得待审批的申请列表
+	 * @return
+	 */
 	@RequestMapping(value = "/dsplb.json", method = RequestMethod.GET)
 	@ResponseBody
 	public Object getDsplb(){
 		
 		return al.getDsplb();
 	}
-	
+	/**
+	 * 获得已审批的申请列表
+	 * @return
+	 */
 	@RequestMapping(value = "/ysplb.json", method = RequestMethod.GET)
 	@ResponseBody
 	public Object getYsplb(){		
 		return al.getYsplb();
 	}
+	/**
+	 * 获得已立案的申请列表
+	 * @return
+	 */
 	@RequestMapping(value = "/ylalb.json", method = RequestMethod.GET)
 	@ResponseBody
 	public Object getYlalb(){
 		return al.getYlalb();
 	}
+	/**
+	 * 获得被退回的申请列表
+	 * @return
+	 */
 	@RequestMapping(value = "/bthlb.json", method = RequestMethod.GET)
 	@ResponseBody
 	public Object getBthlb(){
 		return al.getBthlb();
 	}
+	
+	/**
+	 * 获得所有申请列表
+	 * @return
+	 */
+	@RequestMapping(value = "/sqlb.json", method = RequestMethod.GET)
+	@ResponseBody
+	public Object getSqlb(@RequestParam("kssj") String kssj,
+			@RequestParam("jssj") String jssj){
+		Date begin = DateUtil.parse(kssj, DateUtil.webFormat);
+		Date end = DateUtil.parse(jssj, DateUtil.webFormat);
+		return al.getSqlb(begin, end);
+	}
+	
 	
 	//立案
 	@RequestMapping(value = "/la", method = RequestMethod.GET)

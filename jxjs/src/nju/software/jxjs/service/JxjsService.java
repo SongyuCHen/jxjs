@@ -70,6 +70,10 @@ public class JxjsService {
 		String ajztbh = dmb.getDmbh();
 		return jd.getJxjsByAjztbh(ajztbh);
 	}
+	@Cacheable(value="jxjsCache",key="'sqlb'")
+	public List<TJxjs> getSqlb(Date begin, Date end){
+		return jd.getJxjsByDate(begin,end);
+	}
 	@Cacheable(value="jxjsCache",key="'getjajgfk'")
 	public List<TJxjs> getJajgfk(){
 		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", "已反馈");

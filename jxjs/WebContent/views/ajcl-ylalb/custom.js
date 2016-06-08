@@ -5,7 +5,7 @@
 var baseUrl = getRootPath();
 $(function(){
 	g_dataTable = $("#dataTable").DataTable({
-         order : [[ 5, "desc" ]],
+         order : [[ 0, "asc" ]],
          language : {
         	 "sEmptyTable" : "没有立案"
          }
@@ -45,7 +45,7 @@ function fetchData(){
 					"</tr>");
 			}
 			g_dataTable = $("#dataTable").DataTable({
-				 order : [[ 5, "desc" ]],
+				 order : [[ 0, "asc" ]],
 				 language : {
 		        	 "sEmptyTable" : "没有立案"
 		         }

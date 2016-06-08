@@ -62,6 +62,7 @@ function fetchData(){
 			$("#dataTable>tbody").empty();
 			for(var i = 0 ; i < resp.length ; i++){
 				$("#dataTable>tbody").append("<tr>"+
+						"<td width='5%' class='checkTD'><input type='checkbox'/></td>"+
 						"<td>"+(i+1)+"</td>"+
 						"<td>"+resp[i].ysah+"</td>"+
 						"<td>"+resp[i].dsr+"</td>"+

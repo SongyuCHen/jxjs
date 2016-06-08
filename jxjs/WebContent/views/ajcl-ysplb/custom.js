@@ -9,7 +9,7 @@ $(function(){
              orderable:false,//禁用排序
              targets:[0]   //指定的列
          }],
-         order : [[ 7, "desc" ]]
+         order : [[ 0, "asc" ]]
 	});
 	//点击列表，弹出详细信息
 	$("#dataTable").on("click","tbody>tr>td:not([class='checkTD'])",viewCaseDetail);
@@ -53,7 +53,7 @@ function fetchData(){
 		             targets:[0]   //指定的列
 		         }],
 //		         order : [[ 7, "desc" ]]
-		         order : [[ 1, "asc" ]]
+		         order : [[ 0, "asc" ]]
 			});
 		},
 		complete:function(resp){
