@@ -124,17 +124,16 @@ function shenqing(){
 			resp = $.parseJSON(resp);
 			$("#mah").val(resp.ah);
 			$("#majmc").val(resp.ajmc);
-			$("#mbafy").text(resp.bafy);
+			$("#mbafy").val(resp.bafy);
 			$("#mfxdd").val(resp.fxdd);
 			$("#msqcs").val(resp.sqcs);
 			$("#mrjrq").text(resp.rjrq);
 			$("#mxqkssj").text(resp.xqkssj);
 			$("#mxqjssj").text(resp.xqjssj);
-
 			
 			$("#msqlx").html(toOptions(resp.sqlxList));
 			$("#mdsr").html(toOptions(resp.dsrList));
-			
+			$("#msxpjxf").html(toOptions(resp.sxpjxfList));
 			
 			$("#msqkssjLabel").text(toLabel(resp.sqlxList)+"开始时间");
 			$("#msqjssjLabel").text(toLabel(resp.sqlxList)+"结束时间");
@@ -161,7 +160,16 @@ function apply(){
 	var sqsj = $("#msqsj").val();
 	var sqkssj = $("#msqkssj").val();
 	var sqjssj = $("#msqjssj").val();
-	if(sqkssj.length==0||sqjssj.length==0||dsr.length==0){
+	var bafy = $("#mbafy").val();
+	var sqcs = $("#msqcs").val();
+	var rjrq = $("#mrjrq").val();
+	var xqkssj = $("#mxqkssj").val();
+	var xqjssj = $("#mxqjssj").val();
+	var sfjs = $("#msfjs").val();
+	var sxah = $("#mah").val();
+	var sxajmc = $("#majmc").val();
+	if(sqkssj.length==0||sqjssj.length==0||dsr.length==0||bafy.length==0||rjrq.length==0||xqkssj.length==0
+			||xqjssj.length==0||sxah.length==0||sxajmc.length==0){
 		alert("参数不能为空，请填写完整！");
 		return;
 	}
@@ -174,7 +182,15 @@ function apply(){
 			sqlx:sqlx,
 			sqsj:sqsj,
 			sqkssj:sqkssj,
-			sqjssj:sqjssj
+			sqjssj:sqjssj,
+			bafy:bafy,
+			sqcs:sqcs,
+			rjrq:rjrq,
+			xqkssj:xqkssj,
+			xqjssj:xqjssj,
+			sfjs:sfjs,
+			sxah:sxah,
+			sxajmc:sxajmc
 		},
 		dataType : 'html',
 		success : function(resp) {

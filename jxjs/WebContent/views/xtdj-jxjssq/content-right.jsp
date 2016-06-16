@@ -133,8 +133,8 @@
   						<div class="col-md-2">
   							办案法院
   						</div>
-  						<div class="col-md-6" id="mbafy" edited="true">
-  							null
+  						<div class="float-left sq-input" >
+  							<input type="text" class="sq-text" id="mbafy"> 
   						</div>
   						<div class="col-md-2">申请时间</div>
   						<div class="col-md-2" style="padding:2px 0px;">
@@ -157,6 +157,21 @@
   						<div class="col-md-2">申请次数</div>
   						<div class="float-left sq-input2">
   							<input type="text" class="sq-text2" id="msqcs"> 
+  						</div>
+					</div>
+					<div class="row">
+  						<div class="col-md-2">
+  							已减刑期
+  						</div>
+  						<div class="float-left sq-input" >
+  							<input type="text" class="sq-text" id="myjxq"> 
+  						</div>
+  						<div class="col-md-2">生效判决刑罚</div>
+  						<div class="col-md-2 noborder" style="padding:0px;" >
+  							<select style="width:100%;height:100%"  id="msxpjxf">
+  								<option></option>
+  								<option></option>
+  							</select>
   						</div>
 					</div>
 					<div class="space"></div>
@@ -215,9 +230,9 @@
   						</div>
   						<div class="col-md-2" style="font-size:10px;padding-top:2px;">是否不得假释罪犯申请减刑</div>
   						<div class="col-md-2" style="padding:0px;">
-  						<select style="width:100%;height:100%"  id="msfjs">
-  								<option>是</option>
+  						<select style="width:100%;height:100%"  id="msfjs">  								
   								<option>否</option>
+  								<option>是</option>
   							</select></div>
 					</div>
 				

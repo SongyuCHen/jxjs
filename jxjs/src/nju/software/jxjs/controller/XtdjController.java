@@ -57,12 +57,22 @@ public class XtdjController extends BaseController
 	public Object getInfoForApply(@RequestParam("ajxh") String ajxh){
 		return xl.getInfoForApply(ajxh);
 	}
+	//
+	@RequestMapping(value = "/getJxjsInfoForSP", method = RequestMethod.POST)
+	@ResponseBody
+	public Object getJxjsInfoForSP(@RequestParam("jxjsbh") String jxjsbh){
+		return xl.getJxjsInfo(jxjsbh);
+	}
 	@RequestMapping(value = "/apply", method = RequestMethod.POST)
 	@ResponseBody
 	public Object apply(@RequestParam("ajxh") String ajxh,@RequestParam("dsr") String dsr,
 			@RequestParam("sqlx") String sqlx,@RequestParam("sqsj") String sqsj,
-			@RequestParam("sqkssj") String sqkssj,@RequestParam("sqjssj") String sqjssj){
-		xl.apply(ajxh, dsr, sqlx, sqsj, sqkssj, sqjssj);
+			@RequestParam("sqkssj") String sqkssj,@RequestParam("sqjssj") String sqjssj,
+			@RequestParam("bafy") String bafy,@RequestParam("sqcs") String sqcs,
+			@RequestParam("rjrq") String rjrq,@RequestParam("xqkssj") String xqkssj,
+			@RequestParam("xqjssj") String xqjssj,@RequestParam("sfjs") String sfjs,
+			@RequestParam("sxah") String sxah,@RequestParam("sxajmc") String sxajmc){
+		xl.apply(ajxh, dsr, sqlx, sqsj, sqkssj, sqjssj,bafy,sqcs,rjrq,xqkssj,xqjssj,sfjs,sxah,sxajmc);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("xtdj-jxjssq");
 		User user = (User)SecurityUtils.getSubject().getSession().getAttribute("currentUser");

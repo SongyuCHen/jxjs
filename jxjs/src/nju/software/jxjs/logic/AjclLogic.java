@@ -12,11 +12,14 @@ import nju.software.jxjs.model.PubDmb;
 import nju.software.jxjs.model.TDsr;
 import nju.software.jxjs.model.TJxjs;
 import nju.software.jxjs.model.TSpxx;
+import nju.software.jxjs.model.YLaJxjs;
 import nju.software.jxjs.service.DmbService;
+import nju.software.jxjs.service.DsrJbService;
 import nju.software.jxjs.service.JxjsService;
 import nju.software.jxjs.service.PubAjJbService;
 import nju.software.jxjs.service.SpxxService;
 import nju.software.jxjs.service.TDsrService;
+import nju.software.jxjs.service.YLaJxjsService;
 import nju.software.jxjs.util.DateUtil;
 import nju.software.jxjs.view.BthlbView;
 import nju.software.jxjs.view.DsplbView;
@@ -43,7 +46,10 @@ public class AjclLogic {
 	private DmbService dmbService;
 	@Autowired
 	private SpxxService spxxService;
-
+	@Autowired
+	private DsrJbService dsrJbService;
+	@Autowired
+	private YLaJxjsService laJxjsService;
 	public Object getDsplb() {
 		List<DsplbView> dsplbView = new ArrayList<DsplbView>();
 		List<TJxjs> jxjsList = jxjsService.getDsplb();
@@ -205,122 +211,63 @@ public class AjclLogic {
 		for (String bh : bhList) {
 			jxjsbh = Integer.valueOf(bh);
 			TJxjs jxjs = jxjsService.getJxjsBybh(jxjsbh);
+			TDsr dsr = dsrService.getDsrByjxjsbh(jxjsbh);
+			//1，每个减刑假释申请生成一个PubAjJb
 			PubAjJb aj = new PubAjJb();
-			String spcx;
+			String ajmc;
 			aj.setBafy(Constants.BAFY);
-			String ajxz = Constants.AJXZ;
 			aj.setAjxz(Constants.AJXZ);
-			if (jxjs.getSqlxbh().equals("1")) {
-				aj.setSpcx(Constants.JXSPCX);
-				spcx = Constants.JXSPCX;
-			} else {
-				aj.setSpcx(Constants.JSSPCX);
-				spcx = Constants.JSSPCX;
-			}
+			aj.setSpcx(Constants.SPCX);
 			aj.setSpcxdz(Constants.SPCXDZ);
-			// 需要特殊处理，还有撤销假释的
-			// aj.setBycxdz(bycxdz);
-			String ajly = Constants.AJLY;
+			aj.setBycxdz(Constants.BYCXDZ);
 			aj.setAjly(Constants.AJLY);
 			aj.setSycx(Constants.SYCX);
+			aj.setSslx(Constants.SSLX);
+			aj.setSx(Constants.SX);
 			String ah = ajService.generateAh();
 			aj.setAh(ah);
-			aj.setAjmc("");
-
-			aj.setAjzt(null);
-
-			// aj.setFhcsyy(fhcsyy);
-
-			// aj.setFjsx(fjsx);
-
-			// ,,/aj.setGksjg(gksjg);
-
-			aj.setJyaq(null);
-
-			aj.setLar(user.getUsername());
-			java.util.Date larq = new java.util.Date();
-			aj.setLarq(larq);
-			PubDmb pub = dmbService.getDmbByLbbhAndDmbh("系统缺省", "来源地区");
-			String lydq = pub.getDmms();
-			aj.setLydq(lydq);
-			// aj.setPsycy();
-			// aj.setSffhcs(sffhcs);
-			// aj.setSfgs(sfgs);
-			aj.setSfjbaj("N");
-			// aj.setSfxess(sfxess);
-			// aj.setSfys(sfys);
-			aj.setSfzdaj("N");
-			// aj.setSfzscq(sfzscq);
-			// aj.setSlqk(slqk);
-			// aj.setSpzsqrq(spzsqrq);
-			String sslx = "4";
-			if (spcx == "2") {
-				switch (ajxz) {
-				case "1":
-					if (ajly == "13" || ajly == "14" || ajly == "23") {
-						sslx = "2";
-					}
-					break;
-				case "2":
-					if (ajly == "102") {
-						sslx = "2";
-					}
-					if (ajly == "103") {
-						sslx = "1";
-					}
-					if (ajly == "104") {
-						sslx = "3";
-					}
-					break;
-				case "6":
-					if (ajly == "101") {
-						sslx = "2";
-					}
-					if (ajly == "103") {
-						sslx = "1";
-					}
-					break;
-				}
+			if(jxjs.getSqlxbh().equals("1")){
+				ajmc = dsr.getXm().concat("减刑");
+			}else{
+				ajmc = dsr.getXm().concat("假释");
 			}
-			aj.setSslx(sslx);
-
-			// aj.setSwlx(swlx);
-			// aj.setSx(sx);
-
-			// aj.setTzhyj(null);
-			// aj.setTzsqrq(tzsqrq);
-			// aj.setYzhyj(null);
-			// aj.setYzqfrq(yzqfrq);
-			// aj.setYzsqrq(yzsqrq);
+			aj.setAjmc(ajmc);
+			aj.setLar(user.getUsername());
+			Date today = new Date();
+			aj.setLarq(today);
+			aj.setLydq(Constants.LYDQ);
+			
+			aj.setSffhcs("N");
+			aj.setSfjbaj("N");
+			aj.setSfgs("N");
+			aj.setSfys("N");
+			aj.setSfzdaj("N");
+			aj.setSfzdaj("N");
+			aj.setSfwdyj("N");
+			aj.setGksjg(Constants.GKSJG);
 			aj = ajService.add(aj);
 
-			// DSR_JB
-			TDsr dsr = dsrService.getDsrByjxjsbh(jxjsbh);
+			//2，每个减刑假释申请生成一个DSR_JB DSR_GR
 			DsrJb dsrjb = new DsrJb();
 			dsrjb.setAjxh(aj.getAjxh());
-			dsrjb.setDsrbh(dsr.getDsrbh());
-			// dsrjb.setDsrssdw(dsr.getds);
-			// dsrjb.setDsrlb(dsr.getd);
-			// dsrjb.setSfssdbr(dsr.gets);
-			// dsrjb.setSfsa(dsr.gets);
-			// dsrjb.setSfsg(dsr.gets);
-			// dsrjb.setSfsq(dsr.getsfs);
-			// dsrjb.setSfst(dsr.getsfs);
-			// dsrjb.setSfsw(dsr.getsfs);
-
+			dsrjb.setDsrbh(1);
+			dsrjb.setDsrssdw(Constants.DSRSSDW);
+			dsrjb.setDsrlb(Constants.DSRLB);
+			dsrjb.setSfssdbr("N");
+			dsrjb.setDsrjc(dsr.getXm());
+			dsrJbService.addDsrJb(dsrjb);
+			
 			// DSR_GR(T_DSR)
 			DsrGr dsrgr = new DsrGr();
 			dsrgr.setAjxh(aj.getAjxh());
-			dsrgr.setDsrbh(dsr.getDsrbh());
+			dsrgr.setDsrbh(1);
 			dsrgr.setCsnyr(dsr.getCsnyr());
 			dsrgr.setDh(dsr.getDh());
 			dsrgr.setDz(dsr.getDz());
 			dsrgr.setGzdw(dsr.getGzdw());
-			// dsrgr.setHyqk(dsr.geth);
+
 			dsrgr.setJb(dsr.getJb());
 			dsrgr.setJg(dsr.getJg());
-			// dsrgr.setJkqk(dsr.getjk);
-			// dsrgr.setJtqk(dsr.getjt);
 			dsrgr.setMz(dsr.getMz());
 			dsrgr.setSf(dsr.getSf());
 			dsrgr.setSfzhm(dsr.getSfzhm());
@@ -330,10 +277,32 @@ public class AjclLogic {
 			dsrgr.setXb(dsr.getXb());
 			dsrgr.setYb(dsr.getYb());
 			dsrgr.setZw(dsr.getZw());
-			// dsrgr.setZy(dsr.getzy);
-			// dsrgr.setZzmm(dsr.zz);
-			// int ajxh_gr=Integer.parseInt(request.getParameter("id"));
-			// int dsrbh_gr=Integer.parseInt(request.getParameter("dsrbh"));
+			dsrgr.setZzmm(dsr.getZzmm());
+			dsrJbService.addDsrGr(dsrgr);
+			
+			
+			//3.每个减刑假释申请生成一个YLaJxjs
+			YLaJxjs laJxjs = new YLaJxjs();
+			laJxjs.setAjxh(aj.getAjxh());
+			laJxjs.setYsjjg(Constants.YSSJG);
+			laJxjs.setSxah(jxjs.getSxah());
+			laJxjs.setSxfy(jxjs.getSxfybh());
+			laJxjs.setDcSxpjxf(jxjs.getSxpjxf());
+			laJxjs.setDjcsq(jxjs.getSqcs());
+			laJxjs.setDcYjxq(jxjs.getYjxq());
+			int sfjx = jxjs.getSfjs();
+			if(sfjx == 1){
+				laJxjs.setSfbdjszfsqjx("Y");
+			}else{
+				laJxjs.setSfbdjszfsqjx("N");
+			}
+			laJxjs.setZffxdd(Constants.LYDQ);
+			laJxjs.setBqjg(Constants.YSSJG);
+			laJxjs.setSddjclrq(today);
+			laJxjs.setDjryj("同意立案");
+			laJxjs.setDjr(user.getUsername());
+			laJxjs.setDjrq(today);
+			laJxjsService.add(laJxjs);
 		}
 	}
 	

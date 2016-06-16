@@ -52,6 +52,8 @@ function viewCaseDetail(){
 //	$("#caseDetailModal").modal({
 //		keyboard: true
 //	});
+	var jxjsbh = 1
+	
 	shenqingModalReset();
 	$("#shenqingModal").modal({
 		keyboard: true

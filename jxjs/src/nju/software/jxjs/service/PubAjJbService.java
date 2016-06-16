@@ -118,16 +118,21 @@ public class PubAjJbService {
 				dsrList.add(dsrjb.getDsrjc());
 			}
 			view.setDsrList(dsrList);
+			List<PubDmb> sxpjxfList = dmbDao.getDmbByLbbh("FBS0068-97");
+			List<String> pjxfList = new ArrayList<String>();
+			for(PubDmb dmb:sxpjxfList){
+				pjxfList.add(dmb.getDmms());
+			}
+			view.setSxpjxfList(pjxfList);
 		}
 			
 		
 		List<PubDmb> dmbList = dmbDao.getDmbByLbbh("JXJS-SQLX");		
 		view.setFxdd("定西市监狱");
-//		view.setRjrq("2015-11-01");
+
 		view.setSfjs("否");
 		view.setSqcs(1);
-//		view.setSqjssj("2016-01-01");
-//		view.setSqkssj("2015-11-01");
+
 		List<String> sqlxList = new ArrayList<String>();
 		for(PubDmb dmb:dmbList){
 			sqlxList.add(dmb.getDmms());
@@ -137,8 +142,7 @@ public class PubAjJbService {
 		view.setSqlxList(sqlxList);
 
 		view.setSqsj("2015-11-01");
-//		view.setXqjssj("2018-12-31");
-//		view.setXqkssj("2013-01-01");
+
 		return view;
 	}
 	

@@ -15,6 +15,8 @@ public class TJxjs implements Serializable
 	private Integer laajxh;
 	//生效案号
 	private String sxah;
+	//生效案件名称
+	private String sxajmc;
 	//生效法院编号
 	private String sxfybh;
 	//申请类型编号（减刑、假释）
@@ -39,21 +41,25 @@ public class TJxjs implements Serializable
 	private Date rjrq;
 	//是否不得假释罪犯申请减刑
 	private Integer sfjs;
-	
+	//生效判决刑罚
+	private String sxpjxf;
+	//已减刑期
+	private String yjxq;
 	public TJxjs()
 	{
 	}
 
 	
-	public TJxjs(Integer jxjsbh, Integer sxajxh, Integer laajxh, String sxah,
+	public TJxjs(Integer jxjsbh, Integer sxajxh, Integer laajxh, String sxah,String sxajmc,
 			String sxfybh, String sqlxbh, Date sqsj, Integer sqcs,
 			String ajztbh, String fxdd, Date ypksrq, Date ypjsrq, Date sqksrq,
-			Date sqjsrq, Date rjrq, Integer sfjs) {
+			Date sqjsrq, Date rjrq, Integer sfjs, String sxpjxf, String yjxq) {
 		super();
 		this.jxjsbh = jxjsbh;
 		this.sxajxh = sxajxh;
 		this.laajxh = laajxh;
 		this.sxah = sxah;
+		this.sxajmc = sxajmc;
 		this.sxfybh = sxfybh;
 		this.sqlxbh = sqlxbh;
 		this.sqsj = sqsj;
@@ -66,6 +72,8 @@ public class TJxjs implements Serializable
 		this.sqjsrq = sqjsrq;
 		this.rjrq = rjrq;
 		this.sfjs = sfjs;
+		this.sxpjxf = sxpjxf;
+		this.yjxq = yjxq;
 	}
 
 
@@ -229,123 +237,36 @@ public class TJxjs implements Serializable
 	}
 
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((ajztbh == null) ? 0 : ajztbh.hashCode());
-		result = prime * result + ((fxdd == null) ? 0 : fxdd.hashCode());
-		result = prime * result + ((jxjsbh == null) ? 0 : jxjsbh.hashCode());
-		result = prime * result + ((laajxh == null) ? 0 : laajxh.hashCode());
-		result = prime * result + ((rjrq == null) ? 0 : rjrq.hashCode());
-		result = prime * result + ((sfjs == null) ? 0 : sfjs.hashCode());
-		result = prime * result + ((sqcs == null) ? 0 : sqcs.hashCode());
-		result = prime * result + ((sqjsrq == null) ? 0 : sqjsrq.hashCode());
-		result = prime * result + ((sqksrq == null) ? 0 : sqksrq.hashCode());
-		result = prime * result + ((sqlxbh == null) ? 0 : sqlxbh.hashCode());
-		result = prime * result + ((sqsj == null) ? 0 : sqsj.hashCode());
-		result = prime * result + ((sxah == null) ? 0 : sxah.hashCode());
-		result = prime * result + ((sxajxh == null) ? 0 : sxajxh.hashCode());
-		result = prime * result + ((sxfybh == null) ? 0 : sxfybh.hashCode());
-		result = prime * result + ((ypjsrq == null) ? 0 : ypjsrq.hashCode());
-		result = prime * result + ((ypksrq == null) ? 0 : ypksrq.hashCode());
-		return result;
+	public String getSxpjxf() {
+		return sxpjxf;
 	}
 
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		TJxjs other = (TJxjs) obj;
-		if (ajztbh == null) {
-			if (other.ajztbh != null)
-				return false;
-		} else if (!ajztbh.equals(other.ajztbh))
-			return false;
-		if (fxdd == null) {
-			if (other.fxdd != null)
-				return false;
-		} else if (!fxdd.equals(other.fxdd))
-			return false;
-		if (jxjsbh == null) {
-			if (other.jxjsbh != null)
-				return false;
-		} else if (!jxjsbh.equals(other.jxjsbh))
-			return false;
-		if (laajxh == null) {
-			if (other.laajxh != null)
-				return false;
-		} else if (!laajxh.equals(other.laajxh))
-			return false;
-		if (rjrq == null) {
-			if (other.rjrq != null)
-				return false;
-		} else if (!rjrq.equals(other.rjrq))
-			return false;
-		if (sfjs == null) {
-			if (other.sfjs != null)
-				return false;
-		} else if (!sfjs.equals(other.sfjs))
-			return false;
-		if (sqcs == null) {
-			if (other.sqcs != null)
-				return false;
-		} else if (!sqcs.equals(other.sqcs))
-			return false;
-		if (sqjsrq == null) {
-			if (other.sqjsrq != null)
-				return false;
-		} else if (!sqjsrq.equals(other.sqjsrq))
-			return false;
-		if (sqksrq == null) {
-			if (other.sqksrq != null)
-				return false;
-		} else if (!sqksrq.equals(other.sqksrq))
-			return false;
-		if (sqlxbh == null) {
-			if (other.sqlxbh != null)
-				return false;
-		} else if (!sqlxbh.equals(other.sqlxbh))
-			return false;
-		if (sqsj == null) {
-			if (other.sqsj != null)
-				return false;
-		} else if (!sqsj.equals(other.sqsj))
-			return false;
-		if (sxah == null) {
-			if (other.sxah != null)
-				return false;
-		} else if (!sxah.equals(other.sxah))
-			return false;
-		if (sxajxh == null) {
-			if (other.sxajxh != null)
-				return false;
-		} else if (!sxajxh.equals(other.sxajxh))
-			return false;
-		if (sxfybh == null) {
-			if (other.sxfybh != null)
-				return false;
-		} else if (!sxfybh.equals(other.sxfybh))
-			return false;
-		if (ypjsrq == null) {
-			if (other.ypjsrq != null)
-				return false;
-		} else if (!ypjsrq.equals(other.ypjsrq))
-			return false;
-		if (ypksrq == null) {
-			if (other.ypksrq != null)
-				return false;
-		} else if (!ypksrq.equals(other.ypksrq))
-			return false;
-		return true;
+	public void setSxpjxf(String sxpjxf) {
+		this.sxpjxf = sxpjxf;
 	}
 
 
+	public String getYjxq() {
+		return yjxq;
+	}
+
+
+	public void setYjxq(String yjxq) {
+		this.yjxq = yjxq;
+	}
+
+
+	public String getSxajmc() {
+		return sxajmc;
+	}
+
+
+	public void setSxajmc(String sxajmc) {
+		this.sxajmc = sxajmc;
+	}
+
+// hashcode 
 	
 
 }

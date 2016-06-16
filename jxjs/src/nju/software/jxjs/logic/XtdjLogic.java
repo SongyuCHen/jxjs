@@ -14,6 +14,7 @@ import nju.software.jxjs.service.PubLaAyService;
 import nju.software.jxjs.util.DateUtil;
 import nju.software.jxjs.util.StringUtil;
 import nju.software.jxjs.view.JxjsApplyView;
+import nju.software.jxjs.view.JxjsView;
 import nju.software.jxjs.view.User;
 import nju.software.jxjs.view.XsajcsView;
 
@@ -40,13 +41,27 @@ public class XtdjLogic {
 		JxjsApplyView view = ajService.getApplyByAjxh(i_ajxh);
 		return view;
 	}
+	public Object getJxjsInfo(String jxjsbh){
+		int i_jxjsbh = Integer.valueOf(jxjsbh);
+		JxjsView view = jxjsService.getJxjsByBh(i_jxjsbh);
+		return view;
+	}
 	
-	public void apply(String ajxh,String dsr,String sqlx,String sqsj,String sqkssj,String sqjssj){
+	public void apply(String ajxh,String dsr,String sqlx,String sqsj,String sqkssj,String sqjssj,
+			String bafy,String sqcs,String rjrq,String xqkssj,String xqjssj,String sfjs,String sxah,String sxajmc){
 		int i_ajxh = Integer.valueOf(ajxh);
 		Date d_sqsj = DateUtil.parse(sqsj, DateUtil.webFormat);
 		Date d_sqkssj = DateUtil.parse(sqkssj, DateUtil.webFormat);
 		Date d_sqjssj = DateUtil.parse(sqjssj, DateUtil.webFormat);
-		jxjsService.addJxjsByAjxhDsr(i_ajxh, dsr, sqlx,d_sqsj,d_sqkssj,d_sqjssj);
+		int i_sqcs = Integer.valueOf(sqcs);
+		Date d_rjrq = DateUtil.parse(rjrq, DateUtil.webFormat);
+		Date d_xqkssj = DateUtil.parse(xqkssj, DateUtil.webFormat);
+		Date d_xqjssj = DateUtil.parse(xqjssj, DateUtil.webFormat);
+		int i_sfjs = 0;
+		if(sfjs.equals("是")){
+			i_sfjs = 1;
+		}
+		jxjsService.addJxjsByAjxhDsr(i_ajxh, dsr, sqlx,d_sqsj,d_sqkssj,d_sqjssj,bafy,i_sqcs,d_rjrq,d_xqkssj,d_xqjssj,i_sfjs,sxah,sxajmc);
 	}
 	
 	public Object transport(String ajxhList){

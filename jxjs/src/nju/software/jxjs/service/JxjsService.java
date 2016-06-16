@@ -17,6 +17,9 @@ import nju.software.jxjs.model.PubXtglYhb;
 import nju.software.jxjs.model.TDsr;
 import nju.software.jxjs.model.TJxjs;
 import nju.software.jxjs.model.TSpxx;
+import nju.software.jxjs.util.DateUtil;
+import nju.software.jxjs.view.JxjsApplyView;
+import nju.software.jxjs.view.JxjsView;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -50,6 +53,41 @@ public class JxjsService {
 		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-AJZT", "已申请");
 		String ajztbh = dmb.getDmbh();
 		return jd.getJxjsByAjztbh(ajztbh);
+	}
+	@Cacheable(value="jxjsCache",key="'dsplb'")
+	public JxjsView getJxjsByBh(int jxjsbh){
+		JxjsView view = new JxjsView();
+		
+		if(jxjsbh>0){
+			TJxjs jxjs = jd.getJxjsByBh(jxjsbh);
+			view.setAh(jxjs.getSxah());
+			view.setAjmc(jxjs.getSxajmc());
+			PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("FBZ0001-97", jxjs.getSxfybh());
+			view.setBafy(dmb.getDmms());
+			TDsr dsr = dsrDao.getDsrByJxjsbh(jxjsbh);
+			view.setDsr(dsr.getXm());
+			view.setFxdd(jxjs.getFxdd());
+			view.setRjrq(DateUtil.format(jxjs.getRjrq(), DateUtil.webFormat));
+			int sfjs = jxjs.getSfjs();
+			if(sfjs == 1){
+				view.setSfjs("是");
+			}else{
+				view.setSfjs("否");
+			}
+			view.setSqcs(jxjs.getSqcs());
+			view.setSqjssj(DateUtil.format(jxjs.getSqjsrq(), DateUtil.webFormat));
+			view.setSqkssj(DateUtil.format(jxjs.getSqksrq(), DateUtil.webFormat));
+			dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-SQLX", jxjs.getSqlxbh());
+			view.setSqlx(dmb.getDmms());
+			view.setSqsj(DateUtil.format(jxjs.getSqsj(), DateUtil.webFormat));
+			dmb = dmbDao.getDmbByLbbhAndDmms("FBS0068-97", jxjs.getSxpjxf());
+			view.setSxpjxf(dmb.getDmms());
+			view.setXqjssj(DateUtil.format(jxjs.getYpjsrq(), DateUtil.webFormat));
+			view.setXqkssj(DateUtil.format(jxjs.getYpksrq(), DateUtil.webFormat));
+			view.setYjxq(jxjs.getYjxq());
+				
+		}
+		return view;
 	}
 	@Cacheable(value="jxjsCache",key="'ylalb'")
 	public List<TJxjs> getYlalb(){
@@ -182,34 +220,56 @@ public class JxjsService {
 		 
 	}
 	@CacheEvict(value="jxjsCache", allEntries=true)
-	public void addJxjsByAjxhDsr(int ajxh,String dsr,String sqlx,Date sqsj,Date sqkssj,Date sqjssj){
+	public void addJxjsByAjxhDsr(int ajxh,String dsr,String sqlx,Date sqsj,Date sqkssj,Date sqjssj,
+			String bafy,int sqcs,Date rjrq,Date xqkssj,Date xqjssj,int sfjs,String sxah,String sxajmc){
 		TJxjs jxjs = new TJxjs();
 		
-		PubAjJb aj = ajDao.getAjJbByAjxh(ajxh);
-		DsrGr dsrgr = dsrgrDao.getDsrgrByAjxhAndXm(ajxh, dsr);
+//		PubAjJb aj = ajDao.getAjJbByAjxh(ajxh);
+//		DsrGr dsrgr = dsrgrDao.getDsrgrByAjxhAndXm(ajxh, dsr);
 		jxjs.setAjztbh("1");
 		jxjs.setFxdd("定西市监狱");
-		jxjs.setRjrq(new Date());
 		jxjs.setSfjs(0);
-		jxjs.setSqcs(getSqcs(dsr));
+		jxjs.setSqcs(sqcs);
 		jxjs.setSqksrq(sqkssj);
 		jxjs.setSqjsrq(sqjssj);
+		jxjs.setRjrq(rjrq);
+		jxjs.setYpksrq(xqkssj);
+		jxjs.setYpjsrq(xqjssj);
+		jxjs.setSqcs(sqcs);
 		PubDmb dmb = dmbDao.getDmbByLbbhAndDmms("JXJS-SQLX", sqlx);
 		if(dmb!=null)
 			jxjs.setSqlxbh(dmb.getDmbh());
 		jxjs.setSqsj(sqsj);
-		jxjs.setSxah(aj.getAh());
-		jxjs.setSxajxh(aj.getAjxh());
-		jxjs.setSxfybh(aj.getBafy());
-		jxjs.setYpjsrq(new Date());
-		jxjs.setYpksrq(new Date());
-		jxjs = add(jxjs);
-		TDsr jxjsDsr = convertDsr(dsrgr);
-		jxjsDsr.setJxjsbh(jxjs.getJxjsbh());
-		int dsrbh = dsrDao.getMaxDsrbh();
-		dsrbh ++;
-		jxjsDsr.setDsrbh(dsrbh);
-		dsrDao.save(jxjsDsr);
+		if(ajxh > 0){//从法综系统提取的案件
+			PubAjJb aj = ajDao.getAjJbByAjxh(ajxh);
+			DsrGr dsrgr = dsrgrDao.getDsrgrByAjxhAndXm(ajxh, dsr);
+			jxjs.setSxah(aj.getAh());
+			jxjs.setSxajxh(aj.getAjxh());
+			jxjs.setSxfybh(aj.getBafy());
+			jxjs.setSxajmc(aj.getAjmc());
+			jxjs = add(jxjs);
+			TDsr jxjsDsr = convertDsr(dsrgr);
+			jxjsDsr.setJxjsbh(jxjs.getJxjsbh());
+			int dsrbh = dsrDao.getMaxDsrbh();
+			dsrbh ++;
+			jxjsDsr.setDsrbh(dsrbh);
+			dsrDao.save(jxjsDsr);
+		}else{//案件不是定西的，无法从系统中获取，只能从界面传参
+			jxjs.setSxah(sxah);
+			jxjs.setSxajxh(0);
+			jxjs.setSxfybh(bafy);
+			jxjs.setSxajmc(sxajmc);
+			jxjs = add(jxjs);
+			TDsr jxjsDsr = new TDsr();
+			//此处需要完善，从界面上获取当事人的常用信息
+			jxjsDsr.setXm(dsr);
+			
+			int dsrbh = dsrDao.getMaxDsrbh();
+			dsrbh ++;
+			jxjsDsr.setDsrbh(dsrbh);
+			dsrDao.save(jxjsDsr);
+		}
+		
 		
 	}
 	public TDsr convertDsr(DsrGr gr){

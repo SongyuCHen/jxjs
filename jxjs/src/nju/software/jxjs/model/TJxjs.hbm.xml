@@ -58,6 +58,9 @@
         </property>
         <property name="sfjs" type="java.lang.Integer">
             <column name="SFJS" />
+        </property> 
+        <property name="sxpjxf" type="string">
+            <column name="SXPJXF" />
         </property>                                   
     </class>
 </hibernate-mapping>

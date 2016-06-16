@@ -18,6 +18,8 @@ public class JxjsApplyView {
 	private String sqkssj;//申请开始时间
 	private String sqjssj;//申请结束时间
 	private String sfjs;//是否不得假释罪犯申请减刑
+	private List<String> sxpjxfList;//生效判决刑罚
+	private String yjxq;//已减刑期
 	public int getAjxh() {
 		return ajxh;
 	}
@@ -108,7 +110,20 @@ public class JxjsApplyView {
 	public void setSfjs(String sfjs) {
 		this.sfjs = sfjs;
 	}
-	
+
+	public List<String> getSxpjxfList() {
+		return sxpjxfList;
+	}
+	public void setSxpjxfList(List<String> sxpjxfList) {
+		this.sxpjxfList = sxpjxfList;
+	}
+	public String getYjxq() {
+		return yjxq;
+	}
+	public void setYjxq(String yjxq) {
+		this.yjxq = yjxq;
+	}
+
 	
 
 }
