@@ -1,6 +1,7 @@
 package nju.software.jxjs.service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -31,31 +32,32 @@ public class PubAjJbService {
 	private XtglYhbDao yhbDao;
 	@Autowired
 	private DsrJbDao dsrJbDao;
-	@SuppressWarnings("deprecation")
+	
 	public String generateAh(){
-		String tjzq = "";
-		PubDmb dmb = dmbDao.getDmbByLbbhAndDmbh("系统缺省", "统计时间");
-		if(dmb != null){
-			tjzq = dmb.getDmms().trim();
-		}else{
-			tjzq = "20";
-		}
-		int i_tjzq = Integer.parseInt(tjzq);
-		Date today = new Date();
-		String s_year = "";
-		if(today.getMonth() == 12 && today.getDate() >i_tjzq)
-			s_year=Integer.toString(today.getYear() + 1);
-		else
-			s_year=Integer.toString(today.getYear());
 		
-		dmb = dmbDao.getDmbByLbbhAndDmbh("系统确认", "法院简称");
-		String fyjc = dmb.getDmms();
-		dmb= dmbDao.getDmbByLbbhAndDmbh("USR416-99", Constants.BYCXDZ);
-		String bycxdz = dmb.getDmms();
-		String ah = "(".concat(s_year).concat(")").concat(fyjc).concat(bycxdz).concat("字第XX号");
+		PubDmb dmb = dmbDao.getDmbByLbbhAndDmbh("系统缺省", "法院代字");
+		String fydz = dmb.getDmms();
+
+		// 审判程序代字
+		String spcxxgdm = Constants.AJXZ + Constants.SPCX + Constants.SPCXLX;
+	
+		dmb = dmbDao.getDmbByLbbhAndLikeXgdm("FBS2015-SPCXDZ",spcxxgdm);
+		String spcxdz_str = dmb.getDmms();
+		Calendar tempCal = Calendar.getInstance();
+		int year = tempCal.get(Calendar.YEAR);
+		//根据新的案号生成规则
+		String ls_cur_year = "%(" + year + ")%";
+		String dz = spcxdz_str.substring(spcxdz_str.length() - 1, spcxdz_str.length());
+		String ls_filter = "%" + fydz + spcxdz_str + "%";
+		int maxAh = getMaxAh(ls_cur_year,dz,Constants.BYCXDZ,ls_filter);
+		++maxAh;
+		String ah = "(" + year + ")" + fydz + spcxdz_str + Integer.toString(maxAh)+"号";
 		return ah;
 	}
 	
+	public int getMaxAh(String year,String dz,String bydz,String ah_filter){
+		return ajDao.getMaxAh(year, dz, bydz, ah_filter);
+	}
 	public PubAjJb getAjByAjxh(int ajxh){
 		return ajDao.getAjJbByAjxh(ajxh);
 	}

@@ -6,6 +6,7 @@ public class Constants {
 	public final static String AJXZ="1";
 	public final static String SPCX="E";//审判程度
 	public final static String SPCXDZ="1";//审判程度待字
+	public final static String SPCXLX="1";//审判程度待字
 	public final static String BYCXDZ="24";//审判程度待字  USR416-99
 	public final static String AJLY="12_2";//案件来源
 	public final static String SYCX="2";//适用程序

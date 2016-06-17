@@ -2,7 +2,7 @@
  * 
  */
 var baseUrl = getRootPath();
-
+var g_resp;
 $(function(){
 	g_dataTable = $("#dataTable").DataTable({
 		 columnDefs:[{
@@ -33,6 +33,7 @@ function fetchData(){
 		dataType : 'html',
 		success : function(resp) {
 			resp = $.parseJSON(resp);
+			g_resp = resp;
 			g_dataTable.clear().destroy();
 			$("#dataTable>tbody").empty();
 			for(var i = 0 ; i < resp.length ; i++){
@@ -69,10 +70,20 @@ function lian(){
 		alert("请选择要进行立案的项!");
 		return;
 	}
+	var jxjsbhList = [];
+	$("#dataTable td.checkTD input").each(function(){
+		if($(this).is(":checked")){
+			var i = $(this).parent().parent().children().eq(1).text();
+			i--;
+			jxjsbhList.push(g_resp[i].jxjsbh);
+		}
+	});
 	$.ajax({
 		url :  baseUrl+"/ajcl/la",
-		type : "get",
-		data : {},
+		type : "post",
+		data : {
+			jxjsbhList:jxjsbhList.join()
+		},
 		dataType : 'html',
 		success : function(resp) {
 			fetchData();

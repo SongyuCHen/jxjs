@@ -33,5 +33,14 @@ public class XtglDmbDao extends BaseDao {
 			return null;
 	}
 	
+	public PubDmb getDmbByLbbhAndLikeXgdm(String lbbh,String xgdm){
+		String hql = "from PubDmb dmb where dmb.lbbh=? and xgdm like '%" + xgdm+ "%'";
+		List<PubDmb> dmbs =  (List<PubDmb>) getHibernateTemplate().find(hql, new Object[]{lbbh});
+		if(dmbs != null && dmbs.size() > 0)
+			return dmbs.get(0);
+		else
+			return null;
+	}
+	
 
 }

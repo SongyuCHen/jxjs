@@ -224,7 +224,8 @@ public class AjclLogic {
 			aj.setSycx(Constants.SYCX);
 			aj.setSslx(Constants.SSLX);
 			aj.setSx(Constants.SX);
-			String ah = ajService.generateAh();
+			//此处生成案号就是生成实际案号，不出现XX号
+			String ah = "(2016)甘11刑更636号";//ajService.generateAh();
 			aj.setAh(ah);
 			if(jxjs.getSqlxbh().equals("1")){
 				ajmc = dsr.getXm().concat("减刑");
@@ -246,7 +247,7 @@ public class AjclLogic {
 			aj.setSfwdyj("N");
 			aj.setGksjg(Constants.GKSJG);
 			aj = ajService.add(aj);
-
+			TJxjs jxjs2 = jxjsService.getJxjsBybh(jxjsbh);
 			//2，每个减刑假释申请生成一个DSR_JB DSR_GR
 			DsrJb dsrjb = new DsrJb();
 			dsrjb.setAjxh(aj.getAjxh());

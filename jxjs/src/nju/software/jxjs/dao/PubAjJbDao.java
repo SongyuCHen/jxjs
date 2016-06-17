@@ -1,5 +1,9 @@
 package nju.software.jxjs.dao;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Date;
 import java.util.List;
 
@@ -8,6 +12,8 @@ import nju.software.jxjs.model.TXsaj;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.engine.SessionFactoryImplementor;
+import org.hibernate.connection.ConnectionProvider;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -49,6 +55,58 @@ public class PubAjJbDao extends BaseDao {
 		}
 		
 		return 0;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public int getMaxAh(String year,String dz,String bydz,String ah_filter){
+		String sql = "SELECT max(convert(integer,substring(AH ,  charindex('"+dz+"',AH) +2 , " +
+				"charindex('号',AH) - charindex('"+dz+"',AH) - 2)))"
+				+ " FROM PUB_AJ_JB  "
+				+ " WHERE "
+				+ "		( AH not like '%X%') AND "
+				+ "		( AH not like '%XX%' ) AND "
+				+ "		( AH not like '%-%'  ) AND "
+				+ "		( AH not like '%第%'  ) AND "
+				+ "		( AH like '"+ year+ "' ) AND "
+				+ "		( AH like '"+ ah_filter+ "' ) AND "
+				+ "		( BYCXDZ  like '" + bydz + "' ) ";
+//		Session s = this.getHibernateTemplate().getSessionFactory().getCurrentSession();
+//		Query query = s.createQuery(sql);
+//		int maxAh = (int)query.uniqueResult();
+//		return maxAh;
+		ConnectionProvider cp = null;
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		Integer max = 0;
+		try {
+			cp = ((SessionFactoryImplementor) this.getHibernateTemplate()
+					.getSessionFactory()).getConnectionProvider();
+			connection = cp.getConnection();
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery(sql);
+			while (resultSet.next()) {
+				max = resultSet.getInt(1);
+			}
+		} catch (SQLException e) {
+			max = -1;
+			
+		}finally {
+			try {
+				if (resultSet != null)
+					resultSet.close();
+				if (statement != null)
+					statement.close();
+				if (cp != null)
+					cp.closeConnection(connection);
+			} catch (SQLException e) {
+				
+				max =-1;
+			}
+		}
+		return max;
+
+		
 	}
 	@SuppressWarnings("unchecked")
 	public List<PubAjJb> getXSajByJarq(Date begin,Date end){

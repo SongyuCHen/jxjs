@@ -134,6 +134,79 @@ public class PubAjJb implements Serializable
 
 
 
+	public PubAjJb(Integer ajxh, String ah, String ajmc, String ajxz,
+			String ajly, String spcx, String spcxdz, String sycx, String sfys,
+			String sfzdaj, String sfjbaj, String sffhcs, String sfwdyj,
+			Integer sx, Integer fjsx, String lydq, String baspt, String jyaq,
+			Date larq, String lar, String bafy, String gksjg, String cbryj,
+			String hytyj, String tzhyj, String yzhyj, String swhyj, Date jarq,
+			String jafs, String jayy, String jayydm, String bz, Date sxrq,
+			String gdbz, String ajzt, String bycxdz, String ajwsqk, Date gdrq,
+			Integer gdxlh, Date cbrbprq, String cjar, Date spzsqrq,
+			Date hythyrq, Date tzsqrq, Date yzsqrq, Date swhjdrq, Date yzqfrq,
+			String slqk, String sslx, String sfgs, String fhcsyy, String gpyy,
+			String sfzscq, String swlx, String psycy, String sfxess) {
+	
+		this.ajxh = ajxh;
+		this.ah = ah;
+		this.ajmc = ajmc;
+		this.ajxz = ajxz;
+		this.ajly = ajly;
+		this.spcx = spcx;
+		this.spcxdz = spcxdz;
+		this.sycx = sycx;
+		this.sfys = sfys;
+		this.sfzdaj = sfzdaj;
+		this.sfjbaj = sfjbaj;
+		this.sffhcs = sffhcs;
+		this.sfwdyj = sfwdyj;
+		this.sx = sx;
+		this.fjsx = fjsx;
+		this.lydq = lydq;
+		this.baspt = baspt;
+		this.jyaq = jyaq;
+		this.larq = larq;
+		this.lar = lar;
+		this.bafy = bafy;
+		this.gksjg = gksjg;
+		this.cbryj = cbryj;
+		this.hytyj = hytyj;
+		this.tzhyj = tzhyj;
+		this.yzhyj = yzhyj;
+		this.swhyj = swhyj;
+		this.jarq = jarq;
+		this.jafs = jafs;
+		this.jayy = jayy;
+		this.jayydm = jayydm;
+		this.bz = bz;
+		this.sxrq = sxrq;
+		this.gdbz = gdbz;
+		this.ajzt = ajzt;
+		this.bycxdz = bycxdz;
+		this.ajwsqk = ajwsqk;
+		this.gdrq = gdrq;
+		this.gdxlh = gdxlh;
+		this.cbrbprq = cbrbprq;
+		this.cjar = cjar;
+		this.spzsqrq = spzsqrq;
+		this.hythyrq = hythyrq;
+		this.tzsqrq = tzsqrq;
+		this.yzsqrq = yzsqrq;
+		this.swhjdrq = swhjdrq;
+		this.yzqfrq = yzqfrq;
+		this.slqk = slqk;
+		this.sslx = sslx;
+		this.sfgs = sfgs;
+		this.fhcsyy = fhcsyy;
+		this.gpyy = gpyy;
+		this.sfzscq = sfzscq;
+		this.swlx = swlx;
+		this.psycy = psycy;
+		this.sfxess = sfxess;
+	}
+
+
+
 	public Integer getAjxh() {
 		return ajxh;
 	}

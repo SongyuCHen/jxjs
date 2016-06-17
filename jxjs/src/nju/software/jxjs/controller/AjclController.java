@@ -140,11 +140,10 @@ public class AjclController extends BaseController
 	
 	
 	//立案
-	@RequestMapping(value = "/la", method = RequestMethod.GET)
+	@RequestMapping(value = "/la", method = RequestMethod.POST)
 	@ResponseBody
 	public Object la(@RequestParam("jxjsbhList") String jxjsbhList){
-		al.la(jxjsbhList);
-		
+		al.la(jxjsbhList);	
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("ajcl-ylalb");
 		mv.addObject("menuWrapper", ms.makeMenu("fayuan", "ajcl", "ylalb"));
